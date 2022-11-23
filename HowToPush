@@ -1,7 +1,7 @@
 git init
 git add .
 git commit -m "hello"
-git remote add origin https://github.com/marloupepito/CafeLocApp.git
+git remote add origin https://github.com/marloupepito/cpsu-evaluation.git
 git push -u origin master
 git push -f origin master
 
