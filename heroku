@@ -1,0 +1,11 @@
+heroku buildpacks:set heroku/nodejs -a evaluation-cpsu
+heroku buildpacks:add https://github.com/heroku/heroku-buildpack-static.git -a cpsu-evaluation-system
+
+
+
+heroku buildpacks:set heroku/php
+heroku buildpacks:set heroku/nodejs
+
+
+heroku plugins:install buildpack-registry
+heroku plugins:install buildpacks  
