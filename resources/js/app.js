@@ -36,7 +36,7 @@ const vuetify = createVuetify({
 import routes from './components/Routes/Routes'
 
 const router = createRouter({
-  history:createWebHistory(import.meta.env.BASE_URL),
+  history:createWebHistory(),
   routes
 })
 
