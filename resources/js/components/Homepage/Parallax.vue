@@ -4,13 +4,13 @@
     src="images/background.jpeg"
     scale=0.5
   >
-    <div class="d-flex flex-column fill-height justify-center align-center text-white">
+    <div class="bg-text ">
       <center>
-        <h1 class="text-h4  mb-4 font-weight-bold text-dark">
+        <h1 class="text-h5  font-weight-bold text-white">
          Central Philippine State University
         </h1>
       </center>
-      <h4 class="subheading">
+      <h4 class="subheading m-5">
            <v-btn
             rounded="pill"
             color="green"

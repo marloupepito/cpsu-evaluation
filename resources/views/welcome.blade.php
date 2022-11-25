@@ -40,8 +40,34 @@
                 opacity: 0.6 !important;
             }*/
 
+            .v-img__img.v-img__img--cover{
+                 filter: blur(8px);
+                  -webkit-filter: blur(8px);
+                  
+                  /* Full height */
+                  height: 100%; 
+                  
+                  /* Center and scale the image nicely */
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+            }
 
-    </style>
+            .bg-text {
+              background-color: rgb(0,0,0); /* Fallback color */
+              background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+              color: white !important;
+              font-weight: bold;
+              border: 3px solid #f1f1f1;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: 2;
+              padding: 20px;
+              text-align: center;
+            }
+</style>
     <body>
         <div id="app">
             <app-component></app-component>
