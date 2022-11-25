@@ -51,6 +51,7 @@
                   background-position: center;
                   background-repeat: no-repeat;
                   background-size: cover;
+
             }
 
             .bg-text {
@@ -66,6 +67,7 @@
               z-index: 2;
               padding: 20px;
               text-align: center;
+              border-radius: 50px 20px;
             }
 </style>
     <body>
