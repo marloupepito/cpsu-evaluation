@@ -31,9 +31,9 @@ export default {
   },
   methods: {
 
-    async onInit (promise) {
+     onInit (promise) {
       try {
-        await promise
+         promise
       } catch (e) {
         console.error(e)
       } finally {
@@ -41,28 +41,28 @@ export default {
       }
     },
 
-    async onDecode (content) {
+     onDecode (content) {
       this.pause()
       const a = content.split(",");
       const credentials = {
         evaluatorid:a[0],
-        username:a[1],
-        password:a[2],
+        password:a[1],
         campus:this.campus,
         campusid:this.campusid,
         type:this.type,
       }
-
+    //console.log(credentials)
      this.verify = false
      axios.post('/qrscanner',credentials)
      .then(res=>{
       console.log(res.data.status)
+      console.log(res.data.status2)
         if(res.data.status === 'success'){
               this.$swal({
                 icon: 'success',
                 title: 'Success!',
                 showConfirmButton: false,
-                timer: 1000
+                timer: 1500
               })
               setTimeout(() => {
                 //this.$router.push({path:'/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid})
@@ -75,17 +75,17 @@ export default {
               this.unpause()
                 this.$swal({
                 icon: 'warning',
-                title: 'Evaluated Done!',
+                title: 'Evaluation Done!',
                 showConfirmButton: false,
-                timer: 1000
+                timer: 1500
               })
             }else{
               this.unpause()
                 this.$swal({
                 icon: 'error',
-                title: 'Incorrect QR code!',
+                title: 'No subject teacher available!',
                 showConfirmButton: false,
-                timer: 1000
+                timer: 1500
               })
             }
             
@@ -95,9 +95,9 @@ export default {
             this.unpause()
             this.$swal({
             icon: 'error',
-            title: 'Connection Error!',
+            title: 'Incorrect QR code!',
             showConfirmButton: false,
-            timer: 1000
+            timer: 1500
           })
         })
 

@@ -14,7 +14,6 @@ class ScannerController extends Controller
      public function qrscanner(Request $request){
          $request->validate([
             'evaluatorid'=>['required'],
-            'username'=>['required'],
             'password'=>['required'],
             'campus'=>['required'],
             'campusid'=>['required'],
@@ -23,44 +22,66 @@ class ScannerController extends Controller
 
          $date = date("Y");
          if($request->type === 'student'){
+
              $schedule = Schedule::where('campusid','=',$request->campusid)->first();
-             $subjectLoadingStudent = StudentSubjectLoading::where([['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester],['program', '=' ,null],])->get();
 
-             $loading = FacultySubjectLoading::where([['department','=',$users->course],['year','=',$users->school_year],['semester','=',$users->semester]])->get();
+             $subjectLoadingStudent = StudentSubjectLoading::where([['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester]])->get();
 
-                  // $request->session()->put('evaluator',[
-                  //  'evaluatorid' => $request->evaluatorid,
-                  //  'username' => $request->username,
-                  //  'password' => $request->password,
-                  //  'campus' => $request->campus,
-                  //  'campusid' => $request->campusid,
-                  //  'type' => $request->type,
-                  //  'semester' => $schedule->semester,
-                  //  'year' => $date,
-                  // ]);
+             $users = Evaluator::where([['id','=',$request->evaluatorid],['password','=',$request->password]])->first();
 
-                  if(count($subjectLoadingStudent) === 0){
-                     foreach ($loading as $load) {
-                        StudentSubjectLoading::create([
-                            'evaluator_id' => $users->id,
-                            'id_number' => $users->id_number,
-                            'campusid' => $users->campusid,
-                            'subject' => $load->subject,
-                            'semester' => $schedule->semester,
-                            'department' => $load->department,
-                            'section' => $load->section,
-                            'year' => $year,
+             $loading = FacultySubjectLoading::where([['campusid','=',$request->campusid],['department','=',$users->course],['year','=',$users->school_year],['semester','=',$users->semester]])->get();
+
+
+             if(count($subjectLoadingStudent) === 0){
+
+                    if(count($loading) === 0){
+                         return response()->json([
+                            'status' => 'no teacher',
+                        ]);
+                    }else{
+                       foreach ($loading as $load) {
+                            StudentSubjectLoading::create([
+                                'evaluator_id' => $users->id,
+                                'id_number' => $users->id_number,
+                                'campus' => $users->campus,
+                                'school_year' => $users->school_year,
+                                'campusid' => $users->campusid,
+                                'subject' => $load->subject,
+                                'semester' => $schedule->semester,
+                                'department' => $load->department,
+                                'section' => $load->section,
+                                'year' => $date,
+                            ]);
+                        }
+                        return response()->json([
+                            'status' => 'success',
                         ]);
                     }
-                   
+                
+                    
+             }else{
+
+                $checkAvailable = StudentSubjectLoading::where([['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester],['program','=', null]])->get();
+
+                if(count($checkAvailable) === 0){  
+                     return response()->json([
+                        'status' => 'done',
+                    ]);   
+                }else{
+                   return response()->json([
+                        'status' => 'success',
+                    ]);
                 }
 
-                return response()->json([
-                    'status' => $subjectLoadingStudent
-                ]);
-         }
-        
+             }
+           
+        }
 
+        if($request->type === 'self'){
+              return response()->json([
+                    'status' => 'success',
+                ]);
+        }
 
 
 

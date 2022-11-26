@@ -17,7 +17,9 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import 'sweetalert2/dist/sweetalert2.min.css'
-import VueQrcodeReader from "vue3-qrcode-reader";
+ import VueQrcodeReader from "vue3-qrcode-reader";
+//import VueQrcodeReader from "vue-qrcode-reader";
+
 
 const vuetify = createVuetify({
   components,

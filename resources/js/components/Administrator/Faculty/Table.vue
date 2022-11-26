@@ -70,7 +70,7 @@
               <v-btn v-else :to="'/cpsu_campus/faculty/'+item.campus.replace(/ /g,'_')+'/view/loaded?'+item.campusid+','+item.id" color="yellow" block>Loaded</v-btn>
         </td>
         <td><v-btn
-      color="green" block @click="getQR([item.id,item.password,item.id_number])">
+      color="green" block @click="getQR([item.id,item.password])">
              <v-icon icon="mdi-qrcode" size="x-large"></v-icon>
       </v-btn></td>
       </tr>

@@ -16,4 +16,19 @@ heroku git:remote -a gould-care
 
 
 
-             @vite(['resources/css/app.css', 'resources/js/app.js'])
+ @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+at the student_subject_loading
+if(student is exist student_subject_loading){
+    if(student_subject_loading === 0){
+        evaluation is done
+    }else{
+        continue to evaluation
+    }
+
+}else (is NOT EXIST){
+    
+    add data in student_subject_loading
+    loop the available faculty by campusid, department/course, year and section   
+
+}
