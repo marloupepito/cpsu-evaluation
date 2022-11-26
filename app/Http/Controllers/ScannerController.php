@@ -24,7 +24,6 @@ class ScannerController extends Controller
          if($request->type === 'student'){
 
              $schedule = Schedule::where('campusid','=',$request->campusid)->first();
-
              $subjectLoadingStudent = StudentSubjectLoading::where([['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester]])->get();
 
              $users = Evaluator::where([['id','=',$request->evaluatorid],['password','=',$request->password]])->first();
@@ -56,9 +55,8 @@ class ScannerController extends Controller
                         return response()->json([
                             'status' => 'success',
                         ]);
-                    }
-                
-                    
+                    }  
+
              }else{
 
                 $checkAvailable = StudentSubjectLoading::where([['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester],['program','=', null]])->get();
@@ -77,10 +75,106 @@ class ScannerController extends Controller
            
         }
 
-        if($request->type === 'self'){
-              return response()->json([
-                    'status' => 'success',
+        if($request->type === 'peer' || $request->type === 'supervisor'){
+            $schedule = Schedule::where('campusid','=',$request->campusid)->first();
+
+             $subjectLoadingStudent = StudentSubjectLoading::where([['subject','=',null],['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid]])->get();
+
+             $faculty = Faculty::where([['id','=',$request->evaluatorid],['password','=',$request->password]])->first();
+
+             $faculties = Faculty::where([['id','<>',$request->evaluatorid],['campusid','=',$request->campusid],['department','=', $faculty->department]])->get();
+
+             if($request->campusid == $faculty->campusid){
+                if(count($subjectLoadingStudent) === 0){
+                        
+                        if($faculty->academic_rank === 'admin' && $request->type === 'supervisor'){
+                            $allfaculties = Faculty::where([['id','<>',$request->evaluatorid],['campusid','=',$request->campusid]])->get();
+                         
+                            foreach ($allfaculties as $load) {
+                                StudentSubjectLoading::create([
+                                    'evaluator_id' => $request->evaluatorid,
+                                    'id_number' => $load->id_number,
+                                    'campus' => $load->campus,
+                                    'school_year' => $load->school_year,
+                                    'campusid' => $load->campusid,
+                                    'subject' => $load->subject,
+                                    'semester' => $schedule->semester,
+                                    'department' => $load->department,
+                                    'section' => $load->section,
+                                    'year' => $date,
+                                ]);
+                            }
+                             return response()->json([
+                                'status' =>'success',
+                            ]);
+
+                         }else{
+
+                            if($request->type === 'supervisor'){
+                                return response()->json([
+                                    'status' =>'error',
+                                ]);
+                            }else{
+                                foreach ($faculties as $load) {
+                                    StudentSubjectLoading::create([
+                                        'evaluator_id' => $request->evaluatorid,
+                                        'id_number' => $load->id_number,
+                                        'campus' => $load->campus,
+                                        'school_year' => $load->school_year,
+                                        'campusid' => $load->campusid,
+                                        'subject' => $load->subject,
+                                        'semester' => $schedule->semester,
+                                        'department' => $load->department,
+                                        'section' => $load->section,
+                                        'year' => $date,
+                                    ]);
+                                }
+                                 return response()->json([
+                                    'status' =>'success',
+                                ]);
+                            }                                
+                         }
+                         
+                        
+                 }else{
+                    
+                     $checkAvailable = StudentSubjectLoading::where([['subject','=',null],['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester],['program','=', null]])->get();
+
+                    if(count($checkAvailable) === 0){  
+                         return response()->json([
+                            'status' => 'done',
+                        ]);   
+                    }else{
+                        if($faculty->academic_rank === 'admin' && $request->type === 'supervisor'){
+                            return response()->json([
+                                'status' => 'success',
+                            ]);
+                        }else if($faculty->academic_rank === 'admin' && $request->type === 'peer'){
+                            return response()->json([
+                                'status' => 'success',
+                            ]);
+                        }else if($faculty->academic_rank !== 'admin' && $request->type === 'peer'){
+                            return response()->json([
+                                'status' => 'success',
+                            ]);
+                        }else{
+                            return response()->json([
+                                'status' => 'error',
+                            ]);
+                        }
+                       
+                       
+                    }
+
+                 }
+
+             }else{
+                return response()->json([
+                    'status' => 'incomp',
                 ]);
+             }
+
+
         }
 
 

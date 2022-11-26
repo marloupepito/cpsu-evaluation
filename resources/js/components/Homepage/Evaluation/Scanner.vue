@@ -43,6 +43,22 @@ export default {
     },
 
       onDecode (content) {
+
+        this.$swal({
+        title: 'Loading...',
+        timerProgressBar: true,
+        didOpen: () => {
+          this.$swal.showLoading()
+              const b = this.$swal.getHtmlContainer().querySelector('b')
+            },
+          })
+        .then((result) => {
+        if (result.dismiss === this.$swal.DismissReason.timer) {
+          console.log('I was closed by the timer')
+        }
+      })
+
+
         this.show = false
         this.pause()
       const a = content.split(",");
@@ -57,13 +73,13 @@ export default {
      axios.post('/qrscanner',credentials)
      .then(res=>{
         if(res.data.status === 'success'){
+              this.show = true
               this.$swal({
                 icon: 'success',
                 title: 'Success!',
                 showConfirmButton: false,
                 timer: 1500
               })
-              this.show = true
               setTimeout(() => {
                 //this.$router.push({path:'/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid})
                   // window.location='/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid
@@ -72,6 +88,8 @@ export default {
         }else{
            // this.verify = true
 
+      console.log(res.data.status)
+            this.show = true
            if(res.data.status === 'done'){
               this.unpause()
                 this.$swal({
@@ -80,20 +98,39 @@ export default {
                 showConfirmButton: false,
                 timer: 1500
               })
-            }else{
+            }else if(res.data.status === 'incomp'){
               this.unpause()
                 this.$swal({
                 icon: 'error',
-                title: 'No subject teacher available!',
+                title: 'Incorrect Campus!',
                 showConfirmButton: false,
                 timer: 1500
               })
+            }else{
+
+              if(this.type === 'student'){
+                this.$swal({
+                  icon: 'error',
+                  title: 'No subject teacher available!',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+                }else{
+                   this.$swal({
+                    icon: 'error',
+                    title: 'Incorrect QR',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                }
+              this.unpause()
+               
             }
-            this.show = true
             
         }
       })
       .catch(err=>{
+            this.show = true
             this.unpause()
             this.$swal({
             icon: 'error',
@@ -101,7 +138,6 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
-            this.show = true
         })
 
 
