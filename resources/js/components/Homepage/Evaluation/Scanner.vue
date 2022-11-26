@@ -1,6 +1,6 @@
 <template>
  <div>
-    <qrcode-stream :camera="camera" @decode="onDecode" @init="onInit" style="height:100vh">
+    <qrcode-stream v-if="show === true" :camera="camera" @decode="onDecode" @init="onInit" style="height:100vh">
   
     </qrcode-stream>
   </div>
@@ -18,7 +18,8 @@ export default {
       verify:false,
       type:'',
       campus:'',
-      campusid:''
+      campusid:'',
+      show:true
     }
   },
   mounted(){
@@ -31,18 +32,19 @@ export default {
   },
   methods: {
 
-     onInit (promise) {
+   async  onInit (promise) {
       try {
-         promise
+         await promise
       } catch (e) {
         console.error(e)
       } finally {
-        this.showScanConfirmation = this.camera === "off"
+       // this.showScanConfirmation = this.camera === "off"
       }
     },
 
-     onDecode (content) {
-      this.pause()
+      onDecode (content) {
+        this.show = false
+        this.pause()
       const a = content.split(",");
       const credentials = {
         evaluatorid:a[0],
@@ -51,12 +53,9 @@ export default {
         campusid:this.campusid,
         type:this.type,
       }
-    //console.log(credentials)
      this.verify = false
      axios.post('/qrscanner',credentials)
      .then(res=>{
-      console.log(res.data.status)
-      console.log(res.data.status2)
         if(res.data.status === 'success'){
               this.$swal({
                 icon: 'success',
@@ -64,13 +63,15 @@ export default {
                 showConfirmButton: false,
                 timer: 1500
               })
+              this.show = true
               setTimeout(() => {
                 //this.$router.push({path:'/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid})
                   // window.location='/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid
-              //     this.unpause()
+                   this.unpause()
               },1500);
         }else{
            // this.verify = true
+
            if(res.data.status === 'done'){
               this.unpause()
                 this.$swal({
@@ -88,6 +89,7 @@ export default {
                 timer: 1500
               })
             }
+            this.show = true
             
         }
       })
@@ -99,6 +101,7 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
+            this.show = true
         })
 
 
