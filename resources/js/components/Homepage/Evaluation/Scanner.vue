@@ -46,6 +46,7 @@ export default {
 
         this.$swal({
         title: 'Loading...',
+        allowOutsideClick: false,
         timerProgressBar: true,
         didOpen: () => {
           this.$swal.showLoading()
@@ -54,7 +55,6 @@ export default {
           })
         .then((result) => {
         if (result.dismiss === this.$swal.DismissReason.timer) {
-          console.log('I was closed by the timer')
         }
       })
 
@@ -72,6 +72,7 @@ export default {
      this.verify = false
      axios.post('/qrscanner',credentials)
      .then(res=>{
+      console.log(res.data.status)
         if(res.data.status === 'success'){
               this.show = true
               this.$swal({
@@ -81,14 +82,13 @@ export default {
                 timer: 1500
               })
               setTimeout(() => {
-                //this.$router.push({path:'/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid})
-                  // window.location='/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid
+             //   this.$router.push({path:'/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid})
+                 window.location='/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid
                    this.unpause()
               },1500);
         }else{
            // this.verify = true
 
-      console.log(res.data.status)
             this.show = true
            if(res.data.status === 'done'){
               this.unpause()

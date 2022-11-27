@@ -534,10 +534,12 @@ import axios from 'axios'
 		      q18:null,
 		      q19:null,
 		      q20:null,
-		      info:[],
 		      question:'',
 		      evaluateeName:'',
-		      id2:''
+		      id:'',
+		      campus:'',
+		      campusid:'',
+		      type:''
 		    }
 		  },
 		  methods:{
@@ -545,9 +547,10 @@ import axios from 'axios'
 		  		 this.disable=true
 		  		e.preventDefault();
 		  		const form = {
-		  				id2:this.id2,
-		  				campus:this.info.campus,
-		  				campusid:this.info.campusid === undefined?this.info.id:this.info.campusid,
+		  				type:this.type,
+		  				id:this.id,
+		  				campus:this.campus,
+		  				campusid:this.campusid,
 		  				name:this.evaluateeName,
 		  			  comment:this.comment,
 		  			  evaluator:this.evaluator_id,
@@ -559,75 +562,50 @@ import axios from 'axios'
 		  		}
 		  		axios.post('/submit_form',form)
 		  		.then(res=>{
-		  		
-
-
+		  		 document.getElementById("myForm").reset();
 						this.$swal({
 						  icon: 'success',
 						  title: 'Rating Submitted!',
 						  showConfirmButton: false,
 						  timer: 1500
 						})
-
-		  					axios.post('/get_all_faculty')
-							     .then(res=>{
-							     	if(res.data.status.length ===0){
-							     				// window.location ='/'
-							     				 this.$router.push({path:'/campuses'})
-							     				axios.post('/logout_evaluator')
-											    .then(res=>{
-											     
-											     })
-							     		}else{
-							     			this.id2 = res.data.status[0].id
-							     			this.evaluateeName = res.data.faculty.name
-							     			this.facultyValue = res.data.status[0].id_number
-							     			 this.disable=false
-							     			 this.comment =null
-							 			 	  document.getElementById("myForm").reset();
-							 			 	  
-							     		}
-							     })
-
-
-
+						this.mount()
+		  					 this.disable=false
 		  			})
 		  		.catch(err=>{
 		  				 this.disable=false
 		  			})
 		  	},
+		  	mount(){
+		  		const type = window.location.search.substring(1).replace(/_/g,' ').split(',')[0]
+			     const campus = window.location.search.substring(1).replace(/_/g,' ').split(',')[1]
+			      const campusid = window.location.hash.substring(1)
+
+			      axios.post('/get_questionaire')
+				     .then(res=>{
+				     	this.question = res.data.status[0];
+				     })
+
+
+			      this.campus=campus
+			      this.campusid =campusid
+			      this.type = type
+				  	axios.post('/evaluator_session')
+				     .then(result=>{
+					     console.log(result.data.status)
+					     this.evaluator_id = result.data.status.evaluator_id
+					     this.id = result.data.status.id
+			     		 this.evaluateeName = result.data.name.name
+			     		 this.facultyValue = result.data.name.id_number
+				     })
+				     .catch(err=>{
+				   this.$router.push({path:'/'})
+				      })
+				  	}
+
 		  },
 		mounted(){
-			axios.post('/evaluator_session')
-		     .then(res=>{
-		        if(res.data.status === 'success'){
-		            this.info = res.data.info[0]
-		            this.evaluator_id = res.data.id
-		        }else{
-		       //  window.location='/'
-		         //  this.$router.push({path:'/campuses'})
-		        }
-		      })
-
-		     axios.post('/get_questionaire')
-		     .then(res=>{
-		     	this.question = res.data.status[0];
-		     })
-
-		     axios.post('/get_all_faculty')
-		     .then(result=>{
-			     	axios.post('/get_all_faculty')
-			    	 .then(res=>{
-			     	if(res.data.status.length ===0){
-			     	//window.location ='/'
-			     	//	 this.$router.push({path:'/campuses'})
-			     		}else{
-			     			this.id2 = res.data.status[0].id
-			     			this.evaluateeName = res.data.faculty.name
-			     			this.facultyValue = res.data.status[0].id_number
-			     		}
-			     	})
-		     })
+			this.mount()
 		}
 	}
 </script>

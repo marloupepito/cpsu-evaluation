@@ -101,6 +101,7 @@ class CreateUsersTable extends Migration
             $table->string('section')->nullable();
             $table->string('year')->nullable();
             $table->string('program')->nullable();
+            $table->string('program2')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

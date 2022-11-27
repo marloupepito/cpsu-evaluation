@@ -31,258 +31,37 @@ class EvaluatorController extends Controller
                     ]);
         }
     }
-    public function scan_qrcode(Request $request){
-         $request->validate([
-            'username'=>['required'],
-            'password'=>['required'],
-            'campus'=>['required'],
-            'campusid'=>['required'],
-            'type'=>['required'],
-        ]);
-
-         if($request->type === 'student'){
-
-                    $aaa = StudentSubjectLoading::where([['campusid', '=' ,$request->campusid],['program', '=' ,null],['evaluator_id', '=' ,$request->evaluatorid]])
-                        ->orWhere([['program', '<>' ,'active'],['evaluator_id', '=' ,$request->evaluatorid]])
-                        ->get();
-
-                    $users = Evaluator::where([['id_number','=',$request->username],['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['id', '=' ,$request->evaluatorid],['password','=',$request->password]])
-                    ->get();
-
-                  
-                    if(count($users) !== 0){
-                        if(count($aaa) === 0 && $users[0]->status === 'active'){
-                            return response()->json([
-                                'status' => 'done'
-                            ]);
-                        }else{
-                             $request->session()->put('evaluator_type', 'student');
-                                $request->session()->put('username', $request->username);
-                                $request->session()->put('password', $request->password);
-                                return response()->json([
-                                    'status' => 'success'
-                                ]);
-                        }
-                    }else{
-                         return response()->json([
-                            'status' => 'error'
-                        ]);
-                    }
-
-
-         }else if($request->type === 'peer'){
-            
-             $aaa = StudentSubjectLoading::where([['campusid', '=' ,$request->campusid],['program', '=' ,null],['evaluator_id', '=' ,$request->evaluatorid]])
-                        ->orWhere([['program', '<>' ,'active'],['evaluator_id', '=' ,$request->evaluatorid]])
-                        ->get();
-
-                    $users = Faculty::where([['id_number','=',$request->username],['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['id', '=' ,$request->evaluatorid],['password','=',$request->password]])
-                    ->get();
-
-                   
-                  
-                    if(count($users) !== 0){
-
-                        if(count($aaa) === 0 && $users[0]->status === 'active'){
-                            return response()->json([
-                                'status' => 'done'
-                            ]);
-
-                        }else{
-                             $request->session()->put('evaluator_type', 'peer');
-                                $request->session()->put('username', $request->username);
-                                $request->session()->put('password', $request->password);
-                                return response()->json([
-                                    'status' => 'success'
-                                ]);
-                        }
-                    }else{
-                         return response()->json([
-                            'status' => 'error'
-                        ]);
-                    }
-
-         }else if($request->type === 'self'){
-             
-                 $aaa = StudentSubjectLoading::where([['campusid', '=' ,$request->campusid],['program', '=' ,null],['evaluator_id', '=' ,$request->evaluatorid]])
-                        ->orWhere([['program', '<>' ,'active'],['evaluator_id', '=' ,$request->evaluatorid]])
-                        ->get();
-
-                    $users = Faculty::where([['id_number','=',$request->username],['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['id', '=' ,$request->evaluatorid],['password','=',$request->password]])
-                    ->get();
-
-                   $user = User::where([['self','=',null],['id','=',$request->campusid]])->get();
-                   if(count($user) !== 0){
-
-                         if(count($aaa) === 0 && $user[0]->self === 'active'){
-                            return response()->json([
-                                'status' => 'done'
-                            ]);
-
-                        }else{
-                                $request->session()->put('evaluator_type', 'self');
-                                $request->session()->put('username', $request->username);
-                                $request->session()->put('password', $request->password);
-                                return response()->json([
-                                    'status' => 'success'
-                                ]);
-                        }
-                   }else if(count($users) !== 0){
-
-                        if(count($aaa) === 0 && $users[0]->year === 'active'){
-                            return response()->json([
-                                'status' => 'done'
-                            ]);
-
-                        }else{
-                                $request->session()->put('evaluator_type', 'self');
-                                $request->session()->put('username', $request->username);
-                                $request->session()->put('password', $request->password);
-                                return response()->json([
-                                    'status' => 'success'
-                                ]);
-                        }
-                    }else{
-
-                        if(count($user) === 0){
-                            return response()->json([
-                                'status' => 'done'
-                            ]);
-                        }else{
-                              return response()->json([
-                                'status' => 'error'
-                            ]);
-                        }
-                       
-                    }
-
-         }else if($request->type === 'supervisor'){
-            
-        // evaluatorid =academic_rank
-        // username = campus
-        // password = campusid
-
-
-                    $aaa = StudentSubjectLoading::where([['campusid', '=' ,$request->campusid],['program', '=' ,null],['evaluator_id', '=' ,$request->evaluatorid]])
-                        ->orWhere([['program', '<>' ,'active'],['evaluator_id', '=' ,$request->evaluatorid]])
-                        ->get();
-
-                    $users = User::where([['id','=',$request->evaluatorid],['academic_rank', '=' ,$request->username],['password', '=' ,$request->password]])
-                    ->get();
-
-                  
-                    if(count($users) !== 0){
-
-                        if(count($aaa) === 0 && $users[0]->year === 'active'){
-                            return response()->json([
-                                'status' => 'done'
-                            ]);
-
-                        }else{
-                                $request->session()->put('evaluator_type', 'supervisor');
-                                $request->session()->put('username', $request->username);
-                                $request->session()->put('password', $request->password);
-                                return response()->json([
-                                    'status' => 'success'
-                                ]);
-                        }
-
-                    }else{
-                         return response()->json([
-                            'status' => $request->password
-                        ]);
-                    }
-
-
-         }
-
-      
-       
-    }
+  
 
     public function evaluator_session(Request $request){
-        $username = $request->session()->get('username');
-        $password = $request->session()->get('password');
+        $evaluatorid = $request->session()->get('evaluatorid');
+        $type = $request->session()->get('type');
+        $campusid = $request->session()->get('campusid');
 
+        if($type === 'student'){
+             $all = StudentSubjectLoading::where([['program','=',null],['subject','<>',null],['evaluator_id','=',$evaluatorid],['campusid','=',$campusid]])->get();
 
-         if($request->session()->get('evaluator_type') === 'student'){
-            $users = Evaluator::where([['id_number', '=' ,$username],['password','=',$password]])
-                ->get();
-                if(count($users) !== 0){
-                    return response()->json([
-                        'status' => 'success',
-                        'id' => $users[0]->id_number,
-                        'info' => $users
-                    ]);
-                }else{
-                     return response()->json([
-                        'status' => 'error'
-                    ]);
-                }
-        }else if($request->session()->get('evaluator_type') === 'peer'){
-                 $users = Faculty::where([['id_number', '=' ,$username],['password','=',$password]])
-                    ->get();
-                    if(count($users) !== 0){
-                        return response()->json([
-                            'status' => 'success',
-                            'id' => $users[0]->id,
-                            'info' => $users
-                        ]);
-                    }else{
-                         return response()->json([
-                            'status' => 'error'
-                        ]);
-                     }
-        }else if($request->session()->get('evaluator_type') === 'self'){
-
-                 $users = Faculty::where([['id_number', '=' ,$username],['password','=',$password]])
-                    ->get();
-
-
-                    if(count($users) !== 0){
-                        return response()->json([
-                            'status' => 'success',
-                            'id' => $users[0]->id,
-                            'info' => $users
-                        ]);
-                    }else{
-
-                        $user = User::where([['self', '=', null],['password','=',$password]])
-                         ->get();
-
-                         if(count($user) !== 0){
-
-                            return response()->json([
-                                'status' => 'success',
-                                'id' => $user[0]->id,
-                                'info' => $user
-                            ]);
-                         }else{
-                              return response()->json([
-                                    'status' => $users
-                                ]);
-                         }
-                       
-                     }
+             $name=Faculty::where('id_number','=',$all[0]->id_number)->first();
+             return response()->json([
+                'status' => $all[0],
+                'name' => $name
+            ]);
+        }else if($type === 'peer'){
+             $all = StudentSubjectLoading::where([['program2','=',null],['subject','=',null],['evaluator_id','=',$evaluatorid],['campusid','=',$campusid]])->get();
+            $name=Faculty::where('id_number','=',$all[0]->id_number)->first();
+             return response()->json([
+                'status' => $all[0],
+                'name' => $name
+            ]);
+        }else{
+            $all = StudentSubjectLoading::where([['program','=',null],['subject','=',null],['evaluator_id','=',$evaluatorid],['campusid','=',$campusid]])->get();
+            $name=Faculty::where('id_number','=',$all[0]->id_number)->first();
+             return response()->json([
+                'status' => $all[0],
+                'name' => $name
+            ]);
         }
-        else if($request->session()->get('evaluator_type') === 'supervisor'){
-
-                 $users = User::where([['academic_rank', '=' ,$username],['password','=',$password]])
-                    ->get();
-                    if(count($users) !== 0){
-                        return response()->json([
-                            'status' => 'success',
-                            'id' => $users[0]->id,
-                            'info' => $users
-                        ]);
-                    }else{
-                         return response()->json([
-                            'status' => $users
-                        ]);
-                     }
-        }
-
-
+        
        
     }
 

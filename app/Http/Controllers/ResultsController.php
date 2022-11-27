@@ -21,6 +21,7 @@ class ResultsController extends Controller
             'kos'=>['required'],
             'til'=>['required'],
             'mol'=>['required'],
+            'type'=>['required'],
         ]);
         $total = ($request->commitment+$request->kos+$request->til+$request->mol) / 4;
         
@@ -29,13 +30,13 @@ class ResultsController extends Controller
       ->update(['program' => 'active']);
 
 
-        if($request->session()->get('evaluator_type') === 'student'){
+        if($request->type === 'student'){
             
             Evaluator::where('id', $request->evaluator)
-            ->update(['status' => 'active']);
-             $aa = Evaluator::where('id_number', '=' ,$request->evaluator)
-            ->first();
-                 $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
+                ->update(['status' => 'active']);
+            StudentSubjectLoading::where('id', $request->id)
+            ->update(['program' => 'done']);
+                $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
                 $user = new Results;
                 $user->evaluatee_id = $request->evaluatee;
                 $user->evaluator_id = $request->evaluator;
@@ -55,13 +56,16 @@ class ResultsController extends Controller
                 $user->department = $aa->course;
                 $user->academic_rank = $aa->academic_rank;
                 $user->save();
-        }else if($request->session()->get('evaluator_type') === 'peer'){
 
-            Faculty::where('id', $request->evaluator)
-            ->update(['status' => 'active']);
-            $aa = Faculty::where('id', '=' ,$request->evaluator)
-            ->first();
-             $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
+
+        }if($request->type === 'peer'){
+            
+          Faculty::where('id', $request->evaluator)
+                ->update(['status' => 'active']);
+                $aa= Faculty::where('id', $request->evaluator)->first();
+            StudentSubjectLoading::where('id', $request->id)
+            ->update(['program2' => 'done']);
+               $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
                 $user = new Results;
                 $user->evaluatee_id = $request->evaluatee;
                 $user->evaluator_id = $request->evaluator;
@@ -79,69 +83,19 @@ class ResultsController extends Controller
                 $user->department = $aa->department;
                 $user->academic_rank = $aa->academic_rank;
                 $user->save();
-        }
-        else if($request->session()->get('evaluator_type') === 'self'){
 
-            if($request->session()->get('keyadmin') === 'admin'){
-                User::where('id', $request->evaluator)
-                ->update(['self' => 'active','year' => 'active']);
 
-                $aa = User::where('id', '=' ,$request->evaluator)
-                ->first();
 
-                 $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
-                    $user = new Results;
-                    $user->evaluatee_id = $request->evaluatee;
-                    $user->evaluator_id = $request->evaluator;
-                    $user->commitment = $request->commitment;
-                    $user->kos = $request->kos;
-                    $user->name = $request->name;
-                    $user->campus = $request->campus;
-                    $user->school_year = substr($zz->start,0,4);
-                    $user->campusid = $zz->campusid;
-                    $user->til = $request->til;
-                    $user->mol = $request->mol;
-                    $user->total = $total;
-                    $user->comment = $request->comment;
-                    $user->semester = $zz->semester;
-                    $user->department = $aa->department;
-                    $user->academic_rank = $aa->academic_rank;
-                    $user->save();
-            }else{
-                 Faculty::where('id', $request->evaluator)
-                ->update(['status' => 'active','year' => 'active']);
-                $aa = Faculty::where('id', '=' ,$request->evaluator)
-                ->first();
-                 $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
-                    $user = new Results;
-                    $user->evaluatee_id = $request->evaluatee;
-                    $user->evaluator_id = $request->evaluator;
-                    $user->commitment = $request->commitment;
-                    $user->kos = $request->kos;
-                    $user->name = $request->name;
-                    $user->campus = $request->campus;
-                    $user->school_year = substr($zz->start,0,4);
-                    $user->campusid = $zz->campusid;
-                    $user->til = $request->til;
-                    $user->mol = $request->mol;
-                    $user->total = $total;
-                    $user->comment = $request->comment;
-                    $user->semester = $zz->semester;
-                    $user->department = $aa->department;
-                    $user->academic_rank = $aa->academic_rank;
-                    $user->save();
-            }
-           
+        }else{
 
-        }
+             Faculty::where('id', $request->evaluator)
+                ->update(['status' => 'active']);
+               $aa= Faculty::where('id', $request->evaluator)->first();
+                StudentSubjectLoading::where('id', $request->id)
+                ->update(['program' => 'done']);
 
-        else if($request->session()->get('evaluator_type') === 'supervisor'){
 
-            User::where('id', $request->evaluator)
-            ->update(['year' => 'active']);
-            $aa = Faculty::where('id', '=' ,$request->evaluator)
-            ->first();
-             $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
+                $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
                 $user = new Results;
                 $user->evaluatee_id = $request->evaluatee;
                 $user->evaluator_id = $request->evaluator;
@@ -159,11 +113,9 @@ class ResultsController extends Controller
                 $user->department = $aa->department;
                 $user->academic_rank = $aa->academic_rank;
                 $user->save();
-        }
-        
 
+        } 
 
-       
 
        
 

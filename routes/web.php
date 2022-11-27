@@ -44,18 +44,16 @@ Route::post('/get_evaluators','EvaluatorController@get_evaluators'); //check
 Route::post('/logout_evaluator','EvaluatorController@logout_evaluator');
 
 Route::post('/get_faculty','FacultyController@get_faculty');//check
-Route::post('/get_all_faculty','FacultyController@get_all_faculty');
 Route::post('/add_faculty','FacultyController@add_faculty');//check
 
-Route::post('/scan_qrcode','EvaluatorController@scan_qrcode');
 Route::post('/evaluator_session','EvaluatorController@evaluator_session');
 Route::post('/add_student','EvaluatorController@add_student');
 
-Route::post('/get_questionaire','QuestionaireController@get_questionaire');
-Route::put('/edit_questionaire1','QuestionaireController@edit_questionaire1');
-Route::put('/edit_questionaire2','QuestionaireController@edit_questionaire2');
-Route::put('/edit_questionaire3','QuestionaireController@edit_questionaire3');
-Route::put('/edit_questionaire4','QuestionaireController@edit_questionaire4');
+Route::post('/get_questionaire','QuestionaireController@get_questionaire'); //check
+Route::put('/edit_questionaire1','QuestionaireController@edit_questionaire1');//check
+Route::put('/edit_questionaire2','QuestionaireController@edit_questionaire2');//check
+Route::put('/edit_questionaire3','QuestionaireController@edit_questionaire3');//check
+Route::put('/edit_questionaire4','QuestionaireController@edit_questionaire4');//check
 
 Route::post('/submit_form','ResultsController@submit_form');
 Route::post('/verify_evaluate','ResultsController@verify_evaluate');
