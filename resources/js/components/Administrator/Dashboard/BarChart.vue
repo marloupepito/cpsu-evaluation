@@ -1,103 +1,77 @@
 <template>
-  <div style="width: 100%">
-    <BarChart v-bind="doughnutChartProps" />
-  </div>
+  <Bar
+    :chart-options="chartOptions"
+    :chart-data="chartData"
+    :chart-id="chartId"
+    :dataset-id-key="datasetIdKey"
+    :plugins="plugins"
+    :css-classes="cssClasses"
+    :styles="styles"
+    :width="width"
+    :height="height"
+  />
 </template>
 
-<script lang='ts'>
-import { computed, defineComponent, ref } from "vue";
-import { shuffle } from "lodash";
-import { BarChart, useDoughnutChart } from "vue-chart-3";
-import { Chart, ChartData, ChartOptions, registerables } from "chart.js";
+<script>
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
-Chart.register(...registerables);
-export default defineComponent({
-  name: "App",
-  components: { BarChart },
-   data () {
-      return {
-        campuses:[],
-      }
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+export default {
+  name: 'BarChart',
+  components: { Bar },
+  props: {
+    chartId: {
+      type: String,
+      default: 'bar-chart'
     },
-    mounted(){
-        axios.post('/get_all_users')
-        .then(res=>{
-         
-          const aa = res.data.status.map(res =>res.campus)
-          localStorage.setItem("campuses",Object.values(aa));
-          console.log(localStorage.getItem("campuses").split(','))
-        })
+    datasetIdKey: {
+      type: String,
+      default: 'label'
     },
-  setup() {
-    const dataValues = ref([ 40, 60, 70, 5,30, 40, 60, 70, 5]);
-    const dataLabels = ref(localStorage.getItem("campuses").split(','));
-    const toggleLegend = ref(true);
-
-    const testData = computed<ChartData<"doughnut">>(() => ({
-      labels: dataLabels.value,
-      datasets: [
-        {
-          data: dataValues.value,
-          backgroundColor: [
-            "#33cc33",
-            "#33cc33",
-            "#33cc33",
-            "#33cc33",
-            "#33cc33",
-          ],
-        },
-      ],
-    }));
-
-    const options = computed<ChartOptions<"doughnut">>(() => ({
-      scales: {
-        myScale: {
-          type: "logarithmic",
-          position: toggleLegend.value ? "left" : "right",
-        },
-      },
-      plugins: {
-        legend: {
-          position: toggleLegend.value ? "top" : "bottom",
-        },
-        title: {
-          display: true,
-          text: "Total Campuses",
-        },
-      },
-    }));
-
-    const { doughnutChartProps, doughnutChartRef } = useDoughnutChart({
-      chartData: testData,
-      options,
-    });
-
-    let index = ref(20);
-
-    function shuffleData() {
-      // dataValues.value = shuffle(dataValues.value);
-      dataValues.value.push(index.value);
-      dataLabels.value.push("Other" + index.value);
-      console.log(dataValues.value);
-      console.log(doughnutChartRef.value.chartInstance);
-      index.value++;
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: '280'
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Object,
+      default: () => {}
     }
-
-    function switchLegend() {
-      toggleLegend.value = !toggleLegend.value;
-    }
-
-    return {
-      shuffleData,
-      switchLegend,
-      testData,
-      options,
-      doughnutChartRef,
-      doughnutChartProps,
-    };
-
   },
-});
+  data() {
+    return {
+      chartData: {
+        labels: [],
+        datasets: [ { 
+        	label: 'Data of Campuses',
+            backgroundColor: 'green',
+            data: [40, 20, 12,40, 20, 12,40, 20, 12] 
+            } ]
+      },
+      chartOptions: {
+        responsive: true
+      }
+    }
+  },
+  mounted(){
+
+  	 axios.post('/get_all_users')
+        .then(res=>{
+          this.chartData.labels = res.data.status.map(res =>res.campus)
+        })
+  }
+}
 </script>
-
-
