@@ -64,8 +64,8 @@ Route::post('/get_all_overall','ResultsController@get_all_overall');
 Route::post('/counting_data','ResultsController@counting_data');
 
 Route::post('/get_schedule','ScheduleController@get_schedule'); // check
-Route::put('/update_schedule','ScheduleController@update_schedule');
-Route::put('/change_sem','ScheduleController@change_sem');
+Route::put('/update_schedule','ScheduleController@update_schedule');// check
+Route::put('/change_sem','ScheduleController@change_sem');// check
 
 Route::post('/user_login','UsersController@user_login');//check
 Route::post('/get_all_users','UsersController@get_all_users'); //check

@@ -24,12 +24,19 @@ import AResults from '../Administrator/Results/_Index.vue'
 import ATable3 from '../Administrator/Results/Table.vue'
 import AQuestionaire from '../Administrator/Questionaire/_Index.vue'
 
+import ATable4 from '../Administrator/Schedule/Calendar.vue'
+import ASchedule from '../Administrator/Schedule/_Index.vue'
+
+
 import Login from '../Auth/Login.vue'
 import Logout from '../Auth/Logout.vue'
 
 
 import Campus from '../Campus/_Index.vue'
 import CDashboard from '../Campus/Dashboard/_Index.vue'
+
+
+
 
 const routes =[
 	{ path:'/',component:Parallax},
@@ -87,6 +94,14 @@ const routes =[
 						{ path:'/administrator/results/:id/view',component:ATable3 }
 				]
 			},
+			{ 
+				path:'/administrator/schedule',component:ASchedule,
+				children:[
+						{ path:'/administrator/schedule',component:ATabs },
+						{ path:'/administrator/schedule/:id',component:ATabs },
+						{ path:'/administrator/schedule/:id/view',component:ATable4 }
+				]
+			},
 			{ path:'/administrator/questionaire',component:AQuestionaire }
 		]
 	},
@@ -107,6 +122,7 @@ const routes =[
           	{path:'/cpsu_campus/faculty/:id',component:ATable2},
           	{path:'/cpsu_campus/faculty/:id/view/loaded',component:Loaded },
           	{path:'/cpsu_campus/results/:id',component:ATable3},
+          	{path:'/cpsu_campus/schedule/:id',component:ATable4},
           	{path:'/cpsu_campus/faculty/campus/view/loading',component:Loading1 }
           ]
 	},
