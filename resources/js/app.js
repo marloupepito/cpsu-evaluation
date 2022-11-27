@@ -18,7 +18,14 @@ import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import 'sweetalert2/dist/sweetalert2.min.css'
  import VueQrcodeReader from "vue3-qrcode-reader";
-//import VueQrcodeReader from "vue-qrcode-reader";
+
+
+const options = {
+  position: "fixed",
+  height: "30px",
+  color: "black",
+};
+
 
 
 const vuetify = createVuetify({
@@ -50,8 +57,7 @@ const router = createRouter({
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({
-});
+const app = createApp({});
 
 app.use(vuetify)
 app.use(VueSweetalert2)
