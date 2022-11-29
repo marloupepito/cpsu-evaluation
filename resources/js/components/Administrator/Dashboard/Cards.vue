@@ -4,7 +4,7 @@
     class="mx-auto p-1 mb-5"
   >
     <template v-slot:title>
-      <v-badge class='p-2' content="54" color="error">
+      <v-badge class='p-2' :content="count" color="error">
         <v-icon>{{icon}}</v-icon>
       </v-badge>
     {{title}}
@@ -42,6 +42,7 @@
           'content',
           'icon',
           'path',
+          'count',
         ],
      created() {
       // props are exposed on `this`

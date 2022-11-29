@@ -160,16 +160,17 @@
     </div>
 </template>
 <script>
-import axios  from 'axios'
 const group = 'top-center';
 const type = 'success';
+
+import axios from 'axios'
 
 export default {
     methods:{
         submitQuestionaire1(e){
             this.loaded1 = true
             e.preventDefault()
-            axios.put('/edit_questionaire1',{
+            axios.post('/edit_questionaire1',{
                 q1:this.q1,
                 q2:this.q2,
                 q3:this.q3,
@@ -194,7 +195,7 @@ export default {
         submitQuestionaire2(e){
              e.preventDefault()
              this.loaded2 = true
-            axios.put('/edit_questionaire2',{
+            axios.post('/edit_questionaire2',{
                 q6:this.q6,
                 q7:this.q7,
                 q8:this.q8,
@@ -219,7 +220,7 @@ export default {
         submitQuestionaire3(e){
              e.preventDefault()
              this.loaded3 = true
-            axios.put('/edit_questionaire3',{
+            axios.post('/edit_questionaire3',{
                 q11:this.q11,
                 q12:this.q12,
                 q13:this.q13,
@@ -244,7 +245,7 @@ export default {
         submitQuestionaire4(e){
              e.preventDefault()
              this.loaded4 = true
-        axios.put('/edit_questionaire4',{
+        axios.post('/edit_questionaire4',{
                 q16:this.q16,
                 q17:this.q17,
                 q18:this.q18,
@@ -296,7 +297,6 @@ export default {
     mounted(){
         axios.post('/get_questionaire')
         .then(res=>{
-            console.log(res.data.status[0])
             this.q1 = res.data.status[0].q1;
             this.q2 = res.data.status[0].q2;
             this.q3 = res.data.status[0].q3;

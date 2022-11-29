@@ -1,4 +1,6 @@
 <template>
+  <div>
+ 
   <Bar
     :chart-options="chartOptions"
     :chart-data="chartData"
@@ -10,6 +12,7 @@
     :width="width"
     :height="height"
   />
+   </div>
 </template>
 
 <script>
@@ -53,13 +56,35 @@ export default {
   },
   data() {
     return {
+      data:[],
+      active:[],
+      notactive:[],
+      faculty:[],
+      student:[],
       chartData: {
         labels: [],
-        datasets: [ { 
-        	label: 'Data of Campuses',
-            backgroundColor: 'green',
-            data: [40, 20, 12,40, 20, 12,40, 20, 12] 
-            } ]
+        datasets: [
+                 { 
+               	label: 'Number of Student',
+                backgroundColor: 'green',
+                data: [] 
+                },
+                { 
+                label: 'Number of Faculty',
+                backgroundColor: 'yellow',
+                data: [] 
+                },
+                { 
+                label: 'Not Active Evaluator',
+                backgroundColor: 'blue',
+                data: [] 
+                },
+                { 
+                label: 'Acive Evaluator',
+                backgroundColor: 'red',
+                data: [] 
+                }
+            ]
       },
       chartOptions: {
         responsive: true
@@ -68,10 +93,29 @@ export default {
   },
   mounted(){
 
-  	 axios.post('/get_all_users')
+      axios.post('/get_all_users2')
         .then(res=>{
           this.chartData.labels = res.data.status.map(res =>res.campus)
+             res.data.status.map(result => 
+               axios.post('/get_every_campuses',{
+                campusid:result.id
+                })
+                .then(resss=>{
+                //  console.log(resss.data.active.map(result=>result.status).length)
+                  
+                    this.active.push(resss.data.active.map(result=>result.status).length)
+                    this.notactive.push(resss.data.notactive.map(result=>result.status).length)
+                      this.student.push(resss.data.student.map(result=>result.status).length)
+                        this.faculty.push(resss.data.faculty.map(result=>result.status).length)
+                  })
+             )
         })
+       this.chartData.datasets[0].data = this.student
+       this.chartData.datasets[1].data = this.faculty
+        this.chartData.datasets[2].data = this.active
+       this.chartData.datasets[3].data = this.notactive
+       
+
   }
 }
 </script>

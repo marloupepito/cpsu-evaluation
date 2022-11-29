@@ -88,15 +88,20 @@ class UsersController extends Controller
         ->join('schedule', 'schedule.campusid', '=', 'users.id')
         ->orderBy('users.id', 'DESC')
         ->get();
+
+
         return response()->json([
-            'status' => $users
+            'status' => $users,
         ]);
+
+
     }
     public function logout(){
       Auth::logout();
     }
      public function get_all_users2(Request $request){
-        $users = DB::table('users')
+
+         $users = DB::table('users')
         ->where('academic_rank', '<>' ,'Main Administrator Campus')
         ->get();
         return response()->json([
