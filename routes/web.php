@@ -62,7 +62,7 @@ Route::post('/get_all_results','ResultsController@get_all_results');
 Route::post('/get_all_results2','ResultsController@get_all_results2'); // check
 Route::post('/goto_overall','ResultsController@goto_overall'); // check
 Route::post('/get_all_overall','ResultsController@get_all_overall');
-Route::post('/counting_data','ResultsController@counting_data');
+Route::post('/counting_data','ResultsController@counting_data');// check
 
 Route::post('/get_schedule','ScheduleController@get_schedule'); // check
 Route::put('/update_schedule','ScheduleController@update_schedule');// check

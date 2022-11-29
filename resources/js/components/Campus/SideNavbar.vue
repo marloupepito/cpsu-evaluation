@@ -55,7 +55,7 @@
       const campus = localStorage.getItem("campus").replace(/ /g,'_');
       this.campus = campus
       const path = window.location.pathname.split('/')[2]
-      this.active = path=== undefined?1:
+      this.active = path=== 'CPSU_Hinoba-an_Campus'?1:
       path==='students'?2:
       path==='faculty'?3:
       path==='results'?4:5
@@ -66,6 +66,7 @@
           { title: 'Results',to:'/cpsu_campus/results/', icon: 'mdi-chart-box-outline', active:4  },
           { title: 'Schedule',to:'/cpsu_campus/schedule/', icon: 'mdi-calendar-outline', active:5  },
         ]
+        console.log(path)
     },
     methods:{
       clickPage(index,path){

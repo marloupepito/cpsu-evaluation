@@ -222,6 +222,8 @@ class ResultsController extends Controller
             'id'=>['required'],
         ]);
         $request->session()->put('evaluateeid', $request->id);
+        $request->session()->put('campus', $request->campus);
+        $request->session()->put('campusid', $request->campusid);
     }
      public function get_all_overall(Request $request){
 
@@ -268,10 +270,15 @@ class ResultsController extends Controller
 
         $notactive = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,null]])
         ->get();
-
         $evaluators = Evaluator::all();
-
          $evaluatee = Faculty::all();
+
+         $a = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Computer Study']])->get();
+         $b = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Business Management']])->get();
+         $c = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Teachers Education']])->get();
+         $d = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Agriculture and Forestry']])->get();
+         $e = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Criminal Justice Education']])->get();
+
 
 
         return response()->json([
@@ -279,8 +286,11 @@ class ResultsController extends Controller
                 'evaluatee' => $evaluatee,
                 'active' => $active,
                 'notactive' => $notactive,
-                // 'caf' => $caf,
-                // 'ccje' => $ccje,
+                'a' => $a,
+                'b' => $b,
+                'c' => $c,
+                'd' => $d,
+                'e' => $e,
             ]);
      }
 }

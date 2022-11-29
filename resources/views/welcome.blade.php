@@ -11,8 +11,7 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
 
-      @vite(['resources/css/app.css', 'resources/js/app.js'])
-           <!--  <script src="{{ asset('js/app.js') }}" defer></script> -->
+            <script src="{{ asset('js/app.js') }}" defer></script>
     <style>
         .v-list-item--active{
             background-color: green !important;
@@ -41,8 +40,8 @@
             }*/
 
             .v-img__img.v-img__img--cover{
-                 filter: blur(8px);
-                  -webkit-filter: blur(8px);
+              /*   filter: blur(8px);
+                  -webkit-filter: blur(8px);*/
                   
                   /* Full height */
                   height: 100%; 
@@ -56,7 +55,7 @@
 
             .bg-text {
               background-color: rgb(0,0,0); /* Fallback color */
-              background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+              background-color: rgba(0,0,0, 0.6); /* Black w/opacity/see-through */
               color: white !important;
               font-weight: bold;
               border: 3px solid #f1f1f1;

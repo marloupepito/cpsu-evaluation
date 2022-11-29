@@ -17,10 +17,7 @@
     <thead>
       <tr>
         <th class="text-left">
-          NAME OF EVALUATEE
-        </th>
-        <th class="text-left">
-          FULLNAME
+          EVALUATEE ID
         </th>
          <th class="text-left">
           COMMITMENT
@@ -37,9 +34,9 @@
          <th class="text-left">
           TOTAL
         </th>
-        <th class="text-left">
+      <!--   <th class="text-left">
           SCHOOL YEAR
-        </th>
+        </th> -->
         <th class="text-left">
           SEMESTER
         </th>
@@ -54,14 +51,13 @@
         :key="item.name"
       >
         <td>{{ item.evaluatee_id }}</td>
-        <td>{{ item.a }}</td>
-        <td>{{ item.b }}</td>
-        <td>{{ item.c }}</td>
-        <td>{{item.d}}</td>
-        <td>{{item.e}}</td>
-        <td>{{item.year}}</td>
+        <td>{{ item.a.length >= 4?item.a.substring(0,4):item.a }}</td>
+        <td>{{ item.b.length >= 4?item.b.substring(0,4):item.b }}</td>
+        <td>{{ item.c.length >= 4?item.c.substring(0,4):item.c}}</td>
+        <td>{{item.d.length >= 4?item.d.substring(0,4):item.d}}</td>
+        <td>{{item.e.length >= 4?item.e.substring(0,4):item.e}}</td>
         <td>{{item.semester}}</td>
-        <td>action</td>
+        <td><v-btn @click="overAll(item.evaluatee_id)" class="text-center" size="small" color="green">Overall Results</v-btn></td>
       </tr>
     </tbody>
   </v-table>
@@ -74,34 +70,42 @@
 export default {
    data() {
         return {
-          rows:[]
+          rows:[],
+          campusid:'',
+          campus:'',
+          campusUsertype:'',
         }
       },
   mounted(){
+    const campusid = window.location.search.substring(1)
+      const campus =window.location.pathname.split('/')[3].replace(/_/g,' ')
+      this.campus =campus
+      this.campusid =campusid
     axios.post('/get_all_results2',{
       status:'all'
     })
     .then(res=>{
       this.rows = res.data.status
+      this.campusUsertype = localStorage.getItem("academic_rank");
     })
   },
   methods:{
     overAll(id){
-      console.log(id)
       axios.post('/goto_overall',{
-        id:id
+        id:id,
+        campusid:this.campusid,
+        campus:this.campus,
         })
       .then(res=>{
-      this.$router.push({path:'/adminstrator/results/overall'})
+    
+            if(this.campusUsertype === 'Main Administrator Campus'){
+              this.$router.push({path:'/administrator/results/'+this.campus.replace(/ /g,'_')+'/view/overall'})
+            }else{
+              this.$router.push({path:'/cpsu_campus/results/'+this.campus.replace(/ /g,'_')+'/view/overall'})
+            }
         })
     },
-    actionFaculty (e){
-      console.log(e)
-      this.$swal({
-      imageUrl: "http://api.qrserver.com/v1/create-qr-code/?data=" + e,
-      imageAlt: 'QR CODE'
-    })
-    }
+   
   },
 }
 
