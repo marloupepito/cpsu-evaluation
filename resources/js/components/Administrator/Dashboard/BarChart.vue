@@ -91,9 +91,9 @@ export default {
       }
     }
   },
-  mounted(){
+  async mounted(){
 
-      axios.post('/get_all_users2')
+    await axios.post('/get_all_users2')
         .then(res=>{
           this.chartData.labels = res.data.status.map(res =>res.campus)
              res.data.status.map(result => 
