@@ -34,11 +34,16 @@ class FacultySubjectLoadingController extends Controller
          $active = Evaluator::where([['status','=','active'],['campusid','=',$request->campusid]])->get();
          $notactive = Evaluator::where([['status','=',null],['campusid','=',$request->campusid]])->get();
          $student = Evaluator::where('campusid','=',$request->campusid)->get();
+
+         $active2 = Faculty::where([['status','=','active'],['campusid','=',$request->campusid]])->get();
+         $notactive2 = Faculty::where([['status','=',null],['campusid','=',$request->campusid]])->get();
          $faculty = Faculty::where('campusid','=',$request->campusid)->get();
 
              return response()->json([
                 'active' => $active,
+                'active2' => $active2,
                 'notactive' => $notactive,
+                'notactive2' => $notactive2,
                 'student' => $student,
                 'faculty' => $faculty,
             ]);

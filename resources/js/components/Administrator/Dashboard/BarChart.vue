@@ -75,12 +75,12 @@ export default {
                 data: [] 
                 },
                 { 
-                label: 'Not Active Evaluator',
+                label: 'Active Evaluator',
                 backgroundColor: 'blue',
                 data: [] 
                 },
                 { 
-                label: 'Acive Evaluator',
+                label: 'Not Active Evaluator',
                 backgroundColor: 'red',
                 data: [] 
                 }
@@ -101,15 +101,14 @@ export default {
                 campusid:result.id
                 })
                 .then(resss=>{
-                //  console.log(resss.data.active.map(result=>result.status).length)
-                  
-                    this.active.push(resss.data.active.map(result=>result.status).length)
-                    this.notactive.push(resss.data.notactive.map(result=>result.status).length)
+                    this.active.push(resss.data.active.map(result=>result.status).length+resss.data.active2.map(result=>result.status).length)
+                    this.notactive.push(resss.data.notactive.map(result=>result.status).length+resss.data.notactive2.map(result=>result.status).length)
                       this.student.push(resss.data.student.map(result=>result.status).length)
                         this.faculty.push(resss.data.faculty.map(result=>result.status).length)
                   })
              )
         })
+
        this.chartData.datasets[0].data = this.student
        this.chartData.datasets[1].data = this.faculty
         this.chartData.datasets[2].data = this.active
