@@ -40,7 +40,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('evaluator', function (Blueprint $table) {
             $table->id();
-            $table->string('id_number')->unique()->nullable();
+            $table->string('id_number')->nullable();
             $table->bigInteger('campusid')->nullable();
             $table->string('campus')->nullable();
             $table->string('name')->nullable();

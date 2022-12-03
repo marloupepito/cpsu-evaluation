@@ -283,7 +283,7 @@ class ResultsController extends Controller
         $evaluators = Evaluator::where([['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['sy','=',$sy]])->get();
          $evaluatee = Faculty::where([['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['sy','=',$sy]])->get();
 
-         $a = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Computer Study']])->get();
+         $a = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Computer Studies']])->get();
          $b = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Business Management']])->get();
          $c = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Teachers Education']])->get();
          $d = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Agriculture and Forestry']])->get();
