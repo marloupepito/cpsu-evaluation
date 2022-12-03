@@ -16,7 +16,14 @@
          <AddFaculty class="mt-3" />
         </div>
     </div>
-   
+   <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+        @input="searching"
+      ></v-text-field>
   <v-table
     fixed-header
     height="74vh"
@@ -53,6 +60,7 @@
       <tr
         v-for="item in rows"
         :key="item.name"
+        id="myUL"
       >
         <td>{{ item.id_number }}</td>
         <td>{{ item.name }}</td>
@@ -87,10 +95,13 @@ import AddFaculty from './AddFaculty.vue'
   export default {
     data () {
       return {
+        search: '',
         rows: [],
+        rows2: [],
         campus:'',
         campusid:'',
         campusUsertype:'',
+        count:0,
       }
     },
    components:{
@@ -100,6 +111,29 @@ import AddFaculty from './AddFaculty.vue'
       this.mount()
     },
     methods:{
+      searching(){
+  
+            const objects =this.rows;
+
+            const mySearch = (arr, text) => {
+              const includesValue = (word, obj) => _.some(obj, (value) => _.includes(value, word));
+              const words = _.words(text); 
+              return arr
+                .filter((obj) => 
+                  words.every((word) => 
+                    includesValue(word, obj)
+                  )
+                );
+            };
+            if(this.count < this.search.length){
+                this.count = this.search.length
+                this.rows = mySearch(objects, this.search)
+              }else{
+               this.count = this.search.length-1;
+               this.rows = this.rows2
+              }
+
+        },
       mount(){
 
       const campusid = window.location.search.substring(1)
@@ -112,6 +146,7 @@ import AddFaculty from './AddFaculty.vue'
           })
           .then(res=>{
             this.rows = res.data.status
+            this.rows2 = res.data.status
             this.campus = campus
             this.campusid = campusid
             this.campusUsertype = localStorage.getItem("academic_rank");

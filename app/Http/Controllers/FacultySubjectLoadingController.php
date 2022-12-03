@@ -10,14 +10,16 @@ use App\Models\User;
 class FacultySubjectLoadingController extends Controller
 {
     public function get_all_admin_dashboard_data(Request $request){
-        $campus = User::where('academic_rank','<>','Main Administrator Campus')->get();
-         $faculty = Faculty::all();
-         $evaluator = Evaluator::all();
-         $active = Evaluator::where('status','=','active')->get();
-         $notactive = Evaluator::where('status','=',null)->get();
 
-         $active2 = Faculty::where('status','=','active')->get();
-         $notactive2 = Faculty::where('status','=',null)->get();
+        $sy = $request->session()->get('school_year');
+        $campus = User::where('academic_rank','<>','Main Administrator Campus')->get();
+         $faculty = Faculty::where('sy','=',$sy)->get();
+         $evaluator = Evaluator::where('sy','=',$sy)->get();
+         $active = Evaluator::where([['sy','=',$sy],['status','=','active']])->get();
+         $notactive = Evaluator::where([['sy','=',$sy],['status','=',null]])->get();
+
+         $active2 = Faculty::where([['sy','=',$sy],['status','=','active']])->get();
+         $notactive2 = Faculty::where([['sy','=',$sy],['status','=',null]])->get();
          return response()->json([
             'campus' => $campus,
             'faculty' => $faculty,
@@ -30,13 +32,14 @@ class FacultySubjectLoadingController extends Controller
     }
 
     public function get_every_campuses(Request $request){
-         $active = Evaluator::where([['status','=','active'],['campusid','=',$request->campusid]])->get();
-         $notactive = Evaluator::where([['status','=',null],['campusid','=',$request->campusid]])->get();
-         $student = Evaluator::where('campusid','=',$request->campusid)->get();
+        $sy = $request->session()->get('school_year');
+         $active = Evaluator::where([['sy','=',$sy],['status','=','active'],['campusid','=',$request->campusid]])->get();
+         $notactive = Evaluator::where([['sy','=',$sy],['status','=',null],['campusid','=',$request->campusid]])->get();
+         $student = Evaluator::where([['sy','=',$sy],['campusid','=',$request->campusid]])->get();
 
-         $active2 = Faculty::where([['status','=','active'],['campusid','=',$request->campusid]])->get();
-         $notactive2 = Faculty::where([['status','=',null],['campusid','=',$request->campusid]])->get();
-         $faculty = Faculty::where('campusid','=',$request->campusid)->get();
+         $active2 = Faculty::where([['sy','=',$sy],['status','=','active'],['campusid','=',$request->campusid]])->get();
+         $notactive2 = Faculty::where([['sy','=',$sy],['status','=',null],['campusid','=',$request->campusid]])->get();
+         $faculty = Faculty::where([['sy','=',$sy],['campusid','=',$request->campusid]])->get();
 
              return response()->json([
                 'active' => $active,
