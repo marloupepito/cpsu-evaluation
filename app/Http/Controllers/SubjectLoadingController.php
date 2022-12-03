@@ -10,14 +10,16 @@ use Illuminate\Support\Facades\DB;
 class SubjectLoadingController extends Controller
 {
      public function get_subject_loading(Request $request){
-        
+        $sy = $request->session()->get('school_year');
+
+
         $users = DB::table('faculty_subject_loading')
         ->join('faculty', 'faculty.id', '=', 'faculty_subject_loading.id')
-        ->where('faculty.id', $request->id)
+        ->where([['faculty.id', $request->id]])
         ->first();
 
-        $loading = SubjectLoading::where('id_number', '=',$request->id)->get();
-        $faculty = Faculty::where('id', '=',$request->id)->first();
+        $loading = SubjectLoading::where([['sy','=',$sy],['id_number', '=',$request->id]])->get();
+        $faculty = Faculty::where([['sy','=',$sy],['id', '=',$request->id]])->first();
         return response()->json([
             'status' => $users,
             'loading' =>$loading,
@@ -26,6 +28,9 @@ class SubjectLoadingController extends Controller
     }
 
     public function add_subject_loaded(Request $request){
+
+        $sy = $request->session()->get('school_year');
+
            $request->validate([
             'id'=>['required'],
             'subject'=>['required'],
@@ -36,7 +41,7 @@ class SubjectLoadingController extends Controller
         ]);
 
 
-        $exist = SubjectLoading::where([['year','=',$request->year],['semester','=',$request->sem],['subject','=',$request->subject],['section','=',$request->section]])->get();
+        $exist = SubjectLoading::where([['sy','=',$sy],['year','=',$request->year],['semester','=',$request->sem],['subject','=',$request->subject],['section','=',$request->section]])->get();
 
         if(count($exist) === 0){
              $loaded = new SubjectLoading;
@@ -48,15 +53,16 @@ class SubjectLoadingController extends Controller
             $loaded->section = $request->section;
             $loaded->year = $request->year;
             $loaded->department = $request->department;
+            $loaded->sy = $request->sy;
             $loaded->save();
 
-             $loading = SubjectLoading::where('id_number', '=',$request->id)->get();
+             $loading = SubjectLoading::where([['sy','=',$sy],['id_number', '=',$request->id]])->get();
             return response()->json([
                 'status' => 'success',
                 'loading' =>$loading
             ]);
         }else{
-             $loading = SubjectLoading::where('id_number', '=',$request->id)->get();
+             $loading = SubjectLoading::where([['sy','=',$sy],['id_number', '=',$request->id]])->get();
             return response()->json([
                 'status' => 'error',
                 'loading' =>$loading

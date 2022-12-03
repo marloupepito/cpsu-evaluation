@@ -22,6 +22,7 @@ class Evaluator extends Model
        'section',
        'status',
        'semester',
-       'year'
+       'year',
+       'sy',
     ];
 }

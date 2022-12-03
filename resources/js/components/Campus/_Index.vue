@@ -1,5 +1,6 @@
 <template>
 	<div>
+	<TopNavbar />
 		    <SideNavbar/>
 		  <v-main>
 		    <v-container fluid>
@@ -15,9 +16,11 @@
 
 <script>
 	import SideNavbar from './SideNavbar.vue'
+	import TopNavbar from './TopNavbar.vue'
 	export default {
 		components:{
 				SideNavbar,
+				TopNavbar
 		},
 		mounted(){
 			

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('department')->nullable();
             $table->string('semester')->nullable();
             $table->string('year')->nullable();
+            $table->string('sy')->nullable();
             $table->timestamps();
         });
 
@@ -32,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->string('academic_rank')->nullable();
             $table->string('year')->nullable();
             $table->string('self')->nullable();
+            $table->string('sy')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -52,6 +54,7 @@ class CreateUsersTable extends Migration
             $table->string('status')->nullable();
             $table->string('year')->nullable();
             $table->string('semester')->nullable();
+            $table->string('sy')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -69,6 +72,7 @@ class CreateUsersTable extends Migration
             $table->string('academic_rank')->nullable();
             $table->string('status')->nullable();
             $table->string('year')->nullable();
+            $table->string('sy')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -85,9 +89,12 @@ class CreateUsersTable extends Migration
             $table->string('section')->nullable();
             $table->string('year')->nullable();
             $table->string('program')->nullable();
+            $table->string('sy')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+
+      
 
         Schema::create('student_subject_loading', function (Blueprint $table) {
             $table->id();
@@ -102,6 +109,7 @@ class CreateUsersTable extends Migration
             $table->string('year')->nullable();
             $table->string('program')->nullable();
             $table->string('program2')->nullable();
+            $table->string('sy')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -140,6 +148,7 @@ class CreateUsersTable extends Migration
             $table->string('end')->nullable();
             $table->string('semester')->nullable();
             $table->string('status')->nullable();
+            $table->string('sy')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -174,6 +183,7 @@ class CreateUsersTable extends Migration
             $table->string('academic_rank')->nullable();
             $table->string('status')->nullable();
             $table->string('year')->nullable();
+            $table->string('sy')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

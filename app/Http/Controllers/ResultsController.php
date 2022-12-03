@@ -12,6 +12,8 @@ use App\Models\StudentSubjectLoading;
 class ResultsController extends Controller
 {
      public function submit_form(Request $request){
+
+
          $request->validate([
             'evaluator'=>['required'],
             'evaluatee'=>['required'],
@@ -34,6 +36,7 @@ class ResultsController extends Controller
             
             Evaluator::where('id', $request->evaluator)
                 ->update(['status' => 'active']);
+                 $aa= Evaluator::where('id', $request->evaluator)->first();
             StudentSubjectLoading::where('id', $request->id)
             ->update(['program' => 'done']);
                 $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
@@ -53,12 +56,13 @@ class ResultsController extends Controller
                 $user->school_year = $aa->school_year;
                 $user->section = $aa->section;
                 $user->semester = $zz->semester;
+                $user->sy = $zz->sy;
                 $user->department = $aa->course;
                 $user->academic_rank = $aa->academic_rank;
                 $user->save();
 
 
-        }if($request->type === 'peer'){
+        }else if($request->type === 'peer'){
             
           Faculty::where('id', $request->evaluator)
                 ->update(['status' => 'active']);
@@ -80,6 +84,7 @@ class ResultsController extends Controller
                 $user->total = $total;
                 $user->comment = $request->comment;
                 $user->semester = $zz->semester;
+                $user->sy = $zz->sy;
                 $user->department = $aa->department;
                 $user->academic_rank = $aa->academic_rank;
                 $user->save();
@@ -110,6 +115,7 @@ class ResultsController extends Controller
                 $user->total = $total;
                 $user->comment = $request->comment;
                 $user->semester = $zz->semester;
+                $user->sy = $zz->sy;
                 $user->department = $aa->department;
                 $user->academic_rank = $aa->academic_rank;
                 $user->save();
@@ -207,11 +213,12 @@ class ResultsController extends Controller
             ]);
     }
        public function get_all_results2(Request $request){
+        $sy = $request->session()->get('school_year');
         $request->validate([
             'status'=>['required'],
         ]);
 
-        $users = Results::select('evaluatee_id','a','b','c','d','e','year','semester')->distinct()->get();
+        $users = Results::where('sy','=',$sy)->select('evaluatee_id','a','b','c','d','e','year','semester')->distinct()->get();
         return response()->json([
                 'status' => $users
             ]);
@@ -227,9 +234,10 @@ class ResultsController extends Controller
     }
      public function get_all_overall(Request $request){
 
-       $users = Results::where('evaluatee_id', '=' ,$request->session()->get('evaluateeid'))
+        $sy = $request->session()->get('school_year');
+       $users = Results::where([['sy','=',$sy],['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
         ->get();
-        $users2 = Results::where([['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
+        $users2 = Results::where([['sy','=',$sy],['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
         ->select('evaluatee_id','a','b','c','d','e','year','semester')->distinct()->first();
 
 
@@ -262,22 +270,24 @@ class ResultsController extends Controller
     }
 
      public function counting_data(Request $request){
-          $schedule = Schedule::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])->first();
+
+        $sy = $request->session()->get('school_year');
+          $schedule = Schedule::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])->first();
 
 
-           $active = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,'active']])
+           $active = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,'active']])
         ->get();
 
-        $notactive = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,null]])
+        $notactive = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,null]])
         ->get();
-        $evaluators = Evaluator::all();
-         $evaluatee = Faculty::all();
+        $evaluators = Evaluator::where([['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['sy','=',$sy]])->get();
+         $evaluatee = Faculty::where([['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['sy','=',$sy]])->get();
 
-         $a = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Computer Study']])->get();
-         $b = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Business Management']])->get();
-         $c = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Teachers Education']])->get();
-         $d = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Agriculture and Forestry']])->get();
-         $e = Evaluator::where([['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Criminal Justice Education']])->get();
+         $a = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Computer Study']])->get();
+         $b = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Business Management']])->get();
+         $c = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Teachers Education']])->get();
+         $d = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Agriculture and Forestry']])->get();
+         $e = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Criminal Justice Education']])->get();
 
 
 

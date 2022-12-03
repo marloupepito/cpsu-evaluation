@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 class EvaluatorController extends Controller
 {
     public function get_evaluators(Request $request){
+
+        $sy = $request->session()->get('school_year');
     	 $request->validate([
             'status'=>['required'],
             'campus'=>['required'],
@@ -18,13 +20,13 @@ class EvaluatorController extends Controller
         ]);
        
         if($request->year === null ||  $request->section === null ||  $request->section === null){
-             $users = Evaluator::where([['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
+             $users = Evaluator::where([['sy', '=' ,$sy],['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
                     ->get();
                     return response()->json([
                         'status' => $users
                     ]);
         }else{
-             $users = Evaluator::where([['course', '=' ,$request->department],['section', '=' ,$request->section],['school_year', '=' ,$request->year],['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
+             $users = Evaluator::where([['sy', '=' ,$sy],['course', '=' ,$request->department],['section', '=' ,$request->section],['school_year', '=' ,$request->year],['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
                     ->get();
                     return response()->json([
                         'status' => $users
@@ -41,7 +43,7 @@ class EvaluatorController extends Controller
         if($type === 'student'){
              $all = StudentSubjectLoading::where([['program','=',null],['subject','<>',null],['evaluator_id','=',$evaluatorid],['campusid','=',$campusid]])->get();
 
-             $name=Faculty::where('id_number','=',$all[0]->id_number)->first();
+             $name=Faculty::where('id','=',$all[0]->id_number)->first();
              return response()->json([
                 'status' => $all[0],
                 'name' => $name
@@ -86,7 +88,7 @@ class EvaluatorController extends Controller
     }
 
     public function add_student(Request $request){
-        
+        $sy = $request->session()->get('school_year');
         $request->validate([
             'campus'=>['required'],
             'campusid'=>['required'],
@@ -97,6 +99,7 @@ class EvaluatorController extends Controller
             'section'=>['required'],
             'sem'=>['required'],
             'status'=>['required'],
+            'sy'=>['required'],
         ]);
 
           $user = new Evaluator;
@@ -110,9 +113,10 @@ class EvaluatorController extends Controller
         $user->section = $request->section;
         $user->class_status = $request->status;
         $user->semester = $request->sem;
+        $user->sy = $request->sy;
         $user->save();
 
-        $users = Evaluator::where([['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
+        $users = Evaluator::where([['sy', '=' ,$request->sy],['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
         ->get();
         return response()->json([
             'status' => $users

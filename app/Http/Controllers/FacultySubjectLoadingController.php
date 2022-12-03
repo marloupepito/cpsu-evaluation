@@ -30,7 +30,6 @@ class FacultySubjectLoadingController extends Controller
     }
 
     public function get_every_campuses(Request $request){
-
          $active = Evaluator::where([['status','=','active'],['campusid','=',$request->campusid]])->get();
          $notactive = Evaluator::where([['status','=',null],['campusid','=',$request->campusid]])->get();
          $student = Evaluator::where('campusid','=',$request->campusid)->get();
@@ -49,4 +48,13 @@ class FacultySubjectLoadingController extends Controller
             ]);
     }
 
+
+    public function get_school_year(Request $request){
+        $request->session()->put('school_year',$request->sy);
+         $aa = $request->session()->get('school_year');
+        $sy = $aa;
+         return response()->json([
+                'status' => $sy,
+            ]);
+    }
 }

@@ -44,6 +44,15 @@
                 ></v-text-field>
               </v-col>
 
+               <v-col cols="12" sm="12">
+                <v-select
+                  :items="syList"
+                  label="Academic Year"
+                  required
+                  v-model="sy"
+                  :rules="courseRules"
+                ></v-select>
+              </v-col>
 
               <v-col cols="12" sm="12">
                 <v-select
@@ -120,12 +129,36 @@ import axios from 'axios'
         ],
         campusid:'',
         campus:'',
-        loadingLocation:''
+        loadingLocation:'',
+        syList:[],
+        sy:''
       }
     },
     mounted(){
         this.loadingLocation = window.location.pathname.split('/')[1]
       this.mount();
+
+        const a =new Date('2020').getFullYear();
+        const b =new Date().getFullYear();
+        const start_date = (b-a)+1;
+        var year = new Date().getFullYear();
+        var lastyear = new Date().getFullYear()+1;
+        var range = [];
+        var lastrange = [];
+        var academicYear=[];
+        lastrange.push(lastyear);
+        range.push(year);
+          for (var i = 1; i < start_date; i++) 
+          {
+            lastrange.push(lastyear - i);    
+            range.push(year - i);
+            academicYear.push('20'+(lastrange[i]).toString().slice(-2)+" - "+lastrange[i-1]);
+            var fullyear = lastrange.concat(range);
+           }
+       this.syList =academicYear;
+       this.sy = academicYear[0]
+
+
       },
     methods:{
       mount(){
@@ -145,6 +178,7 @@ import axios from 'axios'
               name:this.name,
               department:this.department,
               rank:this.rank,
+              sy:this.sy
               })
             .then(res=>{
               this.dialog = false

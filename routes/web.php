@@ -86,3 +86,6 @@ Route::post('/get_all_admin_dashboard_data','FacultySubjectLoadingController@get
 Route::post('/get_every_campuses','FacultySubjectLoadingController@get_every_campuses'); //check
 
 
+Route::post('/get_school_year','FacultySubjectLoadingController@get_school_year');
+
+

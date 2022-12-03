@@ -592,15 +592,17 @@ import axios from 'axios'
 			      this.type = type
 				  	axios.post('/evaluator_session')
 				     .then(result=>{
-					     console.log(result.data.status)
+					     console.log('ddd',result.data.name)
 					     this.evaluator_id = result.data.status.evaluator_id
 					     this.id = result.data.status.id
 			     		 this.evaluateeName = result.data.name.name
 			     		 this.facultyValue = result.data.name.id_number
 				     })
-				     .catch(err=>{
-				   this.$router.push({path:'/'})
+				     .catch(error=>{
+						   this.$router.push({path:'/'})
 				      })
+
+
 				  	}
 
 		  },

@@ -44,7 +44,7 @@ class ScannerController extends Controller
                        foreach ($loading as $load) {
                             StudentSubjectLoading::create([
                                 'evaluator_id' => $users->id,
-                                'id_number' => $users->id_number,
+                                'id_number' => $load->id_number,
                                 'campus' => $users->campus,
                                 'school_year' => $users->school_year,
                                 'campusid' => $users->campusid,

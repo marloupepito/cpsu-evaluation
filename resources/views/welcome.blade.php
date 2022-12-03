@@ -74,6 +74,9 @@
             div.v-card-text{
                  padding-bottom: 0px !important;
             }
+          div.v-input__details.{
+            display: none !important;
+          }
 </style>
     <body>
         <div id="app">

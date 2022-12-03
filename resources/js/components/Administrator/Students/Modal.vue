@@ -15,7 +15,7 @@
       </template>
       <v-card>
         <v-card-title>
-          <span class="text-h5">LOADED SUBJECT</span>
+          <span class="text-h5">ADD STUDENT</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -46,7 +46,17 @@
 
               <v-col cols="12" sm="12">
                 <v-select
-                  :items="['College of Computer Study','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education']"
+                  :items="syList"
+                  label="Academic Year"
+                  required
+                  v-model="sy"
+                  :rules="courseRules"
+                ></v-select>
+              </v-col>
+
+              <v-col cols="12" sm="12">
+                <v-select
+                  :items="['College of Computer Studies','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education']"
                   label="Course"
                   required
                   v-model="course"
@@ -149,7 +159,9 @@ import axios from 'axios'
       ],
       loadingLocation:'',
       campusid:'',
-      campus:''
+      campus:'',
+      sy:'',
+      syList:[]
     }),
     mounted(){
       this.loadingLocation = window.location.pathname.split('/')[1]
@@ -157,6 +169,26 @@ import axios from 'axios'
         const campus =window.location.pathname.split('/')[3].replace(/_/g,' ')
         this.campus =campus
         this.campusid =campusid
+
+       const a =new Date('2020').getFullYear();
+        const b =new Date().getFullYear();
+        const start_date = (b-a)+1;
+        var year = new Date().getFullYear();
+        var lastyear = new Date().getFullYear()+1;
+        var range = [];
+        var lastrange = [];
+        var academicYear=[];
+        lastrange.push(lastyear);
+        range.push(year);
+          for (var i = 1; i < start_date; i++) 
+          {
+            lastrange.push(lastyear - i);    
+            range.push(year - i);
+            academicYear.push('20'+(lastrange[i]).toString().slice(-2)+" - "+lastrange[i-1]);
+            var fullyear = lastrange.concat(range);
+           }
+       this.syList =academicYear;
+       this.sy = academicYear[0]
       },
     methods:{
     //  this.$refs.form.reset()
@@ -174,7 +206,8 @@ import axios from 'axios'
             year:this.year,
             section:this.section,
             sem:this.sem,
-            status:'Regular'
+            status:'Regular',
+            sy:this.sy
             })
           .then(res=>{
             this.dialog = false

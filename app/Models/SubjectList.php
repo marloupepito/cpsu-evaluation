@@ -13,6 +13,7 @@ class SubjectList extends Model
             'subject',
             'department',
             'semester',
-            'year'
+            'year',
+            'sy',
     ];
 }

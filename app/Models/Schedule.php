@@ -16,6 +16,7 @@ class Schedule extends Model
             'end',
             'semester',
             'status',
+            'sy',
 
     ];
 }

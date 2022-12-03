@@ -19,5 +19,6 @@ class SubjectLoading extends Model
             'section',
             'year',
             'program',
+            'sy',
     ];
 }

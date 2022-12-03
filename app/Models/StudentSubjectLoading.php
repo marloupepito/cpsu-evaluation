@@ -20,6 +20,7 @@ class StudentSubjectLoading extends Model
             'year',
             'program',
             'program2',
-            'evaluator_id'
+            'evaluator_id',
+            'sy',
     ];
 }

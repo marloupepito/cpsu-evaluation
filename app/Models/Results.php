@@ -38,5 +38,6 @@ class Results extends Model
         'academic_rank',
         'status',
         'year',
+        'sy',
     ];
 }

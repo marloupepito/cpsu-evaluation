@@ -119,7 +119,7 @@
                   localStorage.setItem("campusid", res.data.status.id);
                  //  window.location ='/adminstrator/dashboard'
                  this.incorrect =''
-                  this.$router.push({path:'/cpsu_campus'})
+                  this.$router.push({path:'/cpsu_campus/'+res.data.status.campus.replace(/ /g,'_')+'?'+res.data.status.id})
                 }else{
                    this.incorrect = res.data.status
                 }

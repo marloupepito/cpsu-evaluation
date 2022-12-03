@@ -20,6 +20,7 @@ class FacultySubjectLoading extends Model
         'year',
         'department',
         'program',
+        'sy',
     ];
 
 }

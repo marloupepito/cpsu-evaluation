@@ -25,6 +25,14 @@
           lazy-validation
         >
             <v-row>
+              <v-col cols="12" sm="12">
+                <v-text-field
+                  label="Subject"
+                  required
+                  :rules="subjectRules"
+                  v-model="subject"
+                ></v-text-field>
+              </v-col>
 
               <v-col cols="12" sm="12">
                 <v-select
@@ -34,6 +42,17 @@
                   v-model="courseyear"
                   :rules="courseyearRules"
                    @update:modelValue="selectCourseYear"
+                ></v-select>
+              </v-col>
+
+
+            <v-col cols="12" sm="12">
+                <v-select
+                  :items="syList"
+                  label="Academic Year"
+                  required
+                  v-model="sy"
+                  :rules="courseRules"
                 ></v-select>
               </v-col>
 
@@ -49,15 +68,6 @@
               </v-col>
 
 
-              <v-col cols="12" sm="12">
-                <v-select
-                  :items="subjectList"
-                  label="Subject"
-                  required
-                  :rules="subjectRules"
-                  v-model="subject"
-                ></v-select>
-              </v-col>
 
               <v-col cols="12" sm="12">
                 <v-select
@@ -128,7 +138,9 @@ import axios from 'axios'
       sectionRules: [
         v => !!v || 'Username is required',
       ],
-      loadingLocation:''
+      loadingLocation:'',
+      sy:'',
+      syList:[]
     }),
     mounted(){
       this.loadingLocation = window.location.pathname.split('/')[1]
@@ -149,6 +161,7 @@ import axios from 'axios'
             subject:this.subject,
             sem:this.sem,
             section:this.section,
+            sy:this.sy
           })
           .then(res=>{
             if(res.data.status === 'success'){
@@ -206,6 +219,27 @@ import axios from 'axios'
                 '4th Year',
                 ]
               })
+
+
+                const a =new Date('2020').getFullYear();
+        const b =new Date().getFullYear();
+        const start_date = (b-a)+1;
+        var year = new Date().getFullYear();
+        var lastyear = new Date().getFullYear()+1;
+        var range = [];
+        var lastrange = [];
+        var academicYear=[];
+        lastrange.push(lastyear);
+        range.push(year);
+          for (var i = 1; i < start_date; i++) 
+          {
+            lastrange.push(lastyear - i);    
+            range.push(year - i);
+            academicYear.push('20'+(lastrange[i]).toString().slice(-2)+" - "+lastrange[i-1]);
+            var fullyear = lastrange.concat(range);
+           }
+       this.syList =academicYear;
+       this.sy = academicYear[0]
       },
     
       selectCourseYear(){

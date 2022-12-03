@@ -49,6 +49,7 @@ import ChartBar from './ChartBar.vue'
 			campusid:campusid
 		})
 		.then(res=>{
+			
 			this.evaluator = res.data.evaluators
 			this.evaluatee = res.data.evaluatee
 			this.active = res.data.active
