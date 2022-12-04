@@ -32,16 +32,16 @@
           path:'/campus/how?'+campus+'#'+id
         },
         { id: 2, 
-          icon: "fas fa-home text-green", 
-          title: "Home",
+          icon: "fas fa-qrcode text-green", 
+          title: "Evaluation",
           path:'/campus/visit?'+campus+'#'+id
           },
-        {
-          id: 3,
-          icon: "fas fa-qrcode text-green",
-          title: "Scan",
-          path:'/campus/scan?'+campus+'#'+id
-        },
+     //   {
+     //     id: 3,
+     //     icon: "fas fa-qrcode text-green",
+     //     title: "Scan",
+     //     path:'/campus/scan?'+campus+'#'+id
+     //   },
       ]
 
     		const path = window.location.pathname.split('/')[2]

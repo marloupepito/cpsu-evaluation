@@ -20,14 +20,14 @@
           >
             CAMPUSES
           </v-btn>
-           <v-btn
+        <!--    <v-btn
             rounded="pill"
             color="green"
             class="mb-3"
             block
           >
             HOW TO EVALUATE
-          </v-btn>
+          </v-btn> -->
       </h4>
     </div>
   </v-parallax>
