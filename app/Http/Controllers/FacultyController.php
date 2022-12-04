@@ -24,6 +24,16 @@ class FacultyController extends Controller
             'status' => $users
         ]);
     }
+
+
+     public function get_every_faculty(Request $request){
+         $sy = $request->session()->get('school_year');
+       
+        $users = Faculty::where([['sy', '=' ,$sy],['id', '=' ,$request->id]])->first();
+        return response()->json([
+            'status' => $users
+        ]);
+    }
    
      public function add_faculty(Request $request){
         $sy = $request->session()->get('school_year');

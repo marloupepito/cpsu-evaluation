@@ -60,4 +60,33 @@ class FacultySubjectLoadingController extends Controller
                 'status' => $sy,
             ]);
     }
+
+    public function option_evaluator(Request $request){
+        if($request->option === 'edit'){
+            if($request->type === 'faculty'){
+                Faculty::where('id', $request->id)
+                  ->update([
+                    'name' => $request->name,
+                    'department' => $request->department,
+                    'academic_rank' => $request->academic_rank,
+                    'id_number' => $request->id_number,
+                  ]);
+            }else{
+                Evaluator::where('id', $request->id)
+                  ->update([
+                    'id_number' => $request->id_number,
+                    'course' => $request->course,
+                    'school_year' => $request->school_year,
+                    'section' => $request->section,
+                    'semester' => $request->semester,
+                  ]);
+            }
+        }else{
+             if($request->type === 'faculty'){
+                Faculty::where('id', $request->id)->delete();
+            }else{
+                Evaluator::where('id', $request->id)->delete();
+            }
+        }
+    }
 }

@@ -43,9 +43,11 @@ Route::post('/logout','UsersController@logout');//check
 Route::post('/get_admin','UsersController@get_admin');
 Route::post('/get_evaluators','EvaluatorController@get_evaluators'); //check
 Route::post('/logout_evaluator','EvaluatorController@logout_evaluator');
+Route::post('/get_every_evaluator','EvaluatorController@get_every_evaluator');
 
 Route::post('/get_faculty','FacultyController@get_faculty');//check
 Route::post('/add_faculty','FacultyController@add_faculty');//check
+Route::post('/get_every_faculty','FacultyController@get_every_faculty');//check
 
 Route::post('/evaluator_session','EvaluatorController@evaluator_session');
 Route::post('/add_student','EvaluatorController@add_student');
@@ -87,5 +89,7 @@ Route::post('/get_every_campuses','FacultySubjectLoadingController@get_every_cam
 
 
 Route::post('/get_school_year','FacultySubjectLoadingController@get_school_year');
+
+Route::post('/option_evaluator','FacultySubjectLoadingController@option_evaluator');
 
 

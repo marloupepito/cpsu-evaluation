@@ -48,6 +48,9 @@
          <th class="text-left">
           QR CODE
         </th>
+         <th class="text-center">
+         OPTION
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -69,6 +72,9 @@
       color="green" @click="getQR([item.id,item.password])">
              <v-icon icon="mdi-qrcode" size="x-large"></v-icon>
       </v-btn></td>
+        <td>
+    <Menu :id="item.id"/>
+        </td>
       </tr>
     </tbody>
   </v-table>
@@ -80,9 +86,11 @@
 <script>
 import axios from 'axios'
 import Modal from './Modal.vue'
+import Menu from './Menu.vue'
   export default {
     components:{
-      Modal
+      Modal,
+      Menu
       },
     data () {
       return {

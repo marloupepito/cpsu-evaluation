@@ -15,7 +15,7 @@
       </template>
       <v-card>
         <v-card-title>
-          <span class="text-h5">LOADED SUBJECT</span>
+          <span class="text-h5">ADD FACULTY</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -56,7 +56,7 @@
 
               <v-col cols="12" sm="12">
                 <v-select
-                  :items="['College of Computer Study','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education']"
+                  :items="['College of Computer Studies','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education']"
                   label="Department"
                   required
                   :rules="departmentRules"

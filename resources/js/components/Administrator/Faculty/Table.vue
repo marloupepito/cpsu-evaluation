@@ -48,11 +48,14 @@
          <th class="text-left">
           STATUS
         </th>
-         <th class="text-left">
+         <th class="text-center">
           SUBJECT LOADING
         </th>
         <th class="text-left">
           QR CODE
+        </th>
+         <th class="text-center">
+         OPTION
         </th>
       </tr>
     </thead>
@@ -66,7 +69,7 @@
         <td>{{ item.name }}</td>
         <td>{{ item.department }}</td>
         <td>{{ item.academic_rank }}</td>
-        <td>
+        <td >
         {{item.campus}}
         </td>
         <td>
@@ -81,6 +84,10 @@
       color="green" block @click="getQR([item.id,item.password])">
              <v-icon icon="mdi-qrcode" size="x-large"></v-icon>
       </v-btn></td>
+
+      <td>
+    <Menu :id="item.id"/>
+        </td>
       </tr>
     </tbody>
   </v-table>
@@ -92,6 +99,7 @@
 <script>
 import axios from 'axios'
 import AddFaculty from './AddFaculty.vue'
+import Menu from './Menu.vue'
   export default {
     data () {
       return {
@@ -105,7 +113,8 @@ import AddFaculty from './AddFaculty.vue'
       }
     },
    components:{
-    AddFaculty
+    AddFaculty,
+    Menu
     },
     mounted(){
       this.mount()

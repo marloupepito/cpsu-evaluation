@@ -35,14 +35,14 @@
                 ></v-text-field>
               </v-col>
 
-              <v-col cols="12" sm="12">
+          <!--     <v-col cols="12" sm="12">
                 <v-text-field
                   label="Fullname"
                   required
                   v-model="name"
                   :rules="nameRules"
                 ></v-text-field>
-              </v-col>
+              </v-col> -->
 
               <v-col cols="12" sm="12">
                 <v-select
@@ -134,9 +134,9 @@ import axios from 'axios'
       dialog: false,
       campusid:'',
       name:'',
-      nameRules: [
-        v => !!v || 'Fullname is required',
-      ],
+    //  nameRules: [
+    //    v => !!v || 'Fullname is required',
+    //  ],
       studentid:'',
       studentidRules: [
         v => !!v || 'Student ID is required',

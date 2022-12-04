@@ -92,7 +92,7 @@ class EvaluatorController extends Controller
         $request->validate([
             'campus'=>['required'],
             'campusid'=>['required'],
-            'name'=>['required'],
+            // 'name'=>['required'],
             'studentid'=>['required'],
             'course'=>['required'],
             'year'=>['required'],
@@ -106,7 +106,7 @@ class EvaluatorController extends Controller
         $user->id_number = $request->studentid;
         $user->campusid = $request->campusid;
         $user->campus = $request->campus;
-        $user->name = $request->name;
+        // $user->name = $request->name;
         $user->password = Hash::make($request->studentid.$request->campusid.$request->campus.$request->name);
         $user->course = $request->course;
         $user->school_year = $request->year;
@@ -124,4 +124,12 @@ class EvaluatorController extends Controller
 
     }
     
+     public function get_every_evaluator(Request $request){
+        $sy = $request->session()->get('school_year');
+       
+        $users = Evaluator::where([['sy', '=' ,$sy],['id', '=' ,$request->id]])->first();
+        return response()->json([
+            'status' => $users
+        ]);
+     }
 }
