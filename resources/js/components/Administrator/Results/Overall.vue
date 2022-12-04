@@ -38,6 +38,7 @@
 
 							<div class="date text-dark mt-3px">August 3,2021</div>
 									<address class="mt-3 mb-5px">
+									<strong class="text-dark">{{evaluateeName}}</strong><br />
 										<strong class="text-dark">{{info1.evaluatee_id}}</strong><br />
 										Faculty<br />
 										Central Philippine State University<br />
@@ -151,6 +152,29 @@
 				<!-- END invoice-price -->
 			</div>
 			<!-- END invoice-content -->
+
+			<v-timeline
+      :reverse="false"
+      dense
+    >
+      <v-timeline-item
+       v-for="(item, n) in comments"
+        :key="n"
+        color="green lighten-1"
+      >
+        <v-card class="elevation-2">
+          <v-card-title class="text-h5">
+           Evaluator Comment
+          </v-card-title>
+          <v-card-text>
+
+          {{item.comment}}
+          </v-card-text>
+        </v-card>
+      </v-timeline-item>
+    </v-timeline>
+
+
 		</div>
 		<!-- END invoice -->
 	</div>
@@ -166,13 +190,14 @@ export default {
 		await axios.post('/get_all_overall')
 		.then(res=>{
 			this.info1 = res.data.status2
+			this.comments =res.data.status
 			this.a = res.data.status2.a.length
 			this.b = res.data.status2.b.length
 			this.c = res.data.status2.c.length
 			this.d = res.data.status2.d.length
 			this.e = res.data.status2.e.length
 			// localStorage.setItem("year",res.data.ccs.map(a=>a.year)); 
-			
+			this.evaluateeName =this.comments[0].name
 			localStorage.setItem("ccs",res.data.ccs.map(a=>a.ccs));
 			localStorage.setItem("cte",res.data.cte.map(a=>a.cte)); 
 			localStorage.setItem("cbm",res.data.cbm.map(a=>a.cbm)); 
@@ -193,6 +218,8 @@ export default {
 		const ccje = localStorage.getItem("ccje");
 	
 		return{
+			evaluateeName:'',
+			comments:[],
 			info1:'',
 			ccs:'',
 			cbm:'',

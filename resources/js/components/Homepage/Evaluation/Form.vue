@@ -570,6 +570,7 @@ import axios from 'axios'
 						  timer: 1500
 						})
 						this.mount()
+						this.comment =''
 		  					 this.disable=false
 		  			})
 		  		.catch(err=>{

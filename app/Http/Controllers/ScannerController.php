@@ -88,6 +88,8 @@ class ScannerController extends Controller
 
              $faculties = Faculty::where([['id','<>',$request->evaluatorid],['campusid','=',$request->campusid],['department','=', $faculty->department]])->get();
 
+             $admin = Faculty::where([['id','<>',$request->evaluatorid],['campusid','=',$request->campusid],['department','=', 'admin']])->first();
+
              if($request->campusid == $faculty->campusid){
                 if(count($subjectLoadingStudent) === 0){
                         
@@ -96,6 +98,8 @@ class ScannerController extends Controller
                             $request->session()->put('evaluatorid', $request->evaluatorid);
                         $request->session()->put('type', $request->type);
                         $request->session()->put('campusid', $request->campusid);
+
+                               
                             foreach ($allfaculties as $load) {
                                 StudentSubjectLoading::create([
                                     'evaluator_id' => $request->evaluatorid,
@@ -124,6 +128,7 @@ class ScannerController extends Controller
                                 $request->session()->put('evaluatorid', $request->evaluatorid);
                         $request->session()->put('type', $request->type);
                         $request->session()->put('campusid', $request->campusid);
+
                                 foreach ($faculties as $load) {
                                     StudentSubjectLoading::create([
                                         'evaluator_id' => $request->evaluatorid,
@@ -138,6 +143,19 @@ class ScannerController extends Controller
                                         'year' => $date,
                                     ]);
                                 }
+
+                                StudentSubjectLoading::create([
+                                    'evaluator_id' => $request->evaluatorid,
+                                    'id_number' => $admin->id_number,
+                                    'campus' => $admin->campus,
+                                    'school_year' => $admin->school_year,
+                                    'campusid' => $admin->campusid,
+                                    'subject' => $admin->subject,
+                                    'semester' => $schedule->semester,
+                                    'department' => $admin->department,
+                                    'section' => $admin->section,
+                                    'year' => $date,
+                                ]);
                                  return response()->json([
                                     'status' =>'success',
                                 ]);

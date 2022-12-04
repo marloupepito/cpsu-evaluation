@@ -29,11 +29,11 @@
 	      src="/images/background.jpeg"
 	    >
 	      <v-avatar
-	        color="grey"
+	        color="white"
 	        size="150"
 	        rounded="0"
 	      >
-	        <v-img cover src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+	        <v-img cover src="/images/user.png"></v-img>
 	      </v-avatar>
 	      <v-list-item
 	        class="text-white"
