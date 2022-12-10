@@ -6,8 +6,6 @@
          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     </head>
 
-
-            <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         .v-list-item--active{
@@ -80,4 +78,6 @@
             <app-component></app-component>
         </div>
     </body>
+    
+            <script src="{{ asset('js/app.js') }}" defer></script>
 </html>

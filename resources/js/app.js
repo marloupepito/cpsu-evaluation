@@ -58,13 +58,14 @@ const router = createRouter({
 
 const app = createApp({});
 
+import ExampleComponent from './components/_Index.vue';
+app.component('app-component', ExampleComponent);
+
 app.use(vuetify)
 app.use(VueSweetalert2)
 app.use(router)
 app.use(bottomNavigationVue);
 app.use(VueQrcodeReader)
-import ExampleComponent from './components/_Index.vue';
-app.component('app-component', ExampleComponent);
 
 
 
