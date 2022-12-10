@@ -19,7 +19,6 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import 'sweetalert2/dist/sweetalert2.min.css'
  import VueQrcodeReader from "vue3-qrcode-reader";
 
-
 const options = {
   position: "fixed",
   height: "30px",
