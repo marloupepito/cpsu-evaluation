@@ -246,27 +246,32 @@ class ScannerController extends Controller
                     return response()->json([
                         'status' =>'success',
                     ]);
-             }else if(count($subjectLoadingStudent) !== 0){
-
-                $checkAvailable = StudentSubjectLoading::where([['program','<>',null],['subject','=',null],['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester],['program','=', null]])->get();
-                     
-                if(count($checkAvailable) === 0){  
-                     return response()->json([
-                        'status' => 'done',
-                    ]);   
-                }else{
-                        $request->session()->put('evaluatorid', $request->evaluatorid);
-                        $request->session()->put('type', $request->type);
-                        $request->session()->put('campusid', $request->campusid);
-                   return response()->json([
-                        'status' => 'success',
-                    ]);
-                }
-
              }else{
-                    return response()->json([
-                        'status' => 'error',
-                    ]);
+
+                 $users = Evaluator::where([['id','=',$request->evaluatorid],['password','=',$request->password]])->get();
+
+                 if(count($users) === 0){
+                      $checkAvailable = StudentSubjectLoading::where([['program','<>',null],['subject','=',null],['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester],['program','=', null]])->get();
+                     
+                        if(count($checkAvailable) === 0){  
+                             return response()->json([
+                                'status' => 'done',
+                            ]);   
+                        }else{
+                                $request->session()->put('evaluatorid', $request->evaluatorid);
+                                $request->session()->put('type', $request->type);
+                                $request->session()->put('campusid', $request->campusid);
+                           return response()->json([
+                                'status' => 'success',
+                            ]);
+                        }
+                 }else{
+                        return response()->json([
+                                'status' => 'error',
+                            ]);
+                 }
+              
+
              }
 
 
