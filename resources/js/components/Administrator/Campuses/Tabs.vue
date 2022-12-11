@@ -50,7 +50,7 @@
                 </v-card-text>
 
 
-
+                
                 <v-card-item :title="i.name" >
                   <template v-slot:subtitle>
                     <v-icon
@@ -63,7 +63,9 @@
                     {{i.academic_rank}}
                   </template>
                 </v-card-item>
-
+                <v-btn color="green" @click="getQR([i.id,i.password])">
+                QRCODE
+                </v-btn>
                 <div class="d-flex py-2 justify-space-between">
                   <v-list-item
                     density="compact"
@@ -130,6 +132,14 @@ import Modal from './Modal.vue'
       this.mount()
     },
     methods:{
+       getQR(e){
+        this.$swal({
+          showConfirmButton: false,
+          showCloseButton: true,
+          imageUrl: "http://api.qrserver.com/v1/create-qr-code/?data=" + e,
+          imageAlt: 'QR CODE'
+          })
+      },
       mount(){
         axios.post('/get_all_users')
         .then(res=>{
