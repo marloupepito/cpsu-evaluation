@@ -7,7 +7,7 @@
     <div class="bg-text ">
       <center>
         <h1 class="text-h5  font-weight-bold text-white">
-         Central Philippine State University
+         Central Philippines State University
         </h1>
       </center>
       <h4 class="subheading m-5">
