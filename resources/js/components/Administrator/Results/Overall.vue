@@ -62,7 +62,7 @@
 						<thead>
 							<tr>
 								<th width="50%"><h5>TOTAL</h5></th>
-								<th class="text-center" width="25%"><h5>MAIN</h5></th>
+								<th class="text-center" width="25%"><h5>MEAN</h5></th>
 								<th class="text-center" width="25%"><h5>INTERPRETATION</h5></th>
 							</tr>
 						</thead>
