@@ -28,7 +28,7 @@ class ScannerController extends Controller
 
              $users = Evaluator::where([['id','=',$request->evaluatorid],['password','=',$request->password]])->first();
 
-             $loading = FacultySubjectLoading::where([['campusid','=',$request->campusid],['department','=',$users->course],['year','=',$users->school_year],['semester','=',$users->semester]])->get();
+             $loading = FacultySubjectLoading::where([['section','=',$users->section],['campusid','=',$request->campusid],['department','=',$users->course],['year','=',$users->school_year],['semester','=',$users->semester]])->get();
 
 
              if(count($subjectLoadingStudent) === 0){

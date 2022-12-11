@@ -7,7 +7,7 @@
       fixed="true"
     >
 
-      <v-toolbar-title>Central Philipine State University</v-toolbar-title>
+      <v-toolbar-title>Central Philippines State University</v-toolbar-title>
 
       <v-spacer></v-spacer>
 

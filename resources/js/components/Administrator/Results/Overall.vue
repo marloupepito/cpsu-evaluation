@@ -41,7 +41,7 @@
 									<strong class="text-dark">{{evaluateeName}}</strong><br />
 										<strong class="text-dark">{{info1.evaluatee_id}}</strong><br />
 										Faculty<br />
-										Central Philippine State University<br />
+										Central Philippines State University<br />
 										DJVV San Carlos Campus<br />
 									</address>
 								</div>
