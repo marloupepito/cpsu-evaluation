@@ -92,7 +92,7 @@ class ScannerController extends Controller
 
              if($request->campusid == $faculty->campusid){
                 if(count($subjectLoadingStudent) === 0){
-                        
+
                         if($faculty->academic_rank === 'admin' && $request->type === 'supervisor'){
                             $allfaculties = Faculty::where([['id','<>',$request->evaluatorid],['campusid','=',$request->campusid]])->get();
                             $request->session()->put('evaluatorid', $request->evaluatorid);
@@ -217,16 +217,16 @@ class ScannerController extends Controller
 
              $subjectLoadingStudent = StudentSubjectLoading::where([['program','<>',null],['subject','=',null],['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid]])->get();
 
-             $faculty = Faculty::where([['id','=',$request->evaluatorid],['password','=',$request->password]])->first();
+             $faculty = Faculty::where([['id','=',$request->evaluatorid],['password','=',$request->password]])->get();
 
-             $faculties = Faculty::where([['id','=',$request->evaluatorid],['campusid','=',$request->campusid],['department','=', $faculty->department]])->get();
+             // $faculties = Faculty::where([['id','=',$request->evaluatorid],['campusid','=',$request->campusid],['department','=', $faculty->department]])->get();
 
 
              if(count($subjectLoadingStudent) === 0){
                        $request->session()->put('evaluatorid', $request->evaluatorid);
                         $request->session()->put('type', $request->type);
                         $request->session()->put('campusid', $request->campusid);
-                     foreach ($faculties as $load) {
+                     foreach ($faculty as $load) {
                         StudentSubjectLoading::create([
                             'evaluator_id' => $request->evaluatorid,
                             'id_number' => $load->id_number,
