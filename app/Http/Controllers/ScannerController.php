@@ -213,11 +213,14 @@ class ScannerController extends Controller
 
         }
        else if($request->type === 'self'){
+
+
              $schedule = Schedule::where('campusid','=',$request->campusid)->first();
 
              $subjectLoadingStudent = StudentSubjectLoading::where([['program','<>',null],['subject','=',null],['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid]])->get();
 
              $faculty = Faculty::where([['id','=',$request->evaluatorid],['password','=',$request->password]])->get();
+
 
              // $faculties = Faculty::where([['id','=',$request->evaluatorid],['campusid','=',$request->campusid],['department','=', $faculty->department]])->get();
 
@@ -240,10 +243,10 @@ class ScannerController extends Controller
                             'year' => $date,
                         ]);
                     }
-                     return response()->json([
+                    return response()->json([
                         'status' =>'success',
                     ]);
-             }else{
+             }else if(count($subjectLoadingStudent) !== 0){
 
                 $checkAvailable = StudentSubjectLoading::where([['program','<>',null],['subject','=',null],['campusid','=',$request->campusid],['evaluator_id','=',$request->evaluatorid],['year','=',$date],['semester','=', $schedule->semester],['program','=', null]])->get();
                      
@@ -260,6 +263,10 @@ class ScannerController extends Controller
                     ]);
                 }
 
+             }else{
+                    return response()->json([
+                        'status' => 'error',
+                    ]);
              }
 
 
