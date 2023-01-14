@@ -83,10 +83,11 @@ class UsersController extends Controller
         
     }
     public function get_all_users(Request $request){
-        $users = DB::table('users')
-        ->where('academic_rank', '<>' ,'Main Administrator Campus')
-        ->join('schedule', 'schedule.campusid', '=', 'users.id')
-        ->orderBy('users.id', 'DESC')
+        $users = DB::table('faculty')
+        ->where('faculty.department', '=' ,'admin')
+        ->join('users', 'users.id', '=', 'faculty.campusid')
+        ->select('users.campus','users.academic_rank','users.name','users.username','faculty.password','faculty.id','faculty.campusid')
+        ->orderBy('faculty.id', 'DESC')
         ->get();
 
 

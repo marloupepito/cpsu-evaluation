@@ -76,25 +76,7 @@
                     <v-list-item-subtitle>{{i.username}}</v-list-item-subtitle>
                 </div>
 
-                <div class="d-flex py-2 justify-space-between">
-                  <v-list-item
-                    density="compact"
-                    prepend-icon="mdi-calendar-outline"
-                  >
-                    <v-list-item-subtitle>Evaluation Start: </v-list-item-subtitle>
-                  </v-list-item>
-                    <v-list-item-subtitle>{{i.start}}</v-list-item-subtitle>
-                </div>
-
-                <div class="d-flex py-2 justify-space-between">
-                  <v-list-item
-                    density="compact"
-                    prepend-icon="mdi-calendar-outline"
-                  >
-                    <v-list-item-subtitle>Evaluation End: </v-list-item-subtitle>
-                  </v-list-item>
-                    <v-list-item-subtitle>{{i.end}}</v-list-item-subtitle>
-                </div>
+            
                 <v-btn
                 v-if="path !== 'campuses'"
                 class="float-right"
@@ -144,6 +126,7 @@ import Modal from './Modal.vue'
         axios.post('/get_all_users')
         .then(res=>{
           this.rows = res.data.status
+          console.log(res.data.status)
           this.tab = 'option-'+window.location.search.substring(3)
              //  this.$swal({
               //    icon: 'success',

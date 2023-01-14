@@ -4,7 +4,7 @@
 			<div class="card-body">
 				<b>Evaluatee: {{evaluateeName}}</b><br />
 				<b>Semester: {{semester}}</b><br />
-				<b>Subject: {{loaded}}</b>
+				<b>Subject: {{loaded==='faculty' || loaded==='supervisor'?'None':loaded}}</b>
 				<table class="table table-bordered">
 					  <thead>
 					    <tr class="table-secondary">

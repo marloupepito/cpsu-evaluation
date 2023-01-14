@@ -40,19 +40,20 @@ class EvaluatorController extends Controller
 
                 
                 $type = $request->session()->get('type');
+                $campusid = $request->session()->get('campusid');
+                $evaluatorid = $request->session()->get('evaluatorid');
+                $semester = $request->session()->get('semester');
+                $sy = $request->session()->get('sy');
+                $course = $request->session()->get('course');
 
         if($type === 'student'){
-            $campusid = $request->session()->get('campusid');
-            $evaluatorid = $request->session()->get('evaluatorid');
-            $semester = $request->session()->get('semester');
-            $sy = $request->session()->get('sy');
-            $course = $request->session()->get('course');
+            
 
              $all = StudentSubjectLoading::where([['campusid','=',$campusid],['evaluator_id','=',$evaluatorid],['semester','=', $semester],
                  ['sy','=', $sy],['program','=',null]])->first();
 
                  if($all){
-                    $loaded=FacultySubjectLoading::where([['section','=',$all->section],['campusid','=',$campusid],['department','=',$course],
+                    $loaded=FacultySubjectLoading::where([['id_number','=',$all->id_number],['section','=',$all->section],['campusid','=',$campusid],['department','=',$course],
                     ['sy','=',$sy],['semester','=',$semester]])->first();
        
                     $name=Faculty::where('id','=',$loaded->id_number)->first();
@@ -69,13 +70,31 @@ class EvaluatorController extends Controller
                  }
               
         }else if($type === 'faculty'){
+            
            
             $all = StudentSubjectLoading::where([['campusid','=',$campusid],['evaluator_id','=',$evaluatorid],['semester','=', $semester],
                  ['sy','=', $sy],['program','=',null]])->first();
 
+                 $name=Faculty::where('id_number','=',$all->id_number)->first();
+
+
                  return response()->json([
                     'status' => $all,
-                    'name' => []
+                    'name' => $name,
+                ]);
+
+        }else if($type === 'supervisor'){
+            
+           
+            $all = StudentSubjectLoading::where([['campusid','=',$campusid],['evaluator_id','=',$evaluatorid],['semester','=', $semester],
+                 ['sy','=', $sy],['program','=',null]])->first();
+
+                 $name=Faculty::where('id_number','=',$all->id_number)->first();
+
+
+                 return response()->json([
+                    'status' => $all,
+                    'name' => $name,
                 ]);
 
         }

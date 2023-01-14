@@ -47,7 +47,7 @@ class ScannerController extends Controller
                     foreach ($loaded as $load) {
                         StudentSubjectLoading::create([
                             'evaluator_id' => $evaluator->id,
-                            'id_number' => $evaluator->id_number,
+                            'id_number' => $load->id_number,
                             'campus' => $evaluator->campus,
                             'school_year' => $evaluator->school_year,
                             'campusid' => $evaluator->campusid,
@@ -101,7 +101,7 @@ class ScannerController extends Controller
                 ]);
           }
            
-        }else{
+        }else if($request->evaluator === 'faculty'){
             $evaluator = Faculty::where([['id','=',$request->evaluatorid],['campusid','=',$request->campusid],['password','=',$request->password]])->first();
             if($evaluator !== null){
                 $coWorker = Faculty::where([['campusid','=',$evaluator->campusid],['department','=',$evaluator->department]])
@@ -123,7 +123,7 @@ class ScannerController extends Controller
                     foreach ($coWorker as $load) {
                         StudentSubjectLoading::create([
                             'evaluator_id' => $evaluator->id,
-                            'id_number' => $evaluator->id_number,
+                            'id_number' => $load->id_number,
                             'campus' => $evaluator->campus,
                             'school_year' => 'faculty',
                             'campusid' => $evaluator->campusid,
@@ -169,6 +169,80 @@ class ScannerController extends Controller
                     'status' => 'Incorrect QR Code!'
                 ]); 
             }
+        }else{
+
+            $evaluator = Faculty::where([['id','=',$request->evaluatorid],['campusid','=',$request->campusid],['password','=',$request->password]])->first();
+            
+            
+            if($evaluator !== null){
+                $faculty = Faculty::where('campusid','=',$evaluator->campusid)->get();
+
+
+               $eForm1=StudentSubjectLoading::where([['campusid','=',$evaluator->campusid],['evaluator_id','=',$evaluator->id],['semester','=', $evaluator->semester],
+                 ['sy','=', $evaluator->sy],['program','=',null]])
+                 ->orWhere([['campusid','=',$evaluator->campusid],['evaluator_id','=',$evaluator->id],['semester','=', $evaluator->semester],
+                 ['sy','=', $evaluator->sy],['program','=','done']])->get(); //check form exist.
+
+               $eForm2=StudentSubjectLoading::where([['campusid','=',$evaluator->campusid],['evaluator_id','=',$evaluator->id],['semester','=', $evaluator->semester],
+                 ['sy','=', $evaluator->sy],['program','=',null]])->get(); //check remaining form
+
+               $eForm3=StudentSubjectLoading::where([['campusid','=',$evaluator->campusid],['evaluator_id','=',$evaluator->id],['semester','=', $evaluator->semester],
+                 ['sy','=', $evaluator->sy],['program','=','done']])->get();
+
+                
+                 if(count($eForm1) === 0){
+                    foreach ($faculty as $load) {
+                        StudentSubjectLoading::create([
+                            'evaluator_id' => $evaluator->id,
+                            'id_number' => $load->id_number,
+                            'campus' => $evaluator->campus,
+                            'school_year' => 'supervisor',
+                            'campusid' => $evaluator->campusid,
+                            'subject' => 'supervisor',
+                            'semester' => $evaluator->semester,
+                            'department' => $evaluator->department,
+                            'section' => 'supervisor',
+                            'sy' => $evaluator->sy,
+                            'year' => $date,
+                        ]);
+                    }
+
+                    $request->session()->put('campusid',$evaluator->campusid);
+                    $request->session()->put('evaluatorid',$evaluator->id);
+                    $request->session()->put('semester',$evaluator->semester);
+                    $request->session()->put('sy',$evaluator->sy);
+                    $request->session()->put('type',$request->evaluator);
+                    $request->session()->put('course',$evaluator->department);
+
+                    return response()->json([
+                        'status' => 'proceed',
+                    ]);
+                 }else{
+                    if(count($eForm2) !== 0){
+                        $request->session()->put('campusid',$evaluator->campusid);
+                        $request->session()->put('evaluatorid',$evaluator->id);
+                        $request->session()->put('semester',$evaluator->semester);
+                        $request->session()->put('sy',$evaluator->sy);
+                        $request->session()->put('type',$request->evaluator);
+                        $request->session()->put('course',$evaluator->course);
+                            return response()->json([
+                                'status' =>'continue'
+                            ]);
+                        }else if(count($eForm1) === count($eForm3)){
+                            return response()->json([
+                                'status' =>'done'
+                            ]);
+                        }
+                 }
+
+
+
+            }else{
+                return response()->json([
+                    'status' => 'Incorrect QR Code!'
+                ]); 
+            }
+           
         }
        
         
