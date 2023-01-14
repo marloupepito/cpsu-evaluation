@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     </head>
-
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         .v-list-item--active{
             background-color: green !important;
@@ -79,5 +80,4 @@
         </div>
     </body>
     
-            <script src="{{ asset('js/app.js') }}" defer></script>
 </html>

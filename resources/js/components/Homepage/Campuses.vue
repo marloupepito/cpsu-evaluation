@@ -25,7 +25,7 @@
              class="m-3 float-right"
                   variant="outlined"
                   color="green"
-                  :to="'/campus/visit?'+i.campus.replace(/ /g, '_')+'#'+i.campusid"
+                  :to="'/campus/'+i.campus.replace(/ /g, '_')+'/'+'scan?'+i.campusid"
                 >
                   Visit Campus
                 </v-btn>

@@ -2,6 +2,9 @@
     <div class="col-xl-6 col-lg-6 offset-md-3" >
 		<div class="card border-0 mb-3 bg-white text-dark">
 			<div class="card-body">
+				<b>Evaluatee: {{evaluateeName}}</b><br />
+				<b>Semester: {{semester}}</b><br />
+				<b>Subject: {{loaded}}</b>
 				<table class="table table-bordered">
 					  <thead>
 					    <tr class="table-secondary">
@@ -40,7 +43,7 @@
 				</table>
 
 <form @submit="submitForm" id='myForm'>
-<b>Evaluatee: {{evaluateeName}}</b>
+
 <!-- <v-select :options="faculty" v-model="facultyValue" required @input="selectEvaluatee"></v-select><br /> -->
 				<table class="table table-bordered">
 					  <thead>
@@ -539,7 +542,9 @@ import axios from 'axios'
 		      id:'',
 		      campus:'',
 		      campusid:'',
-		      type:''
+		      type:'',
+			  loaded:'',
+			  semester:''
 		    }
 		  },
 		  methods:{
@@ -577,30 +582,41 @@ import axios from 'axios'
 		  				 this.disable=false
 		  			})
 		  	},
-		  	mount(){
-		  		const type = window.location.search.substring(1).replace(/_/g,' ').split(',')[0]
-			     const campus = window.location.search.substring(1).replace(/_/g,' ').split(',')[1]
-			      const campusid = window.location.hash.substring(1)
+		   mount(){
+				
 
-			      axios.post('/get_questionaire')
+				 axios.post('/get_questionaire')
 				     .then(res=>{
 				     	this.question = res.data.status[0];
+						 const query = window.location.search.substring(6).split(',')
+							const type = query[0]
+							const campus = query[1]
+							const campusid = query[2]
+							this.campus=campus
+							this.campusid =campusid
+							this.type = type
 				     })
 
-
-			      this.campus=campus
-			      this.campusid =campusid
-			      this.type = type
-				  	axios.post('/evaluator_session')
+			    
+					axios.post('/evaluator_session',{
+						data:this.campus
+					})
 				     .then(result=>{
-					     console.log('ddd',result.data.name)
-					     this.evaluator_id = result.data.status.evaluator_id
-					     this.id = result.data.status.id
-			     		 this.evaluateeName = result.data.name.name
-			     		 this.facultyValue = result.data.name.id_number
+						if(result.data.status !== 'done'){
+							this.evaluator_id = result.data.status.evaluator_id
+							this.id = result.data.status.id
+							this.evaluateeName = result.data.name.name
+							this.facultyValue = result.data.name.id_number
+							this.loaded = result.data.status.subject
+							this.semester =result.data.status.semester
+						}else{
+							this.$router.push({path:'/'})
+						}
+					     
 				     })
 				     .catch(error=>{
-						   this.$router.push({path:'/'})
+						console.log(error)
+						this.$router.push({path:'/'})
 				      })
 
 
@@ -609,6 +625,7 @@ import axios from 'axios'
 		  },
 		mounted(){
 			this.mount()
+			
 		}
 	}
 </script>

@@ -231,6 +231,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '222222';
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -251,6 +252,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
              $user = new Faculty;
+             $user->semester = '1st Semester';
             $user->id_number = '333333';
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -272,6 +274,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
           $user = new Faculty;
+          $user->semester = '1st Semester';
             $user->id_number = '444444';
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -292,6 +295,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
         $user = new Faculty;
+        $user->semester = '1st Semester';
             $user->id_number = '5555555';
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -314,6 +318,7 @@ class DatabaseSeeder extends Seeder
 
 
         $user = new Faculty;
+        $user->semester = '1st Semester';
             $user->id_number = '666666';
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -336,6 +341,7 @@ class DatabaseSeeder extends Seeder
 
 
            $user = new Faculty;
+           $user->semester = '1st Semester';
             $user->id_number = '777777';
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -359,6 +365,7 @@ class DatabaseSeeder extends Seeder
 
 
          $user = new Faculty;
+         $user->semester = '1st Semester';
             $user->id_number = '888888';
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -381,6 +388,7 @@ class DatabaseSeeder extends Seeder
 
 
           $user = new Faculty;
+          $user->semester = '1st Semester';
             $user->id_number = '9999999';
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -403,6 +411,7 @@ class DatabaseSeeder extends Seeder
 
 
          $user = new Faculty;
+         $user->semester = '1st Semester';
             $user->id_number = '10101010';
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -660,6 +669,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -676,6 +686,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -692,6 +703,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -708,6 +720,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -725,6 +738,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -744,6 +758,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -760,6 +775,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -776,6 +792,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -792,6 +809,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -809,6 +827,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -827,6 +846,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -843,6 +863,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -859,6 +880,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -875,6 +897,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -892,6 +915,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -913,6 +937,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -929,6 +954,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -945,6 +971,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -961,6 +988,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -978,6 +1006,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -996,6 +1025,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1012,6 +1042,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1028,6 +1059,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1044,6 +1076,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1061,6 +1094,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1079,6 +1113,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1095,6 +1130,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1111,6 +1147,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1127,6 +1164,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1144,6 +1182,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1163,6 +1202,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1179,6 +1219,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1195,6 +1236,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1211,6 +1253,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1228,6 +1271,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1247,6 +1291,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1263,6 +1308,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1279,6 +1325,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1295,6 +1342,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1312,6 +1360,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1331,6 +1380,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1347,6 +1397,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1363,6 +1414,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1379,6 +1431,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1396,6 +1449,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
+            $user->semester = '1st Semester';
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');

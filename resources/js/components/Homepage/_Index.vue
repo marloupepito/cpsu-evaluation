@@ -1,11 +1,6 @@
 <template>
 	<div>
 		<router-view></router-view>
-		<CurvedBottomNavigation
-		 foreground-color='green'
-		  badge-color='green'
-		  icon-color='dark'
-  		 :options="options" v-model="selected" />
 	</div>
 </template>
 

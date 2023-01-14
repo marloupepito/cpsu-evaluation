@@ -2,10 +2,6 @@ import Parallax from '../Homepage/Parallax.vue'
 import CampusesIndex from '../Homepage/_Index.vue'
 import Campuses from '../Homepage/Campuses.vue'
 import Visit from '../Homepage/Visit.vue'
-import Scan from '../Homepage/Scan.vue'
-import How from '../Homepage/How.vue'
-import Evaluation from '../Homepage/Evaluation/_Index.vue'
-import ECard from '../Homepage/Evaluation/Card.vue'
 import Scanner from '../Homepage/Evaluation/Scanner.vue'
 import EvaluationForm from '../Homepage/Evaluation/Form.vue'
 
@@ -48,10 +44,10 @@ const routes =[
 		children:[
 			{ path:'/campus',component:Campuses },
 			{ path:'/campus/visit',component:Visit },
-			{ path:'/campus/how',component:How },
-			{ path:'/campus/scan',component:Scan }
+			{ path:'/campus/:id/scan',component:Scanner },	
 		]
 	},
+	{ path:'/evaluation/form',component:EvaluationForm },
 	{ path:'/administrator',component:Administrator,
 		beforeEnter: (to, from, next) => {
             axios.get('/authenticated')
@@ -129,13 +125,7 @@ const routes =[
           	{path:'/cpsu_campus/results/:id/view/overall',component:Overall }
           ]
 	},
-	{ path:'/evaluation',component:Evaluation,
-			children:[
-				{ path:'/evaluation/categories',component:ECard },
-				{ path:'/evaluation/scan_qr',component:Scanner },
-				{ path:'/evaluation/form',component:EvaluationForm }
-			]
-	}
+
 ]
 export default routes;
 

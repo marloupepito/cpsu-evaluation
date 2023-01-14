@@ -7,6 +7,7 @@ use App\Models\Evaluator;
 use App\Models\Faculty;
 use App\Models\User;
 use App\Models\StudentSubjectLoading;
+use App\Models\FacultySubjectLoading;
 use Illuminate\Support\Facades\Hash;
 class EvaluatorController extends Controller
 {
@@ -36,32 +37,47 @@ class EvaluatorController extends Controller
   
 
     public function evaluator_session(Request $request){
-        $evaluatorid = $request->session()->get('evaluatorid');
-        $type = $request->session()->get('type');
-        $campusid = $request->session()->get('campusid');
+
+                
+                $type = $request->session()->get('type');
 
         if($type === 'student'){
-             $all = StudentSubjectLoading::where([['program','=',null],['subject','<>',null],['evaluator_id','=',$evaluatorid],['campusid','=',$campusid]])->get();
+            $campusid = $request->session()->get('campusid');
+            $evaluatorid = $request->session()->get('evaluatorid');
+            $semester = $request->session()->get('semester');
+            $sy = $request->session()->get('sy');
+            $course = $request->session()->get('course');
 
-             $name=Faculty::where('id','=',$all[0]->id_number)->first();
-             return response()->json([
-                'status' => $all[0],
-                'name' => $name
-            ]);
-        }else if($type === 'peer'){
-             $all = StudentSubjectLoading::where([['program2','=',null],['subject','=',null],['evaluator_id','=',$evaluatorid],['campusid','=',$campusid]])->get();
-            $name=Faculty::where('id_number','=',$all[0]->id_number)->first();
-             return response()->json([
-                'status' => $all[0],
-                'name' => $name
-            ]);
-        }else{
-            $all = StudentSubjectLoading::where([['program','=',null],['subject','=',null],['evaluator_id','=',$evaluatorid],['campusid','=',$campusid]])->get();
-            $name=Faculty::where('id_number','=',$all[0]->id_number)->first();
-             return response()->json([
-                'status' => $all[0],
-                'name' => $name
-            ]);
+             $all = StudentSubjectLoading::where([['campusid','=',$campusid],['evaluator_id','=',$evaluatorid],['semester','=', $semester],
+                 ['sy','=', $sy],['program','=',null]])->first();
+
+                 if($all){
+                    $loaded=FacultySubjectLoading::where([['section','=',$all->section],['campusid','=',$campusid],['department','=',$course],
+                    ['sy','=',$sy],['semester','=',$semester]])->first();
+       
+                    $name=Faculty::where('id','=',$loaded->id_number)->first();
+                    return response()->json([
+                       'status' => $all,
+                       'name' => $name,
+                   ]);
+                 }else{
+                    $request->session()->forget(['campusid', 'evaluatorid', 'semester', 'sy', 'course']);
+                    return response()->json([
+                        'status' => 'done',
+                        'name' => []
+                    ]);
+                 }
+              
+        }else if($type === 'faculty'){
+           
+            $all = StudentSubjectLoading::where([['campusid','=',$campusid],['evaluator_id','=',$evaluatorid],['semester','=', $semester],
+                 ['sy','=', $sy],['program','=',null]])->first();
+
+                 return response()->json([
+                    'status' => $all,
+                    'name' => []
+                ]);
+
         }
         
        

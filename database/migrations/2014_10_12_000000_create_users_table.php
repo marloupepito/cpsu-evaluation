@@ -72,6 +72,7 @@ class CreateUsersTable extends Migration
             $table->string('academic_rank')->nullable();
             $table->string('status')->nullable();
             $table->string('year')->nullable();
+            $table->string('semester')->nullable();
             $table->string('sy')->nullable();
             $table->rememberToken();
             $table->timestamps();

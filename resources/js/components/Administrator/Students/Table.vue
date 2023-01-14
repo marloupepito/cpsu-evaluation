@@ -69,7 +69,7 @@
         </td>
         <td><v-btn
       variant="outlined"
-      color="green" @click="getQR([item.id,item.password])">
+      color="green" @click="getQR(['student',item.id,item.password])">
              <v-icon icon="mdi-qrcode" size="x-large"></v-icon>
       </v-btn></td>
         <td>

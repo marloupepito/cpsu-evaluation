@@ -63,7 +63,7 @@
                     {{i.academic_rank}}
                   </template>
                 </v-card-item>
-                <v-btn color="green" @click="getQR([i.id,i.password])">
+                <v-btn color="green" @click="getQR(['supervisor',i.id,i.password])">
                 QRCODE
                 </v-btn>
                 <div class="d-flex py-2 justify-space-between">

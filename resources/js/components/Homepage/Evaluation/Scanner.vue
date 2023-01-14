@@ -23,12 +23,9 @@ export default {
     }
   },
   mounted(){
-    const type = window.location.search.substring(1).replace(/_/g,' ').split(',')[0]
-     const campus = window.location.search.substring(1).replace(/_/g,' ').split(',')[1]
-      const campusid = window.location.hash.substring(1)
-      this.campus = campus
-      this.campusid =campusid
-      this.type =type
+     this.campus = window.location.pathname.replace(/_/g,' ').split('/')[2]
+     this.campusid = window.location.search.substring(1)
+
   },
   methods: {
 
@@ -62,71 +59,62 @@ export default {
         this.show = false
         this.pause()
       const a = content.split(",");
+      this.type=a[0];
       const credentials = {
-        evaluatorid:a[0],
-        password:a[1],
+        evaluator:a[0],
+        evaluatorid:a[1],
+        password:a[2],
         campus:this.campus,
         campusid:this.campusid,
-        type:this.type,
       }
      this.verify = false
      axios.post('/qrscanner',credentials)
      .then(res=>{
+      this.show = true
       console.log(res.data.status)
-        if(res.data.status === 'success'){
-              this.show = true
+        if(res.data.status === 'proceed'){
+          this.unpause()
+            this.$swal({
+            icon: 'success',
+            title: 'Success!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.$router.push({path:'/evaluation/form',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
+        }else if(res.data.status === 'continue'){
+          this.unpause()
+            this.$swal({
+            icon: 'success',
+            title: 'Continue!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          
+          this.$router.push({path:'/evaluation/form',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
+        }else if(res.data.status === 'done'){
+          this.unpause()
               this.$swal({
-                icon: 'success',
-                title: 'Success!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              setTimeout(() => {
-             //   this.$router.push({path:'/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid})
-                 window.location='/evaluation/form?'+this.type+','+this.campus.replace(/ /g,'_')+'#'+this.campusid
-                   this.unpause()
-              },1500);
+              icon: 'warning',
+              title: 'Evaluation Done!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+        }else if(res.data.status === 'No Subject Found!'){
+          this.unpause()
+            this.$swal({
+            icon: 'error',
+            title: res.data.status,
+            showConfirmButton: false,
+            timer: 1500
+          })
         }else{
-           // this.verify = true
-
-            this.show = true
-           if(res.data.status === 'done'){
-              this.unpause()
-                this.$swal({
-                icon: 'warning',
-                title: 'Evaluation Done!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-            }else if(res.data.status === 'incomp'){
-              this.unpause()
-                this.$swal({
-                icon: 'error',
-                title: 'Incorrect Campus!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-            }else{
-
-              if(this.type === 'student'){
-                this.$swal({
-                  icon: 'error',
-                  title: 'No subject teacher available!',
-                  showConfirmButton: false,
-                  timer: 1500
-                })
-                }else{
-                   this.$swal({
-                    icon: 'error',
-                    title: 'Incorrect QR',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-                }
-              this.unpause()
-               
-            }
-            
+          this.unpause()
+            this.$swal({
+            icon: 'error',
+            title: res.data.status,
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       })
       .catch(err=>{

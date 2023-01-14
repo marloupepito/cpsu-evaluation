@@ -20,6 +20,7 @@ class Faculty extends Model
 	    'academic_rank',
 	    'status',
 	    'year',
+        'semester',
         'sy',
     ];
 }
