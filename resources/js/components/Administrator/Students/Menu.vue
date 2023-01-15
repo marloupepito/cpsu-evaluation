@@ -124,7 +124,7 @@
           dark
           v-bind="props"
         >
-          Dropdown
+          ACTION
         </v-btn>
       </template>
 

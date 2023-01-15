@@ -153,26 +153,45 @@
 			</div>
 			<!-- END invoice-content -->
 
-			<v-timeline
-      :reverse="false"
-      dense
-    >
-      <v-timeline-item
-       v-for="(item, n) in comments"
-        :key="n"
-        color="green lighten-1"
-      >
-        <v-card class="elevation-2">
-          <v-card-title class="text-h5">
-           Evaluator Comment
-          </v-card-title>
-          <v-card-text>
 
-          {{item.comment}}
-          </v-card-text>
-        </v-card>
-      </v-timeline-item>
-    </v-timeline>
+			<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Student ID</th>
+      <th scope="col">Subject</th>
+	  <th scope="col">Semester</th>
+	  <th scope="col">School Year</th>
+	  <th scope="col">Section</th>
+	  <th scope="col">Print</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  v-for="(i, n) in pdf"
+        :key="n">
+      <th>{{ i.id_number }}</th>
+      <td>{{ i.subject }}</td>
+      <td>{{ i.semester }}</td>
+      <td>{{ i.sy }}</td>
+	  <td>{{ i.section }}</td>
+      <td>
+		<v-btn
+			fab
+			dark
+			size="small"
+			block
+			color="green"
+			:href="'/administrator/results/'+campus.replace(/ /g,'_')+'/view/print?'+i.id"
+			 target="_blank"
+			>
+			<v-icon dark>
+				mdi-printer
+			</v-icon>
+			</v-btn>
+	  </td>
+    </tr>
+  </tbody>
+</table>
+
 
 
 		</div>
@@ -190,13 +209,17 @@ export default {
 		await axios.post('/get_all_overall')
 		.then(res=>{
 			this.info1 = res.data.status2
-			this.comments =res.data.status
+			this.pdf =res.data.pdf
+			console.log(res.data.pdf)
 			this.a = res.data.status2.a.length
 			this.b = res.data.status2.b.length
 			this.c = res.data.status2.c.length
 			this.d = res.data.status2.d.length
 			this.e = res.data.status2.e.length
 			// localStorage.setItem("year",res.data.ccs.map(a=>a.year)); 
+			const campus =window.location.pathname.split('/')[3].replace(/_/g,' ')
+			this.campus =campus
+			this.campusid =campusid
 			this.evaluateeName =this.comments[0].name
 			localStorage.setItem("ccs",res.data.ccs.map(a=>a.ccs));
 			localStorage.setItem("cte",res.data.cte.map(a=>a.cte)); 
@@ -218,8 +241,10 @@ export default {
 		const ccje = localStorage.getItem("ccje");
 	
 		return{
+			campus:'',
+			campusid:'',
 			evaluateeName:'',
-			comments:[],
+			pdf:[],
 			info1:'',
 			ccs:'',
 			cbm:'',

@@ -75,7 +75,7 @@ class EvaluatorController extends Controller
             $all = StudentSubjectLoading::where([['campusid','=',$campusid],['evaluator_id','=',$evaluatorid],['semester','=', $semester],
                  ['sy','=', $sy],['program','=',null]])->first();
 
-                 $name=Faculty::where('id_number','=',$all->id_number)->first();
+                 $name=Faculty::where('id','=',$all->id_number)->first();
 
 
                  return response()->json([
@@ -89,7 +89,7 @@ class EvaluatorController extends Controller
             $all = StudentSubjectLoading::where([['campusid','=',$campusid],['evaluator_id','=',$evaluatorid],['semester','=', $semester],
                  ['sy','=', $sy],['program','=',null]])->first();
 
-                 $name=Faculty::where('id_number','=',$all->id_number)->first();
+                 $name=Faculty::where('id','=',$all->id_number)->first();
 
 
                  return response()->json([

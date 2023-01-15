@@ -9,6 +9,7 @@ use App\Models\Schedule;
 use App\Models\User;
 use App\Models\Faculty;
 use App\Models\StudentSubjectLoading;
+use Illuminate\Support\Facades\DB;
 class ResultsController extends Controller
 {
      public function submit_form(Request $request){
@@ -38,8 +39,9 @@ class ResultsController extends Controller
                 ->update(['status' => 'active']);
                  $aa= Evaluator::where('id', $request->evaluator)->first();
             StudentSubjectLoading::where('id', $request->id)
-            ->update(['program' => 'done']);
-                $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
+            ->update(['program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
+            
+            
                 $user = new Results;
                 $user->evaluatee_id = $request->evaluatee;
                 $user->evaluator_id = $request->evaluator;
@@ -47,48 +49,18 @@ class ResultsController extends Controller
                 $user->kos = $request->kos;
                 $user->name = $request->name;
                 $user->campus = $request->campus;
-                $user->school_year = substr($zz->start,0,4);
-                $user->campusid = $zz->campusid;
+                $user->campusid = $aa->campusid;
                 $user->til = $request->til;
                 $user->mol = $request->mol;
                 $user->total = $total;
                 $user->comment = $request->comment;
-                $user->school_year = $aa->school_year;
+                $user->school_year = date('Y');
                 $user->section = $aa->section;
-                $user->semester = $zz->semester;
-                $user->sy = $zz->sy;
+                $user->semester = $aa->semester;
+                $user->sy = $aa->sy;
                 $user->department = $aa->course;
                 $user->academic_rank = $aa->academic_rank;
                 $user->save();
-
-
-        }else if($request->type === 'peer'){
-            
-          Faculty::where('id', $request->evaluator)
-                ->update(['status' => 'active']);
-                $aa= Faculty::where('id', $request->evaluator)->first();
-            StudentSubjectLoading::where('id', $request->id)
-            ->update(['program2' => 'done']);
-               $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
-                $user = new Results;
-                $user->evaluatee_id = $request->evaluatee;
-                $user->evaluator_id = $request->evaluator;
-                $user->commitment = $request->commitment;
-                $user->kos = $request->kos;
-                $user->name = $request->name;
-                $user->campus = $request->campus;
-                $user->school_year = substr($zz->start,0,4);
-                $user->campusid = $zz->campusid;
-                $user->til = $request->til;
-                $user->mol = $request->mol;
-                $user->total = $total;
-                $user->comment = $request->comment;
-                $user->semester = $zz->semester;
-                $user->sy = $zz->sy;
-                $user->department = $aa->department;
-                $user->academic_rank = $aa->academic_rank;
-                $user->save();
-
 
 
         }else{
@@ -97,10 +69,9 @@ class ResultsController extends Controller
                 ->update(['status' => 'active']);
                $aa= Faculty::where('id', $request->evaluator)->first();
                 StudentSubjectLoading::where('id', $request->id)
-                ->update(['program' => 'done']);
+                ->update(['program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
 
 
-                $zz = Schedule::where('campusid', '=' ,$request->campusid)->first();
                 $user = new Results;
                 $user->evaluatee_id = $request->evaluatee;
                 $user->evaluator_id = $request->evaluator;
@@ -108,14 +79,14 @@ class ResultsController extends Controller
                 $user->kos = $request->kos;
                 $user->name = $request->name;
                 $user->campus = $request->campus;
-                $user->school_year = substr($zz->start,0,4);
-                $user->campusid = $zz->campusid;
+                $user->school_year = date('Y');
+                $user->campusid = $aa->campusid;
                 $user->til = $request->til;
                 $user->mol = $request->mol;
                 $user->total = $total;
                 $user->comment = $request->comment;
-                $user->semester = $zz->semester;
-                $user->sy = $zz->sy;
+                $user->semester = $aa->semester;
+                $user->sy = $aa->sy;
                 $user->department = $aa->department;
                 $user->academic_rank = $aa->academic_rank;
                 $user->save();
@@ -123,7 +94,7 @@ class ResultsController extends Controller
         } 
 
 
-       
+        $zz= Faculty::where('id', $request->evaluator)->first();
 
         if($user){
         $ccs = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Computer Study']])->get()->sum('total');
@@ -218,7 +189,7 @@ class ResultsController extends Controller
             'status'=>['required'],
         ]);
 
-        $users = Results::where('sy','=',$sy)->select('evaluatee_id','a','b','c','d','e','year','semester')->distinct()->get();
+        $users = Results::where('sy','=',$sy)->get()->unique('evaluatee_id');
         return response()->json([
                 'status' => $users
             ]);
@@ -237,10 +208,21 @@ class ResultsController extends Controller
         $sy = $request->session()->get('school_year');
        $users = Results::where([['sy','=',$sy],['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
         ->get();
+
+        
         $users2 = Results::where([['sy','=',$sy],['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
         ->select('evaluatee_id','a','b','c','d','e','year','semester')->distinct()->first();
 
 
+        $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
+        
+
+        // $pdf =  StudentSubjectLoading::where([['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
+        // ->get();
+
+        $pdf =  StudentSubjectLoading::where([['program','=','done'],['sy','=',$sy],['evaluator_id', '=' ,$faculty->id]])
+            ->get();
+            
 
         $ccs = Results::where([['evaluatee_id', '=' ,$request->session()->get('evaluateeid')],['department', '=' ,'College of Computer Study'],['semester','=',$users2->semester]])
         ->select('ccs')->distinct()->get();
@@ -261,14 +243,25 @@ class ResultsController extends Controller
          return response()->json([
                 'status' => $users,
                 'status2' => $users2,
+                'pdf' => $pdf,
                 'ccs' => $ccs,
                 'cte' => $cte,
                 'cbm' => $cbm,
                 'caf' => $caf,
                 'ccje' => $ccje,
+                'console' => $pdf 
             ]);
     }
 
+    public function get_every_result(Request $request){
+
+         $result =  StudentSubjectLoading::where('id','=',$request->id)
+            ->first();
+
+        return response()->json([
+            'status' =>$result,
+        ]);
+    }
      public function counting_data(Request $request){
 
         $sy = $request->session()->get('school_year');

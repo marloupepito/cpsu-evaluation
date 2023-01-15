@@ -17,6 +17,9 @@
     <thead>
       <tr>
         <th class="text-left">
+          NAME
+        </th>
+        <th class="text-left">
           EVALUATEE ID
         </th>
          <th class="text-left">
@@ -41,7 +44,7 @@
           SEMESTER
         </th>
         <th class="text-left">
-         ACTION
+         OPTION
         </th>
       </tr>
     </thead>
@@ -50,6 +53,7 @@
         v-for="item in rows"
         :key="item.name"
       >
+      <td>{{ item.name }}</td>
         <td>{{ item.evaluatee_id }}</td>
         <td>{{ item.a.length >= 4?item.a.substring(0,4):item.a }}</td>
         <td>{{ item.b.length >= 4?item.b.substring(0,4):item.b }}</td>
@@ -85,7 +89,7 @@ export default {
       status:'all'
     })
     .then(res=>{
-      this.rows = res.data.status
+      this.rows = Object.values(res.data.status)
       this.campusUsertype = localStorage.getItem("academic_rank");
     })
   },

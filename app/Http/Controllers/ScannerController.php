@@ -45,6 +45,7 @@ class ScannerController extends Controller
 
                 if(count($eForm1) === 0){
                     foreach ($loaded as $load) {
+                        $aa = Faculty::where('id',$load->id_number)->first();
                         StudentSubjectLoading::create([
                             'evaluator_id' => $evaluator->id,
                             'id_number' => $load->id_number,
@@ -53,9 +54,12 @@ class ScannerController extends Controller
                             'campusid' => $evaluator->campusid,
                             'subject' => $load->subject,
                             'semester' => $evaluator->semester,
+                            'faculty_name' => $aa->name,
+                            'academic_rank' => $aa->academic_rank,
                             'department' => $evaluator->department,
                             'section' => $evaluator->section,
                             'sy' => $evaluator->sy,
+                            'type' => 'Student',
                             'year' => $date,
                         ]);
                     }
@@ -123,16 +127,19 @@ class ScannerController extends Controller
                     foreach ($coWorker as $load) {
                         StudentSubjectLoading::create([
                             'evaluator_id' => $evaluator->id,
-                            'id_number' => $load->id_number,
+                            'id_number' => $load->id,
                             'campus' => $evaluator->campus,
                             'school_year' => 'faculty',
                             'campusid' => $evaluator->campusid,
                             'subject' => 'faculty',
                             'semester' => $evaluator->semester,
+                            'faculty_name' => $load->name,
+                            'academic_rank' => $load->academic_rank,
                             'department' => $evaluator->department,
                             'section' => 'faculty',
                             'sy' => $evaluator->sy,
                             'year' => $date,
+                            'type' => $request->evaluatorid == $load->id?'Self':'Peer',
                         ]);
                     }
 
@@ -194,16 +201,19 @@ class ScannerController extends Controller
                     foreach ($faculty as $load) {
                         StudentSubjectLoading::create([
                             'evaluator_id' => $evaluator->id,
-                            'id_number' => $load->id_number,
+                            'id_number' => $load->id,
                             'campus' => $evaluator->campus,
                             'school_year' => 'supervisor',
                             'campusid' => $evaluator->campusid,
                             'subject' => 'supervisor',
                             'semester' => $evaluator->semester,
+                            'faculty_name' => $load->name,
+                            'academic_rank' => $load->academic_rank,
                             'department' => $evaluator->department,
                             'section' => 'supervisor',
                             'sy' => $evaluator->sy,
                             'year' => $date,
+                            'type' => 'Supervisor',
                         ]);
                     }
 

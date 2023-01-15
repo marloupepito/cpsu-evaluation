@@ -19,6 +19,7 @@ import Loading1 from '../Administrator/Faculty/Loading.vue'
 import AResults from '../Administrator/Results/_Index.vue'
 import ATable3 from '../Administrator/Results/Table.vue'
 import Overall from '../Administrator/Results/Overall.vue'
+import Print from '../Administrator/Results/Print.vue'
 import AQuestionaire from '../Administrator/Questionaire/_Index.vue'
 
 import ATable4 from '../Administrator/Schedule/Calendar.vue'
@@ -89,7 +90,7 @@ const routes =[
 						{ path:'/administrator/results',component:ATabs },
 						{ path:'/administrator/results/:id',component:ATabs },
 						{ path:'/administrator/results/:id/view',component:ATable3 },
-						{ path:'/administrator/results/:id/view/overall',component:Overall }
+						{ path:'/administrator/results/:id/view/overall',component:Overall },
 				]
 			},
 			{ 
@@ -122,9 +123,12 @@ const routes =[
           	{path:'/cpsu_campus/results/:id',component:ATable3},
           	{path:'/cpsu_campus/schedule/:id',component:ATable4},
           	{path:'/cpsu_campus/faculty/campus/view/loading',component:Loading1 },
-          	{path:'/cpsu_campus/results/:id/view/overall',component:Overall }
+          	{path:'/cpsu_campus/results/:id/view/overall',component:Overall },
+			  {path:'/cpsu_campus/results/:id/view/print',component:Print }
           ]
 	},
+	
+	{ path:'/administrator/results/:id/view/print',component:Print }
 
 ]
 export default routes;

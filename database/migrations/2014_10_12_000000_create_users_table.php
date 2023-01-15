@@ -106,6 +106,10 @@ class CreateUsersTable extends Migration
             $table->string('campus')->nullable();
             $table->string('semester')->nullable();
             $table->string('school_year')->nullable();
+            $table->string('comment')->nullable();
+            $table->string('type')->nullable();
+            $table->string('faculty_name')->nullable();
+            $table->string('academic_rank')->nullable();
             $table->string('section')->nullable();
             $table->string('year')->nullable();
             $table->string('program')->nullable();

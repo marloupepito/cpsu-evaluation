@@ -41,7 +41,6 @@
                   required
                   v-model="courseyear"
                   :rules="courseyearRules"
-                   @update:modelValue="selectCourseYear"
                 ></v-select>
               </v-col>
 
@@ -63,7 +62,6 @@
                   required
                   v-model="sem"
                   :rules="semRules"
-                   @update:modelValue="selectCourseYear"
                 ></v-select>
               </v-col>
 
@@ -242,18 +240,18 @@ import axios from 'axios'
        this.sy = academicYear[0]
       },
     
-      selectCourseYear(){
-        this.subject = null
-         axios.post('/select_course_year',{
-          department:this.department ,
-          year:this.courseyear,
-          semester:this.sem
-        })
-        .then(res=>{
-          this.subjectList =res.data.status.map(res=>res.subject)
-        })
+      // selectCourseYear(){
+      //   this.subject = null
+      //    axios.post('/select_course_year',{
+      //     department:this.department ,
+      //     year:this.courseyear,
+      //     semester:this.sem
+      //   })
+      //   .then(res=>{
+      //     this.subjectList =res.data.status.map(res=>res.subject)
+      //   })
        
-      },
+      // },
 
 
     }
