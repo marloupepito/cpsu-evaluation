@@ -11,6 +11,7 @@ class StudentSubjectLoading extends Model
     protected $table = 'student_subject_loading';
      protected $fillable = [
             'id_number',
+            'unique_id',
             'campusid',
             'subject',
             'campus',

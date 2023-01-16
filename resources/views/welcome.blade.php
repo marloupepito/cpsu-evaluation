@@ -6,8 +6,11 @@
          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     </head>
 
+  
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <style>
+      
         .v-list-item--active{
             background-color: green !important;
             color: white !important;
@@ -79,5 +82,5 @@
         </div>
     </body>
     
-            <script src="{{ asset('js/app.js') }}" defer></script>
+       
 </html>

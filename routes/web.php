@@ -63,7 +63,11 @@ Route::post('/verify_evaluate','ResultsController@verify_evaluate');
 Route::post('/get_all_results','ResultsController@get_all_results');
 Route::post('/get_all_results2','ResultsController@get_all_results2'); // check
 Route::post('/goto_overall','ResultsController@goto_overall'); // check
-Route::post('/get_all_overall','ResultsController@get_all_overall');
+Route::post('/get_all_overall','ResultsController@get_all_overall'); // check
+Route::post('/get_all_overall1','ResultsController@get_all_overall1'); // check
+Route::post('/get_all_overall2','ResultsController@get_all_overall2'); // check
+Route::post('/get_all_overall3','ResultsController@get_all_overall3'); // check
+Route::post('/get_all_overall4','ResultsController@get_all_overall4'); // check
 Route::post('/counting_data','ResultsController@counting_data');// check
 Route::post('/get_every_result','ResultsController@get_every_result');// check
 

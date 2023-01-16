@@ -11,34 +11,34 @@
 					    <tr class="table-secondary">
 					      <th width="5%">Scale</th>
 					      <th width="30%">Descriptive Rating</th>
-					      <th width="65%">Qualitative Discription</th>
+					      <th width="65%">Qualitative Description</th>
 					    </tr>
 					  </thead>
 					  <tbody>
 					    <tr>
 					      <td class="align-middle text-center">5</td>
 					      <td class="align-middle">Outstanding</td>
-					      <td>The performance must be exceeds the job requirments. The faculty is exceptional role model.</td>
+					      <td>The performance must be exceeds the job requirements. The faculty is exceptional role model.</td>
 					    </tr>
 					    <tr>
 					      <td class="align-middle text-center">4</td>
 					      <td class="align-middle">Very Satisfactory</td>
-					      <td>The performance meets and often exceeds tde job requirments.</td>
+					      <td>The performance meets and often exceeds tde job requirements.</td>
 					    </tr>
 					    <tr>
 					      <td class="align-middle text-center">3</td>
 					      <td class="align-middle">Satisfactory</td>
-					      <td>The performance meets tde job requirments</td>
+					      <td>The performance meets tde job requirements</td>
 					    </tr>
 					    <tr>
 					      <td class="align-middle text-center">2</td>
 					      <td class="align-middle">Fair</td>
-					      <td>The performance need some developement to meet job requirments</td>
+					      <td>The performance need some developement to meet job requirements</td>
 					    </tr>
 					    <tr>
 					      <td class="align-middle text-center">1</td>
 					      <td class="align-middle">Poor</td>
-					      <td>The faculty fails the jobs requirments.</td>
+					      <td>The faculty fails the jobs requirements.</td>
 					    </tr>
 					  </tbody>
 				</table>

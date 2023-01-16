@@ -100,6 +100,7 @@ class CreateUsersTable extends Migration
         Schema::create('student_subject_loading', function (Blueprint $table) {
             $table->id();
             $table->string('id_number')->nullable();
+            $table->string('unique_id')->nullable();
             $table->string('evaluator_id')->nullable();
             $table->bigInteger('campusid')->nullable();
             $table->string('subject')->nullable();

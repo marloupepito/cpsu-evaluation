@@ -64,7 +64,7 @@
           { title: 'Student',to:'/cpsu_campus/students/', icon: 'mdi-account-school-outline', active:2 },
           { title: 'Faculty',to:'/cpsu_campus/faculty/', icon: 'mdi-card-account-details-outline', active:3 },
           { title: 'Results',to:'/cpsu_campus/results/', icon: 'mdi-chart-box-outline', active:4  },
-          { title: 'Schedule',to:'/cpsu_campus/schedule/', icon: 'mdi-calendar-outline', active:5  },
+       //   { title: 'Schedule',to:'/cpsu_campus/schedule/', icon: 'mdi-calendar-outline', active:5  },
         ]
         console.log(path)
     },

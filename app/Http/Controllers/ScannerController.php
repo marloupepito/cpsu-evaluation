@@ -48,6 +48,7 @@ class ScannerController extends Controller
                         $aa = Faculty::where('id',$load->id_number)->first();
                         StudentSubjectLoading::create([
                             'evaluator_id' => $evaluator->id,
+                            'unique_id' =>$evaluator->id_number,
                             'id_number' => $load->id_number,
                             'campus' => $evaluator->campus,
                             'school_year' => $evaluator->school_year,
@@ -127,6 +128,7 @@ class ScannerController extends Controller
                     foreach ($coWorker as $load) {
                         StudentSubjectLoading::create([
                             'evaluator_id' => $evaluator->id,
+                            'unique_id' =>$evaluator->id_number,
                             'id_number' => $load->id,
                             'campus' => $evaluator->campus,
                             'school_year' => 'faculty',
@@ -201,6 +203,7 @@ class ScannerController extends Controller
                     foreach ($faculty as $load) {
                         StudentSubjectLoading::create([
                             'evaluator_id' => $evaluator->id,
+                            'unique_id' =>$evaluator->id_number,
                             'id_number' => $load->id,
                             'campus' => $evaluator->campus,
                             'school_year' => 'supervisor',

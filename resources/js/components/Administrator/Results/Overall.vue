@@ -153,44 +153,8 @@
 			</div>
 			<!-- END invoice-content -->
 
+<Tabs />
 
-			<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Student ID</th>
-      <th scope="col">Subject</th>
-	  <th scope="col">Semester</th>
-	  <th scope="col">School Year</th>
-	  <th scope="col">Section</th>
-	  <th scope="col">Print</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr  v-for="(i, n) in pdf"
-        :key="n">
-      <th>{{ i.id_number }}</th>
-      <td>{{ i.subject }}</td>
-      <td>{{ i.semester }}</td>
-      <td>{{ i.sy }}</td>
-	  <td>{{ i.section }}</td>
-      <td>
-		<v-btn
-			fab
-			dark
-			size="small"
-			block
-			color="green"
-			:href="'/administrator/results/'+campus.replace(/ /g,'_')+'/view/print?'+i.id"
-			 target="_blank"
-			>
-			<v-icon dark>
-				mdi-printer
-			</v-icon>
-			</v-btn>
-	  </td>
-    </tr>
-  </tbody>
-</table>
 
 
 
@@ -202,15 +166,16 @@
 
 <script>
 import axios from 'axios'
-
+import Tabs from './Tabs.vue'
 export default {
-
+	components:{
+		Tabs
+	},
   async mounted(){
 		await axios.post('/get_all_overall')
 		.then(res=>{
 			this.info1 = res.data.status2
 			this.pdf =res.data.pdf
-			console.log(res.data.pdf)
 			this.a = res.data.status2.a.length
 			this.b = res.data.status2.b.length
 			this.c = res.data.status2.c.length
