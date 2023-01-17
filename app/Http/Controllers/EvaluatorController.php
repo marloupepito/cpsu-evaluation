@@ -14,6 +14,8 @@ class EvaluatorController extends Controller
     public function get_evaluators(Request $request){
 
         $sy = $request->session()->get('school_year');
+        $sem = $request->session()->get('school_sem');
+
     	 $request->validate([
             'status'=>['required'],
             'campus'=>['required'],
@@ -21,13 +23,13 @@ class EvaluatorController extends Controller
         ]);
        
         if($request->year === null ||  $request->section === null ||  $request->section === null){
-             $users = Evaluator::where([['sy', '=' ,$sy],['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
+             $users = Evaluator::where([['semester', '=' ,$sem],['sy', '=' ,$sy],['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
                     ->get();
                     return response()->json([
                         'status' => $users
                     ]);
         }else{
-             $users = Evaluator::where([['sy', '=' ,$sy],['course', '=' ,$request->department],['section', '=' ,$request->section],['school_year', '=' ,$request->year],['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
+             $users = Evaluator::where([['semester', '=' ,$sem],['sy', '=' ,$sy],['course', '=' ,$request->department],['section', '=' ,$request->section],['school_year', '=' ,$request->year],['class_status', '=' ,$request->status],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])
                     ->get();
                     return response()->json([
                         'status' => $users
@@ -162,7 +164,8 @@ class EvaluatorController extends Controller
      public function get_every_evaluator(Request $request){
         $sy = $request->session()->get('school_year');
        
-        $users = Evaluator::where([['sy', '=' ,$sy],['id', '=' ,$request->id]])->first();
+        $sem = $request->session()->get('school_sem');
+        $users = Evaluator::where([['semester', '=' ,$sem],['sy', '=' ,$sy],['id', '=' ,$request->id]])->first();
         return response()->json([
             'status' => $users
         ]);

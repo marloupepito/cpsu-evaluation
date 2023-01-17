@@ -185,11 +185,13 @@ class ResultsController extends Controller
     }
        public function get_all_results2(Request $request){
         $sy = $request->session()->get('school_year');
+        
+        $sem = $request->session()->get('school_sem');
         $request->validate([
             'status'=>['required'],
         ]);
 
-        $users = Results::where('sy','=',$sy)->get()->unique('evaluatee_id');
+        $users = Results::where([['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluatee_id');
         return response()->json([
                 'status' => $users
             ]);
@@ -205,9 +207,10 @@ class ResultsController extends Controller
     }
     public function get_all_overall1(Request $request){
         $sy = $request->session()->get('school_year');
+        $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['type','=','Student'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
+        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Student'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
         ->get();
         return response()->json([
             'status' => $pdf,
@@ -215,9 +218,10 @@ class ResultsController extends Controller
     }
     public function get_all_overall2(Request $request){
         $sy = $request->session()->get('school_year');
+        $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['type','=','Peer'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
+        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Peer'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
         ->get();
         return response()->json([
             'status' => $pdf,
@@ -225,9 +229,11 @@ class ResultsController extends Controller
     }
     public function get_all_overall3(Request $request){
         $sy = $request->session()->get('school_year');
+        
+        $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['type','=','Supervisor'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
+        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Supervisor'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
         ->get();
         return response()->json([
             'status' => $pdf,
@@ -235,9 +241,10 @@ class ResultsController extends Controller
     }
     public function get_all_overall4(Request $request){
         $sy = $request->session()->get('school_year');
+        $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['type','=','Self'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
+        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Self'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
         ->get();
         return response()->json([
             'status' => $pdf,
@@ -246,11 +253,12 @@ class ResultsController extends Controller
      public function get_all_overall(Request $request){
 
         $sy = $request->session()->get('school_year');
-       $users = Results::where([['sy','=',$sy],['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
+        $sem = $request->session()->get('school_sem');
+       $users = Results::where([['semester','=',$sem],['sy','=',$sy],['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
         ->get();
 
         
-        $users2 = Results::where([['sy','=',$sy],['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
+        $users2 = Results::where([['semester','=',$sem],['sy','=',$sy],['evaluatee_id', '=' ,$request->session()->get('evaluateeid')]])
         ->select('evaluatee_id','a','b','c','d','e','year','semester')->distinct()->first();
 
 
@@ -301,22 +309,23 @@ class ResultsController extends Controller
      public function counting_data(Request $request){
 
         $sy = $request->session()->get('school_year');
-          $schedule = Schedule::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])->first();
+        $sem = $request->session()->get('school_sem');
+          $schedule = Schedule::where([['semester','=',$sem],['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid]])->first();
 
 
-           $active = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,'active']])
+           $active = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,'active']])
         ->get();
 
-        $notactive = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,null]])
+        $notactive = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['status', '=' ,null]])
         ->get();
         $evaluators = Evaluator::where([['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['sy','=',$sy]])->get();
          $evaluatee = Faculty::where([['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus],['sy','=',$sy]])->get();
 
-         $a = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Computer Studies']])->get();
-         $b = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Business Management']])->get();
-         $c = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Teachers Education']])->get();
-         $d = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Agriculture and Forestry']])->get();
-         $e = Evaluator::where([['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Criminal Justice Education']])->get();
+         $a = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Computer Studies']])->get();
+         $b = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Business Management']])->get();
+         $c = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Teachers Education']])->get();
+         $d = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Agriculture and Forestry']])->get();
+         $e = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campus', '=' ,$request->campus],['campusid', '=' ,$request->campusid],['course', '=' ,'College of Criminal Justice Education']])->get();
 
 
 

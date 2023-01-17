@@ -13,12 +13,13 @@ class FacultyController extends Controller
 {
      public function get_faculty(Request $request){
          $sy = $request->session()->get('school_year');
+         $sem = $request->session()->get('school_sem');
     	 $request->validate([
             'status'=>['required'],
             'campusid'=>['required'],
             'campus'=>['required'],
         ]);
-        $users = Faculty::where([['sy', '=' ,$sy],['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus]])
+        $users = Faculty::where([['semester', '=' ,$sem],['sy', '=' ,$sy],['campusid', '=' ,$request->campusid],['campus', '=' ,$request->campus]])
         ->orderBy('id', 'DESC')->get();
         return response()->json([
             'status' => $users
@@ -28,8 +29,8 @@ class FacultyController extends Controller
 
      public function get_every_faculty(Request $request){
          $sy = $request->session()->get('school_year');
-       
-        $users = Faculty::where([['sy', '=' ,$sy],['id', '=' ,$request->id]])->first();
+         $sem = $request->session()->get('school_sem');
+        $users = Faculty::where([['semester', '=' ,$sem],['sy', '=' ,$sy],['id', '=' ,$request->id]])->first();
         return response()->json([
             'status' => $users
         ]);
@@ -37,7 +38,7 @@ class FacultyController extends Controller
    
      public function add_faculty(Request $request){
         $sy = $request->session()->get('school_year');
-        
+        $sem = $request->session()->get('school_sem');
          $request->validate([
             'idNumber'=>['required'],
             'campusid'=>['required'],
@@ -61,15 +62,15 @@ class FacultyController extends Controller
         
 
         if($request->status === 'Faculty'){
-            $users = Faculty::where([['sy', '=' ,$sy],['status','=',$request->status],['campus','=',$request->campus],['campusid','=',$request->campusid]])->get();
-                     return response()->json([
+            $users = Faculty::where([['semester', '=' ,$sem],['sy', '=' ,$sy],['status','=',$request->status],['campus','=',$request->campus],['campusid','=',$request->campusid]])->get();
+            return response()->json([
+                'status' => $users
+            ]);
+        }else{
+                $users = Faculty::where([['semester', '=' ,$sem],['sy', '=' ,$sy],['status','=',$request->status],['campus','=',$request->campus],['campusid','=',$request->campusid]])->get();
+                 return response()->json([
                     'status' => $users
                 ]);
-        }else{
-                $users = Faculty::where([['sy', '=' ,$sy],['status','=',$request->status],['campus','=',$request->campus],['campusid','=',$request->campusid]])->get();
-                             return response()->json([
-                        'status' => $users
-                    ]);
         }
        
     }

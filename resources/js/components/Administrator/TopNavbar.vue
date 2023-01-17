@@ -11,6 +11,17 @@
 
       <v-spacer></v-spacer>
 
+      
+      <v-select
+           class="mt-5"
+          v-model="sem"
+          label="Select Semester"
+          density="compact"
+          :items="['1st Semester','2nd Semester']"
+          @update:modelValue="changeSem"
+        ></v-select>
+
+
        <v-select
            class="mt-5"
           v-model="value"
@@ -20,6 +31,7 @@
           @update:modelValue="changeSy"
         ></v-select>
   
+       
 
       <v-btn icon  to="/logout">
         <v-icon>mdi-logout-variant</v-icon>
@@ -32,21 +44,38 @@ export default{
    data () {
       return {
         sy:1,
-        value:[]
+        value:[],
+        sem:[]
       }
     },
   mounted(){
     this.mount()
     },
     methods:{
+      changeSem(){
+        axios.post('/get_school_year',{
+        sy:this.value,
+        sem:this.sem
+        })
+        .then(res=>{
+            this.value= res.data.status1;
+            this.sem= res.data.status2;
+            localStorage.setItem("get_school_year", res.data.status1);
+            localStorage.setItem("get_sem", res.data.status2);
+            location.reload()
+        })
+      },
       changeSy(){
         
        axios.post('/get_school_year',{
-        sy:this.value
+        sy:this.value,
+        sem:this.sem
         })
         .then(res=>{
-            this.value= res.data.status;
-            localStorage.setItem("get_school_year", res.data.status);
+            this.value= res.data.status1;
+            this.sem= res.data.status2;
+            localStorage.setItem("get_school_year", res.data.status1);
+            localStorage.setItem("get_sem", res.data.status2);
             location.reload()
         })
       },
@@ -71,13 +100,15 @@ export default{
        this.sy =academicYear;
       
         const valueSy = localStorage.getItem("get_school_year") === null?academicYear[0]:localStorage.getItem("get_school_year");
-       axios.post('/get_school_year',{
-        sy:valueSy
-        })
-        .then(res=>{
-          this.value= res.data.status;
-          console.log(valueSy)
-        })
+        const ValueSem = localStorage.getItem("get_sem") === null?'1st Semester':localStorage.getItem("get_sem");
+          axios.post('/get_school_year',{
+            sy:valueSy,
+            sem:ValueSem
+            })
+            .then(res=>{
+              this.value= res.data.status1;
+              this.sem= res.data.status2;
+            })
       },
       
     }
