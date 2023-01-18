@@ -13,7 +13,8 @@
                     </div>
                     <div class="col-md-8 col-8">
                         <div>
-                        {{answers.semester === '1st Semester'?"August - December":"January - May"}}
+                        {{answers.semester === '1st Semester'?"August "+new Date().getFullYear():
+						"January "+(new Date().getFullYear()+1)}}
                         <v-divider class="m-0 p-2"></v-divider>
                         </div>
                     </div>
@@ -28,7 +29,8 @@
                     </div>
                     <div class="col-md-10 col-10">
                         <div>
-                            {{answers.sy}}
+                            {{answers.semester === '1st Semester'?"December "+new Date().getFullYear():
+						"May "+(new Date().getFullYear()+1)}}
                         <v-divider class="m-0 p-2"></v-divider>
                         </div>
                     </div>
