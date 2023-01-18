@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-8 col-8">
                         <div>
-                        {{answers.semester}}
+                        {{answers.semester === '1st Semester'?"August - December":"January - May"}}
                         <v-divider class="m-0 p-2"></v-divider>
                         </div>
                     </div>
