@@ -551,7 +551,7 @@ import axios from 'axios'
 		  methods:{
 		  	submitForm (e){
 		  		 this.disable=true
-		  		e.prevefault();
+		  		e.preventDefault();
 		  		const form = {
 						question:[this.q1,this.q2,this.q3,this.q4,this.q5,this.q6,this.q7,this.q8,this.q9,this.q10,
 						this.q11,this.q12,this.q13,this.q14,this.q15,this.q16,this.q17,this.q18,this.q19,this.q20],
