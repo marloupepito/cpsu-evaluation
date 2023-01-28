@@ -11,6 +11,7 @@ class FacultySubjectLoading extends Model
     use HasFactory;
     protected $fillable = [
         'id_number',
+        'name',
         'campusid',
         'subject',
         'campus',

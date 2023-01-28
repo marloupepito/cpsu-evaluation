@@ -8,6 +8,7 @@ use App\http\Controllers\QuestionaireController;
 use App\http\Controllers\ResultsController;
 use App\http\Controllers\ScheduleController;
 use App\http\Controllers\UsersController;
+use App\http\Controllers\StudentsController;
 use App\http\Controllers\SubjectLoadingController;
 use App\http\Controllers\StudentSubjectLoadingController;
 use App\http\Controllers\FacultySubjectLoadingController;
@@ -87,6 +88,12 @@ Route::post('/get_student_subject_loading','SubjectLoadingController@get_student
 
 
 Route::post('/qrscanner','ScannerController@qrscanner'); //check
+Route::post('/qrscanner2','ScannerController@qrscanner2'); //check
+
+Route::post('/add_student_info','StudentsController@add_student_info'); //check
+Route::post('/get_subject_load_from_teacher','StudentsController@get_subject_load_from_teacher'); 
+Route::post('/add_student_subject_loading','StudentsController@add_student_subject_loading'); //check
+Route::post('/evaluator_session2','StudentsController@evaluator_session2'); //check
 
 
 Route::post('/get_all_admin_dashboard_data','FacultySubjectLoadingController@get_all_admin_dashboard_data'); //check
@@ -94,7 +101,6 @@ Route::post('/get_every_campuses','FacultySubjectLoadingController@get_every_cam
 
 
 Route::post('/get_school_year','FacultySubjectLoadingController@get_school_year');
-
 Route::post('/option_evaluator','FacultySubjectLoadingController@option_evaluator');
 
 

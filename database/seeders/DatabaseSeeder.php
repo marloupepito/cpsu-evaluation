@@ -214,6 +214,13 @@ class DatabaseSeeder extends Seeder
         "Zayd", "Zayn", "Zayne", "Ze", "Zechariah", "Zeek", "Zeeshan", "Zeid", "Zein", "Zen", "Zendel", "Zenith", "Zennon", "Zeph", "Zerah", "Zhen", "Zhi", "Zhong",
         "Zhuo", "Zi", "Zidane", "Zijie", "Zinedine", "Zion", "Zishan", "Ziya", "Ziyaan", "Zohaib", "Zohair", "Zoubaeir", "Zubair", "Zubayr", "Zuriel"];
        
+
+        $m = date("m");
+
+
+        $sems = $m === '08' || $m === '09' || $m === '10' || $m === '11' || $m === '12'?'1st Semester':"2nd Semester";
+        
+        
         $user = new User;
         $user->name = 'Main Administrator';
         $user->username = 'admin';
@@ -231,7 +238,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '222222';
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -252,7 +259,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
              $user = new Faculty;
-             $user->semester = '1st Semester';
+             $user->semester = $sems;
             $user->id_number = '333333';
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -274,7 +281,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
           $user = new Faculty;
-          $user->semester = '1st Semester';
+          $user->semester = $sems;
             $user->id_number = '444444';
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -295,7 +302,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
         $user = new Faculty;
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->id_number = '5555555';
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -318,7 +325,7 @@ class DatabaseSeeder extends Seeder
 
 
         $user = new Faculty;
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->id_number = '666666';
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -341,7 +348,7 @@ class DatabaseSeeder extends Seeder
 
 
            $user = new Faculty;
-           $user->semester = '1st Semester';
+           $user->semester = $sems;
             $user->id_number = '777777';
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -365,7 +372,7 @@ class DatabaseSeeder extends Seeder
 
 
          $user = new Faculty;
-         $user->semester = '1st Semester';
+         $user->semester = $sems;
             $user->id_number = '888888';
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -388,7 +395,7 @@ class DatabaseSeeder extends Seeder
 
 
           $user = new Faculty;
-          $user->semester = '1st Semester';
+          $user->semester = $sems;
             $user->id_number = '9999999';
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -411,7 +418,7 @@ class DatabaseSeeder extends Seeder
 
 
          $user = new Faculty;
-         $user->semester = '1st Semester';
+         $user->semester = $sems;
             $user->id_number = '10101010';
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -431,7 +438,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU Hinoba-an Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -440,7 +447,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU Sipalay Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -449,7 +456,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU Cauayan Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -458,7 +465,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU Ilog Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -467,7 +474,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU Candoni Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -477,7 +484,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU Hinigaran Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -486,7 +493,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU Moises Padilla Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -495,7 +502,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU Victorias Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -505,7 +512,7 @@ class DatabaseSeeder extends Seeder
         $user->campus = 'CPSU San Carlos Campus';
         $user->start = date("Y"."-"."m"."-"."d");
         $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-        $user->semester = '1st Semester';
+        $user->semester = $sems;
             $user->sy = $sy_result;
         $user->save();
 
@@ -531,7 +538,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
 
@@ -547,7 +554,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
 
@@ -562,7 +569,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
 
@@ -578,7 +585,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
 
@@ -594,7 +601,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
 
@@ -610,7 +617,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
 
@@ -626,7 +633,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
 
@@ -642,7 +649,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
 
@@ -658,7 +665,7 @@ class DatabaseSeeder extends Seeder
             $user->school_year = $randYear;
             $user->section = $randSection;
             $user->class_status = 'Regular';
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->sy = $sy_result;
             $user->save();
         }
@@ -669,7 +676,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -686,7 +693,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -703,7 +710,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -720,7 +727,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -738,7 +745,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00000'.$i;
             $user->campusid = 2;
             $user->password = Hash::make('admin');
@@ -758,7 +765,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -775,7 +782,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -792,7 +799,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -809,7 +816,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -827,7 +834,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00001'.$i;
             $user->campusid = 3;
             $user->password = Hash::make('admin');
@@ -846,7 +853,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -863,7 +870,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -880,7 +887,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -897,7 +904,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -915,7 +922,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00002'.$i;
             $user->campusid = 4;
             $user->password = Hash::make('admin');
@@ -937,7 +944,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -954,7 +961,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -971,7 +978,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -988,7 +995,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -1006,7 +1013,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00003'.$i;
             $user->campusid = 5;
             $user->password = Hash::make('admin');
@@ -1025,7 +1032,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1042,7 +1049,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1059,7 +1066,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1076,7 +1083,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1094,7 +1101,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00004'.$i;
             $user->campusid = 6;
             $user->password = Hash::make('admin');
@@ -1113,7 +1120,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1130,7 +1137,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1147,7 +1154,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1164,7 +1171,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1182,7 +1189,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00005'.$i;
             $user->campusid = 7;
             $user->password = Hash::make('admin');
@@ -1202,7 +1209,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1219,7 +1226,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1236,7 +1243,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1253,7 +1260,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1271,7 +1278,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00006'.$i;
             $user->campusid = 8;
             $user->password = Hash::make('admin');
@@ -1291,7 +1298,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1308,7 +1315,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1325,7 +1332,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1342,7 +1349,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1360,7 +1367,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00007'.$i;
             $user->campusid = 9;
             $user->password = Hash::make('admin');
@@ -1380,7 +1387,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1397,7 +1404,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1414,7 +1421,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1431,7 +1438,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1449,7 +1456,7 @@ class DatabaseSeeder extends Seeder
 
             $randName = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
-            $user->semester = '1st Semester';
+            $user->semester = $sems;
             $user->id_number = '00008'.$i;
             $user->campusid = 10;
             $user->password = Hash::make('admin');
@@ -1493,7 +1500,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'CCIT 01- INTRODUCTION TO COMPUTING';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1501,7 +1508,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'CCIT 02- COMPUTER PROGRAMMING';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1509,7 +1516,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 1- Understanding the Self';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1517,7 +1524,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 2- Reading in Philippine History';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1525,7 +1532,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 4 - Mathematics in the Modern World';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1533,7 +1540,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 5- Purposive Communication';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1542,7 +1549,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 6 - Art Appreciation';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1551,7 +1558,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PE1 - Movement Enhancement';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1560,7 +1567,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'CCIT 04- DATA STRUCTURES AND ALGORITHM';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1569,7 +1576,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PCIT 03- INTEGRATIVE PROGRAMMING AND TECHNOLOGIES 1';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1578,7 +1585,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PFIT 01- PLATFORM TECHNOLOGIES';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1587,7 +1594,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PCIT 04- INTRODUCTION TO HUMAN COMPUTER INTERACTION';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1596,7 +1603,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PCIT 05- SOCIAL AND PROFESSIONAL ISSUES';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1604,7 +1611,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEL 2 - Philippine Indigenous Communities';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1612,7 +1619,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PE 3- PATH FIT 1';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1621,7 +1628,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'CCIT 06- APPLICATIONS DEVELOPMENT AND EMERGING TECHNOLOGY';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1630,7 +1637,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PFIT 03- WEB SYSTEMS AND TECHNOLOGY';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1639,7 +1646,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PCIT 09- NETWORKING 2';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1647,7 +1654,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PCIT 11- SYSTEM ADMINISTRATION AND MAINTENANCE';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1655,7 +1662,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PSIT 04- TECHNOPRENUERSHIP';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1664,7 +1671,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PSIT 03- IT SECURITY AND MANAGEMENT';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1673,7 +1680,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEL 9- Life and Works and Writings of Dr. Jose Rizal 3';
             $subject->department = 'College of Computer Studies';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1681,7 +1688,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 1- Understanding the Self';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1689,7 +1696,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 2- Reading in Philippine History';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1698,7 +1705,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 4 - Mathematics in the Modern World';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1707,7 +1714,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 5 - Purposive Communication';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1715,7 +1722,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEC 6 - Art Appreciation';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1723,7 +1730,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'Prof.Ed.1- The Child and Adolescent Learners and Learning Principles';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1732,7 +1739,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'Prof.Ed. 2- Teaching Profession';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1741,7 +1748,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'Sci. 1 - Teaching Science in Elementary Grades (Biology and Chemistry)';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1749,7 +1756,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PE 1- Movement Enhancement';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1757,7 +1764,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'NSTP- National Service Training Program 1';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '1st Year';
             $subject->save();
 
@@ -1766,7 +1773,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEL 2 - Philippine Indigenous Communities';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1775,7 +1782,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'Prof.Ed. 5 -Technology for Teaching and Learning 1';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1784,7 +1791,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'Prof. Ed 6- Assessment in Student Learning';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1792,7 +1799,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'STAT- Elementary Statistics';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1801,7 +1808,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'TLE 1- Edukasyong Pantahanan at Pangkabuhayan';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1810,7 +1817,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'MATH 1- Teaching Math in the Primary Grade';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1819,7 +1826,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'ENG. 1 - Teaching English in Elementary Grades';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1827,7 +1834,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'VED 1- Good Manners and Right Conduct (Edukasyon sa Pagpakatao)';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1836,7 +1843,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'PE 3- Physical Activities Towards Health and Fitness I';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '2nd Year';
             $subject->save();
 
@@ -1845,7 +1852,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'GEM- Life and Works of Rizal';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1854,7 +1861,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'Prof.Ed. 9- The Teacher and the Social Curriculum';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1862,7 +1869,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'Prof. Ed. 10- Building and Enhancing New Literacies Across Curriculum';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1871,7 +1878,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'SSC 1- Teaching Social Studies in the Elementary Grades (Philippine History & Government)';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1880,7 +1887,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'FIL 1 - Pagtuturo ng Filipino sa Elementarya I - Estruktura at Gamit ng Wikang Filipino';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1889,7 +1896,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'TTL 2- Technology for Teaching and Learning in Elementary Grades';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1897,7 +1904,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'Research 2- Research in Education';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '3rd Year';
             $subject->save();
 
@@ -1906,7 +1913,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'FS 1- Field Study 1- Observation of Teaching and Learning in Actual School Environment';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '4th Year';
             $subject->save();
 
@@ -1915,7 +1922,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'FS 2- Field Study 2- Participation and Teaching Assistantship';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '4th Year';
             $subject->save();
 
@@ -1924,7 +1931,7 @@ class DatabaseSeeder extends Seeder
             $subject->sy = $sy_result;
             $subject->subject = 'ST 2- Special Topic- Program Outcomes Assessment';
             $subject->department = 'College of Teachers Education';
-            $subject->semester = '1st Semester';
+            $subject->semester = $sems;
             $subject->year = '4th Year';
             $subject->save();
 
@@ -1932,7 +1939,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = 'College of Teachers Education';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -1940,7 +1947,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -1948,7 +1955,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -1956,22 +1963,14 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
             // $subject = new SubjectList;
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
-            // $subject->save();
-
-
-            // $subject = new SubjectList;
-            //$subject->sy = $sy_result;
-            // $subject->subject = '';
-            // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -1979,7 +1978,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -1987,14 +1986,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
-            // $subject->save();
-
-            // $subject = new SubjectList;
-            //$subject->sy = $sy_result;
-            // $subject->subject = '';
-            // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -2002,7 +1994,14 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
+            // $subject->save();
+
+            // $subject = new SubjectList;
+            //$subject->sy = $sy_result;
+            // $subject->subject = '';
+            // $subject->department = '';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -2010,7 +2009,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -2018,14 +2017,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
-            // $subject->save();
-
-            // $subject = new SubjectList;
-            //$subject->sy = $sy_result;
-            // $subject->subject = '';
-            // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -2033,7 +2025,14 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
+            // $subject->save();
+
+            // $subject = new SubjectList;
+            //$subject->sy = $sy_result;
+            // $subject->subject = '';
+            // $subject->department = '';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -2041,7 +2040,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -2049,14 +2048,7 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
-            // $subject->save();
-
-            // $subject = new SubjectList;
-            //$subject->sy = $sy_result;
-            // $subject->subject = '';
-            // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -2064,7 +2056,14 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
+            // $subject->save();
+
+            // $subject = new SubjectList;
+            //$subject->sy = $sy_result;
+            // $subject->subject = '';
+            // $subject->department = '';
+            // $subject->semester = $sems;
             // $subject->save();
 
 
@@ -2072,7 +2071,15 @@ class DatabaseSeeder extends Seeder
             //$subject->sy = $sy_result;
             // $subject->subject = '';
             // $subject->department = '';
-            // $subject->semester = '1st Semester';
+            // $subject->semester = $sems;
+            // $subject->save();
+
+
+            // $subject = new SubjectList;
+            //$subject->sy = $sy_result;
+            // $subject->subject = '';
+            // $subject->department = '';
+            // $subject->semester = $sems;
             // $subject->save();
 
 

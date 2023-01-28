@@ -24,8 +24,7 @@ export default {
   },
   mounted(){
      this.campus = window.location.pathname.replace(/_/g,' ').split('/')[2]
-     this.type = window.location.search.substring(1).split(',')[0]
-     this.campusid = window.location.search.substring(1).split(',')[1]
+     this.campusid = window.location.search.substring(1)
 
   },
   methods: {
@@ -60,42 +59,63 @@ export default {
         this.show = false
         this.pause()
       const a = content.split(",");
-     // this.type=a[0];
+      this.type=a[0];
       const credentials = {
-        evaluator:this.type,
-        campusid:a[1],
+        evaluator:a[0],
+        evaluatorid:a[1],
         password:a[2],
         campus:this.campus,
-        campusid2:this.campusid,
+        campusid:this.campusid,
       }
-
-
-      axios.post('/qrscanner2',credentials)
+     this.verify = false
+     axios.post('/qrscanner',credentials)
      .then(res=>{
-       this.show = true
-
-       if(res.data.status === 'success'){
-        this.unpause()
+      this.show = true
+      console.log(res.data.status)
+        if(res.data.status === 'proceed'){
+          this.unpause()
             this.$swal({
             icon: 'success',
             title: 'Success!',
             showConfirmButton: false,
             timer: 1500
           })
-          this.$router.push({path:'/campus/'+this.campus.replace(/ /g,'_')+'/choose'})
-
-       }else{
-        this.show = true
-            this.unpause()
+          this.$router.push({path:'/evaluation/form',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
+        }else if(res.data.status === 'continue'){
+          this.unpause()
             this.$swal({
-            icon: 'error',
-            title: 'Incorrect QR code!',
+            icon: 'success',
+            title: 'Continue!',
             showConfirmButton: false,
             timer: 1500
           })
-       }
-  
-
+          
+          this.$router.push({path:'/evaluation/form',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
+        }else if(res.data.status === 'done'){
+          this.unpause()
+              this.$swal({
+              icon: 'warning',
+              title: 'Evaluation Done!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+        }else if(res.data.status === 'No Subject Found!'){
+          this.unpause()
+            this.$swal({
+            icon: 'error',
+            title: res.data.status,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }else{
+          this.unpause()
+            this.$swal({
+            icon: 'error',
+            title: res.data.status,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       })
       .catch(err=>{
             this.show = true
@@ -107,8 +127,6 @@ export default {
             timer: 1500
           })
         })
-     
-    
 
 
     },

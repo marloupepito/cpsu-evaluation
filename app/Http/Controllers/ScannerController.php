@@ -11,6 +11,21 @@ use App\Models\FacultySubjectLoading;
 use App\Models\Schedule;
 class ScannerController extends Controller
 {
+    public function qrscanner2(Request $request){
+
+        if($request->campusid === $request->campusid2){
+            $request->session()->put('e_campusid',$request->campusid);
+            $request->session()->put('e_campus',$request->campus);
+            $request->session()->put('e_type',$request->type);
+            return response()->json([
+                'status' => 'success',
+            ]);
+        }else{
+            return response()->json([
+                'status' => 'error',
+            ]);
+        }
+    }
      public function qrscanner(Request $request){
 
          $request->validate([

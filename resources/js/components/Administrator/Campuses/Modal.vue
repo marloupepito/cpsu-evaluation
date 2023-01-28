@@ -48,6 +48,15 @@
 
               <v-col cols="12" sm="12">
                 <v-text-field
+                  label="Assigned Person"
+                  required
+                  v-model="assignedPerson"
+                  :rules="assignedPersonRules"
+                ></v-text-field>
+              </v-col>
+
+              <v-col cols="12" sm="12">
+                <v-text-field
                   label="Username"
                   required
                   v-model="campususername"
@@ -107,6 +116,10 @@ import axios from 'axios'
         campusrank: 'Campus Administrator',
         campususername: '',
         campuspassword: '',
+        assignedPerson:'',
+        assignedPersonRules: [
+        v => !!v || 'Assigned Person is required',
+        ],
         campusnameRules: [
         v => !!v || 'Department is required',
         ],

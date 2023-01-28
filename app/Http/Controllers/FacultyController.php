@@ -54,6 +54,7 @@ class FacultyController extends Controller
         $user->campusid = $request->campusid;
         $user->campus = $request->campus;
         $user->name = $request->name;
+        $user->semester = $request->session()->get('school_sem');
         $user->department = $request->department;
         $user->academic_rank = $request->rank;
         $user->sy = $request->sy;

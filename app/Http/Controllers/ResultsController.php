@@ -15,29 +15,13 @@ class ResultsController extends Controller
      public function submit_form(Request $request){
 
 
-         $request->validate([
-            'evaluator'=>['required'],
-            'evaluatee'=>['required'],
-            'commitment'=>['required'],
-            'name'=>['required'],
-            'campus'=>['required'],
-            'kos'=>['required'],
-            'til'=>['required'],
-            'mol'=>['required'],
-            'type'=>['required'],
-        ]);
         $total = ($request->commitment+$request->kos+$request->til+$request->mol) / 4;
         
-        
-        StudentSubjectLoading::where('id', $request->id2)
-      ->update(['program' => 'active']);
 
 
-        if($request->type === 'student'){
+
+        if($request->session()->get('type')=== 'student'){
             
-            Evaluator::where('id', $request->evaluator)
-                ->update(['status' => 'active']);
-                 $aa= Evaluator::where('id', $request->evaluator)->first();
             StudentSubjectLoading::where('id', $request->id)
             ->update(['program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
             
@@ -48,26 +32,26 @@ class ResultsController extends Controller
                 $user->commitment = $request->commitment;
                 $user->kos = $request->kos;
                 $user->name = $request->name;
-                $user->campus = $request->campus;
-                $user->campusid = $aa->campusid;
+                $user->campus = $request->session()->get('e_campus');
+                $user->campusid = $request->session()->get('e_campusid');
                 $user->til = $request->til;
                 $user->mol = $request->mol;
                 $user->total = $total;
                 $user->comment = $request->comment;
                 $user->school_year = date('Y');
-                $user->section = $aa->section;
-                $user->semester = $aa->semester;
-                $user->sy = $aa->sy;
-                $user->department = $aa->course;
-                $user->academic_rank = $aa->academic_rank;
+                $user->section = $request->session()->get('e_section');
+                $user->semester = $request->session()->get('e_sem');
+                $user->sy =$request->session()->get('e_sy');
+                $user->department = $request->session()->get('e_course');
+                $user->academic_rank = 'student';
                 $user->save();
 
 
         }else{
 
-             Faculty::where('id', $request->evaluator)
+             Faculty::where([['sy','=', $request->session()->get('e_sy')],['semester','=', $request->session()->get('e_sem')],['campusid','=', $request->session()->get('e_campusid')],['name','=', $request->evaluator]])
                 ->update(['status' => 'active']);
-               $aa= Faculty::where('id', $request->evaluator)->first();
+      
                 StudentSubjectLoading::where('id', $request->id)
                 ->update(['program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
 
@@ -78,23 +62,22 @@ class ResultsController extends Controller
                 $user->commitment = $request->commitment;
                 $user->kos = $request->kos;
                 $user->name = $request->name;
-                $user->campus = $request->campus;
+                $user->campus = $request->session()->get('e_campus');
                 $user->school_year = date('Y');
-                $user->campusid = $aa->campusid;
+                $user->campusid = $request->session()->get('e_campusid');
                 $user->til = $request->til;
                 $user->mol = $request->mol;
                 $user->total = $total;
                 $user->comment = $request->comment;
-                $user->semester = $aa->semester;
-                $user->sy = $aa->sy;
-                $user->department = $aa->department;
-                $user->academic_rank = $aa->academic_rank;
+                $user->semester = $request->session()->get('e_sem');
+                $user->sy = $request->session()->get('e_sy');
+                $user->department = $request->session()->get('e_course');
+                $user->academic_rank = 'faculty';
                 $user->save();
 
         } 
 
-
-        $zz= Faculty::where('id', $request->evaluator)->first();
+        $zz= Faculty::where([['sy','=', $request->session()->get('e_sy')],['semester','=', $request->session()->get('e_sem')],['campusid','=', $request->session()->get('e_campusid')],['name','=', $request->evaluator]])->first();
 
         if($user){
         $ccs = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Computer Study']])->get()->sum('total');
@@ -114,14 +97,14 @@ class ResultsController extends Controller
 
         $f = Results::where('evaluatee_id','=',$request->evaluatee)->get();
 
-        $count1 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Computer Study'],['semester','=',$zz->semester]])->get();
-         $count2 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Teachers Education'],['semester','=',$zz->semester]])->get();
+        $count1 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Computer Study'],['semester','=', $request->session()->get('e_sem')]])->get();
+         $count2 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Teachers Education'],['semester','=', $request->session()->get('e_sem')]])->get();
 
-        $count3 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Business Management'],['semester','=',$zz->semester]])->get();
+        $count3 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Business Management'],['semester','=', $request->session()->get('e_sem')]])->get();
 
-        $count4 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Agriculture and Forestry'],['semester','=',$zz->semester]])->get();
+        $count4 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Agriculture and Forestry'],['semester','=', $request->session()->get('e_sem')]])->get();
 
-        $count5 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Criminal Justice Education'],['semester','=',$zz->semester]])->get();
+        $count5 = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Criminal Justice Education'],['semester','=', $request->session()->get('e_sem')]])->get();
 
         Results::where('evaluatee_id','=',$request->evaluatee)
       ->update([

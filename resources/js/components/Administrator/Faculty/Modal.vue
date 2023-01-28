@@ -10,12 +10,12 @@
           color="green"
           v-bind="props"
         >
-        ADD LOADED SUBJECT
+        ADD HANDLED COURSE
         </v-btn>
       </template>
       <v-card>
         <v-card-title>
-          <span class="text-h5">LOADED SUBJECT</span>
+          <span class="text-h5">Year, Course and Sections handled</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -57,15 +57,13 @@
 
               <v-col cols="12" sm="12">
                 <v-select
-                  :items="['1st Semester','2nd Semester']"
-                  label="Semester"
+                  :items="['College of Computer Studies','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education']"
+                  label="Department"
                   required
-                  v-model="sem"
-                  :rules="semRules"
+                  :rules="departmentRules"
+                  v-model="department"
                 ></v-select>
               </v-col>
-
-
 
               <v-col cols="12" sm="12">
                 <v-select
@@ -76,6 +74,20 @@
                   v-model="section"
                 ></v-select>
               </v-col>
+
+              <v-col cols="12" sm="12">
+                <v-select
+                  :items="['1st Semester','2nd Semester']"
+                  label="Semester"
+                  required
+                  v-model="sem"
+                  :rules="semRules"
+                ></v-select>
+              </v-col>
+
+
+
+       
            
             </v-row>
 
@@ -115,7 +127,6 @@ import axios from 'axios'
       valid: true,
       dialog: false,
       campusid:'',
-      department:'',
       subjectList:[],
       courseyear:'',
       courselist:[],
@@ -124,6 +135,10 @@ import axios from 'axios'
       sem:'',
       subject:'',
       section:'',
+      department:'',
+      departmentRules: [
+        v => !!v || 'Department is required',
+      ],
       courseyearRules: [
         v => !!v || 'Username is required',
       ],

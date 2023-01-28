@@ -3,7 +3,9 @@ import CampusesIndex from '../Homepage/_Index.vue'
 import Campuses from '../Homepage/Campuses.vue'
 import Visit from '../Homepage/Visit.vue'
 import Scanner from '../Homepage/Evaluation/Scanner.vue'
+import ChooseStudent from '../Homepage/Evaluation/ChooseStudent.vue'
 import EvaluationForm from '../Homepage/Evaluation/Form.vue'
+import FacultyList from '../Homepage/Evaluation/Faculty.vue'
 
 import Administrator from '../Administrator/_Index.vue'
 import ADashboard from '../Administrator/Dashboard/_Index.vue'
@@ -46,6 +48,9 @@ const routes =[
 			{ path:'/campus',component:Campuses },
 			{ path:'/campus/visit',component:Visit },
 			{ path:'/campus/:id/scan',component:Scanner },	
+			{ path:'/campus/:id/choose',component:ChooseStudent },
+			{ path:'/campus/:id/faculty',component:FacultyList },	
+			{ path:'/campus/:id/form',component:EvaluationForm },	
 		]
 	},
 	{ path:'/evaluation/form',component:EvaluationForm },

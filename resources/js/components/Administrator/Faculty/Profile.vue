@@ -55,32 +55,32 @@
 		    </template>
 
 		    <v-card-text>
-		      	<div class="row">
-							<div class="col-md-4">
-							<b class="text-dark">Subject:</b>
-							</div>
-							<div class="col-md-8">
-								{{item.subject}}
-							</div>
-							<div class="col-md-4">
-									<b class="text-dark">Semester:</b>
-							</div>
-							<div class="col-md-8">
-								{{item.semester}}
-							</div>
-							<div class="col-md-4">
-								<b class="text-dark">Year:</b>
-							</div>
-							<div class="col-md-8">
-								{{item.year}}
-							</div>
-							<div class="col-md-4">
-									<b class="text-dark">Section:</b>
-							</div>
-							<div class="col-md-8">
-								{{item.section}}
-							</div>
-					</div>
+
+				<table class="table table-striped">
+				<tbody>
+					<tr>
+					<th scope="row">Subject:</th>
+					<td>{{item.subject}}</td>
+					</tr>
+					<tr>
+					<th scope="row">Semester:</th>
+					<td>{{item.semester}}</td>
+					</tr>
+					<tr>
+					<th scope="row">Year:</th>
+					<td>{{item.year}}</td>
+					</tr>
+					<tr>
+					<th scope="row">Department:</th>
+					<td>{{item.department}}</td>
+					</tr>
+					<tr>
+					<th scope="row">Section:</th>
+					<td>{{item.section}}</td>
+					</tr>
+				</tbody>
+				</table>
+<br /><br />
 		    </v-card-text>
 		  </v-card>
 	 	</div>

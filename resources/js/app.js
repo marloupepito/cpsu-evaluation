@@ -19,6 +19,10 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import 'sweetalert2/dist/sweetalert2.min.css'
  import VueQrcodeReader from "vue3-qrcode-reader";
 
+
+ import VueSignaturePad from 'vue-signature-pad';
+
+
 const options = {
   position: "fixed",
   height: "30px",
@@ -66,7 +70,7 @@ app.use(VueSweetalert2)
 app.use(router)
 app.use(bottomNavigationVue);
 app.use(VueQrcodeReader)
-
+app.use(VueSignaturePad);
 
 
 /**

@@ -25,6 +25,7 @@ class UsersController extends Controller
         $user = new User;
         $user->name = $request->campusadmin;
         $user->username = $request->campususername;
+        $user->assigned_person = $request->assignedPerson;
         $user->password = Hash::make($request->campuspassword);
         $user->campus = $request->campusname;
         $user->academic_rank = $request->campusrank;
@@ -37,26 +38,10 @@ class UsersController extends Controller
             $user->password = Hash::make($request->campuspassword);
             $user->campus = $request->campusname;
             $user->photos = 'sample.jpg';
-            $user->name = $request->campusadmin;
+            $user->name = $request->assignedPerson;
             $user->department = 'admin';
             $user->academic_rank = 'admin';
             $user->save();
-
-        if($user){
-             $aaa = User::where([['campus','=',$request->campusname],['name','=',$request->campusadmin]])->first();
-            $user = new Schedule;
-            $user->start = date("Y"."-"."m"."-"."d");
-            $user->end = date("Y"."-"."m"."-"."d", strtotime('+ 2 days'));
-            $user->semester = '1st Semester';
-            $user->campus = $request->campusname;
-            $user->campusid = $aaa->id;
-            $user->save();
-
-            $show = User::where('academic_rank','<>','Main Administrator Campus')->get();
-            return response()->json([
-                    'status' => $show
-                ]);
-        }
        
      }
    public function user_login(Request $request){
@@ -83,11 +68,7 @@ class UsersController extends Controller
         
     }
     public function get_all_users(Request $request){
-        $users = DB::table('faculty')
-        ->where('faculty.department', '=' ,'admin')
-        ->join('users', 'users.id', '=', 'faculty.campusid')
-        ->select('users.campus','users.academic_rank','users.name','users.username','faculty.password','faculty.id','faculty.campusid')
-        ->orderBy('faculty.id', 'DESC')
+        $users = User::orderBy('id', 'DESC')
         ->get();
 
 

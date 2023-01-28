@@ -12,7 +12,7 @@
       prev-icon="mdi-arrow-left-bold-box-outline"
       class="TopTopBar col-md-12"
     >
-      <v-tab v-for="i in rows" :to="'/administrator/'+path+'/'+i.campus.replace(/ /g,'_')+'?'+i.campusid" :value="'option-'+i.campusid">{{i.campus}}</v-tab>
+      <v-tab v-for="i in rows" :to="'/administrator/'+path+'/'+i.campus.replace(/ /g,'_')+'?'+i.id" :value="'option-'+i.id">{{i.campus}}</v-tab>
     </v-tabs>
       <v-tabs
         v-model="tab"
@@ -21,8 +21,8 @@
         class="TabsTabs col-md-4 col-12 pb-5 pt-5 border-right"
       >
 
-        <v-tab  v-for="i in rows" :value="'option-'+i.campusid"
-           :to="'/administrator/'+path+'/'+i.campus.replace(/ /g,'_')+'?'+i.campusid" >
+        <v-tab  v-for="i in rows" :value="'option-'+i.id"
+           :to="'/administrator/'+path+'/'+i.campus.replace(/ /g,'_')+'?'+i.id" >
           <v-icon start>
            mdi-town-hall
           </v-icon>
@@ -31,7 +31,7 @@
       </v-tabs>
 
       <v-window v-model="tab" class="col-md-8 col-12">
-        <v-window-item v-for="i in rows" :value="'option-'+i.campusid">
+        <v-window-item v-for="i in rows" :value="'option-'+i.id">
           <center>
 
                 <v-card-text class="py-0 w-100">
@@ -81,7 +81,7 @@
                 v-if="path !== 'campuses'"
                 class="float-right"
                 color="green"
-                :to="'/administrator/'+path+'/'+i.campus.replace(/ /g,'_')+'/view?'+i.campusid"
+                :to="'/administrator/'+path+'/'+i.campus.replace(/ /g,'_')+'/view?'+i.id"
               >
                 VISIT {{i.campus}}
               </v-btn>

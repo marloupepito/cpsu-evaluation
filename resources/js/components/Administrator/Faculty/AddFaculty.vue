@@ -44,13 +44,24 @@
                 ></v-text-field>
               </v-col>
 
+              <!-- <v-col cols="12" sm="12">
+                <v-select
+                  :items="['1st Semester','2nd Semester']"
+                  label="Semester"
+                  required
+                  :rules="semRules"
+                  v-model="sem"
+                ></v-select>
+              </v-col> -->
+           
+
                <v-col cols="12" sm="12">
                 <v-select
                   :items="syList"
                   label="Academic Year"
                   required
                   v-model="sy"
-                  :rules="courseRules"
+                  :rules="syRules"
                 ></v-select>
               </v-col>
 
@@ -127,6 +138,13 @@ import axios from 'axios'
         rankRules: [
           v => !!v || 'Department Rank is required',
         ],
+        sem:'',
+      semRules: [
+        v => !!v || 'Semester is required',
+      ],
+      syRules: [
+        v => !!v || 'School Year is required',
+      ],
         campusid:'',
         campus:'',
         loadingLocation:'',
@@ -176,6 +194,7 @@ import axios from 'axios'
               campusid:this.campusid,
               campus:this.campus,
               name:this.name,
+              sem:this.sem,
               department:this.department,
               rank:this.rank,
               sy:this.sy

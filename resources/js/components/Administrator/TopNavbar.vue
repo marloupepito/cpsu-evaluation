@@ -98,9 +98,13 @@ export default{
             var fullyear = lastrange.concat(range);
            }
        this.sy =academicYear;
-      
+       const d = new Date();
+       let month = d.getMonth() + 1;
+
+       const sems = month === 1 || month === 2 || month === 3 || month === 4 || month === 5?'2nd Semester':'1st Semester'
+
         const valueSy = localStorage.getItem("get_school_year") === null?academicYear[0]:localStorage.getItem("get_school_year");
-        const ValueSem = localStorage.getItem("get_sem") === null?'1st Semester':localStorage.getItem("get_sem");
+        const ValueSem = localStorage.getItem("get_sem") === null?sems:localStorage.getItem("get_sem");
           axios.post('/get_school_year',{
             sy:valueSy,
             sem:ValueSem
