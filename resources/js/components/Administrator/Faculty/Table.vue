@@ -16,85 +16,47 @@
          <AddFaculty class="mt-3" />
         </div>
     </div>
-   <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        single-line
-        hide-details
-        @input="searching"
-      ></v-text-field>
-  <v-table
-    fixed-header
-  >
-    <thead>
-      <tr>
-        <th class="text-left">
-          FACULTY ID
-        </th>
-        <th class="text-left">
-          FULLNAME
-        </th>
-         <th class="text-left">
-          DEPARTMENT
-        </th>
-         <th class="text-left">
-          ACADEMIC RANK
-        </th>
-         <th class="text-left">
-          CAMPUS
-        </th>
-         <th class="text-left">
-          STATUS
-        </th>
-         <th class="text-center">
-          SUBJECT LOADING
-        </th>
-        <th class="text-left">
-          QR CODE
-        </th>
-         <th class="text-center">
-         OPTION
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        v-for="item in rows"
-        :key="item.name"
-        id="myUL"
-      >
-        <td>{{ item.id_number }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.department }}</td>
-        <td>{{ item.academic_rank }}</td>
-        <td >
-        {{item.campus}}
-        </td>
-        <td>
-          <v-icon :color="item.status === null?'error':'success'" :icon="item.status === null?'mdi-account-cancel-outline':'mdi-account-check-outline'" size="x-large"></v-icon>
-  
-        </td>
-        <td>
-              <v-btn v-if="campusUsertype === 'Main Administrator Campus'" :to="'/administrator/faculty/'+item.campus.replace(/ /g,'_')+'/view/loaded?'+item.campusid+','+item.id" color="yellow" block>Loaded</v-btn>
-              <v-btn v-else :to="'/cpsu_campus/faculty/'+item.campus.replace(/ /g,'_')+'/view/loaded?'+item.campusid+','+item.id" color="yellow" block>Loaded</v-btn>
-        </td>
-        <td><v-btn
-      color="green" block @click="getQR(['faculty',item.id,item.password])">
-             <v-icon icon="mdi-qrcode" size="x-large"></v-icon>
-      </v-btn></td>
 
-      <td>
-    <Menu :id="item.id"/>
-        </td>
-      </tr>
-    </tbody>
-  </v-table>
-     <v-pagination
-      v-model="page"
-      :length="6"
-      @click="next"
-    ></v-pagination>
+
+  <vue-good-table
+  class="mt-3"
+  compactMode
+      :columns="columns"
+      :rows="rows"
+      :search-options="{
+          enabled: true,
+        }"
+        :pagination-options="{
+          enabled: true,
+          mode: 'records'
+        }"
+      >
+      <template #table-row="props">
+        <span v-if="props.column.field == 'status'">
+
+          <v-icon :color="props.row.status === null?'error':'success'" :icon="props.row.status === null?'mdi-account-cancel-outline':'mdi-account-check-outline'" size="x-large"></v-icon>
+       
+        </span>
+
+        <span v-if="props.column.field == 'load'">
+             <v-btn v-if="campusUsertype === 'Main Administrator Campus'" :to="'/administrator/faculty/'+props.row.campus.replace(/ /g,'_')+'/view/loaded?'+props.row.campusid+','+props.row.id" color="yellow" block>Loaded</v-btn>
+              <v-btn v-else :to="'/cpsu_campus/faculty/'+props.row.campus.replace(/ /g,'_')+'/view/loaded?'+props.row.campusid+','+props.row.id" color="yellow" block>Loaded</v-btn>
+        </span>
+
+         <span v-if="props.column.field == 'qr'">
+           <v-btn
+          color="green" block @click="getQR(['faculty',props.row.id,props.row.password])">
+                 <v-icon icon="mdi-qrcode" size="x-large"></v-icon>
+          </v-btn>
+        </span>
+
+        <span v-if="props.column.field == 'option'">
+          <Menu :id="props.row.id"/>
+        </span>
+
+          
+      </template>
+      </vue-good-table>  
   </div>
 </template>
 
@@ -106,6 +68,40 @@ import Menu from './Menu.vue'
   export default {
     data () {
       return {
+        columns: [
+        {
+          label: 'Faculty ID',
+          field: 'id_number',
+        },
+        {
+          label: 'Fullname',
+          field: 'name',
+        },
+        {
+          label: 'Academic Rank',
+          field: 'academic_rank',
+        },
+        {
+          label: 'Campus',
+          field: 'campus',
+        },
+        {
+          label: 'Status',
+          field: 'status',
+        },
+        {
+          label: 'Subject Load',
+          field: 'load',
+        },
+        {
+          label: 'QR',
+          field: 'qr',
+        },
+        {
+          label: 'Option',
+          field: 'option',
+        },
+      ],
         search: '',
         rows: [],
         rows2: [],
@@ -113,7 +109,6 @@ import Menu from './Menu.vue'
         campusid:'',
         campusUsertype:'',
         count:0,
-        page: 1,
       }
     },
    components:{
@@ -124,9 +119,6 @@ import Menu from './Menu.vue'
       this.mount()
     },
     methods:{
-      next(e){
-        console.log(e.target)
-        },
       searching(){
   
             const objects =this.rows;
@@ -144,6 +136,7 @@ import Menu from './Menu.vue'
             if(this.count < this.search.length){
                 this.count = this.search.length
                 this.rows = mySearch(objects, this.search)
+
               }else{
                this.count = this.search.length-1;
                this.rows = this.rows2
@@ -163,6 +156,7 @@ import Menu from './Menu.vue'
           .then(res=>{
             this.rows = res.data.status
             this.rows2 = res.data.status
+            console.log(res.data.status)
             this.campus = campus
             this.campusid = campusid
             this.campusUsertype = localStorage.getItem("academic_rank");

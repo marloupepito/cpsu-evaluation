@@ -10,62 +10,53 @@
       <v-icon>mdi-arrow-left-bold</v-icon>
     </v-btn>
 
-     <v-table
-    fixed-header
-    height="74vh"
-  >
-    <thead>
-      <tr>
-        <th class="text-left">
-          NAME
-        </th>
-        <th class="text-left">
-          EVALUATEE ID
-        </th>
-         <th class="text-left">
-          COMMITMENT
-        </th>
-         <th class="text-left">
-          KNOWLEDGE OF SUBJECT
-        </th>
-         <th class="text-left">
-          TEACHING FOR INDEPENDENT LEARNING
-        </th>
-         <th class="text-left">
-          MANAGEMENT OF LEARNING
-        </th>
-         <th class="text-left">
-          TOTAL
-        </th>
-      <!--   <th class="text-left">
-          SCHOOL YEAR
-        </th> -->
-        <th class="text-left">
-          SEMESTER
-        </th>
-        <th class="text-left">
-         OPTION
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        v-for="item in rows"
-        :key="item.name"
+   <vue-good-table
+  class="mt-3"
+  compactMode
+      :columns="columns"
+      :rows="rows"
+      :search-options="{
+          enabled: true,
+        }"
+        :pagination-options="{
+          enabled: true,
+          mode: 'records'
+        }"
       >
-      <td>{{ item.name }}</td>
-        <td>{{ item.evaluatee_id }}</td>
-        <td>{{ item.a.length >= 4?item.a.substring(0,4):item.a }}</td>
-        <td>{{ item.b.length >= 4?item.b.substring(0,4):item.b }}</td>
-        <td>{{ item.c.length >= 4?item.c.substring(0,4):item.c}}</td>
-        <td>{{item.d.length >= 4?item.d.substring(0,4):item.d}}</td>
-        <td>{{item.e.length >= 4?item.e.substring(0,4):item.e}}</td>
-        <td>{{item.semester}}</td>
-        <td><v-btn @click="overAll(item.evaluatee_id)" class="text-center" size="small" color="green">Overall Results</v-btn></td>
-      </tr>
-    </tbody>
-  </v-table>
- 
+      <template #table-row="props">
+        <span v-if="props.column.field == 'c'">
+
+          {{ props.row.a.length >= 4?props.row.a.substring(0,4):props.row.a }}
+       
+        </span>
+
+        <span v-if="props.column.field == 'kos'">
+        {{ props.row.b.length >= 4?props.row.b.substring(0,4):props.row.b }}
+        </span>
+
+         <span v-if="props.column.field == 'til'">
+           {{ props.row.c.length >= 4?props.row.c.substring(0,4):props.row.c}}
+        </span>
+
+        <span v-if="props.column.field == 'mol'">
+          {{props.row.d.length >= 4?props.row.d.substring(0,4):props.row.d}}
+        </span>
+
+        <span v-if="props.column.field == 'total'">
+         {{props.row.e.length >= 4?props.row.e.substring(0,4):props.row.e}}
+        </span>
+
+        <span v-if="props.column.field == 'semester'">
+          {{props.row.semester}}
+        </span>
+          
+          <span v-if="props.column.field == 'option'">
+          <v-btn @click="overAll(props.row.evaluatee_id)" class="text-center" size="small" color="green">Overall Results</v-btn>
+        </span>
+
+      </template>
+      </vue-good-table>  
+  
 	</div>
 </template>
 
@@ -74,6 +65,44 @@
 export default {
    data() {
         return {
+          columns: [
+        {
+          label: 'Fullname',
+          field: 'name',
+        },
+        {
+          label: 'EVALUATEE ID',
+          field: 'evaluatee_id',
+        },
+        {
+          label: 'COMMITMENT',
+          field: 'c',
+        },
+        {
+          label: 'KNOWLEDGE OF SUBJECT',
+          field: 'kos',
+        },
+        {
+          label: 'TEACHING FOR INDEPENDENT LEARNING',
+          field: 'til',
+        },
+        {
+          label: 'MANAGEMENT OF LEARNING',
+          field: 'mol',
+        },
+        {
+          label: 'TOTAL',
+          field: 'total',
+        },
+        {
+          label: 'SEMESTER',
+          field: 'semester',
+        },
+        {
+          label: 'OPTION',
+          field: 'option',
+        },
+      ],
           rows:[],
           campusid:'',
           campus:'',

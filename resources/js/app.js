@@ -20,6 +20,11 @@ import 'sweetalert2/dist/sweetalert2.min.css'
  import VueQrcodeReader from "vue3-qrcode-reader";
 
  import VueSignaturePad from 'vue-signature-pad';
+import VueGoodTablePlugin from 'vue-good-table-next';
+
+// import the styles
+import 'vue-good-table-next/dist/vue-good-table-next.css'
+
 
 
 const options = {
@@ -70,6 +75,7 @@ app.use(bottomNavigationVue);
 app.use(VueQrcodeReader)
 app.use(VueSignaturePad);
 
+app.use(VueGoodTablePlugin);
 
 /**
  * The following block of code may be used to automatically register your

@@ -305,13 +305,12 @@ class ResultsController extends Controller
             ->join('student_subject_loading', 'students.password', '=', 'student_subject_loading.unique_id')
             ->first();
 
-                // $result = DB::table('faculty')
-                //  ->where('student_subject_loading.id','=',$request->id)
-                // ->join('student_subject_loading', 'faculty.password', '=', 'student_subject_loading.unique_id')
-                // ->first();
+                $student = Students::where('password','=',$result->unique_id)
+                ->first();
 
                   return response()->json([
                     'status' =>$result,
+                    'student' =>$student
                 ]);
            
 

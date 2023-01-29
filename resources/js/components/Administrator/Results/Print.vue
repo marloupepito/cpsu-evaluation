@@ -607,7 +607,7 @@
 							  <tbody>
 							    <tr>
 							      <th>Name of Evaluator</th>
-							      <td>{{answers.id_number}}</td>
+							      <td>{{e.id_number}}</td>
 							    </tr>
 							    <tr>
 							      <th>Position of Evaluator</th>
@@ -665,6 +665,7 @@ import axios from 'axios'
 		      q18:null,
 		      q19:null,
 		      q20:null,
+		      e:[]
 
 		    }
 		  },
@@ -683,7 +684,7 @@ import axios from 'axios'
                      })
                     .then(res=>{
                         this.answers = res.data.status
-                        console.log(res.data.status)
+                        this.e = res.data.student
                         this.query = Object.values(res.data.status.program2.substring(1).replace(/]/g,"").replace(/"/g,'').split(','))
                        
                     })
