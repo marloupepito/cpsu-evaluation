@@ -52,6 +52,7 @@ const routes =[
 			{ path:'/campus',component:Campuses },
 			{ path:'/campus/visit',component:Visit },
 			{ path:'/campus/:id/scan',component:FacultyScanner },	
+			{ path:'/campus/:id/scan2',component:Scanner },	
 			{ path:'/campus/:id/choose2',component:ChooseFaculty },	
 			{ path:'/campus/:id/choose',component:ChooseStudent },
 			{ path:'/campus/:id/faculty',component:FacultyList },	

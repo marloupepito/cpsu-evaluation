@@ -32,7 +32,7 @@
                                     '/campus/' +
                                     i.campus.replace(/ /g, '_') +
                                     '/' +
-                                    'scan?student,'+i.id
+                                    'scan2?student,'+i.id
                                 "
                             >
                             Student
