@@ -1,11 +1,3 @@
-<!-- <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-12">choose student</div>
-            <div class="col-md-6 col-12">choose student</div>
-        </div>
-    </div>
-</template> -->
 
 <template>
     <div class="container mt-5">

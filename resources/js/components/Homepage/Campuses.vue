@@ -48,7 +48,7 @@
                                     '/campus/' +
                                     i.campus.replace(/ /g, '_') +
                                     '/' +
-                                    'scan?faculty,'+i.id
+                                    'scan?'+i.id
                                 "
                             >
                             Faculty

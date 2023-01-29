@@ -19,6 +19,7 @@ class ScannerController extends Controller
             $request->session()->put('e_type',$request->type);
             return response()->json([
                 'status' => 'success',
+                'type' => $request->type
             ]);
         }else{
             return response()->json([

@@ -587,12 +587,22 @@
 					    </tr>
 					  </tbody>
 				</table>
-                <b>Comment </b>
-                    <p>
-                        {{ answers.comment }}
-                    </p>
+				<table class="table">
+					<tbody>
+							     <tr>
+							    	<td>
+							    		  <b>Comment </b>
+							    		 <p>
+					                        {{ answers.comment }}
+					                    </p>
+							    	</td>
+							    </tr>
+					</tbody>
+				</table>
+              
+                   
              	<div class="row">
-             		<div class="col-md-8">
+             		<div class="col-md-7 col-7">
              			<table class="table">
 							  <tbody>
 							    <tr>
@@ -610,9 +620,9 @@
 							  </tbody>
 							</table>
              		</div>
-             		<div class="col-md-4">
-             			<th>Signature Of Evaluator</th>
-             			<img :src="answers.signature" width="300"/>
+             		<div class="col-md-5 col-5 ">
+             			<center>Signature Of Evaluator</center>
+             			<img :src="answers.signature" style="width:100%"/>
              		</div>
              	</div>
 

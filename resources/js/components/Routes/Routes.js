@@ -4,7 +4,9 @@ import Campuses from '../Homepage/Campuses.vue'
 import Visit from '../Homepage/Visit.vue'
 import Scanner from '../Homepage/Evaluation/Scanner.vue'
 import ChooseStudent from '../Homepage/Evaluation/ChooseStudent.vue'
+import FacultyScanner from '../Homepage/Evaluation/FacultyScanner.vue'
 import EvaluationForm from '../Homepage/Evaluation/Form.vue'
+import EvaluationForm2 from '../Homepage/Evaluation/Form2.vue'
 import FacultyList from '../Homepage/Evaluation/Faculty.vue'
 
 import Administrator from '../Administrator/_Index.vue'
@@ -47,13 +49,13 @@ const routes =[
 		children:[
 			{ path:'/campus',component:Campuses },
 			{ path:'/campus/visit',component:Visit },
-			{ path:'/campus/:id/scan',component:Scanner },	
+			{ path:'/campus/:id/scan',component:FacultyScanner },	
 			{ path:'/campus/:id/choose',component:ChooseStudent },
 			{ path:'/campus/:id/faculty',component:FacultyList },	
 			{ path:'/campus/:id/form',component:EvaluationForm },	
 		]
 	},
-	{ path:'/evaluation/form',component:EvaluationForm },
+	{ path:'/evaluation/form',component:EvaluationForm2 },
 	{ path:'/administrator',component:Administrator,
 		beforeEnter: (to, from, next) => {
             axios.get('/authenticated')

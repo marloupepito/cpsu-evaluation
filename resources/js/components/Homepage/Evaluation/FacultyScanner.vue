@@ -71,7 +71,7 @@ export default {
      axios.post('/qrscanner',credentials)
      .then(res=>{
       this.show = true
-      console.log(res.data.status)
+      console.log(credentials)
         if(res.data.status === 'proceed'){
           this.unpause()
             this.$swal({
