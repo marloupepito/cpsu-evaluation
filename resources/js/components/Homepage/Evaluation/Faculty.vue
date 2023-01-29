@@ -1,5 +1,7 @@
 <template>
     <div class="col-md-6 offset-md-3 mt-5">
+
+                  <b>Please select faculty<small>(ies)</small> who is under your subject within this semester.</b>
         <table class="table table-striped">
             <thead>
                 <tr>

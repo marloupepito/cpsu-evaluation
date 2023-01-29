@@ -4,12 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Students;
+use App\Models\Faculty;
 use App\Models\FacultySubjectLoading;
 use App\Models\StudentSubjectLoading;
 
 class StudentsController extends Controller
 {
     
+
+
+    public function add_faculty_subject_loading(Request $request){
+
+        $date = date('Y');
+        for ($i=0; $i < count($request->data); $i++) { 
+                StudentSubjectLoading::create([
+                'evaluator_id' => $request->data[$i][0],
+                'id_number' => $request->data[$i][3],
+                'unique_id' =>  $request->session()->get('key'),
+                'campus' => $request->data[$i][4],
+                'school_year' => $request->data[$i][2],
+                'campusid' => $request->session()->get('campusid'), 
+                'subject' => 'faculty',
+                'semester' =>$request->session()->get('semester'), 
+                'faculty_name' => $request->data[$i][1],
+                'department' => $request->session()->get('department'),
+                'section' => 'faculty',
+                'sy' => $request->session()->get('sy'),
+                'type' => 'faculty',
+                'year' => $date,
+                ]);
+        }
+        return response()->json([
+            'status' =>$request->data,
+        ]);
+    }
+
+public function get_subject_load_from_teacher2(Request $request){  
+
+
+ $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['department', '=' ,$request->session()->get('department')],])->get();
+        return response()->json([
+            'status' => $users,
+            'console'=>$request->session()->get('campusid')
+        ]);
+
+    }
+
     public function evaluator_session2(Request $request){
         $data=StudentSubjectLoading::where([['program','=',null],['unique_id','=',$request->session()->get('key')]])->first();
         return response()->json([
@@ -18,6 +58,9 @@ class StudentsController extends Controller
         ]);
         $request->session()->put('type','student');
     }
+
+
+
     public function add_student_subject_loading(Request $request){
 
         $date = date('Y');

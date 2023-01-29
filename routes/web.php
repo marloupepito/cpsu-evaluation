@@ -95,7 +95,9 @@ Route::post('/qrscanner2','ScannerController@qrscanner2'); //check
 
 Route::post('/add_student_info','StudentsController@add_student_info'); //check
 Route::post('/get_subject_load_from_teacher','StudentsController@get_subject_load_from_teacher'); 
+Route::post('/get_subject_load_from_teacher2','StudentsController@get_subject_load_from_teacher2'); 
 Route::post('/add_student_subject_loading','StudentsController@add_student_subject_loading'); //check
+Route::post('/add_faculty_subject_loading','StudentsController@add_faculty_subject_loading'); //check
 Route::post('/evaluator_session2','StudentsController@evaluator_session2'); //check
 
 

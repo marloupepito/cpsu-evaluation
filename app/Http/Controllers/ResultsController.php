@@ -201,7 +201,7 @@ class ResultsController extends Controller
         $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Peer'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
+        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','faculty'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id_number]])
         ->get();
         return response()->json([
             'status' => $pdf,

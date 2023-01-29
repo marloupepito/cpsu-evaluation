@@ -38,7 +38,7 @@
                     </div>
                     <div class="card p-2" id="app">
                         Please input your signature here!
-                        <VueSignaturePad width="100%" height="350" ref="signaturePad" />
+                        <VueSignaturePad width="100%" height="40vh" ref="signaturePad" />
                         <div>
                             
                         <button class="btn btn-warning float-right" @click="undo">Undo</button>
@@ -100,7 +100,9 @@ export default {
               this.warn =''
              if(!isEmpty){
                    axios.post('/faculty_add_signature',{
-                    signature:data
+                    signature:data,
+                    department:this.data.department,
+                    campusid:this.data.campusid
                    })
                    .then(res=>{
                         this.loading=false
@@ -108,7 +110,8 @@ export default {
                             const type = query[0]
                             const campus = query[1]
                             const campusid = query[2]
-                        this.$router.push({path:'/evaluation/form',query:{data:[type+','+campus.replace(/ /g,'_')+','+String(campusid)]}})
+                      //  this.$router.push({path:'/evaluation/form',query:{data:[type+','+campus.replace(/ /g,'_')+','+String(campusid)]}})
+                      this.$router.push({path:'/campus/'+campus+'/faculty2'})
                     })
                 }else{
                     this.loading=false

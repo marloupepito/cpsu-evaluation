@@ -25,7 +25,8 @@
       >
       <template #table-row="props">
         <span v-if="props.column.field == 'c'">
-
+        
+          
           {{ props.row.a.length >= 4?props.row.a.substring(0,4):props.row.a }}
        
         </span>

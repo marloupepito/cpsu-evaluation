@@ -25,7 +25,7 @@
               size="small"
               block
               color="green"
-              :href="'/administrator/results/'+i.campus.replace(/ /g,'_')+'/view/print2?'+i.id"
+              :href="'/'+where+'/results/'+i.campus.replace(/ /g,'_')+'/view/print2?'+i.id"
                target="_blank"
               >
               <v-icon dark>
@@ -49,6 +49,8 @@ export default {
 		await axios.post('/get_all_overall2')
 		.then(res=>{
 			this.pdf =res.data.status
+      console.log(res.data.console)
+      this.where = window.location.pathname.split('/')[1]
 		})
 		.catch(err=>{
 
@@ -58,6 +60,7 @@ export default {
 	
 		return{
 			pdf:[],
+      where:''
 			
 		}
 	}

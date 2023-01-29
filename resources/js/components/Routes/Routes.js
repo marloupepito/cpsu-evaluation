@@ -9,6 +9,7 @@ import FacultyScanner from '../Homepage/Evaluation/FacultyScanner.vue'
 import EvaluationForm from '../Homepage/Evaluation/Form.vue'
 import EvaluationForm2 from '../Homepage/Evaluation/Form2.vue'
 import FacultyList from '../Homepage/Evaluation/Faculty.vue'
+import FacultyList2 from '../Homepage/Evaluation/Faculty2.vue'
 
 import Administrator from '../Administrator/_Index.vue'
 import ADashboard from '../Administrator/Dashboard/_Index.vue'
@@ -56,10 +57,12 @@ const routes =[
 			{ path:'/campus/:id/choose2',component:ChooseFaculty },	
 			{ path:'/campus/:id/choose',component:ChooseStudent },
 			{ path:'/campus/:id/faculty',component:FacultyList },	
+			{ path:'/campus/:id/faculty2',component:FacultyList2 },
 			{ path:'/campus/:id/form',component:EvaluationForm },	
+			{ path:'/campus/:id/form2',component:EvaluationForm2 },	
 		]
 	},
-	{ path:'/evaluation/form',component:EvaluationForm2 },
+//	{ path:'/evaluation/form',component:EvaluationForm2 },
 	{ path:'/administrator',component:Administrator,
 		beforeEnter: (to, from, next) => {
             axios.get('/authenticated')
@@ -135,12 +138,14 @@ const routes =[
           	{path:'/cpsu_campus/schedule/:id',component:ATable4},
           	{path:'/cpsu_campus/faculty/campus/view/loading',component:Loading1 },
           	{path:'/cpsu_campus/results/:id/view/overall',component:Overall },
-			  {path:'/cpsu_campus/results/:id/view/print',component:Print }
           ]
 	},
 	
 	{ path:'/administrator/results/:id/view/print',component:Print },
-	{ path:'/administrator/results/:id/view/print2',component:Print2 }
+	{ path:'/administrator/results/:id/view/print2',component:Print2 },
+	
+					  {path:'/cpsu_campus/results/:id/view/print',component:Print },
+					  {path:'/cpsu_campus/results/:id/view/print2',component:Print2 }
 
 
 ]

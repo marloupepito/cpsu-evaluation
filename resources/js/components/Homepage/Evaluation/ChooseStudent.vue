@@ -3,7 +3,6 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                  <!-- <b>Please evaluate faculties under your subject in subject.</b> -->
             </div>
             <div class="col-md-6 offset-md-3">
                 <v-form ref="form" v-model="valid" lazy-validation>
@@ -14,8 +13,6 @@
                         label="Fullname"
                         required
                     ></v-text-field>
-
-                  
 
                     <v-select
                         v-model="course"
@@ -46,7 +43,7 @@
                     </div>
                     <div class="card p-2" id="app">
                         Please input your signature here!
-                        <VueSignaturePad width="100%" height="350" ref="signaturePad" />
+                        <VueSignaturePad width="100%" height="40vh" ref="signaturePad" />
                         <div>
                             
                         <button class="btn btn-warning float-right" @click="undo">Undo</button>
