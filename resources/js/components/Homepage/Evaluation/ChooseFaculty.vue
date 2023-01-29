@@ -38,7 +38,7 @@
                     </div>
                     <div class="card p-2" id="app">
                         Please input your signature here!
-                        <VueSignaturePad width="100%" height="100" ref="signaturePad" />
+                        <VueSignaturePad width="100%" height="250" ref="signaturePad" />
                         <div>
                             
                         <button class="btn btn-warning float-right" @click="undo">Undo</button>
