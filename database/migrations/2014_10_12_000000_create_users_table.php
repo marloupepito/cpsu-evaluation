@@ -64,7 +64,7 @@ class CreateUsersTable extends Migration
         Schema::create('faculty', function (Blueprint $table) {
             $table->id();
             $table->string('id_number')->unique()->nullable();
-            $table->bigInteger('campusid')->nullable();
+            $table->string('campusid')->nullable();
             $table->string('password')->nullable();
             $table->string('campus')->nullable();
             $table->string('photos')->nullable();
@@ -83,8 +83,8 @@ class CreateUsersTable extends Migration
         Schema::create('faculty_subject_loading', function (Blueprint $table) {
             $table->id();
             $table->string('id_number')->nullable();
-            $table->bigInteger('name')->nullable();
-            $table->bigInteger('campusid')->nullable();
+            $table->string('name')->nullable();
+            $table->string('campusid')->nullable();
             $table->string('subject')->nullable();
             $table->string('campus')->nullable();
             $table->string('semester')->nullable();

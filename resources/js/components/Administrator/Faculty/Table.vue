@@ -26,7 +26,6 @@
       ></v-text-field>
   <v-table
     fixed-header
-    height="74vh"
   >
     <thead>
       <tr>
@@ -91,7 +90,11 @@
       </tr>
     </tbody>
   </v-table>
-    
+     <v-pagination
+      v-model="page"
+      :length="6"
+      @click="next"
+    ></v-pagination>
   </div>
 </template>
 
@@ -110,6 +113,7 @@ import Menu from './Menu.vue'
         campusid:'',
         campusUsertype:'',
         count:0,
+        page: 1,
       }
     },
    components:{
@@ -120,6 +124,9 @@ import Menu from './Menu.vue'
       this.mount()
     },
     methods:{
+      next(e){
+        console.log(e.target)
+        },
       searching(){
   
             const objects =this.rows;

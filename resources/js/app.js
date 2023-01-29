@@ -19,7 +19,6 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import 'sweetalert2/dist/sweetalert2.min.css'
  import VueQrcodeReader from "vue3-qrcode-reader";
 
-
  import VueSignaturePad from 'vue-signature-pad';
 
 
@@ -64,7 +63,6 @@ const app = createApp({});
 
 import ExampleComponent from './components/_Index.vue';
 app.component('app-component', ExampleComponent);
-
 app.use(vuetify)
 app.use(VueSweetalert2)
 app.use(router)

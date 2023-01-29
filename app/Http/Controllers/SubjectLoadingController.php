@@ -43,6 +43,8 @@ class SubjectLoadingController extends Controller
 
         $exist = SubjectLoading::where([['sy','=',$sy],['year','=',$request->year],['semester','=',$request->sem],['subject','=',$request->subject],['section','=',$request->section]])->get();
         $user = Faculty::where('id','=',$request->id)->first();
+
+        
         if(count($exist) === 0){
              $loaded = new SubjectLoading;
              $loaded->id_number = $request->id;
