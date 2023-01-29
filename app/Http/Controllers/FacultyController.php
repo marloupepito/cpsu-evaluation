@@ -27,6 +27,27 @@ class FacultyController extends Controller
     }
 
 
+
+ public function faculty_add_signature(Request $request){
+
+        Faculty::where('id',$request->session()->get('evaluatorid'))
+        ->update(['signature' => $request->signature]);
+
+
+        return response()->json([
+            'status' =>'success'
+        ]);
+    }
+
+
+ public function get_every_faculty2(Request $request){
+
+        $users = Faculty::where([['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['id', '=' ,$request->session()->get('evaluatorid')]])->first();
+        return response()->json([
+            'status' => $users
+        ]);
+    }
+
      public function get_every_faculty(Request $request){
          $sy = $request->session()->get('school_year');
          $sem = $request->session()->get('school_sem');

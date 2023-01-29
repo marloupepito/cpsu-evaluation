@@ -49,6 +49,8 @@ Route::post('/get_every_evaluator','EvaluatorController@get_every_evaluator');
 Route::post('/get_faculty','FacultyController@get_faculty');//check
 Route::post('/add_faculty','FacultyController@add_faculty');//check
 Route::post('/get_every_faculty','FacultyController@get_every_faculty');//check
+Route::post('/get_every_faculty2','FacultyController@get_every_faculty2');//check
+Route::post('/faculty_add_signature','FacultyController@faculty_add_signature');//check
 
 Route::post('/evaluator_session','EvaluatorController@evaluator_session');
 Route::post('/add_student','EvaluatorController@add_student');
@@ -71,6 +73,7 @@ Route::post('/get_all_overall3','ResultsController@get_all_overall3'); // check
 Route::post('/get_all_overall4','ResultsController@get_all_overall4'); // check
 Route::post('/counting_data','ResultsController@counting_data');// check
 Route::post('/get_every_result','ResultsController@get_every_result');// check
+Route::post('/get_every_result2','ResultsController@get_every_result2');// check
 
 Route::post('/get_schedule','ScheduleController@get_schedule'); // check
 Route::put('/update_schedule','ScheduleController@update_schedule');// check

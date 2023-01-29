@@ -4,6 +4,7 @@ import Campuses from '../Homepage/Campuses.vue'
 import Visit from '../Homepage/Visit.vue'
 import Scanner from '../Homepage/Evaluation/Scanner.vue'
 import ChooseStudent from '../Homepage/Evaluation/ChooseStudent.vue'
+import ChooseFaculty from '../Homepage/Evaluation/ChooseFaculty.vue'
 import FacultyScanner from '../Homepage/Evaluation/FacultyScanner.vue'
 import EvaluationForm from '../Homepage/Evaluation/Form.vue'
 import EvaluationForm2 from '../Homepage/Evaluation/Form2.vue'
@@ -24,6 +25,7 @@ import AResults from '../Administrator/Results/_Index.vue'
 import ATable3 from '../Administrator/Results/Table.vue'
 import Overall from '../Administrator/Results/Overall.vue'
 import Print from '../Administrator/Results/Print.vue'
+import Print2 from '../Administrator/Results/Print2.vue'
 import AQuestionaire from '../Administrator/Questionaire/_Index.vue'
 
 import ATable4 from '../Administrator/Schedule/Calendar.vue'
@@ -50,6 +52,7 @@ const routes =[
 			{ path:'/campus',component:Campuses },
 			{ path:'/campus/visit',component:Visit },
 			{ path:'/campus/:id/scan',component:FacultyScanner },	
+			{ path:'/campus/:id/choose2',component:ChooseFaculty },	
 			{ path:'/campus/:id/choose',component:ChooseStudent },
 			{ path:'/campus/:id/faculty',component:FacultyList },	
 			{ path:'/campus/:id/form',component:EvaluationForm },	
@@ -135,7 +138,9 @@ const routes =[
           ]
 	},
 	
-	{ path:'/administrator/results/:id/view/print',component:Print }
+	{ path:'/administrator/results/:id/view/print',component:Print },
+	{ path:'/administrator/results/:id/view/print2',component:Print2 }
+
 
 ]
 export default routes;

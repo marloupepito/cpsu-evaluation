@@ -22,5 +22,6 @@ class Faculty extends Model
 	    'year',
         'semester',
         'sy',
+        'signature',
     ];
 }

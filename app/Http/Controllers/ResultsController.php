@@ -277,6 +277,27 @@ class ResultsController extends Controller
             ]);
     }
 
+     public function get_every_result2(Request $request){
+
+            $result = DB::table('faculty')
+             ->where('student_subject_loading.id','=',$request->id)
+            ->join('student_subject_loading', 'faculty.id', '=', 'student_subject_loading.id_number')
+            ->select('student_subject_loading.evaluator_id','student_subject_loading.semester','student_subject_loading.faculty_name',
+                'student_subject_loading.academic_rank','student_subject_loading.program2','student_subject_loading.type')
+            ->first();
+
+
+            $evaluator=Faculty::where('id',$result->evaluator_id)->first();
+
+                 return response()->json([
+                    'status' =>$result,
+                    'evaluator' =>$evaluator,
+                ]);
+           
+
+       
+    }
+
     public function get_every_result(Request $request){
 
             $result = DB::table('students')
@@ -284,10 +305,17 @@ class ResultsController extends Controller
             ->join('student_subject_loading', 'students.password', '=', 'student_subject_loading.unique_id')
             ->first();
 
+                // $result = DB::table('faculty')
+                //  ->where('student_subject_loading.id','=',$request->id)
+                // ->join('student_subject_loading', 'faculty.password', '=', 'student_subject_loading.unique_id')
+                // ->first();
 
-        return response()->json([
-            'status' =>$result,
-        ]);
+                  return response()->json([
+                    'status' =>$result,
+                ]);
+           
+
+       
     }
      public function counting_data(Request $request){
 

@@ -75,6 +75,7 @@ class CreateUsersTable extends Migration
             $table->string('year')->nullable();
             $table->string('semester')->nullable();
             $table->string('sy')->nullable();
+            $table->longText('signature')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

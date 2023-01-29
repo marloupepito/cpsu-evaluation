@@ -80,7 +80,7 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
-          this.$router.push({path:'/evaluation/form',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
+          this.$router.push({path:'/campus/'+this.campus.replace(/ /g,'_')+'/choose2',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
         }else if(res.data.status === 'continue'){
           this.unpause()
             this.$swal({
@@ -90,7 +90,7 @@ export default {
             timer: 1500
           })
           
-          this.$router.push({path:'/evaluation/form',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
+          this.$router.push({path:'/campus/'+this.campus.replace(/ /g,'_')+'/choose2',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
         }else if(res.data.status === 'done'){
           this.unpause()
               this.$swal({
