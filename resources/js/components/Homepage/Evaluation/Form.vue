@@ -1364,6 +1364,7 @@ export default {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    console.log(res.data.status)
                     this.mount();
                     this.comment = "";
                     this.disable = false;
@@ -1382,13 +1383,13 @@ export default {
 
                      axios.post('/evaluator_session2')
 				     .then(res=>{
-                        console.log(res.data.status)
 						if(res.data.status !== 'done'){
                             this.id = res.data.status.id
 							this.evaluateeName = res.data.status.faculty_name
 							 this.loaded = res.data.status.subject
 							this.semester =res.data.status.semester
                              this.evaluator =res.data.evaluator
+                             this.facultyValue = res.data.status.id_number
 						}else{
 							this.$router.push({path:'/'})
 						}
@@ -1396,7 +1397,7 @@ export default {
 				     })
 				     .catch(error=>{
 						console.log(error)
-						this.$router.push({path:'/'})
+				    	this.$router.push({path:'/'})
 				      })
         },
     },

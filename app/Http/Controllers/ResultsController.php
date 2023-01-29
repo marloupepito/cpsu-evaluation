@@ -8,6 +8,7 @@ use App\Models\Evaluator;
 use App\Models\Schedule;
 use App\Models\User;
 use App\Models\Faculty;
+use App\Models\Students;
 use App\Models\StudentSubjectLoading;
 use Illuminate\Support\Facades\DB;
 class ResultsController extends Controller
@@ -19,12 +20,11 @@ class ResultsController extends Controller
         
 
 
-
         if($request->session()->get('type')=== 'student'){
             
             StudentSubjectLoading::where('id', $request->id)
             ->update(['program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
-            
+           
             
                 $user = new Results;
                 $user->evaluatee_id = $request->evaluatee;
@@ -49,7 +49,7 @@ class ResultsController extends Controller
 
         }else{
 
-             Faculty::where([['sy','=', $request->session()->get('e_sy')],['semester','=', $request->session()->get('e_sem')],['campusid','=', $request->session()->get('e_campusid')],['name','=', $request->evaluator]])
+             Faculty::where('id','=', $request->evaluatee)
                 ->update(['status' => 'active']);
       
                 StudentSubjectLoading::where('id', $request->id)
@@ -77,9 +77,8 @@ class ResultsController extends Controller
 
         } 
 
-        $zz= Faculty::where([['sy','=', $request->session()->get('e_sy')],['semester','=', $request->session()->get('e_sem')],['campusid','=', $request->session()->get('e_campusid')],['name','=', $request->evaluator]])->first();
-
-        if($user){
+     
+      
         $ccs = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Computer Study']])->get()->sum('total');
 
          $cte = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Teachers Education']])->get()->sum('total');
@@ -89,6 +88,7 @@ class ResultsController extends Controller
 
          $ccje = Results::where([['evaluatee_id','=',$request->evaluatee],['department','=','College of Criminal Justice Education']])->get()->sum('total');
 
+ 
         $a = Results::where('evaluatee_id','=',$request->evaluatee)->get()->sum('commitment');
         $b = Results::where('evaluatee_id','=',$request->evaluatee)->get()->sum('kos');
         $c = Results::where('evaluatee_id','=',$request->evaluatee)->get()->sum('til');
@@ -127,11 +127,8 @@ class ResultsController extends Controller
                 'x2' => $ccje,
                 'x3' => $ccs
             ]);
-        }else{
-            return response()->json([
-                'status' => 'error'
-            ]);
-        }
+       
+        
     }
 
     public function verify_evaluate(Request $request){
@@ -191,7 +188,7 @@ class ResultsController extends Controller
     public function get_all_overall1(Request $request){
         $sy = $request->session()->get('school_year');
         $sem = $request->session()->get('school_sem');
-        $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
+        $faculty=Faculty::where('id','=',$request->session()->get('evaluateeid'))->first();
 
         $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Student'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
         ->get();
@@ -282,8 +279,11 @@ class ResultsController extends Controller
 
     public function get_every_result(Request $request){
 
-         $result =  StudentSubjectLoading::where('id','=',$request->id)
+            $result = DB::table('students')
+             ->where('student_subject_loading.id','=',$request->id)
+            ->join('student_subject_loading', 'students.password', '=', 'student_subject_loading.unique_id')
             ->first();
+
 
         return response()->json([
             'status' =>$result,

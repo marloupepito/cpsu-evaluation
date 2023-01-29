@@ -17,7 +17,7 @@
                         prepend-icon="mdi-plus"
                         color="success"
                         size="x-small"
-                        @click="checkData(i.id+','+i.name+','+i.subject+','+i.department)"
+                        @click="checkData(i.id+','+i.name+','+i.subject+','+i.department+','+i.id_number)"
                         >Add</v-btn>
                     </td>
                 </tr>

@@ -23,7 +23,8 @@ class StudentsController extends Controller
         $date = date('Y');
         for ($i=0; $i < count($request->data); $i++) { 
                 StudentSubjectLoading::create([
-                'id_number' => $request->data[$i][0],//
+                'evaluator_id' => $request->data[$i][0],//
+                'id_number' => $request->data[$i][4],//
                 'unique_id' =>  $request->session()->get('key'),//
                 'campus' => $request->session()->get('e_campus'),//
                 'school_year' => $request->session()->get('e_year'),//

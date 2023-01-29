@@ -5,7 +5,7 @@
             <b>The QCE of the NBC No. 461</b><br />
             <b>Instrument for Instruction/Teaching Effectiveness</b><br /><br />
         </center>
-        <div class="row p-3">
+        <div class="row ">
             <div class="col-lg-6 col-6 font-weight-bold">
                 <div class="row">
                     <div class="col-md-4 col-4 pr-0">
@@ -57,7 +57,8 @@
                     </div>
                     <div class="col-md-8 col-8">
                         <div>
-                            {{answers.academic_rank}}
+                        	Faculty
+                            <!-- {{answers.academic_rank}} -->
                         <v-divider class="m-0 p-2"></v-divider>
                         </div>
                     </div>
@@ -160,94 +161,94 @@
 					    <tr>
 					     <td>{{question.q1}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox" :checked="query[0] === '5'?true:false" name="q1" v-model="q1" value="5" required/>
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[0] === '5'?false:true"  :checked="query[0] === '5'?true:false"  name="q1" v-model="q1" value="5" required/>
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox" :checked="query[0] === '4'?true:false"  name="q1" v-model="q1" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[0] === '4'?false:true"  :checked="query[0] === '4'?true:false"   name="q1" v-model="q1" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox" :checked="query[0] === '3'?true:false"  name="q1" v-model="q1" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[0] === '3'?false:true"  :checked="query[0] === '3'?true:false"   name="q1" v-model="q1" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox" :checked="query[0] === '2'?true:false"  name="q1" v-model="q1" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[0] === '2'?false:true"  :checked="query[0] === '2'?true:false"   name="q1" v-model="q1" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox" :checked="query[0] === '1'?true:false"  name="q1" v-model="q1" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[0] === '1'?false:true"  :checked="query[0] === '1'?true:false"   name="q1" v-model="q1" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q2}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[1] === '5'?true:false" v-model="q2" name="q2" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[1] === '5'?false:true"  :checked="query[1] === '5'?true:false"  v-model="q2" name="q2" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[1] === '4'?true:false" name="q2" v-model="q2" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[1] === '4'?false:true"  :checked="query[1] === '4'?true:false"  name="q2" v-model="q2" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[1] === '3'?true:false" name="q2" v-model="q2" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[1] === '3'?false:true"  :checked="query[1] === '3'?true:false"  name="q2" v-model="q2" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[1] === '2'?true:false" name="q2" v-model="q2" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[1] === '2'?false:true"  :checked="query[1] === '2'?true:false"  name="q2" v-model="q2" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[1] === '1'?true:false" name="q2" v-model="q2" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[1] === '1'?false:true"  :checked="query[1] === '1'?true:false"  name="q2" v-model="q2" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q3}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[2] === '5'?true:false" name="q3" v-model="q3" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[2] === '5'?false:true"  :checked="query[2] === '5'?true:false"  name="q3" v-model="q3" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[2] === '4'?true:false" name="q3" v-model="q3" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[2] === '4'?false:true"  :checked="query[2] === '4'?true:false"  name="q3" v-model="q3" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[2] === '3'?true:false" name="q3" v-model="q3" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[2] === '3'?false:true"  :checked="query[2] === '3'?true:false"  name="q3" v-model="q3" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[2] === '2'?true:false" name="q3" v-model="q3" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[2] === '2'?false:true"  :checked="query[2] === '2'?true:false"  name="q3" v-model="q3" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[2] === '1'?true:false" name="q3" v-model="q3" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[2] === '1'?false:true"  :checked="query[2] === '1'?true:false"  name="q3" v-model="q3" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q4}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[3] === '5'?true:false" name="q4" v-model="q4" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[3] === '5'?false:true"  :checked="query[3] === '5'?true:false"  name="q4" v-model="q4" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[3] === '4'?true:false" name="q4" v-model="q4" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[3] === '4'?false:true"  :checked="query[3] === '4'?true:false"  name="q4" v-model="q4" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[3] === '3'?true:false" name="q4" v-model="q4" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[3] === '3'?false:true"  :checked="query[3] === '3'?true:false"  name="q4" v-model="q4" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[3] === '2'?true:false" name="q4" v-model="q4" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[3] === '2'?false:true"  :checked="query[3] === '2'?true:false"  name="q4" v-model="q4" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[3] === '1'?true:false" name="q4" v-model="q4" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[3] === '1'?false:true"  :checked="query[3] === '1'?true:false"  name="q4" v-model="q4" value="1" required />
 					     </td>
 					    </tr>
 					    <tr>
 					     <td>{{question.q5}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[4] === '5'?true:false" name="q5" v-model="q5" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[4] === '5'?false:true"  :checked="query[4] === '5'?true:false"  name="q5" v-model="q5" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[4] === '4'?true:false" name="q5" v-model="q5" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[4] === '4'?false:true"  :checked="query[4] === '4'?true:false"  name="q5" v-model="q5" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[4] === '3'?true:false" name="q5" v-model="q5" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[4] === '3'?false:true"  :checked="query[4] === '3'?true:false"  name="q5" v-model="q5" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[4] === '2'?true:false" name="q5" v-model="q5" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[4] === '2'?false:true"  :checked="query[4] === '2'?true:false"  name="q5" v-model="q5" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[4] === '1'?true:false" name="q5" v-model="q5" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[4] === '1'?false:true"  :checked="query[4] === '1'?true:false"  name="q5" v-model="q5" value="1" required />
 					     </td>
 					    </tr>
 					  </tbody>
@@ -272,94 +273,94 @@
 					    <tr>
 					     <td>{{question.q6}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[5] === '5'?true:false" name="q6" v-model="q6" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[5] === '5'?false:true"  :checked="query[5] === '5'?true:false"  name="q6" v-model="q6" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[5] === '4'?true:false" name="q6" v-model="q6" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[5] === '4'?false:true"  :checked="query[5] === '4'?true:false"  name="q6" v-model="q6" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[5] === '3'?true:false" name="q6" v-model="q6" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[5] === '3'?false:true"  :checked="query[5] === '3'?true:false"  name="q6" v-model="q6" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[5] === '2'?true:false" name="q6" v-model="q6" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[5] === '2'?false:true"  :checked="query[5] === '2'?true:false"  name="q6" v-model="q6" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[5] === '1'?true:false" name="q6" v-model="q6" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[5] === '1'?false:true"  :checked="query[5] === '1'?true:false"  name="q6" v-model="q6" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q7}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[6] === '5'?true:false" v-model="q7" name="q7" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[6] === '5'?false:true"  :checked="query[6] === '5'?true:false"  v-model="q7" name="q7" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[6] === '4'?true:false" name="q7" v-model="q7" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[6] === '4'?false:true"  :checked="query[6] === '4'?true:false"  name="q7" v-model="q7" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[6] === '3'?true:false" name="q7" v-model="q7" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[6] === '3'?false:true"  :checked="query[6] === '3'?true:false"  name="q7" v-model="q7" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[6] === '2'?true:false" name="q7" v-model="q7" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[6] === '2'?false:true"  :checked="query[6] === '2'?true:false"  name="q7" v-model="q7" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[6] === '1'?true:false" name="q7" v-model="q7" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[6] === '1'?false:true"  :checked="query[6] === '1'?true:false"  name="q7" v-model="q7" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q8}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[7] === '5'?true:false" name="q8" v-model="q8" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[7] === '5'?false:true"  :checked="query[7] === '5'?true:false"  name="q8" v-model="q8" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[7] === '4'?true:false" name="q8" v-model="q8" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[7] === '4'?false:true"  :checked="query[7] === '4'?true:false"  name="q8" v-model="q8" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[7] === '3'?true:false" name="q8" v-model="q8" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[7] === '3'?false:true"  :checked="query[7] === '3'?true:false"  name="q8" v-model="q8" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[7] === '2'?true:false" name="q8" v-model="q8" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[7] === '2'?false:true"  :checked="query[7] === '2'?true:false"  name="q8" v-model="q8" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[7] === '1'?true:false" name="q8" v-model="q8" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[7] === '1'?false:true"  :checked="query[7] === '1'?true:false"  name="q8" v-model="q8" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q9}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[8] === '5'?true:false" name="q9" v-model="q9" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[8] === '5'?false:true"  :checked="query[8] === '5'?true:false"  name="q9" v-model="q9" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[8] === '4'?true:false" name="q9" v-model="q9" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[8] === '4'?false:true"  :checked="query[8] === '4'?true:false"  name="q9" v-model="q9" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[8] === '3'?true:false" name="q9" v-model="q9" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[8] === '3'?false:true"  :checked="query[8] === '3'?true:false"  name="q9" v-model="q9" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[8] === '2'?true:false" name="q9" v-model="q9" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[8] === '2'?false:true"  :checked="query[8] === '2'?true:false"  name="q9" v-model="q9" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[8] === '1'?true:false" name="q9" v-model="q9" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[8] === '1'?false:true"  :checked="query[8] === '1'?true:false"  name="q9" v-model="q9" value="1" required />
 					     </td>
 					    </tr>
 					    <tr>
 					     <td>{{question.q10}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[9] === '5'?true:false" name="q10" v-model="q10" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[9] === '5'?false:true"  :checked="query[9] === '5'?true:false"  name="q10" v-model="q10" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[9] === '4'?true:false" name="q10" v-model="q10" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[9] === '4'?false:true"  :checked="query[9] === '4'?true:false"  name="q10" v-model="q10" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[9] === '3'?true:false" name="q10" v-model="q10" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[9] === '3'?false:true"  :checked="query[9] === '3'?true:false"  name="q10" v-model="q10" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[9] === '2'?true:false" name="q10" v-model="q10" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[9] === '2'?false:true"  :checked="query[9] === '2'?true:false"  name="q10" v-model="q10" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[9] === '1'?true:false" name="q10" v-model="q10" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[9] === '1'?false:true"  :checked="query[9] === '1'?true:false"  name="q10" v-model="q10" value="1" required />
 					     </td>
 					    </tr>
 					  </tbody>
@@ -383,94 +384,94 @@
 					    <tr>
 					     <td>{{question.q11}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[10] === '5'?true:false" name="q11" v-model="q11" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[10] === '5'?false:true"  :checked="query[10] === '5'?true:false " name="q11" v-model="q11" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[10] === '4'?true:false" name="q11" v-model="q11" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[10] === '4'?false:true"  :checked="query[10] === '4'?true:false " name="q11" v-model="q11" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[10] === '3'?true:false" name="q11" v-model="q11" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[10] === '3'?false:true"  :checked="query[10] === '3'?true:false " name="q11" v-model="q11" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[10] === '2'?true:false" name="q11" v-model="q11" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[10] === '2'?false:true"  :checked="query[10] === '2'?true:false " name="q11" v-model="q11" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[10] === '1'?true:false" name="q11" v-model="q11" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[10] === '1'?false:true"  :checked="query[10] === '1'?true:false " name="q11" v-model="q11" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q12}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[11] === '5'?true:false" v-model="q12" name="q12" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[11] === '5'?false:true"  :checked="query[11] === '5'?true:false " v-model="q12" name="q12" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[11] === '4'?true:false" name="q12" v-model="q12" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[11] === '4'?false:true"  :checked="query[11] === '4'?true:false " name="q12" v-model="q12" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[11] === '3'?true:false" name="q12" v-model="q12" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[11] === '3'?false:true"  :checked="query[11] === '3'?true:false " name="q12" v-model="q12" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[11] === '2'?true:false" name="q12" v-model="q12" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[11] === '2'?false:true"  :checked="query[11] === '2'?true:false " name="q12" v-model="q12" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[11] === '1'?true:false" name="q12" v-model="q12" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[11] === '1'?false:true"  :checked="query[11] === '1'?true:false " name="q12" v-model="q12" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q13}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[12] === '5'?true:false" name="q13" v-model="q13" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[12] === '5'?false:true"  :checked="query[12] === '5'?true:false " name="q13" v-model="q13" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[12] === '4'?true:false" name="q13" v-model="q13" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[12] === '4'?false:true"  :checked="query[12] === '4'?true:false " name="q13" v-model="q13" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[12] === '3'?true:false" name="q13" v-model="q13" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[12] === '3'?false:true"  :checked="query[12] === '3'?true:false " name="q13" v-model="q13" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[12] === '2'?true:false" name="q13" v-model="q13" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[12] === '2'?false:true"  :checked="query[12] === '2'?true:false " name="q13" v-model="q13" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[12] === '1'?true:false" name="q13" v-model="q13" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[12] === '1'?false:true"  :checked="query[12] === '1'?true:false " name="q13" v-model="q13" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q14}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[13] === '5'?true:false" name="q14" v-model="q14" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[13] === '5'?false:true"  :checked="query[13] === '5'?true:false " name="q14" v-model="q14" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[13] === '4'?true:false" name="q14" v-model="q14" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[13] === '4'?false:true"  :checked="query[13] === '4'?true:false " name="q14" v-model="q14" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[13] === '3'?true:false" name="q14" v-model="q14" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[13] === '3'?false:true"  :checked="query[13] === '3'?true:false " name="q14" v-model="q14" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[13] === '2'?true:false" name="q14" v-model="q14" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[13] === '2'?false:true"  :checked="query[13] === '2'?true:false " name="q14" v-model="q14" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[13] === '1'?true:false" name="q14" v-model="q14" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[13] === '1'?false:true"  :checked="query[13] === '1'?true:false " name="q14" v-model="q14" value="1" required />
 					     </td>
 					    </tr>
 					    <tr>
 					     <td>{{question.q15}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[14] === '5'?true:false" name="q15" v-model="q15" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[14] === '5'?false:true"  :checked="query[14] === '5'?true:false " name="q15" v-model="q15" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[14] === '4'?true:false" name="q15" v-model="q15" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[14] === '4'?false:true"  :checked="query[14] === '4'?true:false " name="q15" v-model="q15" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[14] === '3'?true:false" name="q15" v-model="q15" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[14] === '3'?false:true"  :checked="query[14] === '3'?true:false " name="q15" v-model="q15" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[14] === '2'?true:false" name="q15" v-model="q15" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[14] === '2'?false:true"  :checked="query[14] === '2'?true:false " name="q15" v-model="q15" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[14] === '1'?true:false" name="q15" v-model="q15" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[14] === '1'?false:true"  :checked="query[14] === '1'?true:false " name="q15" v-model="q15" value="1" required />
 					     </td>
 					    </tr>
 					  </tbody>
@@ -494,94 +495,94 @@
 					    <tr>
 					     <td>{{question.q16}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[15] === '5'?true:false" name="q16" v-model="q16" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[15] === '5'?false:true"  :checked="query[15] === '5'?true:false " name="q16" v-model="q16" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[15] === '4'?true:false" name="q16" v-model="q16" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[15] === '4'?false:true"  :checked="query[15] === '4'?true:false " name="q16" v-model="q16" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[15] === '3'?true:false" name="q16" v-model="q16" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[15] === '3'?false:true"  :checked="query[15] === '3'?true:false " name="q16" v-model="q16" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[15] === '2'?true:false" name="q16" v-model="q16" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[15] === '2'?false:true"  :checked="query[15] === '2'?true:false " name="q16" v-model="q16" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[15] === '1'?true:false" name="q16" v-model="q16" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[15] === '1'?false:true"  :checked="query[15] === '1'?true:false " name="q16" v-model="q16" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q17}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[16] === '5'?true:false" v-model="q17" name="q17" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[16] === '5'?false:true"  :checked="query[16] === '5'?true:false " v-model="q17" name="q17" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[16] === '4'?true:false" name="q17" v-model="q17" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[16] === '4'?false:true"  :checked="query[16] === '4'?true:false " name="q17" v-model="q17" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[16] === '3'?true:false" name="q17" v-model="q17" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[16] === '3'?false:true"  :checked="query[16] === '3'?true:false " name="q17" v-model="q17" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[16] === '2'?true:false" name="q17" v-model="q17" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[16] === '2'?false:true"  :checked="query[16] === '2'?true:false " name="q17" v-model="q17" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[16] === '1'?true:false" name="q17" v-model="q17" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[16] === '1'?false:true"  :checked="query[16] === '1'?true:false " name="q17" v-model="q17" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q18}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[17] === '5'?true:false" name="q18" v-model="q18" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[17] === '5'?false:true"  :checked="query[17] === '5'?true:false " name="q18" v-model="q18" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[17] === '4'?true:false" name="q18" v-model="q18" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[17] === '4'?false:true"  :checked="query[17] === '4'?true:false " name="q18" v-model="q18" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[17] === '3'?true:false" name="q18" v-model="q18" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[17] === '3'?false:true"  :checked="query[17] === '3'?true:false " name="q18" v-model="q18" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[17] === '2'?true:false" name="q18" v-model="q18" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[17] === '2'?false:true"  :checked="query[17] === '2'?true:false " name="q18" v-model="q18" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[17] === '1'?true:false" name="q18" v-model="q18" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[17] === '1'?false:true"  :checked="query[17] === '1'?true:false " name="q18" v-model="q18" value="1" required />
 					     </td>
 					    </tr>
 
 					    <tr>
 					     <td>{{question.q19}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[18] === '5'?true:false" name="q19" v-model="q19" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[18] === '5'?false:true"  :checked="query[18] === '5'?true:false " name="q19" v-model="q19" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[18] === '4'?true:false" name="q19" v-model="q19" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[18] === '4'?false:true"  :checked="query[18] === '4'?true:false " name="q19" v-model="q19" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[18] === '3'?true:false" name="q19" v-model="q19" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[18] === '3'?false:true"  :checked="query[18] === '3'?true:false " name="q19" v-model="q19" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[18] === '2'?true:false" name="q19" v-model="q19" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[18] === '2'?false:true"  :checked="query[18] === '2'?true:false " name="q19" v-model="q19" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[18] === '1'?true:false" name="q19" v-model="q19" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[18] === '1'?false:true"  :checked="query[18] === '1'?true:false " name="q19" v-model="q19" value="1" required />
 					     </td>
 					    </tr>
 					    <tr>
 					     <td>{{question.q20}}</td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[19] === '5'?true:false" name="q20" v-model="q20" value="5" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[19] === '5'?false:true"  :checked="query[19] === '5'?true:false " name="q20" v-model="q20" value="5" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[19] === '4'?true:false" name="q20" v-model="q20" value="4" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[19] === '4'?false:true"  :checked="query[19] === '4'?true:false " name="q20" v-model="q20" value="4" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[19] === '3'?true:false" name="q20" v-model="q20" value="3" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[19] === '3'?false:true"  :checked="query[19] === '3'?true:false " name="q20" v-model="q20" value="3" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[19] === '2'?true:false" name="q20" v-model="q20" value="2" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[19] === '2'?false:true"  :checked="query[19] === '2'?true:false " name="q20" v-model="q20" value="2" required />
 					     </td>
 					     <td class="align-middle text-center">
-					     	<input class="form-check-input" type="checkbox"  :checked="query[19] === '1'?true:false" name="q20" v-model="q20" value="1" required />
+					     	<input class="form-check-input" type="checkbox"  :disabled="query[19] === '1'?false:true"  :checked="query[19] === '1'?true:false " name="q20" v-model="q20" value="1" required />
 					     </td>
 					    </tr>
 					  </tbody>
@@ -590,7 +591,30 @@
                     <p>
                         {{ answers.comment }}
                     </p>
-             
+             	<div class="row">
+             		<div class="col-md-8">
+             			<table class="table">
+							  <tbody>
+							    <tr>
+							      <th>Name of Evaluator</th>
+							      <td>{{answers.id_number}}</td>
+							    </tr>
+							    <tr>
+							      <th>Position of Evaluator</th>
+							      <td>{{answers.type}}</td>
+							    </tr>
+							     <tr>
+							      <th>Date</th>
+							      <td>{{answers.updated_at}}</td>
+							    </tr>
+							  </tbody>
+							</table>
+             		</div>
+             		<div class="col-md-4">
+             			<th>Signature Of Evaluator</th>
+             			<img :src="answers.signature" width="300"/>
+             		</div>
+             	</div>
 
 
                 </form>
