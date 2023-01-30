@@ -79,7 +79,7 @@ export default {
             })
             .then(res=>{
                 this.loading=false
-               this.$router.push({path:'/campus/'+window.location.pathname.split('/')[2]+'/form2'})
+            this.$router.push({path:'/campus/'+window.location.pathname.split('/')[2]+'/form2'})
             })
         },
         deleteSubject(id){

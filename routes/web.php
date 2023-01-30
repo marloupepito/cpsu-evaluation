@@ -91,6 +91,7 @@ Route::post('/get_student_subject_loading','SubjectLoadingController@get_student
 
 
 Route::post('/qrscanner','ScannerController@qrscanner'); //check
+Route::post('/qrscanner1','ScannerController@qrscanner1');
 Route::post('/qrscanner2','ScannerController@qrscanner2'); //check
 
 Route::post('/add_student_info','StudentsController@add_student_info'); //check

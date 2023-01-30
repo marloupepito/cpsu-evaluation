@@ -119,6 +119,7 @@ export default {
       status:'all'
     })
     .then(res=>{
+          console.log(res.data.status)
       this.rows = Object.values(res.data.status)
       this.campusUsertype = localStorage.getItem("academic_rank");
     })
@@ -131,7 +132,7 @@ export default {
         campus:this.campus,
         })
       .then(res=>{
-    
+
             if(this.campusUsertype === 'Main Administrator Campus'){
               this.$router.push({path:'/administrator/results/'+this.campus.replace(/ /g,'_')+'/view/overall'})
             }else{

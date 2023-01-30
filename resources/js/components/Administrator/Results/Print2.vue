@@ -615,7 +615,7 @@
 							    </tr>
 							     <tr>
 							      <th>Date</th>
-							      <td>{{data2.updated_at}}</td>
+							      <td>{{datee}}</td>
 							    </tr>
 							  </tbody>
 							</table>
@@ -636,11 +636,12 @@
 
 <script>
 import axios from 'axios'
-
+import moment from 'moment'
 	export default {
 
 		data () {
 		    return {
+		    	datee:'',
                 answers:[],
               question:[],
               faculty:[],
@@ -685,9 +686,11 @@ import axios from 'axios'
                     .then(res=>{
                         this.answers = res.data.status
                         this.data2 = res.data.evaluator
-                        console.log(res.data.evaluator)
+                        console.log('bb',res.data.status)
+                        
+                        console.log('sss',res.data.evaluator)
                         this.query = Object.values(res.data.status.program2.substring(1).replace(/]/g,"").replace(/"/g,'').split(','))
-                       
+                       this.datee = moment(new Date( res.data.evaluator.updated_at)).format('LL')
                     })
                     .catch(err=>{
 

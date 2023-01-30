@@ -68,10 +68,9 @@ export default {
         campusid:this.campusid,
       }
      this.verify = false
-     axios.post('/qrscanner',credentials)
+     axios.post('/qrscanner1',credentials)
      .then(res=>{
       this.show = true
-      console.log(credentials)
         if(res.data.status === 'proceed'){
           this.unpause()
             this.$swal({
@@ -81,32 +80,7 @@ export default {
             timer: 1500
           })
           this.$router.push({path:'/campus/'+this.campus.replace(/ /g,'_')+'/choose2',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
-        }else if(res.data.status === 'continue'){
-          this.unpause()
-            this.$swal({
-            icon: 'success',
-            title: 'Continue!',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          
-          this.$router.push({path:'/campus/'+this.campus.replace(/ /g,'_')+'/choose2',query:{data:[this.type+','+this.campus.replace(/ /g,'_')+','+String(this.campusid)]}})
-        }else if(res.data.status === 'done'){
-          this.unpause()
-              this.$swal({
-              icon: 'warning',
-              title: 'Evaluation Done!',
-              showConfirmButton: false,
-              timer: 1500
-            })
-        }else if(res.data.status === 'No Subject Found!'){
-          this.unpause()
-            this.$swal({
-            icon: 'error',
-            title: res.data.status,
-            showConfirmButton: false,
-            timer: 1500
-          })
+        
         }else{
           this.unpause()
             this.$swal({

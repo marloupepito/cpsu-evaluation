@@ -1389,7 +1389,9 @@ export default {
 							 this.loaded = res.data.status.subject
 							this.semester =res.data.status.semester
                              this.evaluator =res.data.evaluator
+                             console.log(res.data.evaluator)
                              this.facultyValue = res.data.status.id_number
+                             console.log(res.data.status.id_number)
 						}else{
 							this.$router.push({path:'/'})
 						}

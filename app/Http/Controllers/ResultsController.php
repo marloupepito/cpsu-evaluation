@@ -62,15 +62,15 @@ class ResultsController extends Controller
                 $user->commitment = $request->commitment;
                 $user->kos = $request->kos;
                 $user->name = $request->name;
-                $user->campus = $request->session()->get('e_campus');
+                $user->campus = $request->session()->get('campus');;
                 $user->school_year = date('Y');
-                $user->campusid = $request->session()->get('e_campusid');
+                $user->campusid = $request->session()->get('campusid');;
                 $user->til = $request->til;
                 $user->mol = $request->mol;
                 $user->total = $total;
                 $user->comment = $request->comment;
-                $user->semester = $request->session()->get('e_sem');
-                $user->sy = $request->session()->get('e_sy');
+                $user->semester = $request->session()->get('school_sem');
+                $user->sy = $request->session()->get('school_year');
                 $user->department = $request->session()->get('e_course');
                 $user->academic_rank = 'faculty';
                 $user->save();
@@ -199,12 +199,13 @@ class ResultsController extends Controller
     public function get_all_overall2(Request $request){
         $sy = $request->session()->get('school_year');
         $sem = $request->session()->get('school_sem');
-        $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
+        $faculty=Faculty::where('id','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','faculty'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id_number]])
+        $pdf =  StudentSubjectLoading::where([['id_number','=',$request->session()->get('evaluateeid')],['semester','=',$sem],['type','=','Peer'],['program','=','done'],['sy','=',$sy]])
         ->get();
         return response()->json([
             'status' => $pdf,
+            'console' =>$faculty
         ]);
     }
     public function get_all_overall3(Request $request){
@@ -224,7 +225,7 @@ class ResultsController extends Controller
         $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Self'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
+        $pdf =  StudentSubjectLoading::where([['id_number','=',$request->session()->get('evaluateeid')],['semester','=',$sem],['type','=','Self'],['program','=','done'],['sy','=',$sy]])
         ->get();
         return response()->json([
             'status' => $pdf,
@@ -281,8 +282,8 @@ class ResultsController extends Controller
 
             $result = DB::table('faculty')
              ->where('student_subject_loading.id','=',$request->id)
-            ->join('student_subject_loading', 'faculty.id', '=', 'student_subject_loading.id_number')
-            ->select('student_subject_loading.evaluator_id','student_subject_loading.semester','student_subject_loading.faculty_name',
+            ->join('student_subject_loading', 'faculty.id', '=', 'student_subject_loading.evaluator_id')
+            ->select('student_subject_loading.evaluator_id','student_subject_loading.semester','student_subject_loading.faculty_name','student_subject_loading.id_number',
                 'student_subject_loading.academic_rank','student_subject_loading.program2','student_subject_loading.type')
             ->first();
 

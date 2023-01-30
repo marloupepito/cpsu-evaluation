@@ -11,6 +11,29 @@ use App\Models\FacultySubjectLoading;
 use App\Models\Schedule;
 class ScannerController extends Controller
 {
+
+     public function qrscanner1(Request $request){
+
+ $evaluator = Faculty::where([['id','=',$request->evaluatorid],['campusid','=',$request->campusid],['password','=',$request->password]])->get();
+        if($evaluator !== 0){
+             $request->session()->put('evid',$evaluator[0]->id);
+             $request->session()->put('evaluator',$evaluator[0]->name );
+             $request->session()->put('campus',$evaluator[0]->campus );
+             $request->session()->put('campusid',$evaluator[0]->campusid );
+             $request->session()->put('semester',$evaluator[0]->semester );
+             $request->session()->put('sy',$evaluator[0]->sy );
+                return response()->json([
+                    'status' => 'proceed',
+                    'type' => $request->type
+                ]);
+           
+        }else{
+            return response()->json([
+                'status' => 'error',
+            ]);
+        }
+    }
+
     public function qrscanner2(Request $request){
 
         if($request->campusid === $request->campusid2){

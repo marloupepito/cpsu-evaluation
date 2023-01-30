@@ -16,10 +16,11 @@ class StudentsController extends Controller
     public function add_faculty_subject_loading(Request $request){
 
         $date = date('Y');
+
         for ($i=0; $i < count($request->data); $i++) { 
                 StudentSubjectLoading::create([
-                'evaluator_id' => $request->data[$i][0],
-                'id_number' => $request->data[$i][3],
+                'evaluator_id' =>$request->session()->get('evid'),
+                'id_number' => $request->data[$i][0],
                 'unique_id' =>  $request->session()->get('key'),
                 'campus' => $request->data[$i][4],
                 'school_year' => $request->data[$i][2],
@@ -30,7 +31,7 @@ class StudentsController extends Controller
                 'department' => $request->session()->get('department'),
                 'section' => 'faculty',
                 'sy' => $request->session()->get('sy'),
-                'type' => 'faculty',
+                'type' =>$request->data[$i][0] == $request->session()->get('evid')?'Self':'Peer',
                 'year' => $date,
                 ]);
         }
@@ -42,7 +43,8 @@ class StudentsController extends Controller
 public function get_subject_load_from_teacher2(Request $request){  
 
 
- $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['department', '=' ,$request->session()->get('department')],])->get();
+ $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['department', '=' ,$request->session()->get('department')]])
+            ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])->get();
         return response()->json([
             'status' => $users,
             'console'=>$request->session()->get('campusid')
@@ -52,6 +54,7 @@ public function get_subject_load_from_teacher2(Request $request){
 
     public function evaluator_session2(Request $request){
         $data=StudentSubjectLoading::where([['program','=',null],['unique_id','=',$request->session()->get('key')]])->first();
+
         return response()->json([
             'status' =>$data,
             'evaluator' => $request->session()->get('evaluator')

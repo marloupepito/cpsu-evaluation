@@ -602,7 +602,7 @@
               
                    
              	<div class="row">
-             		<div class="col-md-7 col-7">
+             		<div class="col-md-6 col-6">
              			<table class="table">
 							  <tbody>
 							    <tr>
@@ -615,14 +615,15 @@
 							    </tr>
 							     <tr>
 							      <th>Date</th>
-							      <td>{{answers.updated_at}}</td>
+							      <td>{{datee}}</td>
 							    </tr>
 							  </tbody>
 							</table>
              		</div>
-             		<div class="col-md-5 col-5 ">
-             			<center>Signature Of Evaluator</center>
-             			<img :src="answers.signature" style="width:100%"/>
+             		<div class="col-md-6 col-6 ">
+             			<center>Signature Of Evaluator
+             			<img :src="answers.signature" style="width:100%;height:100px"/>
+             		</center>
              		</div>
              	</div>
 
@@ -636,7 +637,7 @@
 
 <script>
 import axios from 'axios'
-
+import moment from 'moment'
 	export default {
 
 		data () {
@@ -665,7 +666,8 @@ import axios from 'axios'
 		      q18:null,
 		      q19:null,
 		      q20:null,
-		      e:[]
+		      e:[],
+		      datee:""
 
 		    }
 		  },
@@ -683,10 +685,12 @@ import axios from 'axios'
                         id:id
                      })
                     .then(res=>{
+
                         this.answers = res.data.status
                         this.e = res.data.student
                         this.query = Object.values(res.data.status.program2.substring(1).replace(/]/g,"").replace(/"/g,'').split(','))
-                       
+                   
+                         this.datee = moment(new Date(res.data.student.updated_at)).format('LL')
                     })
                     .catch(err=>{
 
