@@ -57,8 +57,8 @@
                     </div>
                     <div class="col-md-8 col-8">
                         <div>
-                        	Faculty
-                            <!-- {{answers.academic_rank}} -->
+                        	<!-- Faculty -->
+                             {{answers.academic_rank}}
                         <v-divider class="m-0 p-2"></v-divider>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
             </div>
                 <div class="col-md-7 offset-md-2 col-7 offset-2">
                     <div class="row">
-                        <div class="col-md-6 col-6">
+                        <div class="col-md-4 col-4">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" :checked="answers.type === 'Self'?true:false" :disabled="answers.type === 'Self'?false:true" >
                                 <label class="form-check-label font-weight-bold" for="flexCheckChecked">
@@ -74,7 +74,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-6 col-6">
+                        <div class="col-md-4 col-4">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" :checked="answers.type === 'Peer'?true:false" :disabled="answers.type === 'Peer'?false:true" >
                                 <label class="form-check-label font-weight-bold" for="flexCheckChecked">
@@ -82,7 +82,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-6 col-6">
+                        <div class="col-md-4 col-4">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" :checked="answers.type === 'Student'?true:false" :disabled="answers.type === 'Student'?false:true" >
                                 <label class="form-check-label font-weight-bold" for="flexCheckChecked">
@@ -90,13 +90,13 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-6 col-6">
-                            <div class="form-check">
+                        <div class="col-md-4 col-4">
+                        <!--     <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"  :checked="answers.type === 'Supervisor'?true:false" :disabled="answers.type === 'Supervisor'?false:true">
                                 <label class="form-check-label font-weight-bold" for="flexCheckChecked">
                                     Supervisor
                                 </label>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -622,7 +622,7 @@
              		</div>
              		<div class="col-md-5 col-5 ">
              			<center>Signature Of Evaluator</center>
-             			<img :src="data2.signature" style="width:100%"/>
+             			<img :src="data2.signature" style="width:100%;height 100px;"/>
              		</div>
              	</div>
 

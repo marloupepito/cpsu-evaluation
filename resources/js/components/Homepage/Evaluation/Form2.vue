@@ -2,19 +2,11 @@
     <div class="col-xl-6 col-lg-6 offset-md-3">
         <div class="card border-0 mb-3 bg-white text-dark">
             <div class="card-body">
-                <b>Evaluator: {{ evaluator }}</b><br />
                 <b>Evaluatee: {{ evaluateeName }}</b>
                 <br />
                 <b>Semester: {{ semester }}</b
                 ><br />
-                <b
-                    >Subject:
-                    {{
-                        loaded === "faculty" || loaded === "supervisor"
-                            ? "None"
-                            : loaded
-                    }}</b
-                >
+               
                 <table class="table table-bordered">
                     <thead>
                         <tr class="table-secondary">

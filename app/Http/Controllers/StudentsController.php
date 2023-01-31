@@ -31,6 +31,7 @@ class StudentsController extends Controller
                 'department' => $request->session()->get('department'),
                 'section' => 'faculty',
                 'sy' => $request->session()->get('sy'),
+                'academic_rank' => $request->session()->get('rank'),
                 'type' =>$request->data[$i][0] == $request->session()->get('evid')?'Self':'Peer',
                 'year' => $date,
                 ]);

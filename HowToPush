@@ -32,3 +32,14 @@ if(student is exist student_subject_loading){
     loop the available faculty by campusid, department/course, year and section   
 
 }
+
+
+
+
+    this.loading=false
+                         const query = window.location.search.substring(6).split(',')
+                            const type = query[0]
+                            const campus = query[1]
+                            const campusid = query[2]
+                      //  this.$router.push({path:'/evaluation/form',query:{data:[type+','+campus.replace(/ /g,'_')+','+String(campusid)]}})
+                      this.$router.push({path:'/campus/'+campus+'/faculty2'})

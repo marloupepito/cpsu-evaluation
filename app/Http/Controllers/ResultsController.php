@@ -190,8 +190,14 @@ class ResultsController extends Controller
         $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Student'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
-        ->get();
+        // $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Student'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
+        // ->get();
+
+         $pdf = DB::table('student_subject_loading')
+            ->join('students', 'student_subject_loading.unique_id', '=', 'students.password')
+            ->where([['student_subject_loading.semester','=',$sem],['student_subject_loading.type','=','Student'],['student_subject_loading.program','=','done'],['student_subject_loading.sy','=',$sy],['student_subject_loading.id_number', '=' ,$faculty->id]])
+            ->get();
+
         return response()->json([
             'status' => $pdf,
         ]);
@@ -201,8 +207,14 @@ class ResultsController extends Controller
         $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['id_number','=',$request->session()->get('evaluateeid')],['semester','=',$sem],['type','=','Peer'],['program','=','done'],['sy','=',$sy]])
-        ->get();
+        // $pdf =  StudentSubjectLoading::where([['id_number','=',$request->session()->get('evaluateeid')],['semester','=',$sem],['type','=','Peer'],['program','=','done'],['sy','=',$sy]])
+        // ->get();
+
+        $pdf = DB::table('student_subject_loading')
+            ->join('faculty', 'student_subject_loading.evaluator_id', '=', 'faculty.id')
+            ->where([['student_subject_loading.id_number','=',$request->session()->get('evaluateeid')],['student_subject_loading.semester','=',$sem],['student_subject_loading.type','=','Peer'],['student_subject_loading.program','=','done'],['student_subject_loading.sy','=',$sy]])
+            ->get();
+
         return response()->json([
             'status' => $pdf,
             'console' =>$faculty
@@ -225,8 +237,13 @@ class ResultsController extends Controller
         $sem = $request->session()->get('school_sem');
         $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['id_number','=',$request->session()->get('evaluateeid')],['semester','=',$sem],['type','=','Self'],['program','=','done'],['sy','=',$sy]])
-        ->get();
+        // $pdf =  StudentSubjectLoading::where([['id_number','=',$request->session()->get('evaluateeid')],['semester','=',$sem],['type','=','Self'],['program','=','done'],['sy','=',$sy]])
+        // ->get();
+
+         $pdf = DB::table('student_subject_loading')
+            ->join('faculty', 'student_subject_loading.evaluator_id', '=', 'faculty.id')
+            ->where([['student_subject_loading.id_number','=',$request->session()->get('evaluateeid')],['student_subject_loading.semester','=',$sem],['student_subject_loading.type','=','Self'],['student_subject_loading.program','=','done'],['student_subject_loading.sy','=',$sy]])
+            ->get();
         return response()->json([
             'status' => $pdf,
         ]);
@@ -302,16 +319,19 @@ class ResultsController extends Controller
     public function get_every_result(Request $request){
 
             $result = DB::table('students')
-             ->where('student_subject_loading.id','=',$request->id)
             ->join('student_subject_loading', 'students.password', '=', 'student_subject_loading.unique_id')
+             ->where([['student_subject_loading.subject','=',$request->subject],['students.id','=',$request->id]])
             ->first();
 
                 $student = Students::where('password','=',$result->unique_id)
                 ->first();
 
+                $faculty=Faculty::where('id',$result->id_number)->first();
+
                   return response()->json([
                     'status' =>$result,
-                    'student' =>$student
+                    'student' =>$student,
+                    'faculty' =>$faculty
                 ]);
            
 

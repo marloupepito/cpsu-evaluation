@@ -17,7 +17,16 @@
         </div>
     </div>
 
-
+     <div class="col-md-5 mt-3">
+                <v-select
+                  :items="['College of Computer Studies','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education']"
+                  label="Department"
+                  required
+                  variant="outlined"
+                  v-model="department"
+                  @update:modelValue="selectDepartment"
+                ></v-select>
+              </div>
   <vue-good-table
   class="mt-3"
   compactMode
@@ -82,8 +91,8 @@ import Menu from './Menu.vue'
           field: 'academic_rank',
         },
         {
-          label: 'Campus',
-          field: 'campus',
+          label: 'Department',
+          field: 'department',
         },
         {
           label: 'Status',
@@ -109,6 +118,7 @@ import Menu from './Menu.vue'
         campusid:'',
         campusUsertype:'',
         count:0,
+        department:'College of Computer Studies'
       }
     },
    components:{
@@ -119,6 +129,9 @@ import Menu from './Menu.vue'
       this.mount()
     },
     methods:{
+      selectDepartment(){
+       this.mount()
+        },
       searching(){
   
             const objects =this.rows;
@@ -151,7 +164,8 @@ import Menu from './Menu.vue'
          axios.post('/get_faculty',{
             status:'Faculty',
             campusid:campusid,
-            campus:campus
+            campus:campus,
+            department:this.department
           })
           .then(res=>{
             this.rows = res.data.status

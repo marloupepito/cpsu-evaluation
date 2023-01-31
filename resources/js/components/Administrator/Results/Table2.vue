@@ -2,22 +2,22 @@
     <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">Faculty ID</th>
-        <th scope="col">Subject</th>
+        <th scope="col">Name of Faculty</th>
+        <!-- <th scope="col">Subject</th> -->
         <th scope="col">Semester</th>
         <th scope="col">School Year</th>
-        <th scope="col">Section</th>
+        <th scope="col">Department</th>
         <th scope="col">Print</th>
       </tr>
     </thead>
     <tbody>
       <tr  v-for="(i, n) in pdf"
           :key="n">
-        <th>{{ i.unique_id }}</th>
-        <td>{{ i.subject }}</td>
+        <th>{{ i.name }}</th>
+        <!-- <td>{{ i.subject }}</td> -->
         <td>{{ i.semester }}</td>
         <td>{{ i.sy }}</td>
-        <td>{{ i.section }}</td>
+        <td>{{ i.department }}</td>
         <td>
           <v-btn
               fab
@@ -49,8 +49,8 @@ export default {
 		await axios.post('/get_all_overall2')
 		.then(res=>{
 			this.pdf =res.data.status
-      console.log(res.data.status)
-console.log(res.data.console)
+      
+      console.log('badodo',res.data.status)
       this.where = window.location.pathname.split('/')[1]
 		})
 		.catch(err=>{

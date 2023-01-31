@@ -22,6 +22,7 @@ class ScannerController extends Controller
              $request->session()->put('campusid',$evaluator[0]->campusid );
              $request->session()->put('semester',$evaluator[0]->semester );
              $request->session()->put('sy',$evaluator[0]->sy );
+             $request->session()->put('rank',$evaluator[0]->academic_rank );
                 return response()->json([
                     'status' => 'proceed',
                     'type' => $request->type

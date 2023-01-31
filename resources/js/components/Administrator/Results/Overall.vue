@@ -39,7 +39,7 @@
 							<div class="date text-dark mt-3px">August 3,2021</div>
 									<address class="mt-3 mb-5px">
 									<strong class="text-dark">{{evaluateeName}}</strong><br />
-										<strong class="text-dark">{{info1.evaluatee_id}}</strong><br />
+										<strong class="text-dark">{{aaa}}</strong><br />
 										Faculty<br />
 										Central Philippines State University<br />
 										DJVV San Carlos Campus<br />
@@ -174,6 +174,8 @@ export default {
   async mounted(){
 		await axios.post('/get_all_overall')
 		.then(res=>{
+
+			this.aaa =res.data.status[0].name
 			this.info1 = res.data.status2
 			this.pdf =res.data.pdf
 			this.a = res.data.status2.a.length
@@ -206,6 +208,7 @@ export default {
 		const ccje = localStorage.getItem("ccje");
 	
 		return{
+			aaa:'',
 			campus:'',
 			campusid:'',
 			evaluateeName:'',

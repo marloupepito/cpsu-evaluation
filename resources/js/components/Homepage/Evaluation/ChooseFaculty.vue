@@ -11,7 +11,7 @@
 
                     <table class="table table-striped">
                   <tbody>
-                    <tr>
+                  <tr>
                       <th>Name</th>
                       <td>{{data.name}}</td>
                     </tr>
@@ -30,7 +30,7 @@
                     <tr>
                       <th>School Year</th>
                       <td>{{data.sy}}</td>
-                    </tr>
+                    </tr> 
                   </tbody>
                 </table>
                     <div class="text-danger" v-if="warn !=='' ">

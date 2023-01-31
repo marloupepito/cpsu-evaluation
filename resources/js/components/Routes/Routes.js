@@ -16,6 +16,8 @@ import ADashboard from '../Administrator/Dashboard/_Index.vue'
 import ACampuses from '../Administrator/Campuses/_Index.vue'
 import ATabs from '../Administrator/Campuses/Tabs.vue'
 //import ATable1 from '../Administrator/Campuses/Table.vue'
+
+import Department from '../Administrator/Faculty/Department.vue'
 import AStudents from '../Administrator/Students/_Index.vue'
 import ATable1 from '../Administrator/Students/Table.vue'
 import AFaculty from '../Administrator/Faculty/_Index.vue'
@@ -93,7 +95,8 @@ const routes =[
 				children:[
 						{ path:'/administrator/faculty',component:ATabs },
 						{ path:'/administrator/faculty/:id',component:ATabs },
-						{ path:'/administrator/faculty/:id/view',component:ATable2 },
+						{ path:'/administrator/faculty/:id/view',component: ATable2 },
+						{ path:'/administrator/faculty/:id/view2',component:Department },
 						{ path:'/administrator/faculty/:id/view/loaded',component:Loaded },
 						{ path:'/administrator/faculty/campus/view/loading',component:Loading1 }
 				]

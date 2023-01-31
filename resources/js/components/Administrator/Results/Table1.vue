@@ -13,7 +13,7 @@
     <tbody>
       <tr  v-for="(i, n) in pdf"
           :key="n">
-        <th>{{ i.unique_id }}</th>
+        <th>{{ i.id_number }}</th>
         <td>{{ i.subject }}</td>
         <td>{{ i.semester }}</td>
         <td>{{ i.sy }}</td>
@@ -25,7 +25,7 @@
               size="small"
               block
               color="green"
-              :href="'/'+where+'/results/'+i.campus.replace(/ /g,'_')+'/view/print?'+i.id"
+              :href="'/'+where+'/results/'+i.campus.replace(/ /g,'_')+'/view/print?'+i.id+','+i.subject.replace(/ /g,'_')"
                target="_blank"
               >
               <v-icon dark>
