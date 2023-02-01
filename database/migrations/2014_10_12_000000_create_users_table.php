@@ -105,7 +105,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('id_number')->nullable();
             $table->bigInteger('unique_id')->nullable();
             $table->bigInteger('evaluator_id')->nullable();
-            $table->string('campusid')->nullable();
+            $table->bigInteger('campusid')->nullable();
             $table->string('subject')->nullable();
             $table->string('campus')->nullable();
             $table->string('semester')->nullable();
@@ -151,7 +151,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('schedule', function (Blueprint $table) {
             $table->id();
-            $table->string('campusid')->nullable();
+            $table->bigInteger('campusid')->nullable();
             $table->string('campus')->nullable();
             $table->string('start')->nullable();
             $table->string('end')->nullable();
@@ -159,15 +159,15 @@ class CreateUsersTable extends Migration
             $table->string('status')->nullable();
             $table->string('sy')->nullable();
             $table->rememberToken();
-            $table->timeststudent_subject_loadingamps();
+            $table->timestamps();
         });
 
         
 
          Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->string('evaluatee_id')->nullable();
-            $table->string('evaluator_id')->nullable();
+            $table->bigInteger('evaluatee_id')->nullable();
+            $table->bigInteger('evaluator_id')->nullable();
             $table->string('commitment')->nullable();
             $table->string('campusid')->nullable();
             $table->string('campus')->nullable();
