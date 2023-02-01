@@ -63,7 +63,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('faculty', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_number')->unique()->nullable();
+            $table->bigInteger('id_number')->nullable();
             $table->bigInteger('campusid')->nullable();
             $table->string('password')->nullable();
             $table->string('campus')->nullable();
