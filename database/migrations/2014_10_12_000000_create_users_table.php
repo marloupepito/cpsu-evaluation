@@ -104,7 +104,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('id_number')->nullable();
             $table->string('unique_id')->nullable();
-            $table->string('evaluator_id')->nullable();
+            $table->bigInteger('evaluator_id')->nullable();
             $table->string('campusid')->nullable();
             $table->string('subject')->nullable();
             $table->string('campus')->nullable();
