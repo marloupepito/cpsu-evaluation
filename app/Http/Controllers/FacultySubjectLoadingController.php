@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Faculty;
 use App\Models\Evaluator;
+use App\Models\StudentSubjectLoading;
 use App\Models\User;
 
 class FacultySubjectLoadingController extends Controller
@@ -36,21 +37,19 @@ class FacultySubjectLoadingController extends Controller
     public function get_every_campuses(Request $request){
         $sy = $request->session()->get('school_year');
         $sem = $request->session()->get('school_sem');
-         $active = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['status','=','active'],['campusid','=',$request->campusid]])->get();
-         $notactive = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['status','=',null],['campusid','=',$request->campusid]])->get();
-         $student = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campusid','=',$request->campusid]])->get();
+         // $active = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['status','=','active'],['campusid','=',$request->campusid]])->get();
+         // $notactive = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['status','=',null],['campusid','=',$request->campusid]])->get();
+         // $student = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['campusid','=',$request->campusid]])->get();
 
-         $active2 = Faculty::where([['semester','=',$sem],['sy','=',$sy],['status','=','active'],['campusid','=',$request->campusid]])->get();
-         $notactive2 = Faculty::where([['semester','=',$sem],['sy','=',$sy],['status','=',null],['campusid','=',$request->campusid]])->get();
-         $faculty = Faculty::where([['semester','=',$sem],['sy','=',$sy],['campusid','=',$request->campusid]])->get();
+         // $active2 = Faculty::where([['semester','=',$sem],['sy','=',$sy],['status','=','active'],['campusid','=',$request->campusid]])->get();
+         // $notactive2 = Faculty::where([['semester','=',$sem],['sy','=',$sy],['status','=',null],['campusid','=',$request->campusid]])->get();
+         // $faculty = Faculty::where([['semester','=',$sem],['sy','=',$sy],['campusid','=',$request->campusid]])->get();
+
+        $active = StudentSubjectLoading::where([['semester','=',$sem],['sy','=',$sy],['campusid','=',$request->campusid]])->get();
+
 
              return response()->json([
-                'active' => $active,
-                'active2' => $active2,
-                'notactive' => $notactive,
-                'notactive2' => $notactive2,
-                'student' => $student,
-                'faculty' => $faculty,
+                'status' => $active,
             ]);
     }
 

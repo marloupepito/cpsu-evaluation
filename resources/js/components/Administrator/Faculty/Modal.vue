@@ -75,7 +75,7 @@
                 ></v-select>
               </v-col>
 
-              <v-col cols="12" sm="12">
+        <!--       <v-col cols="12" sm="12">
                 <v-select
                   :items="['1st Semester','2nd Semester']"
                   label="Semester"
@@ -83,7 +83,7 @@
                   v-model="sem"
                   :rules="semRules"
                 ></v-select>
-              </v-col>
+              </v-col> -->
 
 
 
@@ -172,7 +172,7 @@ import axios from 'axios'
             department:this.department,
             year:this.courseyear,
             subject:this.subject,
-            sem:this.sem,
+          //  sem:this.sem,
             section:this.section,
             sy:this.sy
           })

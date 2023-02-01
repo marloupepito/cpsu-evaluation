@@ -17,32 +17,9 @@
         </div>
     </div>
 
-	<v-card
-	    class="mx-auto container mt-4"
-	    max-width="100vw"
-	    rounded="0"
-	    style="height:35vh"
-	  >
-	    <v-img
-	      height="100%"
-	      cover
-	      src="/images/background.jpeg"
-	    >
-	      <v-avatar
-	        color="white"
-	        size="150"
-	        rounded="0"
-	      >
-	        <v-img cover src="/images/user.png"></v-img>
-	      </v-avatar>
-	      <v-list-item
-	        class="text-white"
-	        :title="data.name+' - '+data.academic_rank"
-	        :subtitle="data.campus"
-	      ></v-list-item>
-	    </v-img>
-	  </v-card>
-
+	
+	      <h2 class="mt-2">{{data.name+' - '+data.academic_rank}}</h2>
+	       <h3>{{data.name+' - '+data.campus}}</h3>
  	<div class="row pt-5">
 	 	<div class="col-md-4 mb-5"
 			v-for="(item, i) in loaded"

@@ -99,7 +99,7 @@ import Menu from './Menu.vue'
           field: 'status',
         },
         {
-          label: 'Subject Load',
+          label: 'Loaded',
           field: 'load',
         },
         {

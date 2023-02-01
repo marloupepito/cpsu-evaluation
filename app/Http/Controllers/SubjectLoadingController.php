@@ -30,18 +30,18 @@ class SubjectLoadingController extends Controller
     public function add_subject_loaded(Request $request){
 
         $sy = $request->session()->get('school_year');
-
+         $sem =$request->session()->get('school_sem');
            $request->validate([
             'id'=>['required'],
             'subject'=>['required'],
-            'sem'=>['required'],
+         //   'sem'=>['required'],
             'section'=>['required'],
             'department'=>['required'],
             'year'=>['required'],
         ]);
 
 
-        $exist = SubjectLoading::where([['sy','=',$sy],['year','=',$request->year],['semester','=',$request->sem],['subject','=',$request->subject],['section','=',$request->section]])->get();
+        $exist = SubjectLoading::where([['sy','=',$sy],['year','=',$request->year],['semester','=',$sem],['subject','=',$request->subject],['section','=',$request->section]])->get();
         $user = Faculty::where('id','=',$request->id)->first();
 
         
@@ -51,7 +51,7 @@ class SubjectLoadingController extends Controller
             $loaded->name = $user->name;
             $loaded->campusid = $request->campusid;
             $loaded->subject = $request->subject;
-            $loaded->semester = $request->sem;
+            $loaded->semester =  $sem;
             $loaded->school_year = $request->sy;
             $loaded->section = $request->section;
             $loaded->year = $request->year;

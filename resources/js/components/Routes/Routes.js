@@ -13,6 +13,7 @@ import FacultyList2 from '../Homepage/Evaluation/Faculty2.vue'
 
 import Administrator from '../Administrator/_Index.vue'
 import ADashboard from '../Administrator/Dashboard/_Index.vue'
+import Settings from '../Administrator/Dashboard/Settings.vue'
 import ACampuses from '../Administrator/Campuses/_Index.vue'
 import ATabs from '../Administrator/Campuses/Tabs.vue'
 //import ATable1 from '../Administrator/Campuses/Table.vue'
@@ -78,6 +79,7 @@ const routes =[
           },
 		children:[
 			{ path:'/administrator',component:ADashboard },
+			{ path:'/administrator/settings',component:Settings},
 			{ path:'/administrator/campuses',component:ACampuses,
 				children:[
 					{ path:'/administrator/campuses',component:ATabs },
@@ -139,6 +141,7 @@ const routes =[
           	{path:'/cpsu_campus/faculty/:id/view/loaded',component:Loaded },
           	{path:'/cpsu_campus/results/:id',component:ATable3},
           	{path:'/cpsu_campus/schedule/:id',component:ATable4},
+          	{path:'/cpsu_campus/settings/:id',component:Settings},
           	{path:'/cpsu_campus/faculty/campus/view/loading',component:Loading1 },
           	{path:'/cpsu_campus/results/:id/view/overall',component:Overall },
           ]

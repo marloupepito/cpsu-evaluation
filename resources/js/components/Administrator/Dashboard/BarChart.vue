@@ -39,7 +39,7 @@ export default {
     },
     height: {
       type: Number,
-      default: '280'
+      default: '150'
     },
     cssClasses: {
       default: '',
@@ -65,25 +65,11 @@ export default {
         labels: [],
         datasets: [
                  { 
-               	label: 'Number of Student',
-                backgroundColor: 'green',
-                data: [] 
-                },
-                { 
-                label: 'Number of Faculty',
-                backgroundColor: 'yellow',
-                data: [] 
-                },
-                { 
-                label: 'Active Evaluator',
-                backgroundColor: 'blue',
-                data: [] 
-                },
-                { 
                 label: 'Not Active Evaluator',
                 backgroundColor: 'red',
-                data: [] 
+                data: [300] 
                 }
+                
             ]
       },
       chartOptions: {
@@ -101,18 +87,18 @@ export default {
                 campusid:result.id
                 })
                 .then(resss=>{
-                    this.active.push(resss.data.active.map(result=>result.status).length+resss.data.active2.map(result=>result.status).length)
-                    this.notactive.push(resss.data.notactive.map(result=>result.status).length+resss.data.notactive2.map(result=>result.status).length)
-                      this.student.push(resss.data.student.map(result=>result.status).length)
-                        this.faculty.push(resss.data.faculty.map(result=>result.status).length)
+               //      this.notactive.push(resss.data.status.map(result=>result.status).length+resss.data.status.map(result=>result.status).length)
+
+           this.notactive.push(resss.data.status.map(a=>parseFloat(a.total)).reduce((a, b) => a + b, 0)/resss.data.status.map(a=>parseFloat(a.total)).length)
+
                   })
+
+
              )
         })
+      this.chartData.datasets[0].data = this.notactive
 
-       this.chartData.datasets[0].data = this.student
-       this.chartData.datasets[1].data = this.faculty
-        this.chartData.datasets[2].data = this.active
-       this.chartData.datasets[3].data = this.notactive
+
        
 
   }

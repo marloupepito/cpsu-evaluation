@@ -23,7 +23,7 @@ class ResultsController extends Controller
         if($request->session()->get('type')=== 'student'){
             
             StudentSubjectLoading::where('id', $request->id)
-            ->update(['program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
+            ->update(['total' => $request->total/20,'program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
            
             
                 $user = new Results;
@@ -53,7 +53,7 @@ class ResultsController extends Controller
                 ->update(['status' => 'active']);
       
                 StudentSubjectLoading::where('id', $request->id)
-                ->update(['program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
+                ->update(['total' => $request->total/20,'program' => 'done','program2'=>$request->question,'comment'=>$request->comment]);
 
 
                 $user = new Results;

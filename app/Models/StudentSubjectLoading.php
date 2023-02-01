@@ -27,5 +27,6 @@ class StudentSubjectLoading extends Model
             'program2',
             'evaluator_id',
             'sy',
+            'total'
     ];
 }

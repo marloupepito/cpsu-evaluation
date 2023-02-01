@@ -1322,6 +1322,7 @@ export default {
                     this.q20,
                 ],
                 id: this.id,
+                total:parseInt(this.q1)+parseInt(this.q2)+parseInt(this.q3)+parseInt(this.q4)+parseInt(this.q5)+parseInt(this.q6)+parseInt(this.q7)+parseInt(this.q8)+parseInt(this.q9)+parseInt(this.q10)+parseInt(this.q11)+parseInt(this.q12)+parseInt(this.q13)+parseInt(this.q14)+parseInt(this.q15)+parseInt(this.q16)+parseInt(this.q17)+parseInt(this.q18)+parseInt(this.q19)+parseInt(this.q20),
                 name: this.evaluateeName,
                 comment: this.comment,
                 evaluator: this.evaluator,
