@@ -213,6 +213,7 @@ class ResultsController extends Controller
         $pdf = DB::table('student_subject_loading')
             ->join('faculty', 'student_subject_loading.evaluator_id', '=', 'faculty.id')
             ->where([['student_subject_loading.id_number','=',$request->session()->get('evaluateeid')],['student_subject_loading.semester','=',$sem],['student_subject_loading.type','=','Peer'],['student_subject_loading.program','=','done'],['student_subject_loading.sy','=',$sy]])
+            ->select('faculty.department','faculty.name','faculty.semester','faculty.sy','faculty.campus','student_subject_loading.id')
             ->get();
 
         return response()->json([

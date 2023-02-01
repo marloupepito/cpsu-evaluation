@@ -49,8 +49,7 @@ export default {
 		await axios.post('/get_all_overall2')
 		.then(res=>{
 			this.pdf =res.data.status
-      
-      console.log('badodo',res.data.status)
+      console.log(res.data.status)
       this.where = window.location.pathname.split('/')[1]
 		})
 		.catch(err=>{
