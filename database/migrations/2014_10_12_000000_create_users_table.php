@@ -41,8 +41,8 @@ class CreateUsersTable extends Migration
 
         Schema::create('evaluator', function (Blueprint $table) {
             $table->id();
-            $table->string('id_number')->nullable();
-            $table->string('campusid')->nullable();
+            $table->bigInteger('id_number')->nullable();
+            $table->bigInteger('campusid')->nullable();
             $table->string('campus')->nullable();
             $table->string('name')->nullable();
             $table->string('class_status')->nullable();
@@ -63,8 +63,8 @@ class CreateUsersTable extends Migration
 
         Schema::create('faculty', function (Blueprint $table) {
             $table->id();
-            $table->string('id_number')->unique()->nullable();
-            $table->string('campusid')->nullable();
+            $table->bigInteger('id_number')->unique()->nullable();
+            $table->bigInteger('campusid')->nullable();
             $table->string('password')->nullable();
             $table->string('campus')->nullable();
             $table->string('photos')->nullable();
@@ -82,7 +82,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('faculty_subject_loading', function (Blueprint $table) {
             $table->id();
-            $table->string('id_number')->nullable();
+            $table->bigInteger('id_number')->nullable();
             $table->string('name')->nullable();
             $table->string('campusid')->nullable();
             $table->string('subject')->nullable();
@@ -102,9 +102,9 @@ class CreateUsersTable extends Migration
 
         Schema::create('student_subject_loading', function (Blueprint $table) {
             $table->id();
-            $table->string('id_number')->nullable();
-            $table->string('unique_id')->nullable();
-            $table->string('evaluator_id')->nullable();
+            $table->bigInteger('id_number')->nullable();
+            $table->bigInteger('unique_id')->nullable();
+            $table->bigInteger('evaluator_id')->nullable();
             $table->string('campusid')->nullable();
             $table->string('subject')->nullable();
             $table->string('campus')->nullable();
@@ -159,7 +159,7 @@ class CreateUsersTable extends Migration
             $table->string('status')->nullable();
             $table->string('sy')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->timeststudent_subject_loadingamps();
         });
 
         
