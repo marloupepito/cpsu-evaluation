@@ -518,157 +518,157 @@ class DatabaseSeeder extends Seeder
 
 //dawdlajwd;auowdpa'wdwapod
 
-         for ($i=1; $i <= 20; $i++) { 
-            $defaultSection=['Section A','Section B','Section C','Section D','Section E'];
-            $defaultYear=['1st Year','2nd Year','3rd Year','4th Year'];
-            $defaultCourse=['College of Computer Studies','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education'];
-            $randSection = $defaultSection[array_rand($defaultSection)];
-            $randYear = $defaultYear[array_rand($defaultYear)];
-             $randCourse = $defaultCourse[array_rand($defaultCourse)];
+        //  for ($i=1; $i <= 20; $i++) { 
+        //     $defaultSection=['Section A','Section B','Section C','Section D','Section E'];
+        //     $defaultYear=['1st Year','2nd Year','3rd Year','4th Year'];
+        //     $defaultCourse=['College of Computer Studies','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education'];
+        //     $randSection = $defaultSection[array_rand($defaultSection)];
+        //     $randYear = $defaultYear[array_rand($defaultYear)];
+        //      $randCourse = $defaultCourse[array_rand($defaultCourse)];
 
 
-            $user = new Evaluator;
-            $user->id_number = 'CPSU-00001'.$i;
-            $user->campusid = 2;
-            $user->campus = 'CPSU Hinoba-an Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
+        //     $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00001'.$i;
+        //     $user->campusid = 2;
+        //     $user->campus = 'CPSU Hinoba-an Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
 
 
-             $user = new Evaluator;
-            $user->id_number = 'CPSU-00002'.$i;
-            $user->campusid = 3;
-            $user->campus = 'CPSU Sipalay Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
+        //      $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00002'.$i;
+        //     $user->campusid = 3;
+        //     $user->campus = 'CPSU Sipalay Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
 
-             $user = new Evaluator;
-            $user->id_number = 'CPSU-00003'.$i;
-            $user->campusid = 4;
-            $user->campus = 'CPSU Cauayan Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
-
-
-             $user = new Evaluator;
-            $user->id_number = 'CPSU-00004'.$i;
-            $user->campusid = 5;
-            $user->campus = 'CPSU Ilog Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
+        //      $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00003'.$i;
+        //     $user->campusid = 4;
+        //     $user->campus = 'CPSU Cauayan Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
 
 
-              $user = new Evaluator;
-            $user->id_number = 'CPSU-00005'.$i;
-            $user->campusid = 6;
-            $user->campus = 'CPSU Candoni Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
+        //      $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00004'.$i;
+        //     $user->campusid = 5;
+        //     $user->campus = 'CPSU Ilog Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
 
 
-              $user = new Evaluator;
-            $user->id_number = 'CPSU-00006'.$i;
-            $user->campusid = 7;
-            $user->campus = 'CPSU Hinigaran Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
+        //       $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00005'.$i;
+        //     $user->campusid = 6;
+        //     $user->campus = 'CPSU Candoni Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
 
 
-              $user = new Evaluator;
-            $user->id_number = 'CPSU-00007'.$i;
-            $user->campusid = 8;
-            $user->campus = 'CPSU Moises Padilla Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
+        //       $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00006'.$i;
+        //     $user->campusid = 7;
+        //     $user->campus = 'CPSU Hinigaran Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
 
 
-              $user = new Evaluator;
-            $user->id_number = 'CPSU-00008'.$i;
-            $user->campusid = 9;
-            $user->campus = 'CPSU Victorias Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
+        //       $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00007'.$i;
+        //     $user->campusid = 8;
+        //     $user->campus = 'CPSU Moises Padilla Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
 
 
-                $user = new Evaluator;
-            $user->id_number = 'CPSU-00009'.$i;
-            $user->campusid = 10;
-            $user->campus = 'CPSU San Carlos Campus';
-            $user->password = Hash::make('admin');
-            $user->course = $randCourse;
-            $user->evaluator_rank = 'Student';
-            $user->academic_rank = 'Student';
-            $user->school_year = $randYear;
-            $user->section = $randSection;
-            $user->class_status = 'Regular';
-            $user->semester = $sems;
-            $user->sy = $sy_result;
-            $user->save();
-        }
+        //       $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00008'.$i;
+        //     $user->campusid = 9;
+        //     $user->campus = 'CPSU Victorias Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
+
+
+        //         $user = new Evaluator;
+        //     $user->id_number = 'CPSU-00009'.$i;
+        //     $user->campusid = 10;
+        //     $user->campus = 'CPSU San Carlos Campus';
+        //     $user->password = Hash::make('admin');
+        //     $user->course = $randCourse;
+        //     $user->evaluator_rank = 'Student';
+        //     $user->academic_rank = 'Student';
+        //     $user->school_year = $randYear;
+        //     $user->section = $randSection;
+        //     $user->class_status = 'Regular';
+        //     $user->semester = $sems;
+        //     $user->sy = $sy_result;
+        //     $user->save();
+        // }
      
 
 // 1234567890
