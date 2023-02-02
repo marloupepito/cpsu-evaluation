@@ -2,7 +2,7 @@
     <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">Faculty ID</th>
+        <th scope="col">Faculty Name</th>
         <th scope="col">Subject</th>
         <th scope="col">Semester</th>
         <th scope="col">School Year</th>

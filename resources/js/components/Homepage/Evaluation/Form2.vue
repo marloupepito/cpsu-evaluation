@@ -1283,6 +1283,7 @@ export default {
             type: "",
             loaded: "",
             semester: "",
+            count:''
         };
     },
     methods: {
@@ -1350,17 +1351,38 @@ export default {
             axios
                 .post("/submit_form", form)
                 .then((res) => {
-                    document.getElementById("myForm").reset();
-                    this.$swal({
-                        icon: "success",
-                        title: "Rating Submitted!",
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                    console.log(res.data.status)
-                    this.mount();
-                    this.comment = "";
-                    this.disable = false;
+                     if(this.count !== 1){
+                         this.$swal({
+                          title: 'Please evaluate again for another faculty.',
+                          icon: 'warning',
+                          allowOutsideClick: false,
+                          showCancelButton: false,
+                          confirmButtonColor: '#3085d6',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Proceed'
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+                              document.getElementById("myForm").reset();
+                                   this.$swal({
+                                    icon: "success",
+                                    title: "Rating Submitted!",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                });
+                                this.mount();
+                                this.comment = "";
+                                this.disable = false;
+                          }
+                        })
+                    }else{
+                         this.mount();
+                          this.$swal({
+                                    icon: "success",
+                                    title: "Rating Submitted!",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                });
+                    }
                 })
                 .catch((err) => {
                     this.disable = false;
@@ -1376,6 +1398,8 @@ export default {
 
                      axios.post('/evaluator_session2')
 				     .then(res=>{
+
+                        this.count = res.data.count.length
 						if(res.data.status !== 'done'){
                             this.id = res.data.status.id
 							this.evaluateeName = res.data.status.faculty_name
@@ -1386,6 +1410,12 @@ export default {
                              this.facultyValue = res.data.status.id_number
                              console.log(res.data.status.id_number)
 						}else{
+                              this.$swal({
+                                icon: "success",
+                                title: "Rating Submitted!",
+                                showConfirmButton: false,
+                                timer: 1500,
+                            });
 							this.$router.push({path:'/'})
 						}
 					     

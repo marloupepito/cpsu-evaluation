@@ -102,4 +102,14 @@ class UsersController extends Controller
             'status' => $users
         ]);
     }
+
+     public function users(Request $request){
+
+        $users = DB::table('users')
+        ->where('id', '=' ,$request->id)
+        ->first();
+        return response()->json([
+            'status' => $users
+        ]);
+    }
 }

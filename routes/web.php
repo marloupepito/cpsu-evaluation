@@ -42,6 +42,7 @@ Route::get('/{vue?}',function(){
 
 Route::post('/logout','UsersController@logout');//check
 Route::post('/get_admin','UsersController@get_admin');
+Route::post('/users','UsersController@users');
 Route::post('/get_evaluators','EvaluatorController@get_evaluators'); //check
 Route::post('/logout_evaluator','EvaluatorController@logout_evaluator');
 Route::post('/get_every_evaluator','EvaluatorController@get_every_evaluator');

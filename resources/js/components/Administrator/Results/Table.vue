@@ -9,7 +9,16 @@
     >
       <v-icon>mdi-arrow-left-bold</v-icon>
     </v-btn>
-
+   <div class="col-md-5 mt-3">
+                <v-select
+                  :items="['College of Computer Studies','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education']"
+                  label="Department"
+                  required
+                  variant="outlined"
+                  v-model="department"
+                  @update:modelValue="selectDepartment"
+                ></v-select>
+              </div>
    <vue-good-table
   class="mt-3"
   compactMode
@@ -66,6 +75,7 @@
 export default {
    data() {
         return {
+          department:'College of Computer Studies',
           columns: [
         {
           label: 'Fullname',
@@ -111,20 +121,27 @@ export default {
         }
       },
   mounted(){
-    const campusid = window.location.search.substring(1)
-      const campus =window.location.pathname.split('/')[3].replace(/_/g,' ')
-      this.campus =campus
-      this.campusid =campusid
-    axios.post('/get_all_results2',{
-      status:'all'
-    })
-    .then(res=>{
-          console.log(res.data.status)
-      this.rows = Object.values(res.data.status)
-      this.campusUsertype = localStorage.getItem("academic_rank");
-    })
+    this.mount()
   },
   methods:{
+    selectDepartment(){
+       this.mount()
+        },
+        mount(){
+          const campusid = window.location.search.substring(1)
+          const campus =window.location.pathname.split('/')[3].replace(/_/g,' ')
+          this.campus =campus
+          this.campusid =campusid
+        axios.post('/get_all_results2',{
+          status:'all',
+          department:this.department
+        })
+        .then(res=>{
+              console.log(res.data.status)
+          this.rows = Object.values(res.data.status)
+          this.campusUsertype = localStorage.getItem("academic_rank");
+        })
+    },
     overAll(id){
       axios.post('/goto_overall',{
         id:id,

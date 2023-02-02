@@ -90,7 +90,20 @@ export default {
       campusid:campusid
     })
     .then(res=>{
-      this.chartData.datasets[0].data = [res.data.a.length,res.data.b.length,res.data.c.length,res.data.d.length,res.data.e.length]
+
+
+      console.log('ss',res.data.a.map(a=>parseFloat(a.total)).reduce((a, b) => a + b, 0)/res.data.a.map(a=>parseFloat(a.total)).length)
+      this.chartData.datasets[0].data = [
+res.data.a.map(a=>parseFloat(a.total)).reduce((a, b) => a + b, 0)/res.data.a.map(a=>parseFloat(a.total)).length
+,
+res.data.b.map(a=>parseFloat(a.total)).reduce((a, b) => a + b, 0)/res.data.b.map(a=>parseFloat(a.total)).length
+,
+res.data.c.map(a=>parseFloat(a.total)).reduce((a, b) => a + b, 0)/res.data.c.map(a=>parseFloat(a.total)).length
+,
+res.data.d.map(a=>parseFloat(a.total)).reduce((a, b) => a + b, 0)/res.data.d.map(a=>parseFloat(a.total)).length
+,
+res.data.e.map(a=>parseFloat(a.total)).reduce((a, b) => a + b, 0)/res.data.e.map(a=>parseFloat(a.total)).length
+]
 
       })
        

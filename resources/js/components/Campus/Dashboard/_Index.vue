@@ -10,7 +10,11 @@
 		<Card :count="active.length" path="/administrator/faculty" title="Active Evaluator" content="click here" icon="mdi-account-multiple-check-outline" />
 		</div>	
 
-		<div class="col-md-12 col-12">
+		<div class="col-md-3 col-12">
+		<img  :src=' "http://api.qrserver.com/v1/create-qr-code/?data=" + ["supervisor",data.id,data.password]' />
+		</div>
+
+		<div class="col-md-9 col-12">
 			<ChartBar />
 		</div>	
 		
@@ -31,6 +35,7 @@ import ChartBar from './ChartBar.vue'
 	         campus:'',
 			evaluator:[],
 			evaluatee:[],
+			data:[]
 	        }
       },
 		components:{
@@ -44,12 +49,19 @@ import ChartBar from './ChartBar.vue'
 			mount(){
 		const campus = localStorage.getItem("campus");
    		 const campusid = localStorage.getItem("campusid");
+
+   		 axios.post('/users',{
+   		 	id: localStorage.getItem("campusid")
+   		 	})
+   		 .then(res=>{
+   		 	this.data = res.data.status
+   		 	
+   		 	})
 		axios.post('/counting_data',{
 			campus:campus,
 			campusid:campusid
 		})
 		.then(res=>{
-			
 			this.evaluator = res.data.evaluators
 			this.evaluatee = res.data.evaluatee
 			this.active = res.data.active

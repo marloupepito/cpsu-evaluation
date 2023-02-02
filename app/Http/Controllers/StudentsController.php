@@ -56,9 +56,12 @@ public function get_subject_load_from_teacher2(Request $request){
     public function evaluator_session2(Request $request){
         $data=StudentSubjectLoading::where([['program','=',null],['unique_id','=',$request->session()->get('key')]])->first();
 
+        $count=StudentSubjectLoading::where([['program','=',null],['unique_id','=',$request->session()->get('key')]])->get();
+
         return response()->json([
             'status' =>$data,
-            'evaluator' => $request->session()->get('evaluator')
+            'evaluator' => $request->session()->get('evaluator'),
+            'count' =>$count
         ]);
         $request->session()->put('type','student');
     }
