@@ -68,7 +68,7 @@
                     <div class="row">
                         <div class="col-md-4 col-4">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" :checked="answers.type === 'Self'?true:false" :disabled="answers.type === 'Self'?false:true" >
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" disabled :checked="true" >
                                 <label class="form-check-label font-weight-bold" for="flexCheckChecked">
                                    Self
                                 </label>

@@ -675,6 +675,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00000'.$i;
@@ -682,7 +683,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinoba-an Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -692,6 +693,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00000'.$i;
@@ -699,7 +701,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinoba-an Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -709,6 +711,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00000'.$i;
@@ -716,7 +719,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinoba-an Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -726,6 +729,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00000'.$i;
@@ -733,7 +737,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinoba-an Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -744,6 +748,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00000'.$i;
@@ -751,7 +756,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinoba-an Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -764,6 +769,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00001'.$i;
@@ -771,7 +777,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Sipalay Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -781,6 +787,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00001'.$i;
@@ -788,7 +795,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Sipalay Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -798,6 +805,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00001'.$i;
@@ -805,7 +813,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Sipalay Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -815,6 +823,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00001'.$i;
@@ -822,7 +831,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Sipalay Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -833,6 +842,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00001'.$i;
@@ -840,7 +850,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Sipalay Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -852,6 +862,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00002'.$i;
@@ -859,7 +870,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Cauayan Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -869,6 +880,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00002'.$i;
@@ -876,7 +888,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Cauayan Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -886,6 +898,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00002'.$i;
@@ -893,7 +906,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Cauayan Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -903,6 +916,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00002'.$i;
@@ -910,7 +924,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Cauayan Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -921,6 +935,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00002'.$i;
@@ -928,7 +943,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Cauayan Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -943,6 +958,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00003'.$i;
@@ -950,7 +966,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Ilog Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -960,6 +976,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00003'.$i;
@@ -967,7 +984,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Ilog Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -977,6 +994,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00003'.$i;
@@ -984,7 +1002,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Ilog Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -994,6 +1012,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00003'.$i;
@@ -1001,7 +1020,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Ilog Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1012,6 +1031,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00003'.$i;
@@ -1019,7 +1039,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Ilog Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1031,6 +1051,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00004'.$i;
@@ -1038,7 +1059,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Candoni Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1048,6 +1069,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00004'.$i;
@@ -1055,7 +1077,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Candoni Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1065,6 +1087,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00004'.$i;
@@ -1072,7 +1095,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Candoni Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1082,6 +1105,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00004'.$i;
@@ -1089,7 +1113,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Candoni Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1100,6 +1124,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00004'.$i;
@@ -1107,7 +1132,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Candoni Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1119,6 +1144,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00005'.$i;
@@ -1126,7 +1152,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinigaran Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1136,6 +1162,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00005'.$i;
@@ -1143,7 +1170,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinigaran Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1153,6 +1180,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00005'.$i;
@@ -1160,7 +1188,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinigaran Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1170,6 +1198,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00005'.$i;
@@ -1177,7 +1206,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinigaran Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1188,6 +1217,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00005'.$i;
@@ -1195,7 +1225,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Hinigaran Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1208,6 +1238,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00006'.$i;
@@ -1215,7 +1246,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Moises Padilla Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1225,6 +1256,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00006'.$i;
@@ -1232,7 +1264,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Moises Padilla Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1242,6 +1274,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00006'.$i;
@@ -1249,7 +1282,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Moises Padilla Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1259,6 +1292,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00006'.$i;
@@ -1266,7 +1300,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Moises Padilla Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1277,6 +1311,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00006'.$i;
@@ -1284,7 +1319,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Moises Padilla Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1297,6 +1332,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00007'.$i;
@@ -1304,7 +1340,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Victorias Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1314,6 +1350,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00007'.$i;
@@ -1321,7 +1358,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Victorias Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1331,6 +1368,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00007'.$i;
@@ -1338,7 +1376,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Victorias Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1348,6 +1386,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00007'.$i;
@@ -1355,7 +1394,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Victorias Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1366,6 +1405,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00007'.$i;
@@ -1373,7 +1413,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU Victorias Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1386,6 +1426,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00008'.$i;
@@ -1393,7 +1434,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU San Carlos Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Computer Studies';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1403,6 +1444,7 @@ class DatabaseSeeder extends Seeder
         for ($i=6; $i <= 10; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00008'.$i;
@@ -1410,7 +1452,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU San Carlos Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Business Management';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1420,6 +1462,7 @@ class DatabaseSeeder extends Seeder
     for ($i=11; $i <= 15; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00008'.$i;
@@ -1427,7 +1470,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU San Carlos Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Teachers Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1437,6 +1480,7 @@ class DatabaseSeeder extends Seeder
         for ($i=16; $i <= 20; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00008'.$i;
@@ -1444,7 +1488,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU San Carlos Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Agriculture and Forestry';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
@@ -1455,6 +1499,7 @@ class DatabaseSeeder extends Seeder
             for ($i=21; $i <= 25; $i++) {
 
             $randName = $defaultName[array_rand($defaultName)]; 
+            $randName1 = $defaultName[array_rand($defaultName)]; 
             $user = new Faculty;
             $user->semester = $sems;
             $user->id_number = '00008'.$i;
@@ -1462,7 +1507,7 @@ class DatabaseSeeder extends Seeder
             $user->password = Hash::make('admin');
             $user->campus = 'CPSU San Carlos Campus';
             $user->photos = 'sample.jpg';
-            $user->name = $randName;
+            $user->name = $randName.' '.$randName1;
             $user->department = 'College of Criminal Justice Education';
             $user->academic_rank = 'PSI II';
             $user->sy = $sy_result;
