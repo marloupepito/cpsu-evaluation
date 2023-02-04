@@ -295,6 +295,22 @@ class ResultsController extends Controller
             ]);
     }
 
+
+  public function get_every_result3(Request $request){
+
+            $result = Faculty::where('id',$request->id)->first();
+
+
+            $evaluator=StudentSubjectLoading::where('id_number',$request->id)->first();
+
+                 return response()->json([
+                    'status' =>$result,
+                    'evaluator' =>$evaluator,
+                ]);
+                
+    }
+
+
      public function get_every_result2(Request $request){
 
             $result = DB::table('faculty')
@@ -311,9 +327,7 @@ class ResultsController extends Controller
                     'status' =>$result,
                     'evaluator' =>$evaluator,
                 ]);
-           
-
-       
+                
     }
 
     public function get_every_result(Request $request){

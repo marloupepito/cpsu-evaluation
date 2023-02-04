@@ -25,7 +25,7 @@
               size="small"
               block
               color="green"
-              :href="'/'+where+'/results/'+i.campus.replace(/ /g,'_')+'/view/print2?'+i.id"
+              :href="'/'+where+'/results/'+i.campus.replace(/ /g,'_')+'/view/print3?'+i.id"
                target="_blank"
               >
               <v-icon dark>

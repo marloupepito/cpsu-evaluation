@@ -30,6 +30,7 @@ import ATable3 from '../Administrator/Results/Table.vue'
 import Overall from '../Administrator/Results/Overall.vue'
 import Print from '../Administrator/Results/Print.vue'
 import Print2 from '../Administrator/Results/Print2.vue'
+import Print3 from '../Administrator/Results/Print3.vue'
 import AQuestionaire from '../Administrator/Questionaire/_Index.vue'
 
 import ATable4 from '../Administrator/Schedule/Calendar.vue'
@@ -149,9 +150,11 @@ const routes =[
 	
 	{ path:'/administrator/results/:id/view/print',component:Print },
 	{ path:'/administrator/results/:id/view/print2',component:Print2 },
+	{ path:'/administrator/results/:id/view/print3',component:Print3 },
 	
 					  {path:'/cpsu_campus/results/:id/view/print',component:Print },
-					  {path:'/cpsu_campus/results/:id/view/print2',component:Print2 }
+					  {path:'/cpsu_campus/results/:id/view/print2',component:Print2 },
+					  {path:'/cpsu_campus/results/:id/view/print3',component:Print3 }
 
 
 ]

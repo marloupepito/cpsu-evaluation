@@ -75,6 +75,7 @@ Route::post('/get_all_overall4','ResultsController@get_all_overall4'); // check
 Route::post('/counting_data','ResultsController@counting_data');// check
 Route::post('/get_every_result','ResultsController@get_every_result');// check
 Route::post('/get_every_result2','ResultsController@get_every_result2');// check
+Route::post('/get_every_result3','ResultsController@get_every_result3');// check
 
 Route::post('/get_schedule','ScheduleController@get_schedule'); // check
 Route::put('/update_schedule','ScheduleController@update_schedule');// check
