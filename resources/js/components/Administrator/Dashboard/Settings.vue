@@ -66,6 +66,7 @@
 <script>
   export default {
     data: () => ({
+      id:'',
     	campus:true,
     	user:true,
     	pass:true,
@@ -99,32 +100,89 @@
     			this.admin=res.data.name
     			this.campusName=res.data.campus
     			this.userName=res.data.username
-    			this.password=res.data.password
+          this.id=res.data.id
+          
+
     			})
     	},
     	submit1 () {
         this.campus = false
+          axios.post('/update_info',{
+            id:this.id,
+            type:'campus',
+            campusName:this.campusName
+            })
+          .then(res=>{
+            this.campus = true
+               this.$swal({
+                  icon: 'success',
+                  title: 'Your work has been saved',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+            })
       },
       submit2 () {
         this.admins = false
+         axios.post('/update_info',{
+            id:this.id,
+            type:'admin',
+            admin:this.campusName
+            })
+          .then(res=>{
+            this.admins = true
+               this.$swal({
+                  icon: 'success',
+                  title: 'Your work has been saved',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+            })
       },
       submit3 () {
         this.user = false
+        axios.post('/update_info',{
+            id:this.id,
+            type:'user',
+            user:this.userName
+            })
+          .then(res=>{
+            this.user = true
+               this.$swal({
+                  icon: 'success',
+                  title: 'Your work has been saved',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+            })
+            .catch(err=>{
+              this.user = true
+                 this.$swal({
+                  icon: 'error',
+                  title: 'Username already exist!',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+              })
       },
       submit4 () {
-        this.pass =false
+        this.pass = false
+         axios.post('/update_info',{
+            id:this.id,
+            type:'password',
+            password:this.password
+            })
+          .then(res=>{
+            this.pass = true
+               this.$swal({
+                  icon: 'success',
+                  title: 'Your work has been saved',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+            })
       },
-      async validate () {
-        const { valid } = await this.$refs.form.validate()
-
-        if (valid) alert('Form is valid')
-      },
-      reset () {
-        this.$refs.form.reset()
-      },
-      resetValidation () {
-        this.$refs.form.resetValidation()
-      },
+ 
     },
   }
 </script>

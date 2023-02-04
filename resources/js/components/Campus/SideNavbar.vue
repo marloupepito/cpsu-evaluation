@@ -56,17 +56,18 @@
       this.campus = campus
       const path = window.location.pathname.split('/')[2]
       this.active = path=== 'CPSU_Hinoba-an_Campus'?1:
-      path==='students'?2:
+      path==='settings'?2:
       path==='faculty'?3:
-      path==='results'?4:5
+      path==='results'?4:1
       this.items = [
           { title: 'Dashboard', to:'/cpsu_campus/', icon: 'mdi-monitor-dashboard', active:1 },
          // { title: 'Student',to:'/cpsu_campus/students/', icon: 'mdi-account-school-outline', active:2 },
           { title: 'Faculty',to:'/cpsu_campus/faculty/', icon: 'mdi-card-account-details-outline', active:3 },
           { title: 'Results',to:'/cpsu_campus/results/', icon: 'mdi-chart-box-outline', active:4  },
-         { title: 'Settings',to:'/cpsu_campus/settings/', icon: 'mdi-account-cog-outline', active:5  },
+          
+         { title: 'Settings',to:'/cpsu_campus/settings/', icon: 'mdi-account-cog-outline', active:2 },
         ]
-        console.log(path)
+        console.log('www',path)
     },
     methods:{
       clickPage(index,path){

@@ -65,8 +65,8 @@ export default {
         labels: [],
         datasets: [
                  { 
-                label: 'Not Active Evaluator',
-                backgroundColor: 'red',
+                label: 'AVERAGE PER CAMPUS',
+                backgroundColor: 'green',
                 data: [300] 
                 }
                 

@@ -43,6 +43,10 @@ Route::get('/{vue?}',function(){
 Route::post('/logout','UsersController@logout');//check
 Route::post('/get_admin','UsersController@get_admin');
 Route::post('/users','UsersController@users');
+Route::post('/delete_campus','UsersController@delete_campus');
+Route::post('/edit_campus','UsersController@edit_campus');
+Route::post('/update_info','UsersController@update_info');
+
 Route::post('/get_evaluators','EvaluatorController@get_evaluators'); //check
 Route::post('/logout_evaluator','EvaluatorController@logout_evaluator');
 Route::post('/get_every_evaluator','EvaluatorController@get_every_evaluator');

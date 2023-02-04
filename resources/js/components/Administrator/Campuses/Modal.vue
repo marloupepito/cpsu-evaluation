@@ -16,7 +16,7 @@
       </template>
       <v-card>
         <v-card-title>
-          <span class="text-h5">LOADED SUBJECT</span>
+          <span class="text-h5">ADD CAMPUS</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -154,6 +154,7 @@ import axios from 'axios'
             campusrank:this.campusrank,
             campususername:this.campususername,
             campuspassword:this.campuspassword,
+            assignedPerson:this.assignedPerson
             })
           .then(res=>{
             this.dialog = false

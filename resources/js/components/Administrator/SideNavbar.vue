@@ -51,6 +51,7 @@
           { title: 'Results',path:'/administrator/results', icon: 'mdi-chart-box-outline', active:5  },
          // { title: 'Schedule',path:'/administrator/schedule', icon: 'mdi-calendar-outline', active:6  },
           { title: 'Questionaire',path:'/administrator/questionaire', icon: 'mdi-timeline-question-outline', active:7 },
+          { title: 'Settings',path:'/administrator/settings', icon: 'mdi-account-cog-outline', active:8 },
         ],
         rail: false,
       }
@@ -63,7 +64,8 @@
       path==='faculty'?4:
       path==='results'?5:
       path==='schedule'?6:
-      path==='questionaire'?7:8
+      path==='questionaire'?7:
+      path==='settings'?8:9
 
     },
     methods:{

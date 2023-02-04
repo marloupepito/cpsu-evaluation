@@ -17,7 +17,7 @@ class FacultySubjectLoadingController extends Controller
 
         $campus = User::where('academic_rank','<>','Main Administrator Campus')->get();
          $faculty = Faculty::where([['semester','=',$sem],['sy','=',$sy]])->get();
-         $evaluator = Evaluator::where([['semester','=',$sem],['sy','=',$sy]])->get();
+         $evaluator = StudentSubjectLoading::where([['program','=','done'],['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluator_id');
          $active = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['status','=','active']])->get();
          $notactive = Evaluator::where([['semester','=',$sem],['sy','=',$sy],['status','=',null]])->get();
 
@@ -26,7 +26,7 @@ class FacultySubjectLoadingController extends Controller
          return response()->json([
             'campus' => $campus,
             'faculty' => $faculty,
-            'evaluator' => $evaluator,
+            'evaluator' => count($evaluator),
             'active' => $active,
             'notactive' => $notactive,
             'active2' => $active2,
@@ -45,7 +45,7 @@ class FacultySubjectLoadingController extends Controller
          // $notactive2 = Faculty::where([['semester','=',$sem],['sy','=',$sy],['status','=',null],['campusid','=',$request->campusid]])->get();
          // $faculty = Faculty::where([['semester','=',$sem],['sy','=',$sy],['campusid','=',$request->campusid]])->get();
 
-        $active = StudentSubjectLoading::where([['semester','=',$sem],['sy','=',$sy],['campusid','=',$request->campusid]])->get();
+        $active = StudentSubjectLoading::where([['program','=','done'],['semester','=',$sem],['sy','=',$sy],['campusid','=',$request->campusid]])->get();
 
 
              return response()->json([

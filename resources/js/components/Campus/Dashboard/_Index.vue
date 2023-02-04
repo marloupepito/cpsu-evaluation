@@ -1,6 +1,6 @@
 <template>
 	<div class="row">
-		<div class="col-md-4 col-12">
+		<!-- <div class="col-md-4 col-12">
 		<Card :count="evaluatee.length" path="/administrator/faculty" title="Total Evaluatee" content="click here" icon="mdi-card-account-details-outline" />
 		</div>
 		<div class="col-md-4 col-12">
@@ -8,7 +8,7 @@
 		</div>
 		<div class="col-md-4 col-12">
 		<Card :count="active.length" path="/administrator/faculty" title="Active Evaluator" content="click here" icon="mdi-account-multiple-check-outline" />
-		</div>	
+		</div>	 -->
 
 		<div class="col-md-3 col-12">
 		<img  :src=' "http://api.qrserver.com/v1/create-qr-code/?data=" + ["supervisor",data.id,data.password]' />

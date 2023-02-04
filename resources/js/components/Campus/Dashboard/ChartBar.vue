@@ -71,7 +71,7 @@ export default {
         labels: [ 'College of Computer Study', 'College of Business Management', 'College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education' ],
         datasets: [
                  { 
-               	label: 'TOTAL STUDENTS IN DEPARTMENT',
+               	label: 'AVERAGE PER DEPARTMENT',
                 backgroundColor: 'green',
                 data: [] 
                 },

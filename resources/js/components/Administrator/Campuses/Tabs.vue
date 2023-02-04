@@ -40,6 +40,7 @@
                       class="text-h5 font-weight-bold"
                       cols="6"
                     >
+                   
                       {{i.campus}}
                     </v-col>
 
@@ -66,6 +67,24 @@
                 <v-btn color="green" @click="getQR(['supervisor',i.id,i.password])">
                 QRCODE
                 </v-btn>
+                 <v-menu v-if="path === 'campuses'">
+                        <template v-slot:activator="{ props }">
+                          <v-btn
+                           class="ml-3"
+                            color="green"
+                            v-bind="props"
+                          >
+                            Option
+                          </v-btn>
+                        </template>
+                        <v-list>
+                          <v-list-item
+                          >
+                            <v-list-item-title class="mb-3"><a href="#" ><Edit :id="i.id"/></a></v-list-item-title>
+                             <v-list-item-title ><a href="#" @click="deleteCampus(i.id)">Delete</a></v-list-item-title>
+                          </v-list-item>
+                        </v-list>
+                      </v-menu>
                 <div class="d-flex py-2 justify-space-between">
                   <v-list-item
                     density="compact"
@@ -97,6 +116,7 @@
 <script>
 import axios from 'axios'
 import Modal from './Modal.vue'
+import Edit from './Edit.vue'
   export default {
     data: () => ({
       tab: 'option-1',
@@ -106,14 +126,43 @@ import Modal from './Modal.vue'
       campus:''
     }),
     components:{
-      Modal
+      Modal,
+      Edit
       },
     mounted(){
       const path = window.location.pathname.split('/')[2]
       this.path = path
       this.mount()
+      console.log('ss',path)
     },
     methods:{
+      deleteCampus(id){
+        this.$swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              axios.post('/delete_campus',{
+                id:id
+                })
+              .then(res=>{
+                  this.$swal({
+                    icon: 'success',
+                    title: 'Your file has been deleted.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  this.$router.push({ path: '/administrator/faculty/campus/view/loading'})
+                })
+             
+            }
+          })
+        },
        getQR(e){
         this.$swal({
           showConfirmButton: false,

@@ -5,7 +5,7 @@
 		
 		</div>
 		<div class="col-md-4">
-		<Cards :count="evaluator" path="/administrator/students" title="Total Students" content="click here" icon="mdi-account-school-outline" />
+		<Cards :count="evaluator" path="/administrator/students" title="Total Evaluators" content="click here" icon="mdi-account-school-outline" />
 		</div>
 		<div class="col-md-4">
 		<Cards :count="faculty" path="/administrator/faculty" title="Total Faculty" content="click here" icon="mdi-card-account-details-outline" />
@@ -42,7 +42,7 @@ import axios from 'axios'
 				axios.post('/get_all_admin_dashboard_data')
 				.then(res=>{
 					this.campus = res.data.campus.length
-					this.evaluator = res.data.evaluator.length
+					this.evaluator = res.data.evaluator
 					this.faculty = res.data.faculty.length
 					this.active = res.data.active.length + res.data.active2.length
 					this.notactive = res.data.notactive.length + res.data.notactive2.length

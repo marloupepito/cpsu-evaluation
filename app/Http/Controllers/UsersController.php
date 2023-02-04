@@ -13,6 +13,63 @@ use App\Models\Faculty;
 class UsersController extends Controller
 {
     
+    public function update_info(Request $request){
+
+        if($request->type === 'campus'){
+             User::where('id',$request->id)
+            ->update([
+                'campus' =>$request->campusName,
+            ]);
+        }else if($request->type === 'campus'){
+             User::where('id',$request->id)
+            ->update([
+                'name' =>$request->admin,
+            ]);
+        }
+        else if($request->type === 'user'){
+             User::where('id',$request->id)
+            ->update([
+                'username' =>$request->user,
+            ]);
+        }else{
+             User::where('id',$request->id)
+            ->update([
+                'password' =>Hash::make($request->password),
+            ]);
+        }
+          
+
+    }
+    public function edit_campus(Request $request){
+
+        if($request->campuspassword === ''){
+              User::where('id',$request->id)
+                ->update([
+                    'assigned_person'=>$request->assignedPerson,
+                    'campus' =>$request->campusname,
+                    'name' =>$request->campusadmin,
+                    'academic_rank' =>$request->campusrank,
+                    'username' =>$request->campususername,
+                ]);
+        }else{
+              User::where('id',$request->id)
+                ->update([
+                    'assigned_person'=>$request->assignedPerson,
+                    'campus' =>$request->campusname,
+                    'name' =>$request->campusadmin,
+                    'academic_rank' =>$request->campusrank,
+                    'username' =>$request->campususername,
+                    'password' =>Hash::make($request->campuspassword),
+                ]);
+        }
+      
+    }
+    public function delete_campus(Request $request){
+
+        User::where('id',$request->id)->delete();
+
+
+    }
      public function add_campus(Request $request){
          $request->validate([
             'campusname'=>['required'],
@@ -96,7 +153,7 @@ class UsersController extends Controller
 
 
         $users = DB::table('users')
-        ->where([['campus', '=' ,$request->campus],['id', '=' ,$request->campusid],['academic_rank', '=' ,$request->academic_rank]])
+        ->where('id', '=' ,$request->campusid)
         ->first();
         return response()->json([
             'status' => $users
