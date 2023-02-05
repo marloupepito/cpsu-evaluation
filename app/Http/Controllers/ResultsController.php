@@ -169,9 +169,10 @@ class ResultsController extends Controller
             'status'=>['required'],
         ]);
 
-        $users = Results::all();
+        $users = Results::where([['campusid','=',$request->campusid],['department','=',$request->department],['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluatee_id');
         return response()->json([
-                'status' => $users
+                'status' => $users,
+                'console' =>[$request->campusid,$request->department,$sem,$sy]
             ]);
     }
 
