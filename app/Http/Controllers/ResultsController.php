@@ -165,7 +165,7 @@ class ResultsController extends Controller
         $sy = $request->session()->get('school_year');
         $sem = $request->session()->get('school_sem');
    
-        $users = Results::where([['campusid','=',$request->campusid],['department','=',$request->department],['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluatee_id');
+        $users = Results::where([['campusid','=',$request->campusid],['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluatee_id');
         return response()->json([
                 'status' => $users,
                 'console' =>[$request->campusid,$request->department,$sem,$sy]
