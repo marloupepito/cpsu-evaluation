@@ -1368,7 +1368,7 @@ export default {
                           showCancelButton: false,
                           confirmButtonColor: '#3085d6',
                           cancelButtonColor: '#d33',
-                          confirmButtonText: 'Yes, delete it!'
+                          confirmButtonText: 'Proceed'
                         }).then((result) => {
                           if (result.isConfirmed) {
                               document.getElementById("myForm").reset();

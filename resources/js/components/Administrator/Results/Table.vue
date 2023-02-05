@@ -134,7 +134,8 @@ export default {
           this.campusid =campusid
         axios.post('/get_all_results2',{
           status:'all',
-          department:this.department
+          department:this.department,
+          campusid:campusid
         })
         .then(res=>{
               console.log(res.data.status)
