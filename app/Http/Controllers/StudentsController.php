@@ -89,6 +89,7 @@ public function get_subject_load_from_teacher2(Request $request){
                 'year' => $date,//
                 ]);
         }
+        $request->session()->put('department',$request->data[0][3]);
         return response()->json([
             'status' =>$request->data,
         ]);
