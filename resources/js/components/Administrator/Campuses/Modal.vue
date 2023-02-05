@@ -121,16 +121,16 @@ import axios from 'axios'
         v => !!v || 'Assigned Person is required',
         ],
         campusnameRules: [
-        v => !!v || 'Department is required',
+        v => !!v || 'Campus is required',
         ],
         campusadminRules: [
-          v => !!v || 'ID Number is required',
+          v => !!v || 'Campus Administrator is required',
         ],
         campususernameRules: [
-          v => !!v || 'Fullname is required',
+          v => !!v || 'Username is required',
         ],
         campuspasswordRules: [
-          v => !!v || 'Department Rank is required',
+          v => !!v || 'Password is required',
         ],
       
 

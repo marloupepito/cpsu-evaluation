@@ -49,7 +49,7 @@
             :append-inner-icon="pass ? 'mdi-content-save-edit-outline' : 'mdi-reload'"
             :prepend-icon="icon"
             clear-icon="mdi-close-circle"
-            label="password"
+            label="Password"
             type="password"
             @click:append-inner="submit4"
       	 	 :rules="passwordRules"

@@ -140,16 +140,16 @@ import axios from 'axios'
         v => !!v || 'Department is required',
       ],
       courseyearRules: [
-        v => !!v || 'Username is required',
+        v => !!v || 'Course is required',
       ],
       semRules: [
-        v => !!v || 'Username is required',
+        v => !!v || 'Semester is required',
       ],
       subjectRules: [
-        v => !!v || 'Username is required',
+        v => !!v || 'Subject is required',
       ],
       sectionRules: [
-        v => !!v || 'Username is required',
+        v => !!v || 'Section is required',
       ],
       loadingLocation:'',
       sy:'',

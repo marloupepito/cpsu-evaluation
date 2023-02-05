@@ -136,7 +136,7 @@ import axios from 'axios'
           v => !!v || 'Fullname is required',
         ],
         rankRules: [
-          v => !!v || 'Department Rank is required',
+          v => !!v || 'Academic Rank is required',
         ],
         sem:'',
       semRules: [

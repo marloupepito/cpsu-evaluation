@@ -19,7 +19,6 @@ class ResultsController extends Controller
         $total = ($request->commitment+$request->kos+$request->til+$request->mol) / 4;
         
 
-
         if($request->session()->get('type') === 'student'){
             
             StudentSubjectLoading::where('id', $request->id)
@@ -170,7 +169,7 @@ class ResultsController extends Controller
             'status'=>['required'],
         ]);
 
-        $users = Results::where([['campusid','=',$request->campusid],['department','=',$request->department],['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluatee_id');
+        $users = Results::all();
         return response()->json([
                 'status' => $users
             ]);

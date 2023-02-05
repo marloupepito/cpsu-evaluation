@@ -138,7 +138,6 @@ export default {
           campusid:campusid
         })
         .then(res=>{
-              console.log(res.data.status)
           this.rows = Object.values(res.data.status)
           this.campusUsertype = localStorage.getItem("academic_rank");
         })

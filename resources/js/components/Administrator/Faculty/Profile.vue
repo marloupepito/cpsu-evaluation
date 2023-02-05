@@ -19,7 +19,7 @@
 
 	
 	      <h2 class="mt-2">{{data.name+' - '+data.academic_rank}}</h2>
-	       <h3>{{data.name+' - '+data.campus}}</h3>
+	       <h3>{{data.campus}}</h3>
  	<div class="row pt-5">
 	 	<div class="col-md-4 mb-5"
 			v-for="(item, i) in loaded"
