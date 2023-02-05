@@ -163,12 +163,8 @@ class ResultsController extends Controller
     }
        public function get_all_results2(Request $request){
         $sy = $request->session()->get('school_year');
-        
         $sem = $request->session()->get('school_sem');
-        $request->validate([
-            'status'=>['required'],
-        ]);
-
+   
         $users = Results::where([['campusid','=',$request->campusid],['department','=',$request->department],['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluatee_id');
         return response()->json([
                 'status' => $users,
