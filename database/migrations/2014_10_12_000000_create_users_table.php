@@ -14,6 +14,20 @@ class CreateUsersTable extends Migration
     public function up()
     {
 
+        Schema::create('final_result', function (Blueprint $table) {
+            $table->id();
+            $table->string('campusid')->nullable();
+            $table->string('faculty_id')->nullable();
+            $table->string('faculty_name')->nullable();
+            $table->float('student')->nullable();
+            $table->float('peer')->nullable();
+            $table->float('self')->nullable();
+            $table->float('supervisor')->nullable();
+            $table->float('sy')->nullable();
+            $table->string('sem')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('subject_list', function (Blueprint $table) {
             $table->id();
             $table->string('subject')->nullable();

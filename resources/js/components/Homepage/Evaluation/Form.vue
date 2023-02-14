@@ -1292,7 +1292,8 @@ export default {
             type: "",
             loaded: "",
             semester: "",
-            count:''
+            count:'',
+            type:''
         };
     },
     methods: {
@@ -1326,6 +1327,7 @@ export default {
                 total:parseInt(this.q1)+parseInt(this.q2)+parseInt(this.q3)+parseInt(this.q4)+parseInt(this.q5)+parseInt(this.q6)+parseInt(this.q7)+parseInt(this.q8)+parseInt(this.q9)+parseInt(this.q10)+parseInt(this.q11)+parseInt(this.q12)+parseInt(this.q13)+parseInt(this.q14)+parseInt(this.q15)+parseInt(this.q16)+parseInt(this.q17)+parseInt(this.q18)+parseInt(this.q19)+parseInt(this.q20),
                 name: this.evaluateeName,
                 comment: this.comment,
+                type: this.type,
                 evaluator: this.evaluator,
                 evaluatee: this.facultyValue,
                 commitment:
@@ -1416,6 +1418,7 @@ export default {
 							this.semester =res.data.status.semester
                              this.evaluator =res.data.evaluator
                              this.facultyValue = res.data.status.id_number
+                             this.type = res.data.status.type
 						}else{
                               this.$swal({
                                 icon: "success",

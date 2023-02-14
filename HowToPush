@@ -15,6 +15,12 @@ heroku git:remote -a gould-care
 
 
 
+   $users = Results::where([['campusid','=',$request->campusid],['department','=',$request->department],['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluatee_id');
+        return response()->json([
+                'status' => $users,
+                'console' =>[$request->campusid,$request->department,$sem,$sy]
+            ]);
+
 
  @vite(['resources/css/app.css', 'resources/js/app.js'])
 

@@ -88,17 +88,7 @@ class UsersController extends Controller
         $user->academic_rank = $request->campusrank;
         $user->save();
 
-            $ab = User::orderBy('id', 'DESC')->first();
-            $user = new Faculty;
-            $user->id_number = $request->campususername;
-            $user->campusid = $ab->id;
-            $user->password = Hash::make($request->campuspassword);
-            $user->campus = $request->campusname;
-            $user->photos = 'sample.jpg';
-            $user->name = $request->assignedPerson;
-            $user->department = 'admin';
-            $user->academic_rank = 'admin';
-            $user->save();
+        
        
      }
    public function user_login(Request $request){

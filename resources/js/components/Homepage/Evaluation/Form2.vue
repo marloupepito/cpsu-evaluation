@@ -1283,7 +1283,8 @@ export default {
             type: "",
             loaded: "",
             semester: "",
-            count:''
+            count:'',
+            type:''
         };
     },
     methods: {
@@ -1319,6 +1320,7 @@ export default {
                 comment: this.comment,
                 evaluator: this.evaluator,
                 evaluatee: this.facultyValue,
+                type:this.type,
                 commitment:
                     (parseInt(this.q1) +
                         parseInt(this.q2) +
@@ -1408,7 +1410,7 @@ export default {
                              this.evaluator =res.data.evaluator
                              console.log(res.data.evaluator)
                              this.facultyValue = res.data.status.id_number
-                             console.log(res.data.status.id_number)
+                              this.type = res.data.status.type
 						}else{
                               this.$swal({
                                 icon: "success",

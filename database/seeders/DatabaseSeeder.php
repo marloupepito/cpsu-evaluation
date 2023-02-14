@@ -245,7 +245,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU Hinoba-an Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'ABELLO, Mark Anthony G.';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();
@@ -266,7 +266,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU Sipalay Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'FERARIS, Erwin P., PhD';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();
@@ -288,7 +288,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU Cauayan Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'BORRES, Germa T., PhD';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();
@@ -309,7 +309,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU Ilog Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'CORPUZ Filipina G.';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();
@@ -332,7 +332,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU Candoni Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'MISAJON, Chim C., PhD';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();
@@ -355,7 +355,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU Hinigaran Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'PREDO, Gregorio D.';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();
@@ -379,7 +379,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU Moises Padilla Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'GONZALES, Patrocenio L.';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();
@@ -402,7 +402,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU Victorias Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'FORDENTE, Noel B.';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();
@@ -425,7 +425,7 @@ class DatabaseSeeder extends Seeder
             $user->campus = 'CPSU San Carlos Campus';
             $user->photos = 'sample.jpg';
             $user->name = 'BALOGO, Ken M';
-            $user->department = 'admin';
+            $user->department = 'College of Computer Studies';
             $user->academic_rank = 'admin';
             $user->sy = $sy_result;
             $user->save();

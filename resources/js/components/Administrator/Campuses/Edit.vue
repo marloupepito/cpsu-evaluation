@@ -51,7 +51,7 @@
 
               <v-col cols="12" sm="12">
                 <v-text-field
-                  label="Assigned Person"
+                  label="Quality Assurance"
                   required
                   v-model="assignedPerson"
                   :rules="assignedPersonRules"
@@ -121,7 +121,7 @@ import axios from 'axios'
         campuspassword: '',
         assignedPerson:'',
         assignedPersonRules: [
-        v => !!v || 'Assigned Person is required',
+        v => !!v || 'Quality Assurance is required',
         ],
         campusnameRules: [
         v => !!v || 'Campus Name is required',

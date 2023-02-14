@@ -61,70 +61,45 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th width="50%"><h5>TOTAL</h5></th>
-								<th class="text-center" width="25%"><h5>MEAN</h5></th>
-								<th class="text-center" width="25%"><h5>INTERPRETATION</h5></th>
+								<th width="25%"><h5>Evaluators</h5></th>
+								<th class="text-center" width="25%"><h5>Result</h5></th>
+								<th class="text-center" width="25%"><h5>Percent</h5></th>
 							</tr>
 						</thead>
 						<tbody>
+
 							<tr>
 								<td>
-									<b>A. Commitment</b>
+									<b>Student</b>
 								</td>
-								<td class="text-center">{{a >= 4?info1.a.substring(0,4):info1.a}}</td>
-								<td class="text-center">
-									{{
-										info1.a <= 1 && info1.a <= 2?"Poor":
-										info1.a <= 2 && info1.a <= 3?"Fair":
-										info1.a <= 3 && info1.a <= 4?"Satisfactory":
-										info1.a <= 4 && info1.a <= 5?"Very Satisfactory":
-										info1.a <= 5 && info1.a <= 6?"Outstanding":""	
-									}}
-								</td>
+								<td class="text-center">{{student}}</td>
+								<td class="text-center">{{(parseFloat((student * .20)).toString().substr(0, 4))}}</td>
+						
 							</tr>
 							<tr>
 								<td>
-										<b>B. Knowledge of Subject</b>
+										<b>Peer</b>
 								</td>
-								<td class="text-center">{{b >= 4?info1.b.substring(0,4):info1.b}}</td>
-								<td class="text-center">
-									{{
-										info1.b <= 1 && info1.b <= 2?"Poor":
-										info1.b <= 2 && info1.b <= 3?"Fair":
-										info1.b <= 3 && info1.b <= 4?"Satisfactory":
-										info1.b <= 4 && info1.b <= 5?"Very Satisfactory":
-										info1.b <= 5 && info1.b <= 6?"Outstanding":""	
-									}}
-								</td>
+								<td class="text-center">{{peer}}</td>
+
+								<td class="text-center">{{(parseFloat((peer * .20)).toString().substr(0, 4))}}</td>
+
 							</tr>
 							<tr>
 								<td>
-										<b>C. Teaching for Independent Learning</b>
+										<b>Self</b>
 								</td>
-								<td class="text-center">{{c >= 4?info1.c.substring(0,4):info1.c}}</td>
-								<td class="text-center">
-									{{
-										info1.c <= 1 && info1.c <= 2?"Poor":
-										info1.c <= 2 && info1.c <= 3?"Fair":
-										info1.c <= 3 && info1.c <= 4?"Satisfactory":
-										info1.c <= 4 && info1.c <= 5?"Very Satisfactory":
-										info1.c <= 5 && info1.c <= 6?"Outstanding":""	
-									}}</td>
+								<td class="text-center">{{self}}</td>
+								<td class="text-center">{{(parseFloat((self * .30)).toString().substr(0, 4))}}</td>
+						
 							</tr>
 							<tr>
 								<td>
-										<b>D. Management of Learning</b>
+										<b>Supervisor</b>
 								</td>
-								<td class="text-center">{{d >= 4?info1.d.substring(0,4):info1.d}}</td>
-								<td class="text-center">
-										{{
-										info1.d <= 1 && info1.d <= 2?"Poor":
-										info1.d <= 2 && info1.d <= 3?"Fair":
-										info1.d <= 3 && info1.d <= 4?"Satisfactory":
-										info1.d <= 4 && info1.d <= 5?"Very Satisfactory":
-										info1.d <= 5 && info1.d <= 6?"Outstanding":""	
-									}}
-								</td>
+								<td class="text-center">{{supervisor}}</td>
+								<td class="text-center">{{(parseFloat((supervisor * .30)).toString().substr(0, 4))}}</td>
+						
 							</tr>
 						</tbody>
 					</table>
@@ -134,16 +109,40 @@
 				<table class="table table-striped">
 						<thead>
 							<tr>
-								<th width="50%"><h3>TOTAL</h3></th>
-								<th class="text-center" width="25%"><h3>{{e >= 4?info1.e.substring(0,4):info1.e}}</h3></th>
+								<th width="25%"><h3>TOTAL</h3></th>
+								<th class="text-center" width="25%"><h3>{{
+									((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4)
+									 }}</h3></th>
 								<th class="text-center" width="25%"><h3>
-										{{
-										info1.e <= 1 && info1.e <= 2?"Poor":
-										info1.e <= 2 && info1.e <= 3?"Fair":
-										info1.e <= 3 && info1.e <= 4?"Satisfactory":
-										info1.e <= 4 && info1.e <= 5?"Very Satisfactory":
-										info1.e <= 5 && info1.e <= 6?"Outstanding":""	
-									}}
+															<div v-if=" 	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 1 && 
+                     	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 2">
+                <h3>Poor</h3>
+                      
+          </div>
+             <div v-else-if=" 	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 2 && 
+                      	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 3">
+                      
+                    <h3>Fair</h3>
+          </div>
+
+             <div style="font-size: 150%;" v-else-if="	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4)<= 3 && 
+                    	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 4">
+                      
+                  <h3>Satisfactory</h3>
+          </div>
+
+             <div v-else-if=" 	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 4 && 
+                      	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 5">
+                    
+                  <h3>very Satisfactory</h3>
+          </div>
+
+ <div v-else-if="((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 5 && 
+                    	((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4) <= 6">
+                
+                   
+                 <h3>Outstanding</h3>
+          </div>
 								</h3></th>
 							</tr>
 						</thead>
@@ -174,7 +173,11 @@ export default {
   async mounted(){
 		await axios.post('/get_all_overall')
 		.then(res=>{
-
+			console.log(this.$route.query.student)
+			this.student = this.$route.query.student
+			this.peer = this.$route.query.peer
+			this.self = this.$route.query.self
+			this.supervisor = this.$route.query.supervisor
 			this.aaa =res.data.status[0].name
 			this.info1 = res.data.status2
 			this.pdf =res.data.pdf
@@ -208,6 +211,10 @@ export default {
 		const ccje = localStorage.getItem("ccje");
 	
 		return{
+			student:'',
+			peer:'',
+			self:'',
+			Supervisor:'',
 			aaa:'',
 			campus:'',
 			campusid:'',

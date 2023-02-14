@@ -70,6 +70,8 @@ Route::post('/submit_form','ResultsController@submit_form');
 Route::post('/verify_evaluate','ResultsController@verify_evaluate');
 Route::post('/get_all_results','ResultsController@get_all_results');
 Route::post('/get_all_results2','ResultsController@get_all_results2'); // check
+
+Route::post('/get_all_results3','ResultsController@get_all_results3'); // check
 Route::post('/goto_overall','ResultsController@goto_overall'); // check
 Route::post('/get_all_overall','ResultsController@get_all_overall'); // check
 Route::post('/get_all_overall1','ResultsController@get_all_overall1'); // check

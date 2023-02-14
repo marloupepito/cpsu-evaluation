@@ -19,7 +19,7 @@
                         prepend-icon="mdi-plus"
                         color="success"
                         size="x-small"
-                        @click="checkData(i.id+','+i.name+','+i.subject+','+i.department+','+i.id_number)"
+                        @click="checkData(i.id+'|'+i.name+'|'+i.subject+'|'+i.department+'|'+i.id_number)"
                         >Add</v-btn>
                     </td>
                 </tr>
@@ -37,8 +37,8 @@
             </thead>
             <tbody>
                 <tr v-for="i in value">
-                    <th scope="row">{{ i.split(',')[1] }}</th>
-                    <td>{{ i.split(',')[2] }}</td>
+                    <th scope="row">{{ i.split('|')[1] }}</th>
+                    <td>{{ i.split('|')[2] }}</td>
                     <td> <v-btn
                         class="text-white"
                         prepend-icon="mdi-trash-can-outline"
@@ -75,7 +75,7 @@ export default {
     methods: {
         validate() {
             this.loading=true
-           const data =this.value.map(res=>res).map(res =>res.split(','))
+           const data =this.value.map(res=>res).map(res =>res.split('|'))
             axios.post('/add_student_subject_loading',{
                 data:data
             })

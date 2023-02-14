@@ -44,15 +44,15 @@
                 ></v-text-field>
               </v-col>
 
-              <!-- <v-col cols="12" sm="12">
+               <v-col cols="12" sm="12">
                 <v-select
-                  :items="['1st Semester','2nd Semester']"
-                  label="Semester"
+                  :items="['Faculty','Administrator']"
+                  label="Evaluator Type"
                   required
-                  :rules="semRules"
-                  v-model="sem"
+                  :rules="typeRules"
+                  v-model="type"
                 ></v-select>
-              </v-col> -->
+              </v-col> 
            
 
                <v-col cols="12" sm="12">
@@ -138,9 +138,9 @@ import axios from 'axios'
         rankRules: [
           v => !!v || 'Academic Rank is required',
         ],
-        sem:'',
-      semRules: [
-        v => !!v || 'Semester is required',
+        type:'',
+      typeRules: [
+        v => !!v || 'Evaluator Type is required',
       ],
       syRules: [
         v => !!v || 'School Year is required',
@@ -194,7 +194,7 @@ import axios from 'axios'
               campusid:this.campusid,
               campus:this.campus,
               name:this.name,
-              sem:this.sem,
+              type:this.type,
               department:this.department,
               rank:this.rank,
               sy:this.sy

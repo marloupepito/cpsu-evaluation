@@ -9,6 +9,7 @@ use App\Models\Schedule;
 use App\Models\User;
 use App\Models\Faculty;
 use App\Models\Students;
+use App\Models\FinalResult;
 use App\Models\StudentSubjectLoading;
 use Illuminate\Support\Facades\DB;
 class ResultsController extends Controller
@@ -42,6 +43,7 @@ class ResultsController extends Controller
                 $user->semester = $request->session()->get('e_sem');
                 $user->sy =$request->session()->get('e_sy');
                 $user->department = $request->session()->get('department');
+                $user->status = $request->type;
                 $user->save();
 
 
@@ -70,7 +72,8 @@ class ResultsController extends Controller
                 $user->semester = $request->session()->get('school_sem');
                 $user->sy = $request->session()->get('school_year');
                 $user->department = $request->session()->get('department');
-                $user->academic_rank = 'faculty';
+                $user->academic_rank = $request->session()->get('rank');
+                $user->status = $request->type;
                 $user->save();
 
         } 
@@ -111,11 +114,11 @@ class ResultsController extends Controller
         'c' => $c / count($f),
         'd' => $d / count($f),
         'e' => $e / count($f),
-        'ccs' => $ccs !== 0 && count($count1) !== 0? $ccs / count($count1):null,
-        'cte' => $cte !== 0 && count($count2) !== 0? $cte / count($count2):null,
-        'cbm' => $cbm !== 0 && count($count3) !== 0? $cbm / count($count3):null,
-        'caf' => $caf !== 0 && count($count4) !== 0? $caf / count($count4):null,
-        'ccje' =>$ccje !== 0 && count($count5) !== 0? $ccje / count($count5):null,
+        // 'ccs' => $ccs !== 0 && count($count1) !== 0? $ccs / count($count1):null,
+        // 'cte' => $cte !== 0 && count($count2) !== 0? $cte / count($count2):null,
+        // 'cbm' => $cbm !== 0 && count($count3) !== 0? $cbm / count($count3):null,
+        // 'caf' => $caf !== 0 && count($count4) !== 0? $caf / count($count4):null,
+        // 'ccje' =>$ccje !== 0 && count($count5) !== 0? $ccje / count($count5):null,
 
         ]);
 
@@ -161,11 +164,89 @@ class ResultsController extends Controller
                 'status' => $users
             ]);
     }
+
+    public function get_all_results3(Request $request){
+
+  $sy = $request->session()->get('school_year');
+        $sem = $request->session()->get('school_sem');
+
+
+           for ($i=0; $i < count($request->data); $i++) { 
+             $exist[$i] =FinalResult::where('faculty_id','=',$request->data[$i]['evaluatee_id'])->first();
+
+                if($exist[$i] === null){
+                   $student[$i]= Results::where([['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+
+
+                   $sdc[$i]= Results::where([['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+
+                    $peer[$i]= Results::where([['status','=','Peer'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+
+                    $pc[$i]= Results::where([['status','=','Peer'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+
+                    $self[$i]= Results::where([['status','=','Self'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+
+                    $sc[$i]= Results::where([['status','=','Self'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+
+                    $admin[$i]= Results::where([['status','=','Admin'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+
+                    $ac[$i]= Results::where([['status','=','Admin'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+
+                      $user = new FinalResult;
+                      $user->campusid = $request->data[$i]['campusid'];
+                        $user->faculty_id = $request->data[$i]['evaluatee_id'];
+                        $user->faculty_name=$request->data[$i]['name'];
+                        $user->student=count($sdc[$i]) === 0?0:$student[$i] / count($sdc[$i]);
+                        $user->peer=count($pc[$i]) === 0?0:$peer[$i] /count($pc[$i]);
+                        $user->self=count($sc[$i]) === 0?0:$self[$i] /count($sc[$i]);
+                        $user->supervisor=count($ac[$i]) === 0?0:$admin[$i] /count($ac[$i]);
+                        $user->sy=$request->data[$i]['sy'];
+                        $user->sem=$request->data[$i]['semester'];
+                        $user->save();
+                }else{
+
+
+
+                }
+
+           }
+
+         $FinalResult = FinalResult::where([['sem','=',$request->data[0]['semester']],['sy','=',$request->data[0]['sy']],['campusid','=',$request->data[0]['campusid']]])->get();
+        return response()->json([
+                'status' => $FinalResult,
+            ]);
+
+    }
        public function get_all_results2(Request $request){
         $sy = $request->session()->get('school_year');
         $sem = $request->session()->get('school_sem');
    
         $users = Results::where([['campusid','=',$request->campusid],['department','=',$request->department],['semester','=',$sem],['sy','=',$sy]])->get()->unique('evaluatee_id');
+
+        
+           // for ($i=0; $i < count($users); $i++) { 
+           //   // $exist[$i] =FinalResult::where('faculty_id','=',$users[$i]['evaluatee_id'])->first();
+
+           //      // if($exist[$i] === null){
+           //      //    // $student[$i]= Results::where([['academic_rank','=',null],['evaluatee_id','=',$users[$i]->evaluatee_id],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+
+           //      //    // $peer[$i]= Results::where([['academic_rank','=',null],['evaluatee_id','=',$users[$i]->evaluatee_id],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+
+           //      //    // $sc[$i]= Results::where([['academic_rank','=',null],['evaluatee_id','=',$users[$i]->evaluatee_id],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+
+           //      //    //    $user = new FinalResult;
+           //      //    //      $user->faculty_id = $users[$i]->evaluatee_id;
+           //      //    //      $user->faculty_name=$users[$i]->name;
+           //      //    //      $user->student=$student[$i] /count($sc[$i]);
+           //      //    //      $user->student=$peer[$i] /count($sc[$i]);
+           //      //    //      $user->save();
+           //      // }else{
+
+
+
+           //      // }
+
+           // }
         return response()->json([
                 'status' => $users,
                 'console' =>[$request->campusid,$request->department,$sem,$sy]
@@ -208,7 +289,7 @@ class ResultsController extends Controller
         $pdf = DB::table('student_subject_loading')
             ->join('faculty', 'student_subject_loading.evaluator_id', '=', 'faculty.id')
             ->where([['student_subject_loading.id_number','=',$request->session()->get('evaluateeid')],['student_subject_loading.semester','=',$sem],['student_subject_loading.type','=','Peer'],['student_subject_loading.program','=','done'],['student_subject_loading.sy','=',$sy]])
-            ->select('faculty.department','faculty.name','faculty.semester','faculty.sy','faculty.campus','student_subject_loading.id')
+            ->select('faculty.department','faculty.name','faculty.academic_rank','faculty.semester','faculty.sy','faculty.campus','student_subject_loading.id')
             ->get();
 
         return response()->json([
@@ -217,15 +298,22 @@ class ResultsController extends Controller
         ]);
     }
     public function get_all_overall3(Request $request){
-        $sy = $request->session()->get('school_year');
-        
+          $sy = $request->session()->get('school_year');
         $sem = $request->session()->get('school_sem');
-        $faculty=Faculty::where('id_number','=',$request->session()->get('evaluateeid'))->first();
+        $faculty=Faculty::where('id','=',$request->session()->get('evaluateeid'))->first();
 
-        $pdf =  StudentSubjectLoading::where([['semester','=',$sem],['type','=','Supervisor'],['program','=','done'],['sy','=',$sy],['id_number', '=' ,$faculty->id]])
-        ->get();
+        // $pdf =  StudentSubjectLoading::where([['id_number','=',$request->session()->get('evaluateeid')],['semester','=',$sem],['type','=','Peer'],['program','=','done'],['sy','=',$sy]])
+        // ->get();
+
+        $pdf = DB::table('student_subject_loading')
+            ->join('faculty', 'student_subject_loading.evaluator_id', '=', 'faculty.id')
+            ->where([['student_subject_loading.id_number','=',$request->session()->get('evaluateeid')],['student_subject_loading.semester','=',$sem],['student_subject_loading.type','=','Admin'],['student_subject_loading.program','=','done'],['student_subject_loading.sy','=',$sy]])
+            ->select('faculty.department','faculty.name','faculty.academic_rank','faculty.semester','faculty.sy','faculty.campus','student_subject_loading.id')
+            ->get();
+
         return response()->json([
             'status' => $pdf,
+            'console' =>$faculty
         ]);
     }
     public function get_all_overall4(Request $request){

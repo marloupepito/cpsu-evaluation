@@ -17,7 +17,28 @@ class StudentsController extends Controller
 
         $date = date('Y');
 
-        for ($i=0; $i < count($request->data); $i++) { 
+        if($request->session()->get('rank') === 'admin'){
+             for ($i=0; $i < count($request->data); $i++) { 
+                StudentSubjectLoading::create([
+                'evaluator_id' =>$request->session()->get('evid'),
+                'id_number' => $request->data[$i][0],
+                'unique_id' =>  $request->session()->get('key'),
+                'campus' => $request->data[$i][4],
+                'school_year' => $request->data[$i][2],
+                'campusid' => $request->session()->get('campusid'), 
+                'subject' => 'faculty',
+                'semester' =>$request->session()->get('semester'), 
+                'faculty_name' => $request->data[$i][1],
+                'department' => $request->session()->get('department'),
+                'section' => 'faculty',
+                'sy' => $request->session()->get('sy'),
+                'academic_rank' => $request->session()->get('rank'),
+                'type' =>$request->data[$i][0] == $request->session()->get('evid')?'Self':'Admin',
+                'year' => $date,
+                ]);
+               }
+        }else{
+             for ($i=0; $i < count($request->data); $i++) { 
                 StudentSubjectLoading::create([
                 'evaluator_id' =>$request->session()->get('evid'),
                 'id_number' => $request->data[$i][0],
@@ -35,7 +56,9 @@ class StudentsController extends Controller
                 'type' =>$request->data[$i][0] == $request->session()->get('evid')?'Self':'Peer',
                 'year' => $date,
                 ]);
+            }
         }
+       
         return response()->json([
             'status' =>$request->data,
         ]);
@@ -44,12 +67,23 @@ class StudentsController extends Controller
 public function get_subject_load_from_teacher2(Request $request){  
 
 
- $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['department', '=' ,$request->session()->get('department')]])
+if($request->session()->get('rank') === 'admin'){
+     $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])
             ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])->get();
         return response()->json([
             'status' => $users,
             'console'=>$request->session()->get('campusid')
         ]);
+}else{
+     $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['department', '=' ,$request->session()->get('department')]])
+            ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])->get();
+        return response()->json([
+            'status' => $users,
+            'console'=>$request->session()->get('campusid')
+        ]);
+
+}
+
 
     }
 

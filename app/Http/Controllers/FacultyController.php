@@ -79,7 +79,7 @@ class FacultyController extends Controller
         $user->name = $request->name;
         $user->semester = $request->session()->get('school_sem');
         $user->department = $request->department;
-        $user->academic_rank = $request->rank;
+        $user->academic_rank = $request->type === "Administrator"?'admin':$request->rank;
         $user->sy = $request->sy;
         $user->save();
 

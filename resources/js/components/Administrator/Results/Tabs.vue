@@ -6,7 +6,7 @@
       >
         <v-tab value="Student">Students</v-tab>
         <v-tab value="Peer">Peer</v-tab>
-        <!-- <v-tab value="Supervisor">Supervisor</v-tab> -->
+        <v-tab value="Supervisor">Supervisor</v-tab> 
         <v-tab value="Self">Self</v-tab>
       </v-tabs>
   
@@ -20,9 +20,9 @@
             <Table2 />
           </v-window-item>
   
-         <!--  <v-window-item value="Supervisor">
+         <v-window-item value="Supervisor">
             <Table3 />
-          </v-window-item> -->
+          </v-window-item> 
           <v-window-item value="Self">
             <Table4 />
           </v-window-item>
@@ -34,13 +34,13 @@
 <script>
 import Table1 from './Table1.vue'
 import Table2 from './Table2.vue'
-//import Table3 from './Table3.vue'
+import Table3 from './Table3.vue'
 import Table4 from './Table4.vue'
 export default {
   components:{
     Table1,
     Table2,
-  //  Table3,
+    Table3,
     Table4
   },
   data: () => ({

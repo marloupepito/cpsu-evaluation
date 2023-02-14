@@ -17,7 +17,7 @@
                         prepend-icon="mdi-plus"
                         color="success"
                         size="x-small"
-                        @click="checkData(i.id+','+i.name+','+i.sy+','+i.id_number+','+i.campus)"
+                        @click="checkData(i.id+'|'+i.name+'|'+i.sy+'|'+i.id_number+'|'+i.campus+'|'+i.academic_rank)"
                         >Add</v-btn>
                     </td>
                 </tr>
@@ -35,8 +35,8 @@
             </thead>
             <tbody>
                 <tr v-for="i in value">
-                    <th scope="row">{{ i.split(',')[1] }}</th>
-                    <td>{{ i.split(',')[2] }}</td>
+                    <th scope="row">{{ i.split('|')[1] }}</th>
+                    <td>{{ i.split('|')[2] }}</td>
                     <td> <v-btn
                         class="text-white"
                         prepend-icon="mdi-trash-can-outline"
@@ -73,13 +73,13 @@ export default {
     methods: {
         validate() {
             this.loading=true
-           const data =this.value.map(res=>res).map(res =>res.split(','))
+           const data =this.value.map(res=>res).map(res =>res.split('|'))
             axios.post('/add_faculty_subject_loading',{
                 data:data
             })
             .then(res=>{
                 this.loading=false
-            this.$router.push({path:'/campus/'+window.location.pathname.split('/')[2]+'/form2'})
+        this.$router.push({path:'/campus/'+window.location.pathname.split('/')[2]+'/form2'})
             })
         },
         deleteSubject(id){

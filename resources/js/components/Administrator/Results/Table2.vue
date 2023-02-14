@@ -12,7 +12,9 @@
     </thead>
     <tbody>
       <tr  v-for="(i, n) in pdf"
-          :key="n">
+          :key="n"
+          v-if="value !== null && value !=='admin' "
+          >
         <th>{{ i.name }}</th>
         <!-- <td>{{ i.subject }}</td> -->
         <td>{{ i.semester }}</td>
@@ -49,7 +51,7 @@ export default {
 		await axios.post('/get_all_overall2')
 		.then(res=>{
 			this.pdf =res.data.status
-      console.log(res.data.status)
+      this.value = res.data.status[0].academic_rank
       this.where = window.location.pathname.split('/')[1]
 		})
 		.catch(err=>{
@@ -60,7 +62,8 @@ export default {
 	
 		return{
 			pdf:[],
-      where:''
+      where:'',
+      value:null
 			
 		}
 	}
