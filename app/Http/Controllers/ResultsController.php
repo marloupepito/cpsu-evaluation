@@ -456,7 +456,8 @@ class ResultsController extends Controller
          $d = Results::where([['semester','=',$sem],['sy','=',$sy],['campusid', '=' ,$request->campusid],['department', '=' ,'College of Agriculture and Forestry']])->get();
          $e = Results::where([['semester','=',$sem],['sy','=',$sy],['campusid', '=' ,$request->campusid],['department', '=' ,'College of Criminal Justice Education']])->get();
 
-
+         $else1= Students::where([['semester','=',$sem],['sy','=',$sy],['campusid', '=' ,$request->campusid]])->get();
+         $else2= Faculty::where([['semester','=',$sem],['sy','=',$sy],['campusid', '=' ,$request->campusid]])->get();
 
         return response()->json([
                 'evaluators' => $evaluators,
@@ -468,6 +469,8 @@ class ResultsController extends Controller
                 'c' => $c,
                 'd' => $d,
                 'e' => $e,
+                'else1' =>$else1,
+                'else2' =>$else2
             ]);
      }
 }
