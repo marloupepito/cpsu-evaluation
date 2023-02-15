@@ -46,7 +46,7 @@
 
                <v-col cols="12" sm="12">
                 <v-select
-                  :items="['Faculty','Administrator']"
+                  :items="['Peer','Supervisor']"
                   label="Evaluator Type"
                   required
                   :rules="typeRules"

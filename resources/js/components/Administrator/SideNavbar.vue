@@ -50,7 +50,7 @@
           { title: 'Faculty',path:'/administrator/faculty', icon: 'mdi-card-account-details-outline', active:4 },
           { title: 'Results',path:'/administrator/results', icon: 'mdi-chart-box-outline', active:5  },
          // { title: 'Schedule',path:'/administrator/schedule', icon: 'mdi-calendar-outline', active:6  },
-          { title: 'Questionaire',path:'/administrator/questionaire', icon: 'mdi-timeline-question-outline', active:7 },
+          { title: 'Questionnaire',path:'/administrator/questionaire', icon: 'mdi-timeline-question-outline', active:7 },
           { title: 'Settings',path:'/administrator/settings', icon: 'mdi-account-cog-outline', active:8 },
         ],
         rail: false,

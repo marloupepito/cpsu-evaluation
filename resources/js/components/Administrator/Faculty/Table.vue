@@ -41,11 +41,11 @@
         }"
       >
       <template #table-row="props">
-        <span v-if="props.column.field == 'status'">
+       <!--  <span v-if="props.column.field == 'status'">
 
           <v-icon :color="props.row.status === null?'error':'success'" :icon="props.row.status === null?'mdi-account-cancel-outline':'mdi-account-check-outline'" size="x-large"></v-icon>
        
-        </span>
+        </span> -->
 
         <span v-if="props.column.field == 'load'">
              <v-btn v-if="campusUsertype === 'Main Administrator Campus'" :to="'/administrator/faculty/'+props.row.campus.replace(/ /g,'_')+'/view/loaded?'+props.row.campusid+','+props.row.id" color="yellow" block>Loaded</v-btn>
@@ -94,10 +94,10 @@ import Menu from './Menu.vue'
           label: 'Department',
           field: 'department',
         },
-        {
-          label: 'Status',
-          field: 'status',
-        },
+    //    {
+      //    label: 'Status',
+    //      field: 'status',
+      //  },
         {
           label: 'Loaded',
           field: 'load',

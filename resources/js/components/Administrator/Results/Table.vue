@@ -10,14 +10,14 @@
       <v-icon>mdi-arrow-left-bold</v-icon>
     </v-btn>
    <div class="col-md-5 mt-3">
-                <v-select
+            <!--     <v-select
                   :items="['College of Computer Studies','College of Business Management','College of Teachers Education', 'College of Agriculture and Forestry','College of Criminal Justice Education']"
                   label="Department"
                   required
                   variant="outlined"
                   v-model="department"
                   @update:modelValue="selectDepartment"
-                ></v-select>
+                ></v-select> -->
               </div>
    <vue-good-table
   class="mt-3"

@@ -61,6 +61,15 @@
                 ></v-text-field>
               </v-col>
 
+                 <v-col cols="12" sm="12">
+                <v-select
+                  :items="['Peer','Supervisor']"
+                  label="Evaluator Type"
+                  required
+                  :rules="typeRules"
+                  v-model="type"
+                ></v-select>
+              </v-col> 
              
 
               <v-col cols="12" sm="12">
@@ -146,6 +155,10 @@
         rankRules: [
           v => !!v || 'Department Rank is required',
         ],
+        type:'',
+        typeRules:[
+          v => !!v || 'Type is required',
+        ],
         campusid:'',
         campus:'',
         loadingLocation:'',
@@ -164,6 +177,7 @@
                 department:this.data.department,
                 academic_rank:this.data.academic_rank,
                 id_number:this.data.id_number,
+                types:this.data.type,
               })
             .then(res=>{
 

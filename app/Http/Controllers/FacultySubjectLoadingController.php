@@ -74,7 +74,7 @@ class FacultySubjectLoadingController extends Controller
                   ->update([
                     'name' => $request->name,
                     'department' => $request->department,
-                    'academic_rank' => $request->academic_rank,
+                    'academic_rank' => $request->types === "Administrator"?'admin':$request->academic_rank,
                     'id_number' => $request->id_number,
                   ]);
             }else{
