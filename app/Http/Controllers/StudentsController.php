@@ -67,25 +67,24 @@ class StudentsController extends Controller
 public function get_subject_load_from_teacher2(Request $request){  
 
 
-if($request->session()->get('rank') === 'admin'){
-     $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])
-            ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])->get();
-        return response()->json([
-            'status' => $users,
-            'console'=>$request->session()->get('campusid')
-        ]);
-}else{
-     $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['department', '=' ,$request->session()->get('department')]])
-            ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])->get();
-        return response()->json([
-            'status' => $users,
-            'console'=>$request->session()->get('campusid')
-        ]);
+        if($request->session()->get('rank') === 'admin'){
+             $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])
+                    ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])->get();
+                return response()->json([
+                    'status' => $users,
+                    'console'=>$request->session()->get('campusid')
+                ]);
+        }else{
+             $users = Faculty::where([['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['department', '=' ,$request->session()->get('department')]])
+                    ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('campusid')],['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')]])->get();
+                return response()->json([
+                    'status' => $users,
+                    'console'=>$request->session()->get('campusid')
+                ]);
+        }
+
 
 }
-
-
-    }
 
     public function evaluator_session2(Request $request){
         $data=StudentSubjectLoading::where([['program','=',null],['unique_id','=',$request->session()->get('key')]])->first();
