@@ -175,22 +175,30 @@ class ResultsController extends Controller
              $exist[$i] =FinalResult::where('faculty_id','=',$request->data[$i]['evaluatee_id'])->first();
 
 
-                 $student[$i]= Results::where([['total','<>',null],['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+                 $student[$i]= DB::table('results')
+                 ->where([['total','<>',null],['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
 
 
-                   $sdc[$i]= Results::where([['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+                   $sdc[$i]= DB::table('results')
+                   ->where([['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
 
-                    $peer[$i]= Results::where([['total','<>',null],['status','=','Peer'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+                    $peer[$i]= DB::table('results')
+                    ->where([['total','<>',null],['status','=','Peer'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
 
-                    $pc[$i]= Results::where([['status','=','Peer'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+                    $pc[$i]= DB::table('results')
+                    ->where([['status','=','Peer'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
 
-                    $self[$i]= Results::where([['total','<>',null],['status','=','Self'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+                    $self[$i]= DB::table('results')
+                    ->where([['total','<>',null],['status','=','Self'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
 
-                    $sc[$i]= Results::where([['status','=','Self'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+                    $sc[$i]= DB::table('results')
+                    ->where([['status','=','Self'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
 
-                    $admin[$i]= Results::where([['total','<>',null],['status','=','Admin'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+                    $admin[$i]= DB::table('results')
+                    ->where([['total','<>',null],['status','=','Admin'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
 
-                    $ac[$i]= Results::where([['status','=','Admin'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
+                    $ac[$i]= DB::table('results')
+                    ->where([['status','=','Admin'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
 
                 if($exist[$i] === null){
                  
