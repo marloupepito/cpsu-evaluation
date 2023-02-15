@@ -190,7 +190,7 @@ class CreateUsersTable extends Migration
             $table->string('kos')->nullable();
             $table->string('til')->nullable();
             $table->string('mol')->nullable();
-            $table->float('total')->nullable();
+            $table->string('total')->nullable();
             $table->string('a')->nullable();
             $table->string('b')->nullable();
             $table->string('c')->nullable();
