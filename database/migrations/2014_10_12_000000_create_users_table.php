@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->float('peer')->nullable();
             $table->float('self')->nullable();
             $table->float('supervisor')->nullable();
-            $table->float('sy')->nullable();
+            $table->string('sy')->nullable();
             $table->string('sem')->nullable();
             $table->timestamps();
         });
