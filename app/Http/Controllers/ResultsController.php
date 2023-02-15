@@ -174,8 +174,8 @@ class ResultsController extends Controller
            for ($i=0; $i < count($request->data); $i++) { 
              $exist[$i] =FinalResult::where('faculty_id','=',$request->data[$i]['evaluatee_id'])->first();
 
-                if($exist[$i] === null){
-                   $student[$i]= Results::where([['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
+
+                 $student[$i]= Results::where([['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->sum('total');
 
 
                    $sdc[$i]= Results::where([['status','=','Student'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
@@ -192,6 +192,8 @@ class ResultsController extends Controller
 
                     $ac[$i]= Results::where([['status','=','Admin'],['evaluatee_id','=',$request->data[$i]['evaluatee_id']],['semester','=',$sem],['sy','=',$sy]])->limit(30)->get();
 
+                if($exist[$i] === null){
+                 
                       $user = new FinalResult;
                       $user->campusid = $request->data[$i]['campusid'];
                         $user->faculty_id = $request->data[$i]['evaluatee_id'];
@@ -205,7 +207,13 @@ class ResultsController extends Controller
                         $user->save();
                 }else{
 
-
+                    FinalResult::where([['faculty_id','=',$request->data[$i]['evaluatee_id']],['campusid','=',$request->data[$i]['campusid']]])
+                    ->update([
+                        'student' =>count($sdc[$i]) === 0?0:$student[$i] / count($sdc[$i]),
+                        'peer' =>count($pc[$i]) === 0?0:$peer[$i] /count($pc[$i]),
+                        'self' =>count($sc[$i]) === 0?0:$self[$i] /count($sc[$i]),
+                        'supervisor' =>count($ac[$i]) === 0?0:$admin[$i] /count($ac[$i]),
+                    ]);
 
                 }
 
