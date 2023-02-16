@@ -9,6 +9,29 @@ use App\Models\Faculty;
 use Illuminate\Support\Facades\DB;
 class SubjectLoadingController extends Controller
 {
+    
+
+     public function edit_subject_loaded(Request $request){
+        SubjectLoading::where('id',$request->id)
+        ->update([
+            'id' => $request->id,
+            'campusid' => $request->campusid,
+            'department' => $request->department,
+            'year' => $request->year,
+            'subject' => $request->subject,
+            'section' => $request->section,
+            'school_year' => $request->sy       
+         ]);
+         return response()->json([
+            'status' => 'success',
+        ]);
+     }
+     public function delete_loaded(Request $request){
+        SubjectLoading::where('id',$request->id)->delete();
+         return response()->json([
+            'status' => 'success',
+        ]);
+     }
      public function get_subject_loading(Request $request){
         $sy = $request->session()->get('school_year');
 
@@ -41,12 +64,11 @@ class SubjectLoadingController extends Controller
         ]);
 
 
-        $exist = SubjectLoading::where([['sy','=',$sy],['year','=',$request->year],['semester','=',$sem],['subject','=',$request->subject],['section','=',$request->section]])->get();
+        // $exist = SubjectLoading::where([['sy','=',$sy],['year','=',$request->year],['semester','=',$sem],['subject','=',$request->subject],['section','=',$request->section]])->get();
         $user = Faculty::where('id','=',$request->id)->first();
 
         
-        if(count($exist) === 0){
-             $loaded = new SubjectLoading;
+           $loaded = new SubjectLoading;
              $loaded->id_number = $request->id;
             $loaded->name = $user->name;
             $loaded->campusid = $request->campusid;
@@ -64,13 +86,16 @@ class SubjectLoadingController extends Controller
                 'status' => 'success',
                 'loading' =>$loading
             ]);
-        }else{
-             $loading = SubjectLoading::where([['sy','=',$sy],['id_number', '=',$request->id]])->get();
-            return response()->json([
-                'status' => 'error',
-                'loading' =>$loading
-            ]);
-        }
+            
+        // if(count($exist) === 0){
+          
+        // }else{
+        //      $loading = SubjectLoading::where([['sy','=',$sy],['id_number', '=',$request->id]])->get();
+        //     return response()->json([
+        //         'status' => 'error',
+        //         'loading' =>$loading
+        //     ]);
+        // }
        
 
 

@@ -93,8 +93,10 @@ Route::post('/get_all_users2','UsersController@get_all_users2');
 Route::post('/add_campus','UsersController@add_campus');
 
 Route::post('/get_subject_loading','SubjectLoadingController@get_subject_loading');//check
-Route::post('/add_subject_loaded','SubjectLoadingController@add_subject_loaded');//check
+Route::post('/add_subject_loaded','SubjectLoadingController@add_subject_loaded');//add_subject_loaded
 Route::post('/select_course_year','SubjectLoadingController@select_course_year');
+Route::post('/edit_subject_loaded','SubjectLoadingController@edit_subject_loaded');
+Route::post('/delete_loaded','SubjectLoadingController@delete_loaded');
 Route::post('/get_student_subject_loading','SubjectLoadingController@get_student_subject_loading');//check
 
 

@@ -62,8 +62,8 @@
 						<thead>
 							<tr>
 								<th width="25%"><h5>Evaluators</h5></th>
-								<th class="text-center" width="25%"><h5>Result</h5></th>
-								<th class="text-center" width="25%"><h5>Percent</h5></th>
+								<th class="text-center" width="25%"><h5>Mean</h5></th>
+								<th class="text-center" width="25%"><h5>Percentage</h5></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -109,7 +109,7 @@
 				<table class="table table-striped">
 						<thead>
 							<tr>
-								<th width="25%"><h3>TOTAL</h3></th>
+								<th width="25%"><h3>Overall Results</h3></th>
 								<th class="text-center" width="25%"><h3>{{
 									((parseFloat(student)*.20)+(parseFloat(peer)*.20)+(parseFloat(self)*.30)+(parseFloat(supervisor) *.30)).toString().substr(0, 4)
 									 }}</h3></th>

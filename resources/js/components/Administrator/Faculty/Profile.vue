@@ -28,8 +28,27 @@
 		    prepend-icon="mdi-book-information-variant"
 		  >
 		    <template v-slot:title>
-		     {{item.subject}}
+		   		    {{item.subject}}
 		    </template>
+
+		     <div class="row" style="margin-top:-50px">
+		    	<div class="col-md-6">
+		
+		    	 </div>
+
+		    	<div class="col-md-3">
+		    	<v-btn
+        variant="text"
+        icon="mdi-trash-can-outline"
+        color="danger"
+        @click="deleteLoaded(item.id)"
+      ></v-btn>
+      </div>
+      	<div class="col-md-3">
+		    	   <Edit :id="item.id" :subjects="item.subject"  :sections="item.section"/>
+		    	   </div>
+		    </div>
+
 
 		    <v-card-text>
 
@@ -57,7 +76,7 @@
 					</tr>
 				</tbody>
 				</table>
-<br /><br />
+					<br /><br />
 		    </v-card-text>
 		  </v-card>
 	 	</div>
@@ -72,6 +91,7 @@
 <script>
 import axios from 'axios'
 import Modal from './Modal.vue'
+import Edit from './Edit.vue'
   export default {
     data: () => ({
       loaded: [],
@@ -87,9 +107,38 @@ import Modal from './Modal.vue'
     	this.mount()
     },
      components:{
-      Modal
+      Modal,
+      Edit
       },
     methods:{
+    	deleteLoaded(id){
+    					this.$swal({
+							  title: 'Are you sure?',
+							  text: "You won't be able to revert this!",
+							  icon: 'warning',
+							  showCancelButton: true,
+							  confirmButtonColor: '#3085d6',
+							  cancelButtonColor: '#d33',
+							  confirmButtonText: 'Yes, delete it!'
+							}).then((result) => {
+							  if (result.isConfirmed) {
+
+							  	axios.post('/delete_loaded',{
+							  		id:id
+							  		})
+							  	.then(res=>{
+								    this.$swal({
+											  icon: 'success',
+											  title: 'Your file has been deleted.',
+											  showConfirmButton: false,
+											  timer: 1500
+											})
+								    this.mount()
+							  		})
+							    
+							  }
+							})
+    		},
     	mount(){
     		const aa = window.location.search.split(',')
     		const campusid = aa[0].substring(1)
