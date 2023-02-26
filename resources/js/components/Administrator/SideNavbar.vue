@@ -8,7 +8,7 @@
       >
         <v-list-item
           prepend-avatar="/images/logo.jpg"
-          title="SUPERADMIN"
+          title="QA Main"
           nav
         >
           <template v-slot:append>

@@ -25,6 +25,19 @@
           lazy-validation
         >
             <v-row>
+
+               <v-col cols="12" sm="12">
+                <v-select
+                disabled
+                  :items="syList"
+                  label="Academic Year"
+                  required
+                  v-model="sy"
+                  :rules="courseRules"
+                ></v-select>
+              </v-col>
+
+              
               <v-col cols="12" sm="12">
                 <v-text-field
                   label="Subject"
@@ -45,15 +58,7 @@
               </v-col>
 
 
-            <v-col cols="12" sm="12">
-                <v-select
-                  :items="syList"
-                  label="Academic Year"
-                  required
-                  v-model="sy"
-                  :rules="courseRules"
-                ></v-select>
-              </v-col>
+
 
               <v-col cols="12" sm="12">
                 <v-select

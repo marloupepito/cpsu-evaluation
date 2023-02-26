@@ -8,7 +8,7 @@
       >
         <v-list-item
           prepend-avatar="/images/logo.jpg"
-          title="CAMPUS"
+          :title="campus.replace(/_/g,' ').substring(5)"
           nav
         >
           <template v-slot:append>
