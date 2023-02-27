@@ -6,7 +6,6 @@
             <thead>
                 <tr>
                     <th scope="col">Faculty of Name</th>
-                    <th scope="col">Academic Year</th>
                     <th scope="col">Choose</th>
                 </tr>
             </thead>
@@ -37,7 +36,7 @@
             <tbody>
                 <tr v-for="i in value">
                     <th scope="row">{{ i.split('|')[1] }}</th>
-                   <td>{{ i.split('|')[2] }}</td>
+                   <!-- <td>{{ i.split('|')[2] }}</td> -->
                     <td> <v-btn
                         class="text-white"
                         prepend-icon="mdi-trash-can-outline"
