@@ -42,7 +42,7 @@
 										<strong class="text-dark">{{aaa}}</strong><br />
 										Faculty<br />
 										Central Philippines State University<br />
-										DJVV San Carlos Campus<br />
+										{{campus}}<br />
 									</address>
 								</div>
 						</div>

@@ -1363,6 +1363,7 @@ export default {
                           cancelButtonColor: '#d33',
                           confirmButtonText: 'Proceed'
                         }).then((result) => {
+
                           if (result.isConfirmed) {
                               document.getElementById("myForm").reset();
                                    this.$swal({

@@ -126,7 +126,8 @@ class ResultsController extends Controller
                 'status' => 'success',
                 'x1' => count($count5),
                 'x2' => $ccje,
-                'x3' => $ccs
+                'x3' => $ccs,
+                'console' =>$request->evaluator
             ]);
        
         
