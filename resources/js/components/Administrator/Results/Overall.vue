@@ -36,7 +36,7 @@
 						<div class="col-md-9 col-8">
 								<div class="invoice-from">
 
-							<div class="date text-dark mt-3px">August 3,2021</div>
+							<!-- <div class="date text-dark mt-3px">August 3,2021</div> -->
 									<address class="mt-3 mb-5px">
 									<strong class="text-dark">{{evaluateeName}}</strong><br />
 										<strong class="text-dark">{{aaa}}</strong><br />

@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-6 offset-md-3 col-12 mt-5">
 
-                  <b>Please select peer faculty<small>(ies) including your self.</small>.</b>
+                  <b>Please select peer faculty<small>(ies) including your self.</small></b>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -29,14 +29,14 @@
             <thead>
                 <tr>
                     <th scope="col">Faculty of Name</th>
-                    <th scope="col">Subjects</th>
+                    <!-- <th scope="col">Subjects</th> -->
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="i in value">
                     <th scope="row">{{ i.split('|')[1] }}</th>
-                    <td>{{ i.split('|')[2] }}</td>
+                    <!-- <td>{{ i.split('|')[2] }}</td> -->
                     <td> <v-btn
                         class="text-white"
                         prepend-icon="mdi-trash-can-outline"
