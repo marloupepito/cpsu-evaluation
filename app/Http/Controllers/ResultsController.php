@@ -49,7 +49,7 @@ class ResultsController extends Controller
 
         }else{
 
-             Faculty::where('id','=', $request->evaluator)
+             Faculty::where('name','=', $request->evaluator)
                 ->update(['status' => 'active']);
       
                 StudentSubjectLoading::where('id', $request->id)
