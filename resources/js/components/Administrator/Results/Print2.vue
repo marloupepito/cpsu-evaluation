@@ -593,7 +593,7 @@
 							    	<td>
 							    		  <b>Comment </b>
 							    		 <p>
-					                        {{ answers.comment }}
+					                        {{ comment }}
 					                    </p>
 							    	</td>
 							    </tr>
@@ -666,7 +666,8 @@ import moment from 'moment'
 		      q18:null,
 		      q19:null,
 		      q20:null,
-		      data2:[]
+		      data2:[],
+		      comment:''
 
 		    }
 		  },
@@ -686,9 +687,7 @@ import moment from 'moment'
                     .then(res=>{
                         this.answers = res.data.status
                         this.data2 = res.data.evaluator
-                       
-   					   console.log('badodo',res.data.status)
-   					   console.log('aaron',res.data.evaluator)
+                       this.comment=res.data.evaluator.comment
                         this.query = Object.values(res.data.status.program2.substring(1).replace(/]/g,"").replace(/"/g,'').split(','))
                        this.datee = moment(new Date( res.data.evaluator.updated_at)).format('LL')
                     })
