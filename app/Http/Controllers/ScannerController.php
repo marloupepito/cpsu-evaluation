@@ -14,17 +14,12 @@ class ScannerController extends Controller
 
      public function qrscanner1(Request $request){
 
- $evaluator = Faculty::where([['id','=',$request->evaluatorid],['campusid','=',$request->campusid],['password','=',$request->password]])->get();
-        if($evaluator !== 0){
-             $request->session()->put('evid',$evaluator[0]->id);
-             $request->session()->put('evaluator',$evaluator[0]->name );
-             $request->session()->put('campus',$evaluator[0]->campus );
-             $request->session()->put('campusid',$evaluator[0]->campusid );
-             $request->session()->put('semester',$evaluator[0]->semester );
-             $request->session()->put('sy',$evaluator[0]->sy );
-             $request->session()->put('rank',$evaluator[0]->academic_rank );
+ $evaluator = Faculty::where([['id','=',$request->evaluatorid],['campusid','=',$request->campusid],['password','=',$request->password]])->first();
+        if($evaluator !== null){
+
+           $request->session()->put('faculty',$evaluator);
                 return response()->json([
-                    'status' => 'proceed',
+                    'status' =>'proceed',
                     'type' => $request->type
                 ]);
            

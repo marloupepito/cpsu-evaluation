@@ -43,7 +43,7 @@ class FacultyController extends Controller
 
  public function get_every_faculty2(Request $request){
 
-        $users = Faculty::where([['semester', '=' ,$request->session()->get('semester')],['sy', '=' ,$request->session()->get('sy')],['id', '=' ,$request->session()->get('evid')]])->first();
+        $users = Faculty::where([['semester', '=' ,$request->session()->get('faculty')->semester],['sy', '=' ,$request->session()->get('faculty')->sy],['id', '=' ,$request->session()->get('faculty')->id]])->first();
 
         return response()->json([
             'status' => $users

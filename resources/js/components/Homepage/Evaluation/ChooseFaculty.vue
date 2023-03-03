@@ -86,6 +86,7 @@ export default {
         axios.post('/get_every_faculty2')
         .then(res=>{
             this.data =res.data.status
+           
             })
     },
     methods: {

@@ -62,17 +62,17 @@ class ResultsController extends Controller
                 $user->commitment = $request->commitment;
                 $user->kos = $request->kos;
                 $user->name = $request->name;
-                $user->campus = $request->session()->get('campus');;
+                $user->campus = $request->session()->get('faculty')->campus;
                 $user->school_year = date('Y');
-                $user->campusid = $request->session()->get('campusid');;
+                $user->campusid = $request->session()->get('faculty')->campusid;
                 $user->til = $request->til;
                 $user->mol = $request->mol;
                 $user->total = $total;
                 $user->comment = $request->comment;
-                $user->semester = $request->session()->get('school_sem');
-                $user->sy = $request->session()->get('school_year');
-                $user->department = $request->session()->get('department');
-                $user->academic_rank = $request->session()->get('rank');
+                $user->semester = $request->session()->get('faculty')->semester;
+                $user->sy = $request->session()->get('faculty')->sy;
+                $user->department = $request->session()->get('faculty')->department;
+                $user->academic_rank = $request->session()->get('faculty')->academic_rank;
                 $user->status = $request->type;
                 $user->save();
 
