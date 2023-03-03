@@ -30,7 +30,7 @@ class FacultyController extends Controller
 
  public function faculty_add_signature(Request $request){
 
-        Faculty::where('id',$request->session()->get('evid'))
+        Faculty::where('id',$request->session()->get('faculty')->id)
         ->update(['signature' => $request->signature]);
          $request->session()->put('department',$request->department);
          $request->session()->put('campusid',$request->campusid);
