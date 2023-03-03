@@ -68,9 +68,9 @@ class StudentsController extends Controller
 public function get_subject_load_from_teacher2(Request $request){  
 
 
-        if($request->session()->get('faculty')->rank === 'admin'){
+        if($request->session()->get('faculty')->academic_rank === 'admin'){
              $users = Faculty::where([['campusid', '=' ,$request->session()->get('faculty')->campusid],['semester', '=' ,$request->session()->get('faculty')->semester],['sy', '=' ,$request->session()->get('faculty')->semester]])
-                    ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('faculty')->campusid],['semester', '=' ,$request->session()->get('faculty')->semester],['sy', '=' ,$request->session()->get('faculty')->sy]])->get();
+                    ->orWhere([['campusid', '=' ,$request->session()->get('faculty')->campusid],['semester', '=' ,$request->session()->get('faculty')->semester],['sy', '=' ,$request->session()->get('faculty')->sy]])->get();
                 return response()->json([
                     'status' => $users,
                     'console'=>$request->session()->get('faculty')->campusid
@@ -80,7 +80,7 @@ public function get_subject_load_from_teacher2(Request $request){
                     ->orWhere([['department', '=' ,'admin'],['campusid', '=' ,$request->session()->get('faculty')->campusid],['semester', '=' ,$request->session()->get('faculty')->semester],['sy', '=' ,$request->session()->get('faculty')->sy]])->get();
                 return response()->json([
                     'status' => $users,
-                    'console'=>$request->session()->get('campusid')
+                    'console'=>$request->session()->get('faculty')->academic_rank
                 ]);
         }
             // return response()->json([

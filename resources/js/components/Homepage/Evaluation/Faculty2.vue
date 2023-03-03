@@ -107,7 +107,7 @@ export default {
             })
             .then((res) => {
                 this.teacher = res.data.status;
-                console.log('dd',res.data.status)
+                console.log('dd',res.data.console)
             });
     },
 };
