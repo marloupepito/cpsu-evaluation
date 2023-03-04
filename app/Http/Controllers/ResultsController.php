@@ -418,7 +418,7 @@ class ResultsController extends Controller
              ->where('student_subject_loading.id','=',$request->id)
             ->join('student_subject_loading', 'faculty.id', '=', 'student_subject_loading.evaluator_id')
             ->select('student_subject_loading.evaluator_id','student_subject_loading.semester','student_subject_loading.faculty_name','student_subject_loading.id_number',
-                'student_subject_loading.academic_rank','student_subject_loading.program2','student_subject_loading.type')
+                'student_subject_loading.academic_rank','student_subject_loading.program2','student_subject_loading.type','student_subject_loading.comment')
             ->first();
 
 

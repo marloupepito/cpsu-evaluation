@@ -687,7 +687,8 @@ import moment from 'moment'
                     .then(res=>{
                         this.answers = res.data.status
                         this.data2 = res.data.evaluator
-                       this.comment=res.data.evaluator.comment
+                       this.comment=res.data.status.comment
+                       console.log(',ggg',res.data.status.comment)
                         this.query = Object.values(res.data.status.program2.substring(1).replace(/]/g,"").replace(/"/g,'').split(','))
                        this.datee = moment(new Date( res.data.evaluator.updated_at)).format('LL')
                     })
