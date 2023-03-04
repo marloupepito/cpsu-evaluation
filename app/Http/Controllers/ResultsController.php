@@ -49,7 +49,7 @@ class ResultsController extends Controller
 
         }else{
 
-             Faculty::where('id','=', $request->evaluator)
+             Faculty::where('id','=',  $request->session()->get('faculty')->id)
                 ->update(['status' => 'active']);
       
                 StudentSubjectLoading::where('id', $request->id)
@@ -58,7 +58,7 @@ class ResultsController extends Controller
 
                 $user = new Results;
                 $user->evaluatee_id = $request->evaluatee;
-                $user->evaluator_id = $request->evaluator;
+                $user->evaluator_id =  $request->session()->get('faculty')->id;
                 $user->commitment = $request->commitment;
                 $user->kos = $request->kos;
                 $user->name = $request->name;
@@ -127,7 +127,7 @@ class ResultsController extends Controller
                 'x1' => count($count5),
                 'x2' => $ccje,
                 'x3' => $ccs,
-                'console' =>$request->evaluator
+                'console' => $request->session()->get('faculty')->id
             ]);
        
         
