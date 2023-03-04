@@ -275,8 +275,8 @@ export default {
           department:this.department,
           campusid:campusid
         })
-        .then(res=>{
-          
+        .then(res=>{  
+       //   console.log('x',res)
           axios.post('/get_all_results3',{
             data:Object.values(res.data.status),
           })
